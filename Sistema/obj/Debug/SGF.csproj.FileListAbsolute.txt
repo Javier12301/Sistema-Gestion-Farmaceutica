@@ -9,3 +9,4 @@ C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\SGF.csproj.GenerateRe
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\SGF.csproj.CoreCompileInputs.cache
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.exe
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.pdb
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.InventarioFarmaceuticoFORM.resources

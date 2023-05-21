@@ -47,6 +47,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controles\Controladora.cs" />
+    <Compile Include="Inventario\agregarCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\agregarCategorias.Designer.cs">
+      <DependentUpon>agregarCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\agregarMedicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\agregarMedicamentos.Designer.cs">
+      <DependentUpon>agregarMedicamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\Estantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\Estantes.Designer.cs">
+      <DependentUpon>Estantes.cs</DependentUpon>
+    </Compile>
     <Compile Include="SGF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +73,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InventarioPrincipalFORM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventarioPrincipalFORM.Designer.cs">
+      <DependentUpon>InventarioPrincipalFORM.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="InventarioPrincipalFORM.resx">
+      <DependentUpon>InventarioPrincipalFORM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\agregarCategorias.resx">
+      <DependentUpon>agregarCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\agregarMedicamentos.resx">
+      <DependentUpon>agregarMedicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\Estantes.resx">
+      <DependentUpon>Estantes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SGF.resx">
       <DependentUpon>SGF.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Personal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
