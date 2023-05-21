@@ -53,11 +53,17 @@
     <Compile Include="Inventario\agregarCategorias.Designer.cs">
       <DependentUpon>agregarCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventario\agregarMedicamentos.cs">
+    <Compile Include="Inventario\agregarMedicamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventario\agregarMedicamentos.Designer.cs">
-      <DependentUpon>agregarMedicamentos.cs</DependentUpon>
+    <Compile Include="Inventario\agregarMedicamento.Designer.cs">
+      <DependentUpon>agregarMedicamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\Lista de Medicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\Lista de Medicamentos.Designer.cs">
+      <DependentUpon>Lista de Medicamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventario\Estantes.cs">
       <SubType>Form</SubType>
@@ -85,8 +91,11 @@
     <EmbeddedResource Include="Inventario\agregarCategorias.resx">
       <DependentUpon>agregarCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventario\agregarMedicamentos.resx">
-      <DependentUpon>agregarMedicamentos.cs</DependentUpon>
+    <EmbeddedResource Include="Inventario\agregarMedicamento.resx">
+      <DependentUpon>agregarMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\Lista de Medicamentos.resx">
+      <DependentUpon>Lista de Medicamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Estantes.resx">
       <DependentUpon>Estantes.cs</DependentUpon>

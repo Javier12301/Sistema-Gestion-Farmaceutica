@@ -30,22 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(agregarMedicamentos));
             this.pnlMAIN = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtaNameMedicamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaSecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.gpbListEstante = new System.Windows.Forms.GroupBox();
-            this.dtaListEstante = new System.Windows.Forms.DataGridView();
-            this.shelfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shelfNumeric = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selfNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlgpbEstanteFORM = new System.Windows.Forms.Panel();
-            this.gpbNewEstante = new System.Windows.Forms.GroupBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,12 +64,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUser = new System.Windows.Forms.Label();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.pnlMAIN.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.gpbListEstante.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaListEstante)).BeginInit();
-            this.pnlgpbEstanteFORM.SuspendLayout();
-            this.gpbNewEstante.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -83,191 +80,120 @@
             // pnlMAIN
             // 
             this.pnlMAIN.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlMAIN.Controls.Add(this.label12);
-            this.pnlMAIN.Controls.Add(this.panel1);
-            this.pnlMAIN.Controls.Add(this.pnlgpbEstanteFORM);
+            this.pnlMAIN.Controls.Add(this.panel3);
             this.pnlMAIN.Controls.Add(this.pnlMenu);
             this.pnlMAIN.Controls.Add(this.pnlHeader);
             this.pnlMAIN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMAIN.Location = new System.Drawing.Point(0, 0);
             this.pnlMAIN.Name = "pnlMAIN";
-            this.pnlMAIN.Size = new System.Drawing.Size(785, 412);
+            this.pnlMAIN.Size = new System.Drawing.Size(783, 412);
             this.pnlMAIN.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.comboBox2);
+            this.panel3.Controls.Add(this.dateTimePicker1);
+            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.btnLogin);
+            this.panel3.Controls.Add(this.btnSearch);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.txtSearch);
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Location = new System.Drawing.Point(152, 56);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(626, 353);
+            this.panel3.TabIndex = 8;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(552, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(71, 25);
+            this.btnSearch.TabIndex = 11;
+            this.btnSearch.Text = "Buscar";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(243, 14);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(293, 26);
+            this.txtSearch.TabIndex = 10;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtaNameMedicamento,
+            this.Lote,
+            this.dtaLote,
+            this.dtaSecto,
+            this.dtaSector,
+            this.dtaNumEstante,
+            this.Column1});
+            this.dataGridView1.Location = new System.Drawing.Point(7, 69);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(612, 280);
+            this.dataGridView1.TabIndex = 9;
+            // 
+            // dtaNameMedicamento
+            // 
+            this.dtaNameMedicamento.HeaderText = "Nombre";
+            this.dtaNameMedicamento.Name = "dtaNameMedicamento";
+            // 
+            // Lote
+            // 
+            this.Lote.HeaderText = "Cantidad";
+            this.Lote.Name = "Lote";
+            // 
+            // dtaLote
+            // 
+            this.dtaLote.HeaderText = "Lote";
+            this.dtaLote.Name = "dtaLote";
+            // 
+            // dtaSecto
+            // 
+            this.dtaSecto.HeaderText = "Nombre Est.";
+            this.dtaSecto.Name = "dtaSecto";
+            // 
+            // dtaSector
+            // 
+            this.dtaSector.HeaderText = "Sector";
+            this.dtaSector.Name = "dtaSector";
+            // 
+            // dtaNumEstante
+            // 
+            this.dtaNumEstante.HeaderText = "Vto.";
+            this.dtaNumEstante.Name = "dtaNumEstante";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Num. Est.";
+            this.Column1.Name = "Column1";
             // 
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.label12.Location = new System.Drawing.Point(158, 53);
+            this.label12.Location = new System.Drawing.Point(0, 3);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 39);
+            this.label12.Size = new System.Drawing.Size(152, 26);
             this.label12.TabIndex = 3;
-            this.label12.Text = "Estantes";
+            this.label12.Text = "Medicamentos";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.gpbListEstante);
-            this.panel1.Location = new System.Drawing.Point(439, 95);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 309);
-            this.panel1.TabIndex = 3;
-            // 
-            // gpbListEstante
-            // 
-            this.gpbListEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpbListEstante.BackColor = System.Drawing.Color.White;
-            this.gpbListEstante.Controls.Add(this.dtaListEstante);
-            this.gpbListEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.gpbListEstante.Location = new System.Drawing.Point(2, 3);
-            this.gpbListEstante.Name = "gpbListEstante";
-            this.gpbListEstante.Size = new System.Drawing.Size(328, 301);
-            this.gpbListEstante.TabIndex = 0;
-            this.gpbListEstante.TabStop = false;
-            this.gpbListEstante.Text = "Lista de Estantes";
-            // 
-            // dtaListEstante
-            // 
-            this.dtaListEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtaListEstante.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dtaListEstante.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtaListEstante.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtaListEstante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.shelfName,
-            this.shelfNumeric,
-            this.selfNumero});
-            this.dtaListEstante.Location = new System.Drawing.Point(7, 27);
-            this.dtaListEstante.Name = "dtaListEstante";
-            this.dtaListEstante.Size = new System.Drawing.Size(315, 268);
-            this.dtaListEstante.TabIndex = 0;
-            // 
-            // shelfName
-            // 
-            this.shelfName.HeaderText = "Nombre";
-            this.shelfName.Name = "shelfName";
-            this.shelfName.Width = 90;
-            // 
-            // shelfNumeric
-            // 
-            this.shelfNumeric.HeaderText = "Sector";
-            this.shelfNumeric.Name = "shelfNumeric";
-            this.shelfNumeric.Width = 78;
-            // 
-            // selfNumero
-            // 
-            this.selfNumero.HeaderText = "Núm. estante";
-            this.selfNumero.Name = "selfNumero";
-            this.selfNumero.Width = 126;
-            // 
-            // pnlgpbEstanteFORM
-            // 
-            this.pnlgpbEstanteFORM.BackColor = System.Drawing.Color.White;
-            this.pnlgpbEstanteFORM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlgpbEstanteFORM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlgpbEstanteFORM.Controls.Add(this.gpbNewEstante);
-            this.pnlgpbEstanteFORM.Location = new System.Drawing.Point(160, 95);
-            this.pnlgpbEstanteFORM.Name = "pnlgpbEstanteFORM";
-            this.pnlgpbEstanteFORM.Size = new System.Drawing.Size(270, 264);
-            this.pnlgpbEstanteFORM.TabIndex = 2;
-            // 
-            // gpbNewEstante
-            // 
-            this.gpbNewEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpbNewEstante.BackColor = System.Drawing.Color.White;
-            this.gpbNewEstante.Controls.Add(this.btnLogin);
-            this.gpbNewEstante.Controls.Add(this.label11);
-            this.gpbNewEstante.Controls.Add(this.textBox3);
-            this.gpbNewEstante.Controls.Add(this.label10);
-            this.gpbNewEstante.Controls.Add(this.textBox2);
-            this.gpbNewEstante.Controls.Add(this.label9);
-            this.gpbNewEstante.Controls.Add(this.textBox1);
-            this.gpbNewEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.gpbNewEstante.Location = new System.Drawing.Point(2, 3);
-            this.gpbNewEstante.Name = "gpbNewEstante";
-            this.gpbNewEstante.Size = new System.Drawing.Size(264, 256);
-            this.gpbNewEstante.TabIndex = 0;
-            this.gpbNewEstante.TabStop = false;
-            this.gpbNewEstante.Text = "Nuevo Estante";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.Location = new System.Drawing.Point(53, 203);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(164, 40);
-            this.btnLogin.TabIndex = 6;
-            this.btnLogin.Text = "Agregar";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(14, 150);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(133, 19);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Número de estante";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(28, 170);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 27);
-            this.textBox3.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(14, 92);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 19);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Sector";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(28, 112);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 27);
-            this.textBox2.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(14, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 19);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Nombre";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(28, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 27);
-            this.textBox1.TabIndex = 0;
             // 
             // pnlMenu
             // 
@@ -387,7 +313,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.label1.Font = new System.Drawing.Font("Font Awesome 6 Free Solid", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 60);
             this.label1.Name = "label1";
@@ -410,7 +336,7 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -451,7 +377,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -496,7 +422,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(785, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(783, 50);
             this.pnlHeader.TabIndex = 0;
             // 
             // label8
@@ -520,7 +446,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblUser, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(563, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(561, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tableLayoutPanel1.RowCount = 1;
@@ -559,21 +485,57 @@
             this.lblUser.Text = "javieradmin@gmail.com";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogin.Location = new System.Drawing.Point(7, 32);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(145, 31);
+            this.btnLogin.TabIndex = 12;
+            this.btnLogin.Text = "Agregar Medicamento";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(243, 42);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(91, 21);
+            this.comboBox1.TabIndex = 13;
+            this.comboBox1.Text = "Selec. Estante";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(437, 42);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(99, 20);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(340, 42);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(91, 21);
+            this.comboBox2.TabIndex = 15;
+            this.comboBox2.Text = "Selec. Categoria";
+            // 
             // agregarMedicamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 412);
+            this.ClientSize = new System.Drawing.Size(783, 412);
             this.Controls.Add(this.pnlMAIN);
             this.Name = "agregarMedicamentos";
-            this.Text = "agregarMedicamentos";
+            this.Text = "SGF";
             this.pnlMAIN.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.gpbListEstante.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtaListEstante)).EndInit();
-            this.pnlgpbEstanteFORM.ResumeLayout(false);
-            this.gpbNewEstante.ResumeLayout(false);
-            this.gpbNewEstante.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
@@ -589,21 +551,6 @@
 
         private System.Windows.Forms.Panel pnlMAIN;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox gpbListEstante;
-        private System.Windows.Forms.DataGridView dtaListEstante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shelfName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shelfNumeric;
-        private System.Windows.Forms.DataGridViewTextBoxColumn selfNumero;
-        private System.Windows.Forms.Panel pnlgpbEstanteFORM;
-        private System.Windows.Forms.GroupBox gpbNewEstante;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -626,5 +573,20 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNameMedicamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaLote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSecto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
