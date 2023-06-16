@@ -21,11 +21,7 @@ namespace Sistema
         //Globales
         Shortcuts shortcuts = new Shortcuts();
 
-        private void InventarioPrincipalFORM_Load(object sender, EventArgs e)
-        {
-            lblSize.Text = this.Size.ToString();
-        }
-
+      
         private void button1_Click(object sender, EventArgs e)
         {
 

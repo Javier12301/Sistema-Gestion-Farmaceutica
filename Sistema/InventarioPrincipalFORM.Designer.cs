@@ -45,7 +45,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pnlMAIN = new System.Windows.Forms.Panel();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
-            this.lblSize = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -295,7 +294,6 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -327,7 +325,6 @@
             this.pnlPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPrincipal.Controls.Add(this.lblSize);
             this.pnlPrincipal.Controls.Add(this.panel3);
             this.pnlPrincipal.Controls.Add(this.tableLayoutPanel2);
             this.pnlPrincipal.Controls.Add(this.label12);
@@ -335,15 +332,6 @@
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(615, 359);
             this.pnlPrincipal.TabIndex = 2;
-            // 
-            // lblSize
-            // 
-            this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(339, 15);
-            this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(41, 13);
-            this.lblSize.TabIndex = 12;
-            this.lblSize.Text = "label20";
             // 
             // panel3
             // 
@@ -684,10 +672,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 412);
             this.Controls.Add(this.pnlMAIN);
-            this.MinimumSize = new System.Drawing.Size(715, 441);
+            this.MinimumSize = new System.Drawing.Size(715, 451);
             this.Name = "InventarioPrincipalFORM";
             this.Text = "SGF";
-            this.Load += new System.EventHandler(this.InventarioPrincipalFORM_Load);
             this.ClientSizeChanged += new System.EventHandler(this.InventarioPrincipalFORM_ClientSizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
@@ -736,7 +723,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlMAIN;
         private System.Windows.Forms.Panel pnlPrincipal;
-        private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
