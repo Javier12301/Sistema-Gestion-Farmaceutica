@@ -8,8 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema;
-
-
+using Sistema.Controles;
 
 namespace Sistema
 {
@@ -22,7 +21,8 @@ namespace Sistema
         }
 
         //Global
-        Controladora controladora = new Sistema.Controladora();
+        Controladora controladora = new Controladora();
+        Shortcuts shortcuts = new Shortcuts();
         //Variable booleana para controlar el estado del ojo, por defecto lo mejor es false
         bool showPassword = false;
         //Variable de colores en hexadecimal
@@ -118,14 +118,15 @@ namespace Sistema
             bool verificar = controladora.verificarCredenciales(txtUser, txtPassword, colorError, pctLineUser, pctLinePassword);
             if (verificar)
             {
-                MessageBox.Show("Credenciales correctas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                InventarioPrincipalFORM inventarioPrincipalFORM = new InventarioPrincipalFORM();
+                inventarioPrincipalFORM.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Credenciales incorrectas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Ingresar al sistema presionando enter
         private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter)
@@ -134,7 +135,10 @@ namespace Sistema
                 bool verificar = controladora.verificarCredenciales(txtUser, txtPassword, colorError, pctLineUser, pctLinePassword);
                 if (verificar)
                 {
-                    MessageBox.Show("Credenciales correctas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    InventarioPrincipalFORM inventarioPrincipalFORM = new InventarioPrincipalFORM();
+                    this.Hide();
+                    inventarioPrincipalFORM.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
@@ -143,28 +147,10 @@ namespace Sistema
             }
         }
 
-        
+        //Activado de shorcut
         private void txtUser_KeyDown_1(object sender, KeyEventArgs e)
         {
-
-            TextBox txtSelected = sender as TextBox;
-            //Shortcut para eliminar palabras con ctrl + backspace
-            if ((e.KeyCode == Keys.Back) && e.Control)
-            {
-                e.SuppressKeyPress = true;
-                int selStart = txtSelected.SelectionStart;
-                while (selStart > 0 && txtSelected.Text.Substring(selStart - 1, 1) == " ")
-                {
-                    selStart--;
-                }
-                int prevSpacePos = -1;
-                if (selStart != 0)
-                {
-                    prevSpacePos = txtSelected.Text.LastIndexOfAny(new char[] { ' ', '@', '.' }, selStart - 1);
-                }
-                txtSelected.Select(prevSpacePos + 1, txtSelected.SelectionStart - prevSpacePos - 1);
-                txtSelected.SelectedText = "";
-            }
+            shortcuts.ClearTextUntilSpace(txtUser, e);
         }
 
         private void btnForgotPassword_MouseHover(object sender, EventArgs e)

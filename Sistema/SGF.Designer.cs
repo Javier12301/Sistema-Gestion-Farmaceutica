@@ -181,6 +181,7 @@ namespace Sistema
             this.txtPassword.Size = new System.Drawing.Size(272, 26);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.Tag = "txtPassword";
+            this.txtPassword.Text = "Admin12301";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
@@ -195,6 +196,7 @@ namespace Sistema
             this.txtUser.Size = new System.Drawing.Size(298, 26);
             this.txtUser.TabIndex = 1;
             this.txtUser.Tag = "txtUser";
+            this.txtUser.Text = "Admin12301@gmail.com";
             this.txtUser.Enter += new System.EventHandler(this.txtUser_Enter);
             this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
             this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);

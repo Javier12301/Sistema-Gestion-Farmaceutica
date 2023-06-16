@@ -9,4 +9,8 @@ C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\SGF.csproj.GenerateRe
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\SGF.csproj.CoreCompileInputs.cache
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.exe
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.pdb
-C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.InventarioFarmaceuticoFORM.resources
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.InventarioPrincipalFORM.resources
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.agregarCategorias.resources
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.agregarMedicamento.resources
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.agregarMedicamentos.resources
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.Estantes.resources

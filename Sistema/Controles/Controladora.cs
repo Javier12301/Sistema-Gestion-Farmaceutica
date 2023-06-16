@@ -30,12 +30,21 @@ namespace Sistema
 
         public bool verificarCredenciales(TextBox txtUser, TextBox txtPassword, Color colorError, PictureBox pctLineUser, PictureBox pctLinePassword)
         {
+            //Será utilizado para registrar nuevos usuarios, con esto podremos especificar los caracteres que se podrán utilizar
             bool correoValido = verificarCorreo(txtUser, colorError, pctLineUser);
             bool passwordValido = verificarPassword(txtPassword, colorError, pctLinePassword);
             //Verificar credenciales
             if (correoValido && passwordValido)
             {
-                return true;
+                if(txtUser.Text == "Admin12301@gmail.com" && txtPassword.Text == "Admin12301")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             {
 
