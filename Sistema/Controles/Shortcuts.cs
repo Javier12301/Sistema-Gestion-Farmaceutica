@@ -10,9 +10,10 @@ namespace Sistema.Controles
 {
     internal class Shortcuts
     {
+
+        //Shortcuts para limpiar texto hasta el espacio
         public void ClearTextUntilSpace(TextBoxBase txtSelected, KeyEventArgs e)
         {
-            //Shortcuts para limpiar texto hasta el espacio
             if ((e.KeyCode == Keys.Back) && e.Control)
             {
                 e.SuppressKeyPress = true;
@@ -30,5 +31,7 @@ namespace Sistema.Controles
                 txtSelected.SelectedText = "";
             }
         }
+
+
     }
 }

@@ -553,19 +553,19 @@
         bFmHrkvXqevWbdBt0W3KHzh8ghT2iuLx0w5B+0BEXmL+z/8PQ2AmKbtJTX8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnLogOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAMZJREFUSEvtlj0KwjAYQOPqIHgOcXAT8UCewQvopk6Cd3B0Ev/OoYtrQWed9H2N
+        DQAACw0B7QfALAAAAMZJREFUSEvtlj0KwjAYQOPqIHgOcXAT8UCewQvopk6Cd3B0Ev/OoYtrQWed9H2N
         SpC0kjYfIvjgQdIhr/QvNQ5dXGOC5xz7GEwLr7jHMQ5z7GAwM5Qzr6UzBeTSbO1Qh81DNf6BJvbs0E/Z
         gCx+w1E681A2IAzwGanIAZcYASEz4gtUcY7LQI8okQW++EqgCPKt8t7sGIHMxYWyAfXHVP1F+8jvB1a4
         s0MdpnjCejpToIEXPOAE3U3+3UKbvtBGedUj/rYYcwf9bGJUdw/04wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnAjustes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAUFJREFUSEvt1clKAzEcx/F5Avejou/gclM8qAiKelCk7yO9lFJU1KMI+jyCV/Um
+        DQAACw0B7QfALAAAAUFJREFUSEvt1clKAzEcx/F5Avejou/gclM8qAiKelCk7yO9lFJU1KMI+jyCV/Um
         goiK4r5/f878IYZmJl2O/cEHQpplksykSSftzAY+8Y09VbSabvSlxb8c4ydzqYosXehPi/EZxw0esIBR
         PMIm0EqmMIkr6LcZREVPfQsbLNYzhlEYTXCHeoPkecEIojILt7MOdh/LWMQutE1umxKiozNwB1+FHz2E
         O8k8ClPFGbRc63iIULZg7d5xjk0E8wXrYNYRit4cv/0rgml0Av+sJHeCCk7hbtERQtmGtXuDtqiGwozB
@@ -573,10 +573,10 @@
         xjUauuwsPdBqLCewCS5UkUXX9UBabC1l2B/Ojio6aUOS5BdbRaRWFkM6OAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnClientes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAASBJREFUSEvt0jlKxVAUh/GAoDYuwEbBykZrsXEBgoWNGxFrsbBxKuSB4koclqGI
+        DQAACw0B7QfALAAAASBJREFUSEvt0jlKxVAUh/GAoDYuwEbBykZrsXEBgoWNGxFrsbBxKuSB4koclqGI
         hZ0TohYOoOL0fZCEw/XdgGAhmD/8SN7NzUlyzivatPn1DOMAj9jHEEw/NnCJC6yXa2YSt/gsjxPIxuJu
         rOzBWDyuaw2mKl65QTYPiJvvYXzzuK4rmA/EdX9nY1vi5uoLuj3gHOZHX+AMLOqX7KKage2IRbQC4wws
         6pt7bJxBLg7UhzhgraIPfyu2ZwdneMYpOhhALoM4xCts2xuO8a1N47hD7LGDnYHXtnGCp5LnWxjDMt4R
@@ -584,10 +584,10 @@
         xRftDJ2HsEGRegAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnBuscarMedicamento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAUtJREFUSEvt1L8rhVEcx/FrYhEGmWShlIGiLMogSvkTJFllFQbFYDFgsJiVURkV
+        DQAACw0B7QfALAAAAUtJREFUSEvt1L8rhVEcx/FrYhEGmWShlIGiLMogSvkTJFllFQbFYDFgsJiVURkV
         C5JJLIwyiEgWkt/v93ncEnqc+8N2P/Xqnu+37jnnPuc8N1NKIanCJA5whwecYAmNKCi9uMYrdrCIeazj
         Hk8YR15x8mccodXGt9RiFe+YtZFLfCzu3MkrbaRkGW/oClVkJuBjaQtVespxhs1QRcYD3U2GUZmGj7M6
         VBHxtiwkw6j0w7NoD1VEvIreltj0wAWiz+EUG8kwKqNwgfpQRcSXyHteF6q/s4fDZBiXJvgSraHMRkqG
@@ -596,80 +596,38 @@
         RK5CYII=
 </value>
   </data>
-  <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnMedicamento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAM5JREFUOE+106EKQjEUxvEFo03sYhQFm8/hC4gWNYtgtQt2k1Ew+QxG38CiWE2C
+        DQAACw0B7QfALAAAAM5JREFUOE+106EKQjEUxvEFo03sYhQFm8/hC4gWNYtgtQt2k1Ew+QxG38CiWE2C
         SQT1f8TBuDu7bogf/MIOux93u1zjZIdnghva8KJt/mYKL1dom/OM4aWFfoIOilAzxCRSA8EcoR1B00Uw
         fyt6fGYXZ2YlFa0hqcGdi6SiJSQVuHMRVTRDFWVICpB1HfaYUUW990rPCdFFeyxgN5cg6xXkA0QXWT/f
         kSVvNsDcmVm5RQdkHwiRfy2YDbSHsuSemghG7mKLO7QCccYITox5AXyGqN/I5eFYAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCategoria.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAMVJREFUOE+90TEOQUEUheGRSNRaFmIXVqAVjQVoNHbAEkQhajsRiegVahUF/ikm
+        DQAACw0B7QfALAAAAMVJREFUOE+90TEOQUEUheGRSNRaFmIXVqAVjQVoNHbAEkQhajsRiegVahUF/ikm
         ufPcN3PnCSf5mpszJy957teZYJexQBfmPPAyOKEHU7SBOmf0kY18dMMGF3GrMn2xfDD2BzKAvFdlh2V5
         7g9kCHnXJIdl8Ykj7uKWUjuslUuoP08rljogyhVasVSUGbRSqSgtrKAVrbb4iB9eQnuQs0cHapoMJwdD
         SoZNgyGW4aLBkNRwo8EQbfirwRA/PMIaU7Txzzj3BgxM4ITP8UUaAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnEstantes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAD1JREFUSEtjGAXEAEMgdqERBpnNcBGI39EIg8weBaOACqARiGfSCIPMpr0Fo2AU
+        DQAACw0B7QfALAAAAD1JREFUSEtjGAXEAEMgdqERBpnNcBGI39EIg8weBaOACqARiGfSCIPMpr0Fo2AU
         UA5oXlzTvMIZBXgAAwMA039U8dk4190AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPrincipal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAMVJREFUSEvt0zsKwlAQRuGA2vnoLdyCjfsQV+IW3IJgo8sQBG1VLAQbl5DCFWjp
+        DQAACw0B7QfALAAAAMVJREFUSEvt0zsKwlAQRuGA2vnoLdyCjfsQV+IW3IJgo8sQBG1VLAQbl5DCFWjp
         4wQMhGSu+XO9ZQ58TZiZ6iaqC1kDcyzRTD6ErI013l9bdBGkPi5Ij6euGOCvhoiRP566YQSvJnjAOpx1
         xxiVmuIJ66DlhRlKS17HAtYRxQotmHWwgbVYxQ49FDrDWvBxQqEjrGEfB/zMWlLIWcsKOWtZIacsKzPO
         lGVlxpmyrMw4U5aVGWf5f2KPfMlbz86Uvv06oyj6AD9hzFdd7BDrAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="dtaNameMedicamento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Lote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaLote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaSecto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaSector.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaNumEstante.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaNameMedicamento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Lote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaLote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaSecto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaSector.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dtaNumEstante.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

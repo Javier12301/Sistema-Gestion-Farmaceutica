@@ -14,3 +14,4 @@ C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.ag
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.agregarMedicamento.resources
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.agregarMedicamentos.resources
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.Inventario.Estantes.resources
+C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.FormHijos.Principal.resources
