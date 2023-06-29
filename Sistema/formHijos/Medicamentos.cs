@@ -10,18 +10,17 @@ using System.Windows.Forms;
 
 namespace Sistema.formHijos
 {
-    public partial class Estantes : Form
+    public partial class Medicamentos : Form
     {
-        public Estantes()
+        public Medicamentos()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnAgregarMedicamento_Click(object sender, EventArgs e)
         {
-
+            formHijos.nuevoMedicamento formAgregarMedicamento = new formHijos.nuevoMedicamento();
+            formAgregarMedicamento.ShowDialog();
         }
-
-        
     }
 }

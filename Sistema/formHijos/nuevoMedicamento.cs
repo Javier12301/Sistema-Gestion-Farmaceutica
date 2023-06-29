@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema.Inventario
+namespace Sistema.formHijos
 {
-    public partial class agregarMedicamentos : Form
+    public partial class nuevoMedicamento : Form
     {
-        public agregarMedicamentos()
+        public nuevoMedicamento()
         {
             InitializeComponent();
         }

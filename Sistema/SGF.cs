@@ -118,8 +118,8 @@ namespace Sistema
             bool verificar = controladora.verificarCredenciales(txtUser, txtPassword, colorError, pctLineUser, pctLinePassword);
             if (verificar)
             {
-                InventarioPrincipalFORM inventarioPrincipalFORM = new InventarioPrincipalFORM();
-                inventarioPrincipalFORM.ShowDialog();
+                formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
+                formHijosPrincipalFORM.ShowDialog();
             }
             else
             {
@@ -135,9 +135,9 @@ namespace Sistema
                 bool verificar = controladora.verificarCredenciales(txtUser, txtPassword, colorError, pctLineUser, pctLinePassword);
                 if (verificar)
                 {
-                    InventarioPrincipalFORM inventarioPrincipalFORM = new InventarioPrincipalFORM();
+                    formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
                     this.Hide();
-                    inventarioPrincipalFORM.ShowDialog();
+                    formHijosPrincipalFORM.ShowDialog();
                     this.Show();
                 }
                 else

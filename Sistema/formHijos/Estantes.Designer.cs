@@ -1,4 +1,4 @@
-﻿namespace Sistema.Inventario
+﻿namespace Sistema.formHijos
 {
     partial class Estantes
     {
@@ -28,253 +28,296 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblCategorias = new System.Windows.Forms.Label();
+            this.pnlList = new System.Windows.Forms.Panel();
+            this.lblListE = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gpbListEstante = new System.Windows.Forms.GroupBox();
-            this.dtaListEstante = new System.Windows.Forms.DataGridView();
-            this.shelfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shelfNumeric = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selfNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlgpbEstanteFORM = new System.Windows.Forms.Panel();
-            this.gpbNewEstante = new System.Windows.Forms.GroupBox();
+            this.lblTitlePnl = new System.Windows.Forms.Label();
+            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
+            this.lblNombreE = new System.Windows.Forms.Label();
+            this.txtNombreE = new System.Windows.Forms.TextBox();
+            this.lblNumE = new System.Windows.Forms.Label();
+            this.txtNumE = new System.Windows.Forms.TextBox();
+            this.pnlButton = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblSectorE = new System.Windows.Forms.Label();
+            this.txtSectorE = new System.Windows.Forms.TextBox();
+            this.dtaNombreEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaSectorEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.gpbListEstante.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaListEstante)).BeginInit();
-            this.pnlgpbEstanteFORM.SuspendLayout();
-            this.gpbNewEstante.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
+            this.pnlButton.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label12
+            // lblCategorias
             // 
-            this.label12.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.label12.Location = new System.Drawing.Point(10, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 39);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Estantes";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCategorias.BackColor = System.Drawing.Color.Transparent;
+            this.lblCategorias.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
+            this.lblCategorias.Location = new System.Drawing.Point(4, 2);
+            this.lblCategorias.Name = "lblCategorias";
+            this.lblCategorias.Size = new System.Drawing.Size(85, 39);
+            this.lblCategorias.TabIndex = 6;
+            this.lblCategorias.Text = "Estantes";
+            this.lblCategorias.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlList
+            // 
+            this.pnlList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.pnlList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlList.Controls.Add(this.lblListE);
+            this.pnlList.Controls.Add(this.pictureBox1);
+            this.pnlList.Controls.Add(this.dataGridView1);
+            this.pnlList.Location = new System.Drawing.Point(299, 6);
+            this.pnlList.Name = "pnlList";
+            this.pnlList.Size = new System.Drawing.Size(286, 325);
+            this.pnlList.TabIndex = 8;
+            // 
+            // lblListE
+            // 
+            this.lblListE.AutoSize = true;
+            this.lblListE.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblListE.Location = new System.Drawing.Point(5, 6);
+            this.lblListE.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblListE.Name = "lblListE";
+            this.lblListE.Size = new System.Drawing.Size(130, 21);
+            this.lblListE.TabIndex = 20;
+            this.lblListE.Text = "Lista de Estantes";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 28);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(281, 2);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "txtUser";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtaNombreEstante,
+            this.dtaNumEstante,
+            this.dtaSectorEstante});
+            this.dataGridView1.Location = new System.Drawing.Point(2, 36);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(279, 282);
+            this.dataGridView1.TabIndex = 21;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.gpbListEstante);
-            this.panel1.Location = new System.Drawing.Point(212, 11);
+            this.panel1.Controls.Add(this.lblTitlePnl);
+            this.panel1.Controls.Add(this.pctLineSeparator);
+            this.panel1.Controls.Add(this.lblNombreE);
+            this.panel1.Controls.Add(this.txtNombreE);
+            this.panel1.Controls.Add(this.lblNumE);
+            this.panel1.Controls.Add(this.txtNumE);
+            this.panel1.Controls.Add(this.lblSectorE);
+            this.panel1.Controls.Add(this.txtSectorE);
+            this.panel1.Controls.Add(this.pnlButton);
+            this.panel1.Location = new System.Drawing.Point(9, 42);
+            this.panel1.MaximumSize = new System.Drawing.Size(278, 286);
+            this.panel1.MinimumSize = new System.Drawing.Size(278, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(365, 290);
-            this.panel1.TabIndex = 5;
+            this.panel1.Size = new System.Drawing.Size(278, 286);
+            this.panel1.TabIndex = 9;
             // 
-            // gpbListEstante
+            // lblTitlePnl
             // 
-            this.gpbListEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpbListEstante.BackColor = System.Drawing.Color.White;
-            this.gpbListEstante.Controls.Add(this.dtaListEstante);
-            this.gpbListEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.gpbListEstante.Location = new System.Drawing.Point(2, 3);
-            this.gpbListEstante.Name = "gpbListEstante";
-            this.gpbListEstante.Size = new System.Drawing.Size(359, 282);
-            this.gpbListEstante.TabIndex = 0;
-            this.gpbListEstante.TabStop = false;
-            this.gpbListEstante.Text = "Lista de Estantes";
+            this.lblTitlePnl.AutoSize = true;
+            this.lblTitlePnl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlePnl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTitlePnl.Location = new System.Drawing.Point(3, 5);
+            this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblTitlePnl.Name = "lblTitlePnl";
+            this.lblTitlePnl.Size = new System.Drawing.Size(115, 21);
+            this.lblTitlePnl.TabIndex = 26;
+            this.lblTitlePnl.Text = "Nuevo Estante";
             // 
-            // dtaListEstante
+            // pctLineSeparator
             // 
-            this.dtaListEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtaListEstante.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dtaListEstante.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtaListEstante.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtaListEstante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.shelfName,
-            this.shelfNumeric,
-            this.selfNumero});
-            this.dtaListEstante.Location = new System.Drawing.Point(7, 27);
-            this.dtaListEstante.Name = "dtaListEstante";
-            this.dtaListEstante.Size = new System.Drawing.Size(346, 249);
-            this.dtaListEstante.TabIndex = 0;
+            this.pctLineSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pctLineSeparator.Location = new System.Drawing.Point(1, 28);
+            this.pctLineSeparator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
+            this.pctLineSeparator.Name = "pctLineSeparator";
+            this.pctLineSeparator.Size = new System.Drawing.Size(276, 2);
+            this.pctLineSeparator.TabIndex = 25;
+            this.pctLineSeparator.TabStop = false;
+            this.pctLineSeparator.Tag = "txtUser";
             // 
-            // shelfName
+            // lblNombreE
             // 
-            this.shelfName.HeaderText = "Nombre";
-            this.shelfName.Name = "shelfName";
-            this.shelfName.Width = 90;
+            this.lblNombreE.AutoSize = true;
+            this.lblNombreE.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblNombreE.Location = new System.Drawing.Point(4, 43);
+            this.lblNombreE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lblNombreE.Name = "lblNombreE";
+            this.lblNombreE.Size = new System.Drawing.Size(51, 15);
+            this.lblNombreE.TabIndex = 27;
+            this.lblNombreE.Text = "Nombre";
             // 
-            // shelfNumeric
+            // txtNombreE
             // 
-            this.shelfNumeric.HeaderText = "Sector";
-            this.shelfNumeric.Name = "shelfNumeric";
-            this.shelfNumeric.Width = 78;
+            this.txtNombreE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreE.Location = new System.Drawing.Point(4, 63);
+            this.txtNombreE.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
+            this.txtNombreE.Name = "txtNombreE";
+            this.txtNombreE.Size = new System.Drawing.Size(269, 25);
+            this.txtNombreE.TabIndex = 28;
             // 
-            // selfNumero
+            // lblNumE
             // 
-            this.selfNumero.HeaderText = "Núm. estante";
-            this.selfNumero.Name = "selfNumero";
-            this.selfNumero.Width = 126;
+            this.lblNumE.AutoSize = true;
+            this.lblNumE.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblNumE.Location = new System.Drawing.Point(4, 97);
+            this.lblNumE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lblNumE.Name = "lblNumE";
+            this.lblNumE.Size = new System.Drawing.Size(92, 15);
+            this.lblNumE.TabIndex = 29;
+            this.lblNumE.Text = "Número Estante";
             // 
-            // pnlgpbEstanteFORM
+            // txtNumE
             // 
-            this.pnlgpbEstanteFORM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlgpbEstanteFORM.BackColor = System.Drawing.Color.White;
-            this.pnlgpbEstanteFORM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlgpbEstanteFORM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlgpbEstanteFORM.Controls.Add(this.gpbNewEstante);
-            this.pnlgpbEstanteFORM.Location = new System.Drawing.Point(7, 51);
-            this.pnlgpbEstanteFORM.Name = "pnlgpbEstanteFORM";
-            this.pnlgpbEstanteFORM.Size = new System.Drawing.Size(199, 250);
-            this.pnlgpbEstanteFORM.TabIndex = 4;
+            this.txtNumE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumE.Location = new System.Drawing.Point(4, 117);
+            this.txtNumE.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
+            this.txtNumE.Name = "txtNumE";
+            this.txtNumE.Size = new System.Drawing.Size(269, 25);
+            this.txtNumE.TabIndex = 30;
             // 
-            // gpbNewEstante
+            // pnlButton
             // 
-            this.gpbNewEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpbNewEstante.BackColor = System.Drawing.Color.White;
-            this.gpbNewEstante.Controls.Add(this.btnLogin);
-            this.gpbNewEstante.Controls.Add(this.label11);
-            this.gpbNewEstante.Controls.Add(this.textBox3);
-            this.gpbNewEstante.Controls.Add(this.label10);
-            this.gpbNewEstante.Controls.Add(this.textBox2);
-            this.gpbNewEstante.Controls.Add(this.label9);
-            this.gpbNewEstante.Controls.Add(this.textBox1);
-            this.gpbNewEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.gpbNewEstante.Location = new System.Drawing.Point(2, 3);
-            this.gpbNewEstante.Name = "gpbNewEstante";
-            this.gpbNewEstante.Size = new System.Drawing.Size(193, 242);
-            this.gpbNewEstante.TabIndex = 0;
-            this.gpbNewEstante.TabStop = false;
-            this.gpbNewEstante.Text = "Nuevo Estante";
+            this.pnlButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlButton.Controls.Add(this.btnLogin);
+            this.pnlButton.Location = new System.Drawing.Point(2, 218);
+            this.pnlButton.Name = "pnlButton";
+            this.pnlButton.Size = new System.Drawing.Size(272, 53);
+            this.pnlButton.TabIndex = 33;
             // 
             // btnLogin
             // 
-            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.Location = new System.Drawing.Point(50, 202);
+            this.btnLogin.Location = new System.Drawing.Point(64, 5);
+            this.btnLogin.MaximumSize = new System.Drawing.Size(151, 40);
+            this.btnLogin.MinimumSize = new System.Drawing.Size(151, 32);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(97, 34);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Size = new System.Drawing.Size(151, 38);
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Agregar";
             this.btnLogin.UseVisualStyleBackColor = false;
             // 
-            // label11
+            // lblSectorE
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(14, 150);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(133, 19);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Número de estante";
+            this.lblSectorE.AutoSize = true;
+            this.lblSectorE.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSectorE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblSectorE.Location = new System.Drawing.Point(4, 154);
+            this.lblSectorE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lblSectorE.Name = "lblSectorE";
+            this.lblSectorE.Size = new System.Drawing.Size(41, 15);
+            this.lblSectorE.TabIndex = 31;
+            this.lblSectorE.Text = "Sector";
             // 
-            // textBox3
+            // txtSectorE
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(28, 170);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(142, 27);
-            this.textBox3.TabIndex = 4;
+            this.txtSectorE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSectorE.Location = new System.Drawing.Point(4, 171);
+            this.txtSectorE.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
+            this.txtSectorE.Name = "txtSectorE";
+            this.txtSectorE.Size = new System.Drawing.Size(269, 25);
+            this.txtSectorE.TabIndex = 32;
             // 
-            // label10
+            // dtaNombreEstante
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(14, 92);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 19);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Sector";
+            this.dtaNombreEstante.HeaderText = "Nombre";
+            this.dtaNombreEstante.Name = "dtaNombreEstante";
             // 
-            // textBox2
+            // dtaNumEstante
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(28, 112);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 27);
-            this.textBox2.TabIndex = 2;
+            this.dtaNumEstante.HeaderText = "Núm Est.";
+            this.dtaNumEstante.Name = "dtaNumEstante";
             // 
-            // label9
+            // dtaSectorEstante
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(14, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 19);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Nombre";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(28, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 27);
-            this.textBox1.TabIndex = 0;
+            this.dtaSectorEstante.HeaderText = "Sector";
+            this.dtaSectorEstante.Name = "dtaSectorEstante";
             // 
             // Estantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 313);
-            this.Controls.Add(this.label12);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.ClientSize = new System.Drawing.Size(589, 338);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlgpbEstanteFORM);
+            this.Controls.Add(this.pnlList);
+            this.Controls.Add(this.lblCategorias);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Estantes";
             this.Text = "Estantes";
+            this.pnlList.ResumeLayout(false);
+            this.pnlList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.gpbListEstante.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtaListEstante)).EndInit();
-            this.pnlgpbEstanteFORM.ResumeLayout(false);
-            this.gpbNewEstante.ResumeLayout(false);
-            this.gpbNewEstante.PerformLayout();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).EndInit();
+            this.pnlButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblCategorias;
+        private System.Windows.Forms.Panel pnlList;
+        private System.Windows.Forms.Label lblListE;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox gpbListEstante;
-        private System.Windows.Forms.DataGridView dtaListEstante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shelfName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shelfNumeric;
-        private System.Windows.Forms.DataGridViewTextBoxColumn selfNumero;
-        private System.Windows.Forms.Panel pnlgpbEstanteFORM;
-        private System.Windows.Forms.GroupBox gpbNewEstante;
+        private System.Windows.Forms.Label lblTitlePnl;
+        private System.Windows.Forms.PictureBox pctLineSeparator;
+        private System.Windows.Forms.Label lblNombreE;
+        private System.Windows.Forms.TextBox txtNombreE;
+        private System.Windows.Forms.Label lblNumE;
+        private System.Windows.Forms.TextBox txtNumE;
+        private System.Windows.Forms.Panel pnlButton;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblSectorE;
+        private System.Windows.Forms.TextBox txtSectorE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSectorEstante;
     }
 }

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema.FormHijos
+namespace Sistema.formHijos
 {
     public partial class Principal : Form
     {
         public Principal()
         {
             InitializeComponent();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

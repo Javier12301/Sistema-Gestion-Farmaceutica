@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema.Inventario
+namespace Sistema.formHijos
 {
-    public partial class agregarCategorias : Form
+    public partial class Categorias : Form
     {
-        public agregarCategorias()
+        public Categorias()
         {
             InitializeComponent();
         }

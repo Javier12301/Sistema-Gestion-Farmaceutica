@@ -1,4 +1,4 @@
-﻿namespace Sistema.FormHijos
+﻿namespace Sistema.formHijos
 {
     partial class Principal
     {
@@ -91,6 +91,7 @@
             this.btnSearch.TabIndex = 11;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -216,7 +217,7 @@
             this.gpbNewEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.gpbNewEstante.Location = new System.Drawing.Point(2, 3);
             this.gpbNewEstante.Name = "gpbNewEstante";
-            this.gpbNewEstante.Size = new System.Drawing.Size(269, 117);
+            this.gpbNewEstante.Size = new System.Drawing.Size(272, 117);
             this.gpbNewEstante.TabIndex = 0;
             this.gpbNewEstante.TabStop = false;
             this.gpbNewEstante.Text = "Estantes";
@@ -231,7 +232,7 @@
             this.label11.ForeColor = System.Drawing.Color.DimGray;
             this.label11.Location = new System.Drawing.Point(1, 51);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(184, 40);
+            this.label11.Size = new System.Drawing.Size(187, 40);
             this.label11.TabIndex = 18;
             this.label11.Text = "Estantes Totales";
             // 
@@ -282,7 +283,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(273, 117);
+            this.groupBox2.Size = new System.Drawing.Size(275, 117);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Medicamentos";
@@ -297,7 +298,7 @@
             this.label16.ForeColor = System.Drawing.Color.DimGray;
             this.label16.Location = new System.Drawing.Point(1, 51);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(242, 40);
+            this.label16.Size = new System.Drawing.Size(244, 40);
             this.label16.TabIndex = 24;
             this.label16.Text = "Medicamentos Totales ";
             // 
@@ -348,7 +349,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 117);
+            this.groupBox1.Size = new System.Drawing.Size(272, 117);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Categorias";
@@ -362,7 +363,7 @@
             this.label13.ForeColor = System.Drawing.Color.DimGray;
             this.label13.Location = new System.Drawing.Point(1, 51);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(208, 40);
+            this.label13.Size = new System.Drawing.Size(210, 40);
             this.label13.TabIndex = 21;
             this.label13.Text = "Categorias Totales";
             // 
@@ -390,10 +391,10 @@
             // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.label12.Location = new System.Drawing.Point(13, 6);
+            this.label12.Location = new System.Drawing.Point(4, 2);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 39);
             this.label12.TabIndex = 12;
@@ -404,10 +405,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.label12);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Principal";
             this.Text = "Principal";
             this.panel3.ResumeLayout(false);

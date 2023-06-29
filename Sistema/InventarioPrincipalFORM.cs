@@ -1,5 +1,5 @@
 ﻿using Sistema.Controles;
-using Sistema.Inventario;
+using Sistema.formHijos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Sistema
 {
-    public partial class InventarioPrincipalFORM : Form
+    public partial class formHijosPrincipalFORM : Form
     {
         //Fields
         private Form activeForm;
@@ -21,15 +21,15 @@ namespace Sistema
 
         Shortcuts shortcuts = new Shortcuts();
 
-        public InventarioPrincipalFORM()
+        public formHijosPrincipalFORM()
         {
             InitializeComponent();
         }
 
-        private void InventarioPrincipalFORM_Load(object sender, EventArgs e)
+        private void formHijosPrincipalFORM_Load(object sender, EventArgs e)
         {
             //Al iniciar el sistema, se abrirá el formulario principal.
-            OpenchildForm(new FormHijos.Principal(), btnPrincipal);
+            OpenchildForm(new formHijos.Principal(), btnPrincipal);
             activateButton(btnPrincipal);
         }
 
@@ -105,38 +105,33 @@ namespace Sistema
         //Botones de la barra de navegacion
         private void btnPrincipal_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new FormHijos.Principal(), btnPrincipal);
+            OpenchildForm(new formHijos.Principal(), btnPrincipal);
         }
 
         private void btnEstantes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Inventario.Estantes(), btnEstantes);
+            OpenchildForm(new formHijos.Estantes(), btnEstantes);
 
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-
+            OpenchildForm(new formHijos.Categorias(), btnCategoria);
         }
 
         private void btnMedicamento_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnBuscarMedicamento_Click(object sender, EventArgs e)
-        {
-
+            OpenchildForm(new formHijos.Medicamentos(), btnMedicamentos);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-
+            OpenchildForm(new formHijos.Clientes(), btnClientes);
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

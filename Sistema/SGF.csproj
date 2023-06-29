@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI">
+      <HintPath>..\SGF\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,23 +53,35 @@
   <ItemGroup>
     <Compile Include="Controles\Controladora.cs" />
     <Compile Include="Controles\Shortcuts.cs" />
-    <Compile Include="formHijos\agregarCategorias.cs">
+    <Compile Include="formHijos\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\agregarCategorias.Designer.cs">
-      <DependentUpon>agregarCategorias.cs</DependentUpon>
+    <Compile Include="formHijos\Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\agregarMedicamento.cs">
+    <Compile Include="formHijos\Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\agregarMedicamento.Designer.cs">
-      <DependentUpon>agregarMedicamento.cs</DependentUpon>
+    <Compile Include="formHijos\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\Lista de Medicamentos.cs">
+    <Compile Include="formHijos\nuevoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\Lista de Medicamentos.Designer.cs">
-      <DependentUpon>Lista de Medicamentos.cs</DependentUpon>
+    <Compile Include="formHijos\nuevoCliente.Designer.cs">
+      <DependentUpon>nuevoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formHijos\nuevoMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formHijos\nuevoMedicamento.Designer.cs">
+      <DependentUpon>nuevoMedicamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formHijos\Medicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formHijos\Medicamentos.Designer.cs">
+      <DependentUpon>Medicamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="formHijos\Estantes.cs">
       <SubType>Form</SubType>
@@ -97,20 +114,26 @@
     <Compile Include="InventarioPrincipalFORM.Designer.cs">
       <DependentUpon>InventarioPrincipalFORM.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="formHijos\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formHijos\nuevoCliente.resx">
+      <DependentUpon>nuevoCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formHijos\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventarioPrincipalFORM.resx">
       <DependentUpon>InventarioPrincipalFORM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\agregarCategorias.resx">
-      <DependentUpon>agregarCategorias.cs</DependentUpon>
+    <EmbeddedResource Include="formHijos\Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\agregarMedicamento.resx">
-      <DependentUpon>agregarMedicamento.cs</DependentUpon>
+    <EmbeddedResource Include="formHijos\nuevoMedicamento.resx">
+      <DependentUpon>nuevoMedicamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\Lista de Medicamentos.resx">
-      <DependentUpon>Lista de Medicamentos.cs</DependentUpon>
+    <EmbeddedResource Include="formHijos\Medicamentos.resx">
+      <DependentUpon>Medicamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formHijos\Estantes.resx">
       <DependentUpon>Estantes.cs</DependentUpon>

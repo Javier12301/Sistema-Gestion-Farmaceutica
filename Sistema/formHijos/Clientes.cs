@@ -10,18 +10,17 @@ using System.Windows.Forms;
 
 namespace Sistema.formHijos
 {
-    public partial class Estantes : Form
+    public partial class Clientes : Form
     {
-        public Estantes()
+        public Clientes()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-
+            formHijos.nuevoCliente formAgregarCliente = new formHijos.nuevoCliente();
+            formAgregarCliente.ShowDialog();
         }
-
-        
     }
 }
