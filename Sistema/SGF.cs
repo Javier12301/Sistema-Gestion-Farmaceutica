@@ -120,12 +120,7 @@ namespace Sistema
             }
         }
 
-        //Activado de shorcut
-        private void txtUser_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            
-            //shortcuts.ClearTextUntilSpace(txtUser, e);
-        }
+        
 
         private void btnForgotPassword_MouseHover(object sender, EventArgs e)
         {

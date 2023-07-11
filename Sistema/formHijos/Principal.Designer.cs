@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dtaNameMedicamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +55,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new Guna.UI.WinForms.GunaButton();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -73,7 +73,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.btnSearch);
+            this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.txtSearch);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.label19);
@@ -81,29 +81,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(795, 269);
             this.panel3.TabIndex = 14;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(553, 4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(56, 25);
-            this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "Buscar";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BackColor = System.Drawing.Color.White;
-            this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtSearch.Location = new System.Drawing.Point(615, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(173, 26);
-            this.txtSearch.TabIndex = 10;
             // 
             // dataGridView1
             // 
@@ -250,11 +227,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Font Awesome 6 Free Solid", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.OrangeRed;
             this.label9.Location = new System.Drawing.Point(6, 23);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 21);
+            this.label9.Size = new System.Drawing.Size(43, 25);
             this.label9.TabIndex = 16;
             this.label9.Text = "list";
             // 
@@ -283,7 +260,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 117);
+            this.groupBox2.Size = new System.Drawing.Size(304, 117);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Medicamentos";
@@ -298,18 +275,18 @@
             this.label16.ForeColor = System.Drawing.Color.DimGray;
             this.label16.Location = new System.Drawing.Point(1, 51);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(244, 40);
+            this.label16.Size = new System.Drawing.Size(273, 40);
             this.label16.TabIndex = 24;
             this.label16.Text = "Medicamentos Totales ";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Font Awesome 6 Free Solid", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Teal;
             this.label18.Location = new System.Drawing.Point(6, 23);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(26, 21);
+            this.label18.Size = new System.Drawing.Size(292, 25);
             this.label18.TabIndex = 22;
             this.label18.Text = "prescription-bottle-medical";
             // 
@@ -381,11 +358,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Font Awesome 6 Free Solid", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.SeaGreen;
             this.label15.Location = new System.Drawing.Point(7, 23);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(28, 21);
+            this.label15.Size = new System.Drawing.Size(45, 25);
             this.label15.TabIndex = 19;
             this.label15.Text = "tag";
             // 
@@ -400,6 +377,45 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "Principal";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BackColor = System.Drawing.Color.White;
+            this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtSearch.Location = new System.Drawing.Point(615, 4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(173, 26);
+            this.txtSearch.TabIndex = 10;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.AnimationHoverSpeed = 0.1F;
+            this.btnBuscar.AnimationSpeed = 0.1F;
+            this.btnBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(221)))), ((int)(((byte)(250)))));
+            this.btnBuscar.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBuscar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBuscar.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBuscar.Image = global::Sistema.Properties.Resources.iconSearch;
+            this.btnBuscar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBuscar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnBuscar.Location = new System.Drawing.Point(572, 4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(211)))), ((int)(((byte)(249)))));
+            this.btnBuscar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnBuscar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnBuscar.OnHoverImage = null;
+            this.btnBuscar.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(203)))), ((int)(((byte)(245)))));
+            this.btnBuscar.Radius = 15;
+            this.btnBuscar.Size = new System.Drawing.Size(37, 26);
+            this.btnBuscar.TabIndex = 12;
             // 
             // Principal
             // 
@@ -437,8 +453,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaNameMedicamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lote;
@@ -465,5 +479,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label12;
+        private Guna.UI.WinForms.GunaButton btnBuscar;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

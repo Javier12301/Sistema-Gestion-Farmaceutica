@@ -83,6 +83,7 @@ namespace Sistema
             this.txtPassword.Size = new System.Drawing.Size(267, 30);
             this.txtPassword.TabIndex = 37;
             this.txtPassword.Text = "Admin12301";
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
             // txtUser
             // 
@@ -98,7 +99,7 @@ namespace Sistema
             this.txtUser.Size = new System.Drawing.Size(298, 30);
             this.txtUser.TabIndex = 36;
             this.txtUser.Text = "Admin12301@gmail.com";
-            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
+            this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
             // lblEyePassword
             // 

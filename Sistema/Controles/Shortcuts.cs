@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
 namespace Sistema.Controles
 {
     internal class Shortcuts
     {
 
         //Shortcuts para limpiar texto hasta el espacio
-        public void ClearTextUntilSpace(GunaLineTextBox txtSelected, KeyEventArgs e)
+        public void ClearTextUntilSpace(TextBoxBase txtSelected, KeyEventArgs e)
         {
-            /*
+            
             if ((e.KeyCode == Keys.Back) && e.Control)
             {
                 e.SuppressKeyPress = true;
@@ -31,7 +32,7 @@ namespace Sistema.Controles
                 }
                 txtSelected.Select(prevSpacePos + 1, txtSelected.SelectionStart - prevSpacePos - 1);
                 txtSelected.SelectedText = "";
-            }*/
+            }
         }
 
 
