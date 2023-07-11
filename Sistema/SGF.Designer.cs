@@ -33,6 +33,8 @@ namespace Sistema
         private void InitializeComponent()
         {
             this.pnlMainLogin = new System.Windows.Forms.Panel();
+            this.txtPassword = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtUser = new Guna.UI.WinForms.GunaLineTextBox();
             this.lblEyePassword = new System.Windows.Forms.Label();
             this.lnkLabel = new System.Windows.Forms.LinkLabel();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -44,8 +46,6 @@ namespace Sistema
             this.pnlNavLogin = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUser = new Guna.UI.WinForms.GunaLineTextBox();
-            this.txtPassword = new Guna.UI.WinForms.GunaLineTextBox();
             this.pnlMainLogin.SuspendLayout();
             this.pnlNavLogin.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +68,37 @@ namespace Sistema
             this.pnlMainLogin.Name = "pnlMainLogin";
             this.pnlMainLogin.Size = new System.Drawing.Size(335, 244);
             this.pnlMainLogin.TabIndex = 0;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Animated = true;
+            this.txtPassword.BackColor = System.Drawing.Color.White;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.LineColor = System.Drawing.Color.LightGray;
+            this.txtPassword.Location = new System.Drawing.Point(32, 102);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(267, 30);
+            this.txtPassword.TabIndex = 37;
+            this.txtPassword.Text = "Admin12301";
+            // 
+            // txtUser
+            // 
+            this.txtUser.Animated = true;
+            this.txtUser.BackColor = System.Drawing.Color.White;
+            this.txtUser.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUser.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.LineColor = System.Drawing.Color.LightGray;
+            this.txtUser.Location = new System.Drawing.Point(32, 62);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.PasswordChar = '\0';
+            this.txtUser.Size = new System.Drawing.Size(298, 30);
+            this.txtUser.TabIndex = 36;
+            this.txtUser.Text = "Admin12301@gmail.com";
+            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
             // 
             // lblEyePassword
             // 
@@ -204,35 +235,6 @@ namespace Sistema
             this.label1.Size = new System.Drawing.Size(326, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido al sistema de gestión farmacéutica";
-            // 
-            // txtUser
-            // 
-            this.txtUser.BackColor = System.Drawing.Color.White;
-            this.txtUser.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUser.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.LineColor = System.Drawing.Color.LightGray;
-            this.txtUser.Location = new System.Drawing.Point(32, 62);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.PasswordChar = '\0';
-            this.txtUser.Size = new System.Drawing.Size(298, 30);
-            this.txtUser.TabIndex = 36;
-            this.txtUser.Text = "Admin12301@gmail.com";
-            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BackColor = System.Drawing.Color.White;
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.LineColor = System.Drawing.Color.LightGray;
-            this.txtPassword.Location = new System.Drawing.Point(32, 102);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(267, 30);
-            this.txtPassword.TabIndex = 37;
-            this.txtPassword.Text = "Admin12301";
             // 
             // SGF
             // 

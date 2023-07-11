@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,9 @@ namespace Sistema.Controles
     {
 
         //Shortcuts para limpiar texto hasta el espacio
-        public void ClearTextUntilSpace(TextBoxBase txtSelected, KeyEventArgs e)
+        public void ClearTextUntilSpace(GunaLineTextBox txtSelected, KeyEventArgs e)
         {
+            /*
             if ((e.KeyCode == Keys.Back) && e.Control)
             {
                 e.SuppressKeyPress = true;
@@ -29,8 +31,10 @@ namespace Sistema.Controles
                 }
                 txtSelected.Select(prevSpacePos + 1, txtSelected.SelectionStart - prevSpacePos - 1);
                 txtSelected.SelectedText = "";
-            }
+            }*/
         }
+
+
 
 
     }
