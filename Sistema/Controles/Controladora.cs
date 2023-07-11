@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Guna.UI.WinForms;
+using Sistema.Controles;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,29 +12,31 @@ using System.Windows.Forms;
 
 namespace Sistema
 {
-    internal class Controladora
+    public class Controladora
     {
+        PaletaColores paleta = new PaletaColores();
+
         public void linkLabel()
         {
             System.Diagnostics.Process.Start("mailto:javierramirez1230123@gmail.com");
         }
 
         //Se contralará toda las funciones del ojo de contraseña
-        public void showPassword(TextBox txtPassword)
+        public void mostrarPassword(GunaLineTextBox txtPassword)
         {
             txtPassword.PasswordChar = (char)0;
         }
 
-        public void hidePassword(TextBox txtPassword)
+        public void ocultarPassword(GunaLineTextBox txtPassword)
         {
             txtPassword.PasswordChar = '*';
         }
 
-        public bool verificarCredenciales(TextBox txtUser, TextBox txtPassword, Color colorError, PictureBox pctLineUser, PictureBox pctLinePassword)
+        public bool verificarCredenciales(GunaLineTextBox txtUser, GunaLineTextBox txtPassword)
         {
             //Será utilizado para registrar nuevos usuarios, con esto podremos especificar los caracteres que se podrán utilizar
-            bool correoValido = verificarCorreo(txtUser, colorError, pctLineUser);
-            bool passwordValido = verificarPassword(txtPassword, colorError, pctLinePassword);
+            bool correoValido = verificarCorreo(txtUser);
+            bool passwordValido = verificarPassword(txtPassword);
             //Verificar credenciales
             if (correoValido && passwordValido)
             {
@@ -53,7 +57,7 @@ namespace Sistema
 
         }
 
-        private bool verificarCorreo(TextBox txtUser, Color colorError, PictureBox pctLineUser)
+        private bool verificarCorreo(GunaLineTextBox txtUser)
         {
             bool correoValido = false;
             if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
@@ -62,12 +66,12 @@ namespace Sistema
             }
             else
             {
-                pctLineUser.BackColor = colorError;
+                txtUser.LineColor = paleta.ColorError;
             }
             return correoValido;
         }
 
-        private bool verificarPassword(TextBox txtPassword, Color colorError, PictureBox pctLinePassword)
+        private bool verificarPassword(GunaLineTextBox txtPassword)
         {
             bool passwordValido = false;
             //Las contraseñas de cada empelado tendrán como obligación tener más de 8 caracteres.
@@ -77,13 +81,28 @@ namespace Sistema
             }
             else
             {
-                passwordValido = false;
-                pctLinePassword.BackColor = colorError;
+                txtPassword.LineColor = paleta.ColorError;
             }
             return passwordValido;
         }
 
-
+        //comprobara cualquier campo de texto vacio
+        public bool verificarTextbox(GunaLineTextBox txtbox)
+        {
+            if (!string.IsNullOrEmpty(txtbox.Text))
+            {
+                
+                //No está vacio
+                txtbox.LineColor = paleta.ColorActive;
+                return true;
+            }
+            else
+            {
+                //Está vacio
+                txtbox.LineColor = paleta.ColorError;
+                return false;
+            }
+        }
          
         
     }

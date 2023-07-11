@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\SGF\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI">
       <HintPath>..\SGF\Guna.UI.dll</HintPath>
     </Reference>
@@ -52,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controles\Controladora.cs" />
+    <Compile Include="Controles\PaletaColores.cs" />
     <Compile Include="Controles\Shortcuts.cs" />
+    <Compile Include="Database\conexionDB.cs" />
     <Compile Include="formHijos\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>

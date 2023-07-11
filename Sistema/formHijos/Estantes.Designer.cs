@@ -33,20 +33,20 @@
             this.lblListE = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTitlePnl = new System.Windows.Forms.Label();
-            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
-            this.lblNombreE = new System.Windows.Forms.Label();
-            this.txtNombreE = new System.Windows.Forms.TextBox();
-            this.lblNumE = new System.Windows.Forms.Label();
-            this.txtNumE = new System.Windows.Forms.TextBox();
-            this.pnlButton = new System.Windows.Forms.Panel();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.lblSectorE = new System.Windows.Forms.Label();
-            this.txtSectorE = new System.Windows.Forms.TextBox();
             this.dtaNombreEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaSectorEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSectorE = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtNumE = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtNombreE = new Guna.UI.WinForms.GunaLineTextBox();
+            this.lblTitlePnl = new System.Windows.Forms.Label();
+            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
+            this.lblNombreE = new System.Windows.Forms.Label();
+            this.lblNumE = new System.Windows.Forms.Label();
+            this.lblSectorE = new System.Windows.Forms.Label();
+            this.pnlButton = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -124,20 +124,35 @@
             this.dataGridView1.Size = new System.Drawing.Size(279, 282);
             this.dataGridView1.TabIndex = 21;
             // 
+            // dtaNombreEstante
+            // 
+            this.dtaNombreEstante.HeaderText = "Nombre";
+            this.dtaNombreEstante.Name = "dtaNombreEstante";
+            // 
+            // dtaNumEstante
+            // 
+            this.dtaNumEstante.HeaderText = "Núm Est.";
+            this.dtaNumEstante.Name = "dtaNumEstante";
+            // 
+            // dtaSectorEstante
+            // 
+            this.dtaSectorEstante.HeaderText = "Sector";
+            this.dtaSectorEstante.Name = "dtaSectorEstante";
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtSectorE);
+            this.panel1.Controls.Add(this.txtNumE);
+            this.panel1.Controls.Add(this.txtNombreE);
             this.panel1.Controls.Add(this.lblTitlePnl);
             this.panel1.Controls.Add(this.pctLineSeparator);
             this.panel1.Controls.Add(this.lblNombreE);
-            this.panel1.Controls.Add(this.txtNombreE);
             this.panel1.Controls.Add(this.lblNumE);
-            this.panel1.Controls.Add(this.txtNumE);
             this.panel1.Controls.Add(this.lblSectorE);
-            this.panel1.Controls.Add(this.txtSectorE);
             this.panel1.Controls.Add(this.pnlButton);
             this.panel1.Location = new System.Drawing.Point(9, 42);
             this.panel1.MaximumSize = new System.Drawing.Size(278, 286);
@@ -145,6 +160,48 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 286);
             this.panel1.TabIndex = 9;
+            // 
+            // txtSectorE
+            // 
+            this.txtSectorE.BackColor = System.Drawing.Color.White;
+            this.txtSectorE.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSectorE.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtSectorE.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSectorE.LineColor = System.Drawing.Color.LightGray;
+            this.txtSectorE.Location = new System.Drawing.Point(4, 171);
+            this.txtSectorE.Name = "txtSectorE";
+            this.txtSectorE.PasswordChar = '\0';
+            this.txtSectorE.Size = new System.Drawing.Size(269, 26);
+            this.txtSectorE.TabIndex = 37;
+            this.txtSectorE.Enter += new System.EventHandler(this.txtSectorE_Enter);
+            // 
+            // txtNumE
+            // 
+            this.txtNumE.BackColor = System.Drawing.Color.White;
+            this.txtNumE.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNumE.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtNumE.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNumE.LineColor = System.Drawing.Color.LightGray;
+            this.txtNumE.Location = new System.Drawing.Point(4, 117);
+            this.txtNumE.Name = "txtNumE";
+            this.txtNumE.PasswordChar = '\0';
+            this.txtNumE.Size = new System.Drawing.Size(269, 26);
+            this.txtNumE.TabIndex = 36;
+            this.txtNumE.Enter += new System.EventHandler(this.txtNumE_Enter);
+            // 
+            // txtNombreE
+            // 
+            this.txtNombreE.BackColor = System.Drawing.Color.White;
+            this.txtNombreE.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombreE.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtNombreE.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNombreE.LineColor = System.Drawing.Color.LightGray;
+            this.txtNombreE.Location = new System.Drawing.Point(4, 63);
+            this.txtNombreE.Name = "txtNombreE";
+            this.txtNombreE.PasswordChar = '\0';
+            this.txtNombreE.Size = new System.Drawing.Size(269, 26);
+            this.txtNombreE.TabIndex = 35;
+            this.txtNombreE.Enter += new System.EventHandler(this.txtNombreE_Enter);
             // 
             // lblTitlePnl
             // 
@@ -181,15 +238,6 @@
             this.lblNombreE.TabIndex = 27;
             this.lblNombreE.Text = "Nombre";
             // 
-            // txtNombreE
-            // 
-            this.txtNombreE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreE.Location = new System.Drawing.Point(4, 63);
-            this.txtNombreE.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
-            this.txtNombreE.Name = "txtNombreE";
-            this.txtNombreE.Size = new System.Drawing.Size(269, 25);
-            this.txtNombreE.TabIndex = 28;
-            // 
             // lblNumE
             // 
             this.lblNumE.AutoSize = true;
@@ -201,42 +249,6 @@
             this.lblNumE.Size = new System.Drawing.Size(92, 15);
             this.lblNumE.TabIndex = 29;
             this.lblNumE.Text = "Número Estante";
-            // 
-            // txtNumE
-            // 
-            this.txtNumE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumE.Location = new System.Drawing.Point(4, 117);
-            this.txtNumE.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
-            this.txtNumE.Name = "txtNumE";
-            this.txtNumE.Size = new System.Drawing.Size(269, 25);
-            this.txtNumE.TabIndex = 30;
-            // 
-            // pnlButton
-            // 
-            this.pnlButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.pnlButton.Controls.Add(this.btnLogin);
-            this.pnlButton.Location = new System.Drawing.Point(2, 218);
-            this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(272, 53);
-            this.pnlButton.TabIndex = 33;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.Location = new System.Drawing.Point(64, 5);
-            this.btnLogin.MaximumSize = new System.Drawing.Size(151, 40);
-            this.btnLogin.MinimumSize = new System.Drawing.Size(151, 32);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(151, 38);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Agregar";
-            this.btnLogin.UseVisualStyleBackColor = false;
             // 
             // lblSectorE
             // 
@@ -250,29 +262,33 @@
             this.lblSectorE.TabIndex = 31;
             this.lblSectorE.Text = "Sector";
             // 
-            // txtSectorE
+            // pnlButton
             // 
-            this.txtSectorE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSectorE.Location = new System.Drawing.Point(4, 171);
-            this.txtSectorE.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
-            this.txtSectorE.Name = "txtSectorE";
-            this.txtSectorE.Size = new System.Drawing.Size(269, 25);
-            this.txtSectorE.TabIndex = 32;
+            this.pnlButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlButton.Controls.Add(this.btnAgregar);
+            this.pnlButton.Location = new System.Drawing.Point(2, 218);
+            this.pnlButton.Name = "pnlButton";
+            this.pnlButton.Size = new System.Drawing.Size(272, 53);
+            this.pnlButton.TabIndex = 33;
             // 
-            // dtaNombreEstante
+            // btnAgregar
             // 
-            this.dtaNombreEstante.HeaderText = "Nombre";
-            this.dtaNombreEstante.Name = "dtaNombreEstante";
-            // 
-            // dtaNumEstante
-            // 
-            this.dtaNumEstante.HeaderText = "Núm Est.";
-            this.dtaNumEstante.Name = "dtaNumEstante";
-            // 
-            // dtaSectorEstante
-            // 
-            this.dtaSectorEstante.HeaderText = "Sector";
-            this.dtaSectorEstante.Name = "dtaSectorEstante";
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(64, 5);
+            this.btnAgregar.MaximumSize = new System.Drawing.Size(151, 40);
+            this.btnAgregar.MinimumSize = new System.Drawing.Size(151, 32);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(151, 38);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // Estantes
             // 
@@ -309,15 +325,15 @@
         private System.Windows.Forms.Label lblTitlePnl;
         private System.Windows.Forms.PictureBox pctLineSeparator;
         private System.Windows.Forms.Label lblNombreE;
-        private System.Windows.Forms.TextBox txtNombreE;
         private System.Windows.Forms.Label lblNumE;
-        private System.Windows.Forms.TextBox txtNumE;
         private System.Windows.Forms.Panel pnlButton;
-        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label lblSectorE;
-        private System.Windows.Forms.TextBox txtSectorE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreEstante;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaSectorEstante;
+        private Guna.UI.WinForms.GunaLineTextBox txtNombreE;
+        private Guna.UI.WinForms.GunaLineTextBox txtSectorE;
+        private Guna.UI.WinForms.GunaLineTextBox txtNumE;
     }
 }

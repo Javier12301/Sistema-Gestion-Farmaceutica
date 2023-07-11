@@ -19,3 +19,25 @@ C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.formHijos.nue
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.formHijos.Medicamentos.resources
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.formHijos.Estantes.resources
 C:\Sistema de Gestión Farmacéutico\SGF\Sistema\obj\Debug\Sistema.formHijos.nuevoCliente.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\Sistema.exe.config
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\Sistema.exe
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\Sistema.pdb
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\Guna.UI.dll
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.csproj.AssemblyReference.cache
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.csproj.SuggestedBindingRedirects.cache
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.Clientes.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.nuevoCliente.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.Principal.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijosPrincipalFORM.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.Categorias.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.nuevoMedicamento.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.Medicamentos.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.formHijos.Estantes.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.SGF.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Properties.Resources.resources
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.csproj.GenerateResource.cache
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.csproj.CoreCompileInputs.cache
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.csproj.CopyComplete
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.exe
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.pdb
+C:\Users\Navegador\Desktop\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\Bunifu_UI_v1.5.3.dll

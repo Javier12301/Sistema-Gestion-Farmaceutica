@@ -40,23 +40,21 @@ namespace Sistema
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnForgotPassword = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pctLineUser = new System.Windows.Forms.PictureBox();
-            this.pctLinePassword = new System.Windows.Forms.PictureBox();
             this.pnlNavLogin = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtUser = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtPassword = new Guna.UI.WinForms.GunaLineTextBox();
             this.pnlMainLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLineUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLinePassword)).BeginInit();
             this.pnlNavLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainLogin
             // 
             this.pnlMainLogin.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlMainLogin.Controls.Add(this.txtPassword);
+            this.pnlMainLogin.Controls.Add(this.txtUser);
             this.pnlMainLogin.Controls.Add(this.lblEyePassword);
             this.pnlMainLogin.Controls.Add(this.lnkLabel);
             this.pnlMainLogin.Controls.Add(this.lblPassword);
@@ -64,11 +62,7 @@ namespace Sistema
             this.pnlMainLogin.Controls.Add(this.lblDescription);
             this.pnlMainLogin.Controls.Add(this.btnForgotPassword);
             this.pnlMainLogin.Controls.Add(this.btnLogin);
-            this.pnlMainLogin.Controls.Add(this.txtPassword);
-            this.pnlMainLogin.Controls.Add(this.txtUser);
             this.pnlMainLogin.Controls.Add(this.label3);
-            this.pnlMainLogin.Controls.Add(this.pctLineUser);
-            this.pnlMainLogin.Controls.Add(this.pctLinePassword);
             this.pnlMainLogin.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlMainLogin.Location = new System.Drawing.Point(0, 64);
             this.pnlMainLogin.Name = "pnlMainLogin";
@@ -78,7 +72,7 @@ namespace Sistema
             // lblEyePassword
             // 
             this.lblEyePassword.BackColor = System.Drawing.Color.Transparent;
-            this.lblEyePassword.Font = new System.Drawing.Font("Font Awesome 6 Free Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEyePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEyePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
             this.lblEyePassword.Location = new System.Drawing.Point(297, 101);
             this.lblEyePassword.Name = "lblEyePassword";
@@ -105,9 +99,9 @@ namespace Sistema
             // lblPassword
             // 
             this.lblPassword.BackColor = System.Drawing.Color.White;
-            this.lblPassword.Font = new System.Drawing.Font("Font Awesome 6 Free Solid", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.lblPassword.Location = new System.Drawing.Point(5, 102);
+            this.lblPassword.Location = new System.Drawing.Point(5, 104);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(25, 26);
             this.lblPassword.TabIndex = 8;
@@ -118,7 +112,7 @@ namespace Sistema
             // lblUser
             // 
             this.lblUser.BackColor = System.Drawing.Color.White;
-            this.lblUser.Font = new System.Drawing.Font("Font Awesome 6 Free Regular", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
             this.lblUser.Location = new System.Drawing.Point(5, 64);
             this.lblUser.Name = "lblUser";
@@ -170,38 +164,6 @@ namespace Sistema
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             this.btnLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.txtPassword.Location = new System.Drawing.Point(32, 102);
-            this.txtPassword.MaximumSize = new System.Drawing.Size(400, 30);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(272, 26);
-            this.txtPassword.TabIndex = 2;
-            this.txtPassword.Tag = "txtPassword";
-            this.txtPassword.Text = "Admin12301";
-            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
-            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
-            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
-            // 
-            // txtUser
-            // 
-            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.txtUser.Location = new System.Drawing.Point(32, 64);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(298, 26);
-            this.txtUser.TabIndex = 1;
-            this.txtUser.Tag = "txtUser";
-            this.txtUser.Text = "Admin12301@gmail.com";
-            this.txtUser.Enter += new System.EventHandler(this.txtUser_Enter);
-            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
-            this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
-            this.txtUser.Leave += new System.EventHandler(this.txtUser_Leave);
-            // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
@@ -211,26 +173,6 @@ namespace Sistema
             this.label3.Size = new System.Drawing.Size(301, 55);
             this.label3.TabIndex = 2;
             this.label3.Text = "Iniciar Sesión";
-            // 
-            // pctLineUser
-            // 
-            this.pctLineUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.pctLineUser.Location = new System.Drawing.Point(32, 71);
-            this.pctLineUser.Name = "pctLineUser";
-            this.pctLineUser.Size = new System.Drawing.Size(298, 22);
-            this.pctLineUser.TabIndex = 15;
-            this.pctLineUser.TabStop = false;
-            this.pctLineUser.Tag = "txtUser";
-            // 
-            // pctLinePassword
-            // 
-            this.pctLinePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.pctLinePassword.Location = new System.Drawing.Point(32, 105);
-            this.pctLinePassword.Name = "pctLinePassword";
-            this.pctLinePassword.Size = new System.Drawing.Size(272, 26);
-            this.pctLinePassword.TabIndex = 16;
-            this.pctLinePassword.TabStop = false;
-            this.pctLinePassword.Tag = "txtPassword";
             // 
             // pnlNavLogin
             // 
@@ -263,6 +205,35 @@ namespace Sistema
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido al sistema de gestión farmacéutica";
             // 
+            // txtUser
+            // 
+            this.txtUser.BackColor = System.Drawing.Color.White;
+            this.txtUser.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUser.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.LineColor = System.Drawing.Color.LightGray;
+            this.txtUser.Location = new System.Drawing.Point(32, 62);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.PasswordChar = '\0';
+            this.txtUser.Size = new System.Drawing.Size(298, 30);
+            this.txtUser.TabIndex = 36;
+            this.txtUser.Text = "Admin12301@gmail.com";
+            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown_1);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BackColor = System.Drawing.Color.White;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.LineColor = System.Drawing.Color.LightGray;
+            this.txtPassword.Location = new System.Drawing.Point(32, 102);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(267, 30);
+            this.txtPassword.TabIndex = 37;
+            this.txtPassword.Text = "Admin12301";
+            // 
             // SGF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,8 +247,6 @@ namespace Sistema
             this.Load += new System.EventHandler(this.SGF_Load);
             this.pnlMainLogin.ResumeLayout(false);
             this.pnlMainLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLineUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLinePassword)).EndInit();
             this.pnlNavLogin.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -290,17 +259,15 @@ namespace Sistema
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Button btnForgotPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblDescription;
         private Label lblPassword;
         private Label lblUser;
         private LinkLabel lnkLabel;
         private Label lblEyePassword;
-        private PictureBox pctLineUser;
-        private PictureBox pctLinePassword;
+        private Guna.UI.WinForms.GunaLineTextBox txtUser;
+        private Guna.UI.WinForms.GunaLineTextBox txtPassword;
     }
 }
 
