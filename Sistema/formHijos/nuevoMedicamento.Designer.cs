@@ -156,6 +156,7 @@
             this.txtNombreMedicamento.Name = "txtNombreMedicamento";
             this.txtNombreMedicamento.Size = new System.Drawing.Size(307, 25);
             this.txtNombreMedicamento.TabIndex = 1;
+            this.txtNombreMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
             this.txtNombreMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // panel3
@@ -172,13 +173,15 @@
             this.cmbCatMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCatMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCatMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmbCatMedicamento.FormattingEnabled = true;
+            this.cmbCatMedicamento.Items.AddRange(new object[] {
+            "Seleccionar Categoría"});
             this.cmbCatMedicamento.Location = new System.Drawing.Point(7, 26);
             this.cmbCatMedicamento.Name = "cmbCatMedicamento";
             this.cmbCatMedicamento.Size = new System.Drawing.Size(307, 25);
             this.cmbCatMedicamento.TabIndex = 3;
-            this.cmbCatMedicamento.Text = "Seleccionar Categoria";
             // 
             // label15
             // 
@@ -191,7 +194,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 20);
             this.label15.TabIndex = 16;
-            this.label15.Text = "Categoria";
+            this.label15.Text = "Categoría";
             // 
             // panel4
             // 
@@ -207,13 +210,15 @@
             this.cmbEstanteMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbEstanteMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstanteMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmbEstanteMedicamento.FormattingEnabled = true;
+            this.cmbEstanteMedicamento.Items.AddRange(new object[] {
+            "Seleccionar Estante"});
             this.cmbEstanteMedicamento.Location = new System.Drawing.Point(7, 24);
             this.cmbEstanteMedicamento.Name = "cmbEstanteMedicamento";
             this.cmbEstanteMedicamento.Size = new System.Drawing.Size(307, 25);
             this.cmbEstanteMedicamento.TabIndex = 5;
-            this.cmbEstanteMedicamento.Text = "Seleccionar Estante";
             // 
             // label17
             // 
@@ -263,6 +268,8 @@
             this.txtStockMedicamento.Name = "txtStockMedicamento";
             this.txtStockMedicamento.Size = new System.Drawing.Size(139, 25);
             this.txtStockMedicamento.TabIndex = 7;
+            this.txtStockMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
+            this.txtStockMedicamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
             this.txtStockMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // panel7
@@ -307,6 +314,8 @@
             this.txtPrecioUnitMedicamento.Name = "txtPrecioUnitMedicamento";
             this.txtPrecioUnitMedicamento.Size = new System.Drawing.Size(139, 25);
             this.txtPrecioUnitMedicamento.TabIndex = 11;
+            this.txtPrecioUnitMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
+            this.txtPrecioUnitMedicamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
             this.txtPrecioUnitMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // label18
@@ -362,6 +371,7 @@
             this.MinimizeBox = false;
             this.Name = "nuevoMedicamento";
             this.Text = "Nuevo Medicamento";
+            this.Load += new System.EventHandler(this.nuevoMedicamento_Load);
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

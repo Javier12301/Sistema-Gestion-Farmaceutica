@@ -301,6 +301,7 @@
             this.MinimumSize = new System.Drawing.Size(715, 451);
             this.Name = "formHijosPrincipalFORM";
             this.Text = "SGF";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formHijosPrincipalFORM_FormClosing);
             this.Load += new System.EventHandler(this.formHijosPrincipalFORM_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();

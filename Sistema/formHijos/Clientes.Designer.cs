@@ -113,9 +113,9 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.label12.Location = new System.Drawing.Point(2, 2);
+            this.label12.Location = new System.Drawing.Point(2, 3);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(152, 26);
+            this.label12.Size = new System.Drawing.Size(83, 26);
             this.label12.TabIndex = 3;
             this.label12.Text = "Clientes";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

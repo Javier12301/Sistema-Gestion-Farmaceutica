@@ -93,8 +93,10 @@ namespace Sistema
             {
                 formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
                 this.Hide();
-                formHijosPrincipalFORM.ShowDialog();
-                this.Show();
+                if (formHijosPrincipalFORM.ShowDialog() == DialogResult.Cancel)
+                {
+                    this.Show();
+                }
             }
             else
             {
@@ -104,7 +106,7 @@ namespace Sistema
         //Ingresar al sistema presionando enter
         private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
                 bool verificar = controladora.verificarCredenciales(txtUser, txtPassword);
@@ -112,8 +114,10 @@ namespace Sistema
                 {
                     formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
                     this.Hide();
-                    formHijosPrincipalFORM.ShowDialog();
-                    this.Show();
+                    if (formHijosPrincipalFORM.ShowDialog() == DialogResult.Cancel)
+                    {
+                        this.Show();
+                    }
                 }
                 else
                 {

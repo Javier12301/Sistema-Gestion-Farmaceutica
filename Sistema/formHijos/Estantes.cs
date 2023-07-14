@@ -23,21 +23,21 @@ namespace Sistema.formHijos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             //Validaciones
-            bool txtNombreEstante = controladora.verificarTextbox(txtNombreE);
-            bool txtNumEstante = controladora.verificarTextbox(txtNumE);
-            bool txtSectorEstante = controladora.verificarTextbox(txtSectorE);
+            bool txtNombreEstante = controladora.verificarTextboxG(txtNombreE);
+            bool txtNumEstante = controladora.verificarTextboxG(txtNumE);
+            bool txtSectorEstante = controladora.verificarTextboxG(txtSectorE);
             if (txtNombreEstante && txtNumEstante && txtSectorEstante)
             {
-                MessageBox.Show("Se agrego corectamente");
+                MessageBox.Show("Se agrego corectamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Por favor complete los campos!");
+                MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
-            
-            
-            
+
+
+
+
             //Falta conectar DB
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema.Controles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Sistema.formHijos
     public partial class nuevoCliente : Form
     {
         private Point mouseDownLocation;
+        Controladora controladora = new Controladora();
         public nuevoCliente()
         {
             InitializeComponent();
@@ -20,9 +22,12 @@ namespace Sistema.formHijos
 
         private void nuevoCliente_Load(object sender, EventArgs e)
         {
-           
+            //ComboBox Predeterminados
+            cmbGeneroCliente.SelectedIndex = 0;
+            cmbTipoCliente.SelectedIndex = 0;
+            //
         }
-        
+
 
         // Mover formulario con el mouse al hacer click en el panel de control
         private void pnlControl_MouseDown(object sender, MouseEventArgs e)
@@ -49,14 +54,68 @@ namespace Sistema.formHijos
             TextBox txtSender = (TextBox)sender;
             if (string.IsNullOrEmpty(txtSender.Text))
             {
+                errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
 
                 errorProvider.SetError(txtSender, "Campo obligatorio");
             }
             else
             {
-
                 errorProvider.SetError(txtSender, null);
             }
+
+        }
+
+        // Control de entrada de datos con números
+        private void txtNumericos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar el evento si el carácter no es un número
+            }
+        }
+
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            //  Comprobar caracteres vacios
+            bool txtBoolNombre = controladora.verificarTextboxT(txtNombreCliente, errorProvider);
+            bool txtBoolApellido = controladora.verificarTextboxT(txtApellidoCliente, errorProvider);
+            bool txtBoolDNI = controladora.verificarTextboxT(txtDNICliente, errorProvider);
+            
+            //opcional
+            bool txtBoolMail = true;
+            //En caso de que el farmaceutico desee agregar el correo electronico del cliente, se deberá verificar que sea un correo valido
+            if (!string.IsNullOrEmpty(txtMailCliente.Text))
+            {
+                txtBoolMail = controladora.verificarCorreoT(txtMailCliente, errorProvider);
+                
+            }
+            // // // // // // // //
+            if (txtBoolNombre && txtBoolApellido && txtBoolDNI && txtBoolMail)
+            {
+
+                DialogResult result = MessageBox.Show("¡Se agrego el cliente exitosamente!\n¿Desea agregar un nuevo cliente?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    txtNombreCliente.Text = "";
+                    txtApellidoCliente.Text = "";
+                    txtDNICliente.Text = "";
+                    txtDireccionCliente.Text = "";
+                    txtTelefonoCliente.Text = "";
+                    cmbGeneroCliente.SelectedIndex = 0;
+                    cmbTipoCliente.SelectedIndex = 0;
+                    pnlNombreClientes.Focus();
+                    txtNombreCliente.Focus();
+                }
+                else if (result == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("¡Por favor, rellene los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
 
         }
     }

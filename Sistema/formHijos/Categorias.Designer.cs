@@ -32,11 +32,10 @@
             this.lblTitlePnl = new System.Windows.Forms.Label();
             this.pctLineSeparator = new System.Windows.Forms.PictureBox();
             this.lblNombreE = new System.Windows.Forms.Label();
-            this.txtNombreCat = new System.Windows.Forms.TextBox();
             this.lblDescE = new System.Windows.Forms.Label();
             this.txtDescripcionCat = new System.Windows.Forms.TextBox();
             this.pnlButton = new System.Windows.Forms.Panel();
-            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlList = new System.Windows.Forms.Panel();
             this.lblListE = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -44,6 +43,7 @@
             this.dtaNombreCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaDescripcionCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.txtNombreCat = new Guna.UI.WinForms.GunaLineTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.pnlButton.SuspendLayout();
@@ -58,10 +58,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtNombreCat);
             this.panel1.Controls.Add(this.lblTitlePnl);
             this.panel1.Controls.Add(this.pctLineSeparator);
             this.panel1.Controls.Add(this.lblNombreE);
-            this.panel1.Controls.Add(this.txtNombreCat);
             this.panel1.Controls.Add(this.lblDescE);
             this.panel1.Controls.Add(this.txtDescripcionCat);
             this.panel1.Controls.Add(this.pnlButton);
@@ -107,15 +107,6 @@
             this.lblNombreE.TabIndex = 27;
             this.lblNombreE.Text = "Nombre";
             // 
-            // txtNombreCat
-            // 
-            this.txtNombreCat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreCat.Location = new System.Drawing.Point(4, 63);
-            this.txtNombreCat.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
-            this.txtNombreCat.Name = "txtNombreCat";
-            this.txtNombreCat.Size = new System.Drawing.Size(269, 25);
-            this.txtNombreCat.TabIndex = 28;
-            // 
             // lblDescE
             // 
             this.lblDescE.AutoSize = true;
@@ -142,29 +133,30 @@
             // pnlButton
             // 
             this.pnlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pnlButton.Controls.Add(this.btnLogin);
+            this.pnlButton.Controls.Add(this.btnAgregar);
             this.pnlButton.Location = new System.Drawing.Point(2, 226);
             this.pnlButton.Name = "pnlButton";
             this.pnlButton.Size = new System.Drawing.Size(272, 55);
             this.pnlButton.TabIndex = 33;
             // 
-            // btnLogin
+            // btnAgregar
             // 
-            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.Location = new System.Drawing.Point(64, 7);
-            this.btnLogin.MaximumSize = new System.Drawing.Size(151, 40);
-            this.btnLogin.MinimumSize = new System.Drawing.Size(151, 32);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(151, 40);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Agregar";
-            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(64, 7);
+            this.btnAgregar.MaximumSize = new System.Drawing.Size(151, 40);
+            this.btnAgregar.MinimumSize = new System.Drawing.Size(151, 32);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(151, 40);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // pnlList
             // 
@@ -244,6 +236,20 @@
             this.lblTitle.Text = "Categorías";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtNombreCat
+            // 
+            this.txtNombreCat.BackColor = System.Drawing.Color.White;
+            this.txtNombreCat.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombreCat.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtNombreCat.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNombreCat.LineColor = System.Drawing.Color.LightGray;
+            this.txtNombreCat.Location = new System.Drawing.Point(3, 61);
+            this.txtNombreCat.Name = "txtNombreCat";
+            this.txtNombreCat.PasswordChar = '\0';
+            this.txtNombreCat.Size = new System.Drawing.Size(269, 26);
+            this.txtNombreCat.TabIndex = 34;
+            this.txtNombreCat.Enter += new System.EventHandler(this.txtNombreCat_Enter);
+            // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,11 +280,10 @@
         private System.Windows.Forms.Label lblTitlePnl;
         private System.Windows.Forms.PictureBox pctLineSeparator;
         private System.Windows.Forms.Label lblNombreE;
-        private System.Windows.Forms.TextBox txtNombreCat;
         private System.Windows.Forms.Label lblDescE;
         private System.Windows.Forms.TextBox txtDescripcionCat;
         private System.Windows.Forms.Panel pnlButton;
-        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel pnlList;
         private System.Windows.Forms.Label lblListE;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -286,5 +291,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaDescripcionCategoria;
+        private Guna.UI.WinForms.GunaLineTextBox txtNombreCat;
     }
 }

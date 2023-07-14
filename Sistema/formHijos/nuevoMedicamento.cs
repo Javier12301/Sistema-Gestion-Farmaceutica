@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema.Controles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,19 @@ namespace Sistema.formHijos
     public partial class nuevoMedicamento : Form
     {
         private Point mouseDownLocation;
+        Shortcuts shortcuts = new Shortcuts();
+        Controladora controladora = new Controladora();
         public nuevoMedicamento()
         {
             InitializeComponent();
+        }
+
+        private void nuevoMedicamento_Load(object sender, EventArgs e)
+        {
+            //ComboBox predeterminados
+            cmbCatMedicamento.SelectedIndex = 0;
+            cmbEstanteMedicamento.SelectedIndex = 0;
+            //
         }
 
         private void pnlControl_MouseMove(object sender, MouseEventArgs e)
@@ -38,30 +49,30 @@ namespace Sistema.formHijos
 
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
         {
-            bool txtNombre = !string.IsNullOrEmpty(txtNombreMedicamento.Text);            
-            bool txtPrecioUniMedicamento = !string.IsNullOrEmpty(txtPrecioUnitMedicamento.Text);
-            bool txtCantidadMedicamento = !string.IsNullOrEmpty(txtStockMedicamento.Text);
-            if(txtNombre && txtPrecioUniMedicamento && txtCantidadMedicamento)
+            bool txtBoolNombre = controladora.verificarTextboxT(txtNombreMedicamento, errorProvider);
+            bool txtBoolStock = controladora.verificarTextboxT(txtStockMedicamento, errorProvider);
+            bool txtBoolPrecioUnit = controladora.verificarTextboxT(txtPrecioUnitMedicamento, errorProvider);
+
+            if (txtBoolNombre && txtBoolPrecioUnit && txtBoolStock)
             {
-                // create messagebox that save event yes and no
                 DialogResult result = MessageBox.Show("¡Se agrego el medicamento exitosamente!\n¿Desea agregar un nuevo medicamento?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if(result == DialogResult.Yes)
                 {
                     txtNombreMedicamento.Text = "";
-                    txtPrecioUnitMedicamento.Text = "";
+                    cmbCatMedicamento.SelectedIndex = 0;
+                    cmbEstanteMedicamento.SelectedIndex = 0;
                     txtStockMedicamento.Text = "";
+                    txtPrecioUnitMedicamento.Text = "";
                     pnlNombreMedicamento.Focus();
                     txtNombreMedicamento.Focus();
-                    
-                }
-                else if (result == DialogResult.No)
+                }else if(result == DialogResult.No)
                 {
                     this.Close();
-                }              
+                }
             }
             else
             {
-                MessageBox.Show("Debe llenar todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("¡Por favor, rellene los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -79,6 +90,21 @@ namespace Sistema.formHijos
                 errorProvider.SetError(txtSender, null);
             }
            
+        }
+
+        //Shortcut Limpiador
+        private void limpiarHastaElEspacio(object sender, KeyEventArgs e)
+        {
+            TextBox txtSender = (TextBox)sender;        
+            shortcuts.LimpiarTextoHastaelEspacio(txtSender, e);
+        }
+        // Control de entrada de datos con números
+        private void txtNumericos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar el evento si el carácter no es un número
+            }
         }
     }
 }

@@ -135,11 +135,20 @@ namespace Sistema
             
         }
 
+
+        //Controles de cerrar sesión y salir del sistema.
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.Cancel;
         }
 
-       
+        //Al presionar X en este formulario, se cerrará el sistema.
+        private void formHijosPrincipalFORM_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

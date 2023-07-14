@@ -35,38 +35,38 @@
             this.gunaControlCerrar = new Guna.UI.WinForms.GunaControlBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlNombreClientes = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtApellidoCliente = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.txtDNI = new System.Windows.Forms.TextBox();
+            this.txtDNICliente = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.dtaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cmbGenero = new System.Windows.Forms.ComboBox();
+            this.cmbGeneroCliente = new System.Windows.Forms.ComboBox();
+            this.dtaNacimientoCliente = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.txtMail = new System.Windows.Forms.TextBox();
+            this.txtMailCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtTelefonoCliente = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtDireccionCliente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.cmbTipoCliente = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.btnAgregarMedicamento = new System.Windows.Forms.Button();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
             this.pnlControl.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlNombreClientes.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -130,7 +130,7 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.pnlNombreClientes);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
             this.flowLayoutPanel1.Controls.Add(this.panel7);
@@ -146,17 +146,44 @@
             this.flowLayoutPanel1.TabIndex = 9;
             this.flowLayoutPanel1.WrapContents = false;
             // 
-            // panel3
+            // pnlNombreClientes
             // 
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.txtApellido);
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.txtNombre);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(358, 60);
-            this.panel3.TabIndex = 0;
+            this.pnlNombreClientes.Controls.Add(this.label4);
+            this.pnlNombreClientes.Controls.Add(this.txtApellidoCliente);
+            this.pnlNombreClientes.Controls.Add(this.label16);
+            this.pnlNombreClientes.Controls.Add(this.txtNombreCliente);
+            this.pnlNombreClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlNombreClientes.Location = new System.Drawing.Point(3, 3);
+            this.pnlNombreClientes.Name = "pnlNombreClientes";
+            this.pnlNombreClientes.Size = new System.Drawing.Size(358, 60);
+            this.pnlNombreClientes.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(179, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Apellido";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtApellidoCliente
+            // 
+            this.txtApellidoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtApellidoCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtApellidoCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtApellidoCliente.Location = new System.Drawing.Point(183, 28);
+            this.txtApellidoCliente.Name = "txtApellidoCliente";
+            this.txtApellidoCliente.Size = new System.Drawing.Size(146, 25);
+            this.txtApellidoCliente.TabIndex = 16;
+            this.txtApellidoCliente.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // label16
             // 
@@ -171,40 +198,41 @@
             this.label16.TabIndex = 15;
             this.label16.Text = "Nombre ";
             // 
-            // txtNombre
+            // txtNombreCliente
             // 
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtNombreCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtNombre.Location = new System.Drawing.Point(9, 28);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(151, 25);
-            this.txtNombre.TabIndex = 1;
-            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
+            this.txtNombreCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtNombreCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtNombreCliente.Location = new System.Drawing.Point(9, 28);
+            this.txtNombreCliente.Name = "txtNombreCliente";
+            this.txtNombreCliente.Size = new System.Drawing.Size(151, 25);
+            this.txtNombreCliente.TabIndex = 1;
+            this.txtNombreCliente.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.txtDNI);
+            this.panel4.Controls.Add(this.txtDNICliente);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Location = new System.Drawing.Point(3, 69);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(358, 55);
             this.panel4.TabIndex = 2;
             // 
-            // txtDNI
+            // txtDNICliente
             // 
-            this.txtDNI.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDNICliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDNI.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDNI.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtDNI.Location = new System.Drawing.Point(9, 23);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(320, 25);
-            this.txtDNI.TabIndex = 3;
-            this.txtDNI.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
+            this.txtDNICliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDNICliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtDNICliente.Location = new System.Drawing.Point(9, 23);
+            this.txtDNICliente.Name = "txtDNICliente";
+            this.txtDNICliente.Size = new System.Drawing.Size(320, 25);
+            this.txtDNICliente.TabIndex = 3;
+            this.txtDNICliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
+            this.txtDNICliente.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // label15
             // 
@@ -221,8 +249,8 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.cmbGenero);
-            this.panel5.Controls.Add(this.dtaNacimiento);
+            this.panel5.Controls.Add(this.cmbGeneroCliente);
+            this.panel5.Controls.Add(this.dtaNacimientoCliente);
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.label17);
             this.panel5.Location = new System.Drawing.Point(3, 130);
@@ -230,44 +258,32 @@
             this.panel5.Size = new System.Drawing.Size(358, 60);
             this.panel5.TabIndex = 4;
             // 
-            // dtaNacimiento
+            // cmbGeneroCliente
             // 
-            this.dtaNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtaNacimiento.Location = new System.Drawing.Point(9, 27);
-            this.dtaNacimiento.Name = "dtaNacimiento";
-            this.dtaNacimiento.Size = new System.Drawing.Size(151, 25);
-            this.dtaNacimiento.TabIndex = 5;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmbGeneroCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(5, 4);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(155, 20);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "Fecha de Nacimiento";
-            // 
-            // cmbGenero
-            // 
-            this.cmbGenero.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbGenero.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cmbGenero.FormattingEnabled = true;
-            this.cmbGenero.Items.AddRange(new object[] {
+            this.cmbGeneroCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGeneroCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbGeneroCliente.FormattingEnabled = true;
+            this.cmbGeneroCliente.Items.AddRange(new object[] {
+            "Seleccionar Género",
             "Hombre",
             "Mujer",
             "Sin especificar"});
-            this.cmbGenero.Location = new System.Drawing.Point(183, 27);
-            this.cmbGenero.Name = "cmbGenero";
-            this.cmbGenero.Size = new System.Drawing.Size(146, 25);
-            this.cmbGenero.TabIndex = 7;
-            this.cmbGenero.Text = "Seleccionar Género";
+            this.cmbGeneroCliente.Location = new System.Drawing.Point(183, 27);
+            this.cmbGeneroCliente.Name = "cmbGeneroCliente";
+            this.cmbGeneroCliente.Size = new System.Drawing.Size(146, 25);
+            this.cmbGeneroCliente.TabIndex = 6;
+            // 
+            // dtaNacimientoCliente
+            // 
+            this.dtaNacimientoCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtaNacimientoCliente.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtaNacimientoCliente.Location = new System.Drawing.Point(9, 27);
+            this.dtaNacimientoCliente.Name = "dtaNacimientoCliente";
+            this.dtaNacimientoCliente.Size = new System.Drawing.Size(151, 25);
+            this.dtaNacimientoCliente.TabIndex = 5;
             // 
             // label13
             // 
@@ -282,26 +298,39 @@
             this.label13.TabIndex = 18;
             this.label13.Text = "Género";
             // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label17.Location = new System.Drawing.Point(5, 4);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(155, 20);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Fecha de Nacimiento";
+            // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.txtMail);
+            this.panel7.Controls.Add(this.txtMailCliente);
             this.panel7.Controls.Add(this.label1);
             this.panel7.Location = new System.Drawing.Point(3, 196);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(358, 60);
             this.panel7.TabIndex = 8;
             // 
-            // txtMail
+            // txtMailCliente
             // 
-            this.txtMail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtMailCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMail.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtMail.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtMail.Location = new System.Drawing.Point(9, 26);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(320, 25);
-            this.txtMail.TabIndex = 9;
+            this.txtMailCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtMailCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtMailCliente.Location = new System.Drawing.Point(9, 26);
+            this.txtMailCliente.Name = "txtMailCliente";
+            this.txtMailCliente.Size = new System.Drawing.Size(320, 25);
+            this.txtMailCliente.TabIndex = 9;
             // 
             // label1
             // 
@@ -318,24 +347,24 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.txtTelefono);
+            this.panel8.Controls.Add(this.txtTelefonoCliente);
             this.panel8.Controls.Add(this.label18);
             this.panel8.Location = new System.Drawing.Point(3, 262);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(358, 60);
             this.panel8.TabIndex = 10;
             // 
-            // txtTelefono
+            // txtTelefonoCliente
             // 
-            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtTelefonoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTelefono.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtTelefono.Location = new System.Drawing.Point(9, 26);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(320, 25);
-            this.txtTelefono.TabIndex = 11;
+            this.txtTelefonoCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTelefonoCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtTelefonoCliente.Location = new System.Drawing.Point(9, 26);
+            this.txtTelefonoCliente.Name = "txtTelefonoCliente";
+            this.txtTelefonoCliente.Size = new System.Drawing.Size(320, 25);
+            this.txtTelefonoCliente.TabIndex = 11;
             // 
             // label18
             // 
@@ -352,24 +381,24 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.txtDireccion);
+            this.panel9.Controls.Add(this.txtDireccionCliente);
             this.panel9.Controls.Add(this.label2);
             this.panel9.Location = new System.Drawing.Point(3, 328);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(358, 60);
             this.panel9.TabIndex = 12;
             // 
-            // txtDireccion
+            // txtDireccionCliente
             // 
-            this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDireccionCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDireccion.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtDireccion.Location = new System.Drawing.Point(9, 26);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(320, 25);
-            this.txtDireccion.TabIndex = 13;
+            this.txtDireccionCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDireccionCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtDireccionCliente.Location = new System.Drawing.Point(9, 26);
+            this.txtDireccionCliente.Name = "txtDireccionCliente";
+            this.txtDireccionCliente.Size = new System.Drawing.Size(320, 25);
+            this.txtDireccionCliente.TabIndex = 13;
             // 
             // label2
             // 
@@ -398,13 +427,15 @@
             this.cmbTipoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmbTipoCliente.FormattingEnabled = true;
+            this.cmbTipoCliente.Items.AddRange(new object[] {
+            "Seleccionar Tipo de Cliente"});
             this.cmbTipoCliente.Location = new System.Drawing.Point(9, 26);
             this.cmbTipoCliente.Name = "cmbTipoCliente";
             this.cmbTipoCliente.Size = new System.Drawing.Size(320, 25);
             this.cmbTipoCliente.TabIndex = 15;
-            this.cmbTipoCliente.Text = "Seleccionar Categoría";
             // 
             // label3
             // 
@@ -421,57 +452,32 @@
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.btnAgregarMedicamento);
+            this.panel11.Controls.Add(this.btnAgregarCliente);
             this.panel11.Location = new System.Drawing.Point(3, 460);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(358, 60);
             this.panel11.TabIndex = 21;
             // 
-            // btnAgregarMedicamento
+            // btnAgregarCliente
             // 
-            this.btnAgregarMedicamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnAgregarMedicamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarMedicamento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarMedicamento.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregarMedicamento.Location = new System.Drawing.Point(83, 3);
-            this.btnAgregarMedicamento.Name = "btnAgregarMedicamento";
-            this.btnAgregarMedicamento.Size = new System.Drawing.Size(180, 49);
-            this.btnAgregarMedicamento.TabIndex = 16;
-            this.btnAgregarMedicamento.Text = "Agregar";
-            this.btnAgregarMedicamento.UseVisualStyleBackColor = false;
+            this.btnAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(83, 3);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(180, 49);
+            this.btnAgregarCliente.TabIndex = 16;
+            this.btnAgregarCliente.Text = "Agregar";
+            this.btnAgregarCliente.UseVisualStyleBackColor = false;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
             // 
             // errorProvider
             // 
             this.errorProvider.BlinkRate = 400;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(179, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Apellido";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApellido.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtApellido.Location = new System.Drawing.Point(183, 28);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(146, 25);
-            this.txtApellido.TabIndex = 16;
-            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // nuevoCliente
             // 
@@ -490,8 +496,8 @@
             this.pnlControl.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlNombreClientes.ResumeLayout(false);
+            this.pnlNombreClientes.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -516,34 +522,34 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlCerrar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlNombreClientes;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtNombreCliente;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtDNI;
+        private System.Windows.Forms.TextBox txtDNICliente;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DateTimePicker dtaNacimiento;
+        private System.Windows.Forms.DateTimePicker dtaNacimientoCliente;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cmbGenero;
+        private System.Windows.Forms.ComboBox cmbGeneroCliente;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox txtMail;
+        private System.Windows.Forms.TextBox txtMailCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtTelefonoCliente;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtDireccionCliente;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.ComboBox cmbTipoCliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Button btnAgregarMedicamento;
+        private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.Label lblNombreForm;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtApellidoCliente;
     }
 }

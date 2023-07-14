@@ -35,7 +35,7 @@ namespace Sistema
         public bool verificarCredenciales(GunaLineTextBox txtUser, GunaLineTextBox txtPassword)
         {
             //Será utilizado para registrar nuevos usuarios, con esto podremos especificar los caracteres que se podrán utilizar
-            bool correoValido = verificarCorreo(txtUser);
+            bool correoValido = verificarCorreoG(txtUser);
             bool passwordValido = verificarPassword(txtPassword);
             //Verificar credenciales
             if (correoValido && passwordValido)
@@ -57,7 +57,8 @@ namespace Sistema
 
         }
 
-        private bool verificarCorreo(GunaLineTextBox txtUser)
+        // Función en caso de utilizar un TextBox Guna
+        public bool verificarCorreoG(GunaLineTextBox txtUser)
         {
             bool correoValido = false;
             if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
@@ -67,6 +68,21 @@ namespace Sistema
             else
             {
                 txtUser.LineColor = paleta.ColorError;
+            }
+            return correoValido;
+        }
+        // Función en caso de utilizar un TextBox normal
+        public bool verificarCorreoT(TextBoxBase txtUser, ErrorProvider errorActivador)
+        {
+            bool correoValido = false;
+            if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
+            {
+                errorActivador.SetError(txtUser, "");
+                correoValido = true;
+            }
+            else
+            {
+                errorActivador.SetError(txtUser, "Correo invalido, por favor no se olvide de los @,.,com,org,etc.");
             }
             return correoValido;
         }
@@ -87,7 +103,7 @@ namespace Sistema
         }
 
         //comprobara cualquier campo de texto vacio
-        public bool verificarTextbox(GunaLineTextBox txtbox)
+        public bool verificarTextboxG(GunaLineTextBox txtbox)
         {
             if (!string.IsNullOrEmpty(txtbox.Text))
             {
@@ -104,18 +120,20 @@ namespace Sistema
             }
         }
         //Comprobara cualquier campo de texto vacio TextBox normales no guna
-        public bool verificarTextbox(TextBox txtbox)
+        public bool verificarTextboxT(TextBoxBase txtbox, ErrorProvider errorActivador)
         {
+            errorActivador.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             if (!string.IsNullOrEmpty(txtbox.Text))
             {
                 //No está vacio
-                txtbox.BackColor = paleta.ColorActive;
+                
+                errorActivador.SetError(txtbox, "");
                 return true;
             }
             else
             {
                 //Está vacio
-                txtbox.BackColor = paleta.ColorError;
+                errorActivador.SetError(txtbox, "Campo obligatorio");
                 return false;
             }
         }
