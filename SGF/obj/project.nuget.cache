@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Z7Q+wLytTfJ6d2QgjMjqYEE7Hc9yhnpV38CIyKsvnziMGusex2+pkEjc7Ihlim+vjjKVfMwrNJyBkSLhRFe9tA==",
+  "dgSpecHash": "AWNJKyFLcCN+vuHkkSSnVccIBQUGqAHJC235aTsvRJlHVQ16Nm7aNofiEfHPeBMcYjaoF5OBSR2IZ6KzOCQXsQ==",
   "success": true,
-  "projectFilePath": "C:\\Sistema de Gestión Farmacéutico\\SGF\\SGF\\SGF.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Sistema-Gestion-Farmaceutica\\SGF\\SGF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\javie\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

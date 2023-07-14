@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Sistema de Gestión Farmacéutico\\SGF\\SGF\\SGF.csproj": {}
+    "C:\\Sistema-Gestion-Farmaceutica\\SGF\\SGF.csproj": {}
   },
   "projects": {
-    "C:\\Sistema de Gestión Farmacéutico\\SGF\\SGF\\SGF.csproj": {
+    "C:\\Sistema-Gestion-Farmaceutica\\SGF\\SGF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Sistema de Gestión Farmacéutico\\SGF\\SGF\\SGF.csproj",
+        "projectUniqueName": "C:\\Sistema-Gestion-Farmaceutica\\SGF\\SGF.csproj",
         "projectName": "SGF",
-        "projectPath": "C:\\Sistema de Gestión Farmacéutico\\SGF\\SGF\\SGF.csproj",
+        "projectPath": "C:\\Sistema-Gestion-Farmaceutica\\SGF\\SGF.csproj",
         "packagesPath": "C:\\Users\\javie\\.nuget\\packages\\",
-        "outputPath": "C:\\Sistema de Gestión Farmacéutico\\SGF\\SGF\\obj\\",
+        "outputPath": "C:\\Sistema-Gestion-Farmaceutica\\SGF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\javie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "FontAwesome.Sharp": {
+              "target": "Package",
+              "version": "[6.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

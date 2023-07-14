@@ -14,7 +14,7 @@ namespace Sistema.formHijos
     
     public partial class Principal : Form
     {
-        
+        Shortcuts shortcuts = new Shortcuts();
         public Principal()
         {
             InitializeComponent();
@@ -25,9 +25,9 @@ namespace Sistema.formHijos
             
         }
 
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtBuscar_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            shortcuts.LimpiarTextoHastaelEspacio(txtBuscar, e);
         }
     }
 }

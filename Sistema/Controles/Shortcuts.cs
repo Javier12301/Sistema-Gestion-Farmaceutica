@@ -10,11 +10,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sistema.Controles
 {
-    internal class Shortcuts
+    public class Shortcuts
     {
 
         //Shortcuts para limpiar texto hasta el espacio
-        public void ClearTextUntilSpace(TextBoxBase txtSelected, KeyEventArgs e)
+        public void LimpiarTextoHastaelEspacio(TextBoxBase txtSelected, KeyEventArgs e)
         {
             
             if ((e.KeyCode == Keys.Back) && e.Control)
@@ -33,7 +33,7 @@ namespace Sistema.Controles
                 txtSelected.Select(prevSpacePos + 1, txtSelected.SelectionStart - prevSpacePos - 1);
                 txtSelected.SelectedText = "";
             }
-        }
+        }        
 
 
 

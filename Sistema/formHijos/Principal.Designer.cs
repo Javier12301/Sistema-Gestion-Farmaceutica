@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnBuscar = new FontAwesome.Sharp.IconButton();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dtaNameMedicamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,31 +43,32 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlgpbEstanteFORM = new System.Windows.Forms.Panel();
             this.gpbNewEstante = new System.Windows.Forms.GroupBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblNumEstantes = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblNumMedicamentos = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblNumCategorias = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new Guna.UI.WinForms.GunaButton();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlgpbEstanteFORM.SuspendLayout();
             this.gpbNewEstante.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -74,13 +77,47 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.btnBuscar);
-            this.panel3.Controls.Add(this.txtSearch);
+            this.panel3.Controls.Add(this.txtBuscar);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Location = new System.Drawing.Point(4, 175);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(795, 269);
             this.panel3.TabIndex = 14;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.AutoSize = true;
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnBuscar.IconColor = System.Drawing.Color.White;
+            this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBuscar.IconSize = 20;
+            this.btnBuscar.Location = new System.Drawing.Point(751, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(36, 26);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Tag = "PrincipalBuscarTag";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.BackColor = System.Drawing.Color.White;
+            this.txtBuscar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtBuscar.Location = new System.Drawing.Point(558, 4);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(194, 26);
+            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.Tag = "PrincipalBuscarTag";
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
             // 
             // dataGridView1
             // 
@@ -139,7 +176,7 @@
             // 
             // label19
             // 
-            this.label19.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label19.Location = new System.Drawing.Point(3, 7);
@@ -188,9 +225,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpbNewEstante.AutoSize = true;
             this.gpbNewEstante.BackColor = System.Drawing.Color.White;
+            this.gpbNewEstante.Controls.Add(this.iconPictureBox1);
             this.gpbNewEstante.Controls.Add(this.label11);
-            this.gpbNewEstante.Controls.Add(this.label10);
-            this.gpbNewEstante.Controls.Add(this.label9);
+            this.gpbNewEstante.Controls.Add(this.lblNumEstantes);
             this.gpbNewEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.gpbNewEstante.Location = new System.Drawing.Point(2, 3);
             this.gpbNewEstante.Name = "gpbNewEstante";
@@ -198,6 +235,20 @@
             this.gpbNewEstante.TabIndex = 0;
             this.gpbNewEstante.TabStop = false;
             this.gpbNewEstante.Text = "Estantes";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.OrangeRed;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 28;
+            this.iconPictureBox1.Location = new System.Drawing.Point(5, 23);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox1.TabIndex = 19;
+            this.iconPictureBox1.TabStop = false;
             // 
             // label11
             // 
@@ -213,27 +264,16 @@
             this.label11.TabIndex = 18;
             this.label11.Text = "Estantes Totales";
             // 
-            // label10
+            // lblNumEstantes
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label10.Location = new System.Drawing.Point(43, 21);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(20, 23);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label9.Location = new System.Drawing.Point(6, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 25);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "list";
+            this.lblNumEstantes.AutoSize = true;
+            this.lblNumEstantes.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblNumEstantes.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblNumEstantes.Location = new System.Drawing.Point(43, 26);
+            this.lblNumEstantes.Name = "lblNumEstantes";
+            this.lblNumEstantes.Size = new System.Drawing.Size(20, 23);
+            this.lblNumEstantes.TabIndex = 17;
+            this.lblNumEstantes.Text = "0";
             // 
             // panel2
             // 
@@ -254,9 +294,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.iconPictureBox3);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.lblNumMedicamentos);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
@@ -264,6 +304,20 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Medicamentos";
+            // 
+            // iconPictureBox3
+            // 
+            this.iconPictureBox3.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox3.ForeColor = System.Drawing.Color.Teal;
+            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.PrescriptionBottleMedical;
+            this.iconPictureBox3.IconColor = System.Drawing.Color.Teal;
+            this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox3.IconSize = 28;
+            this.iconPictureBox3.Location = new System.Drawing.Point(5, 23);
+            this.iconPictureBox3.Name = "iconPictureBox3";
+            this.iconPictureBox3.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox3.TabIndex = 22;
+            this.iconPictureBox3.TabStop = false;
             // 
             // label16
             // 
@@ -279,27 +333,16 @@
             this.label16.TabIndex = 24;
             this.label16.Text = "Medicamentos Totales ";
             // 
-            // label18
+            // lblNumMedicamentos
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Teal;
-            this.label18.Location = new System.Drawing.Point(6, 23);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(292, 25);
-            this.label18.TabIndex = 22;
-            this.label18.Text = "prescription-bottle-medical";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.ForeColor = System.Drawing.Color.Teal;
-            this.label17.Location = new System.Drawing.Point(43, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(20, 23);
-            this.label17.TabIndex = 23;
-            this.label17.Text = "0";
+            this.lblNumMedicamentos.AutoSize = true;
+            this.lblNumMedicamentos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblNumMedicamentos.ForeColor = System.Drawing.Color.Teal;
+            this.lblNumMedicamentos.Location = new System.Drawing.Point(43, 26);
+            this.lblNumMedicamentos.Name = "lblNumMedicamentos";
+            this.lblNumMedicamentos.Size = new System.Drawing.Size(20, 23);
+            this.lblNumMedicamentos.TabIndex = 23;
+            this.lblNumMedicamentos.Text = "0";
             // 
             // panel4
             // 
@@ -320,9 +363,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSize = true;
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.iconPictureBox2);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.lblNumCategorias);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
@@ -330,6 +373,21 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Categorias";
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Tag;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 28;
+            this.iconPictureBox2.Location = new System.Drawing.Point(5, 23);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Rotation = 85D;
+            this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox2.TabIndex = 20;
+            this.iconPictureBox2.TabStop = false;
             // 
             // label13
             // 
@@ -344,27 +402,16 @@
             this.label13.TabIndex = 21;
             this.label13.Text = "Categorias Totales";
             // 
-            // label14
+            // lblNumCategorias
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label14.Location = new System.Drawing.Point(44, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(20, 23);
-            this.label14.TabIndex = 20;
-            this.label14.Text = "0";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label15.Location = new System.Drawing.Point(7, 23);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 25);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "tag";
+            this.lblNumCategorias.AutoSize = true;
+            this.lblNumCategorias.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblNumCategorias.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblNumCategorias.Location = new System.Drawing.Point(44, 26);
+            this.lblNumCategorias.Name = "lblNumCategorias";
+            this.lblNumCategorias.Size = new System.Drawing.Size(20, 23);
+            this.lblNumCategorias.TabIndex = 20;
+            this.lblNumCategorias.Text = "0";
             // 
             // label12
             // 
@@ -377,45 +424,6 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "Principal";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BackColor = System.Drawing.Color.White;
-            this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtSearch.Location = new System.Drawing.Point(615, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(173, 26);
-            this.txtSearch.TabIndex = 10;
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.AnimationHoverSpeed = 0.1F;
-            this.btnBuscar.AnimationSpeed = 0.1F;
-            this.btnBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(221)))), ((int)(((byte)(250)))));
-            this.btnBuscar.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnBuscar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBuscar.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBuscar.Image = global::Sistema.Properties.Resources.iconSearch;
-            this.btnBuscar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnBuscar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBuscar.Location = new System.Drawing.Point(572, 4);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(211)))), ((int)(((byte)(249)))));
-            this.btnBuscar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnBuscar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnBuscar.OnHoverImage = null;
-            this.btnBuscar.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(203)))), ((int)(((byte)(245)))));
-            this.btnBuscar.Radius = 15;
-            this.btnBuscar.Size = new System.Drawing.Size(37, 26);
-            this.btnBuscar.TabIndex = 12;
             // 
             // Principal
             // 
@@ -437,14 +445,17 @@
             this.pnlgpbEstanteFORM.PerformLayout();
             this.gpbNewEstante.ResumeLayout(false);
             this.gpbNewEstante.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,20 +477,20 @@
         private System.Windows.Forms.Panel pnlgpbEstanteFORM;
         private System.Windows.Forms.GroupBox gpbNewEstante;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblNumEstantes;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lblNumMedicamentos;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblNumCategorias;
         private System.Windows.Forms.Label label12;
-        private Guna.UI.WinForms.GunaButton btnBuscar;
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconButton btnBuscar;
     }
 }

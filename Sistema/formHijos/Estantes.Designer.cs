@@ -123,6 +123,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(279, 282);
             this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.TabStop = false;
             // 
             // dtaNombreEstante
             // 
@@ -172,7 +173,7 @@
             this.txtSectorE.Name = "txtSectorE";
             this.txtSectorE.PasswordChar = '\0';
             this.txtSectorE.Size = new System.Drawing.Size(269, 26);
-            this.txtSectorE.TabIndex = 37;
+            this.txtSectorE.TabIndex = 3;
             this.txtSectorE.Enter += new System.EventHandler(this.txtSectorE_Enter);
             // 
             // txtNumE
@@ -186,7 +187,7 @@
             this.txtNumE.Name = "txtNumE";
             this.txtNumE.PasswordChar = '\0';
             this.txtNumE.Size = new System.Drawing.Size(269, 26);
-            this.txtNumE.TabIndex = 36;
+            this.txtNumE.TabIndex = 2;
             this.txtNumE.Enter += new System.EventHandler(this.txtNumE_Enter);
             // 
             // txtNombreE
@@ -200,7 +201,7 @@
             this.txtNombreE.Name = "txtNombreE";
             this.txtNombreE.PasswordChar = '\0';
             this.txtNombreE.Size = new System.Drawing.Size(269, 26);
-            this.txtNombreE.TabIndex = 35;
+            this.txtNombreE.TabIndex = 1;
             this.txtNombreE.Enter += new System.EventHandler(this.txtNombreE_Enter);
             // 
             // lblTitlePnl

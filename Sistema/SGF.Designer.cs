@@ -33,12 +33,12 @@ namespace Sistema
         private void InitializeComponent()
         {
             this.pnlMainLogin = new System.Windows.Forms.Panel();
+            this.ojoMostrarContraseña = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.txtPassword = new Guna.UI.WinForms.GunaLineTextBox();
             this.txtUser = new Guna.UI.WinForms.GunaLineTextBox();
-            this.lblEyePassword = new System.Windows.Forms.Label();
             this.lnkLabel = new System.Windows.Forms.LinkLabel();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnForgotPassword = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -47,18 +47,21 @@ namespace Sistema
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMainLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ojoMostrarContraseña)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.pnlNavLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainLogin
             // 
             this.pnlMainLogin.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlMainLogin.Controls.Add(this.ojoMostrarContraseña);
+            this.pnlMainLogin.Controls.Add(this.iconPictureBox2);
+            this.pnlMainLogin.Controls.Add(this.iconPictureBox1);
             this.pnlMainLogin.Controls.Add(this.txtPassword);
             this.pnlMainLogin.Controls.Add(this.txtUser);
-            this.pnlMainLogin.Controls.Add(this.lblEyePassword);
             this.pnlMainLogin.Controls.Add(this.lnkLabel);
-            this.pnlMainLogin.Controls.Add(this.lblPassword);
-            this.pnlMainLogin.Controls.Add(this.lblUser);
             this.pnlMainLogin.Controls.Add(this.lblDescription);
             this.pnlMainLogin.Controls.Add(this.btnForgotPassword);
             this.pnlMainLogin.Controls.Add(this.btnLogin);
@@ -68,6 +71,55 @@ namespace Sistema
             this.pnlMainLogin.Name = "pnlMainLogin";
             this.pnlMainLogin.Size = new System.Drawing.Size(335, 244);
             this.pnlMainLogin.TabIndex = 0;
+            // 
+            // ojoMostrarContraseña
+            // 
+            this.ojoMostrarContraseña.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ojoMostrarContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ojoMostrarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.ojoMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.ojoMostrarContraseña.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.ojoMostrarContraseña.IconSize = 31;
+            this.ojoMostrarContraseña.Location = new System.Drawing.Point(297, 101);
+            this.ojoMostrarContraseña.Name = "ojoMostrarContraseña";
+            this.ojoMostrarContraseña.Size = new System.Drawing.Size(35, 31);
+            this.ojoMostrarContraseña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ojoMostrarContraseña.TabIndex = 40;
+            this.ojoMostrarContraseña.TabStop = false;
+            this.ojoMostrarContraseña.Click += new System.EventHandler(this.ojoMostrarContraseña_Click);
+            this.ojoMostrarContraseña.MouseLeave += new System.EventHandler(this.ojoMostrarContraseña_MouseLeave);
+            this.ojoMostrarContraseña.MouseHover += new System.EventHandler(this.ojoMostrarContraseña_MouseHover);
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 25;
+            this.iconPictureBox2.Location = new System.Drawing.Point(5, 104);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(25, 26);
+            this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconPictureBox2.TabIndex = 39;
+            this.iconPictureBox2.TabStop = false;
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 25;
+            this.iconPictureBox1.Location = new System.Drawing.Point(5, 64);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(25, 26);
+            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconPictureBox1.TabIndex = 38;
+            this.iconPictureBox1.TabStop = false;
             // 
             // txtPassword
             // 
@@ -81,7 +133,7 @@ namespace Sistema
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(267, 30);
-            this.txtPassword.TabIndex = 37;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Admin12301";
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
@@ -97,24 +149,9 @@ namespace Sistema
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
             this.txtUser.Size = new System.Drawing.Size(298, 30);
-            this.txtUser.TabIndex = 36;
+            this.txtUser.TabIndex = 0;
             this.txtUser.Text = "Admin12301@gmail.com";
             this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
-            // 
-            // lblEyePassword
-            // 
-            this.lblEyePassword.BackColor = System.Drawing.Color.Transparent;
-            this.lblEyePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEyePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.lblEyePassword.Location = new System.Drawing.Point(297, 101);
-            this.lblEyePassword.Name = "lblEyePassword";
-            this.lblEyePassword.Size = new System.Drawing.Size(35, 31);
-            this.lblEyePassword.TabIndex = 14;
-            this.lblEyePassword.Text = "eye";
-            this.lblEyePassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblEyePassword.Click += new System.EventHandler(this.lblEyePassword_Click);
-            this.lblEyePassword.MouseLeave += new System.EventHandler(this.lblEyePassword_MouseLeave);
-            this.lblEyePassword.MouseHover += new System.EventHandler(this.lblEyePassword_MouseHover);
             // 
             // lnkLabel
             // 
@@ -127,32 +164,6 @@ namespace Sistema
             this.lnkLabel.TabStop = true;
             this.lnkLabel.Text = "javierramirez1230123@gmail.com";
             this.lnkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLabel_LinkClicked);
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.BackColor = System.Drawing.Color.White;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.lblPassword.Location = new System.Drawing.Point(5, 104);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(25, 26);
-            this.lblPassword.TabIndex = 8;
-            this.lblPassword.Tag = "txtPassword";
-            this.lblPassword.Text = "lock";
-            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblUser
-            // 
-            this.lblUser.BackColor = System.Drawing.Color.White;
-            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.lblUser.Location = new System.Drawing.Point(5, 64);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(25, 26);
-            this.lblUser.TabIndex = 4;
-            this.lblUser.Tag = "txtUser";
-            this.lblUser.Text = "user";
-            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDescription
             // 
@@ -250,6 +261,9 @@ namespace Sistema
             this.Load += new System.EventHandler(this.SGF_Load);
             this.pnlMainLogin.ResumeLayout(false);
             this.pnlMainLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ojoMostrarContraseña)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.pnlNavLogin.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -265,12 +279,12 @@ namespace Sistema
         private System.Windows.Forms.Button btnForgotPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblDescription;
-        private Label lblPassword;
-        private Label lblUser;
         private LinkLabel lnkLabel;
-        private Label lblEyePassword;
         private Guna.UI.WinForms.GunaLineTextBox txtUser;
         private Guna.UI.WinForms.GunaLineTextBox txtPassword;
+        private FontAwesome.Sharp.IconPictureBox ojoMostrarContraseña;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
     }
 }
 

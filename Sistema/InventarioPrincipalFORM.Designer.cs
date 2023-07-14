@@ -38,13 +38,13 @@
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnAjustes = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.btnMedicamentos = new System.Windows.Forms.Button();
             this.btnCategoria = new System.Windows.Forms.Button();
             this.btnEstantes = new System.Windows.Forms.Button();
             this.btnPrincipal = new System.Windows.Forms.Button();
             this.pnlMAIN = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.btnClientes = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -183,11 +183,29 @@
             this.btnAjustes.UseVisualStyleBackColor = false;
             this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
             // 
+            // btnClientes
+            // 
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
+            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientes.Location = new System.Drawing.Point(0, 180);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(177, 45);
+            this.btnClientes.TabIndex = 6;
+            this.btnClientes.Tag = "btnClientes";
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
             // btnMedicamentos
             // 
+            this.btnMedicamentos.BackColor = System.Drawing.Color.White;
             this.btnMedicamentos.FlatAppearance.BorderSize = 0;
             this.btnMedicamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMedicamentos.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMedicamentos.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnMedicamentos.Image = ((System.Drawing.Image)(resources.GetObject("btnMedicamentos.Image")));
             this.btnMedicamentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMedicamentos.Location = new System.Drawing.Point(0, 135);
@@ -196,7 +214,7 @@
             this.btnMedicamentos.TabIndex = 4;
             this.btnMedicamentos.Tag = "btnMedicamento";
             this.btnMedicamentos.Text = "Medicamentos";
-            this.btnMedicamentos.UseVisualStyleBackColor = true;
+            this.btnMedicamentos.UseVisualStyleBackColor = false;
             this.btnMedicamentos.Click += new System.EventHandler(this.btnMedicamento_Click);
             // 
             // btnCategoria
@@ -272,22 +290,6 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(605, 352);
             this.panelMain.TabIndex = 2;
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.FlatAppearance.BorderSize = 0;
-            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientes.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
-            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.Location = new System.Drawing.Point(0, 180);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(177, 45);
-            this.btnClientes.TabIndex = 6;
-            this.btnClientes.Tag = "btnClientes";
-            this.btnClientes.Text = "Clientes";
-            this.btnClientes.UseVisualStyleBackColor = true;
-            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // formHijosPrincipalFORM
             // 

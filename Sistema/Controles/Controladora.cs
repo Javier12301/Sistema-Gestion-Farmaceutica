@@ -103,6 +103,22 @@ namespace Sistema
                 return false;
             }
         }
+        //Comprobara cualquier campo de texto vacio TextBox normales no guna
+        public bool verificarTextbox(TextBox txtbox)
+        {
+            if (!string.IsNullOrEmpty(txtbox.Text))
+            {
+                //No está vacio
+                txtbox.BackColor = paleta.ColorActive;
+                return true;
+            }
+            else
+            {
+                //Está vacio
+                txtbox.BackColor = paleta.ColorError;
+                return false;
+            }
+        }
          
         
     }

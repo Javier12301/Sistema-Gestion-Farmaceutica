@@ -33,14 +33,14 @@ namespace Sistema
         {
             //Se inicializa el ojo de contraseña
             if (showPassword)
-            {          
-                lblEyePassword.Font = new Font("Font Awesome 6 Free Solid", Font.Height, FontStyle.Bold);
+            {
+                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Solid;
                 controladora.mostrarPassword(txtPassword);
                 showPassword = false;
             }
             else
             {
-                lblEyePassword.Font = new Font("Font Awesome 6 Free Regular", 15.75F, FontStyle.Regular);
+                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
                 controladora.ocultarPassword(txtPassword);
                 showPassword = true;
             }
@@ -59,32 +59,32 @@ namespace Sistema
             }
         }
 
-        private void lblEyePassword_MouseHover(object sender, EventArgs e)
+        // Controles del icono de OJO para mostrar contraseñas
+        private void ojoMostrarContraseña_MouseHover(object sender, EventArgs e)
         {
-            lblEyePassword.Font = new Font("Font Awesome 6 Free Solid", Font.Height, FontStyle.Bold);
+            ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Solid;
         }
 
-        private void lblEyePassword_MouseLeave(object sender, EventArgs e)
+        private void ojoMostrarContraseña_MouseLeave(object sender, EventArgs e)
         {
-            lblEyePassword.Font = new Font("Font Awesome 6 Free Regular", 15.75F, FontStyle.Regular);
+            ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
         }
 
-        private void lblEyePassword_Click(object sender, EventArgs e)
+        private void ojoMostrarContraseña_Click(object sender, EventArgs e)
         {
             if (showPassword)
             {
-                showPassword = false;
+                showPassword=false;
                 controladora.mostrarPassword(txtPassword);
-                lblEyePassword.Font = new Font("Font Awesome 6 Free Solid", Font.Height, FontStyle.Bold);
+                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Solid;
             }
             else
             {
                 showPassword = true;
                 controladora.ocultarPassword(txtPassword);
-                lblEyePassword.Font = new Font("Font Awesome 6 Free Regular", 15.75F, FontStyle.Regular);
+                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
             }
         }
-
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -92,7 +92,9 @@ namespace Sistema
             if (verificar)
             {
                 formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
+                this.Hide();
                 formHijosPrincipalFORM.ShowDialog();
+                this.Show();
             }
             else
             {
@@ -131,5 +133,7 @@ namespace Sistema
         {
             btnForgotPassword.ForeColor = btnForgotPasswordLeave;
         }
+
+        
     }
 }
