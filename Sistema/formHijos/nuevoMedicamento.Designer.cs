@@ -49,7 +49,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.dateVencimientoMedicamento = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.txtPrecioUnitMedicamento = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -62,7 +61,6 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +114,6 @@
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
             this.flowLayoutPanel1.Controls.Add(this.panel7);
-            this.flowLayoutPanel1.Controls.Add(this.panel6);
             this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -141,10 +138,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label16.Location = new System.Drawing.Point(3, 4);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(144, 15);
+            this.label16.Size = new System.Drawing.Size(188, 20);
             this.label16.TabIndex = 15;
             this.label16.Text = "Nombre de Medicamento";
             // 
@@ -155,9 +152,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtNombreMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtNombreMedicamento.Location = new System.Drawing.Point(18, 28);
+            this.txtNombreMedicamento.Location = new System.Drawing.Point(7, 27);
             this.txtNombreMedicamento.Name = "txtNombreMedicamento";
-            this.txtNombreMedicamento.Size = new System.Drawing.Size(292, 25);
+            this.txtNombreMedicamento.Size = new System.Drawing.Size(307, 25);
             this.txtNombreMedicamento.TabIndex = 1;
             this.txtNombreMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
@@ -177,9 +174,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCatMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmbCatMedicamento.FormattingEnabled = true;
-            this.cmbCatMedicamento.Location = new System.Drawing.Point(18, 26);
+            this.cmbCatMedicamento.Location = new System.Drawing.Point(7, 26);
             this.cmbCatMedicamento.Name = "cmbCatMedicamento";
-            this.cmbCatMedicamento.Size = new System.Drawing.Size(292, 25);
+            this.cmbCatMedicamento.Size = new System.Drawing.Size(307, 25);
             this.cmbCatMedicamento.TabIndex = 3;
             this.cmbCatMedicamento.Text = "Seleccionar Categoria";
             // 
@@ -189,10 +186,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label15.Location = new System.Drawing.Point(3, 4);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 15);
+            this.label15.Size = new System.Drawing.Size(76, 20);
             this.label15.TabIndex = 16;
             this.label15.Text = "Categoria";
             // 
@@ -212,9 +209,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbEstanteMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmbEstanteMedicamento.FormattingEnabled = true;
-            this.cmbEstanteMedicamento.Location = new System.Drawing.Point(18, 24);
+            this.cmbEstanteMedicamento.Location = new System.Drawing.Point(7, 24);
             this.cmbEstanteMedicamento.Name = "cmbEstanteMedicamento";
-            this.cmbEstanteMedicamento.Size = new System.Drawing.Size(292, 25);
+            this.cmbEstanteMedicamento.Size = new System.Drawing.Size(307, 25);
             this.cmbEstanteMedicamento.TabIndex = 5;
             this.cmbEstanteMedicamento.Text = "Seleccionar Estante";
             // 
@@ -224,16 +221,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label17.Location = new System.Drawing.Point(3, 4);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(109, 15);
+            this.label17.Size = new System.Drawing.Size(143, 20);
             this.label17.TabIndex = 18;
             this.label17.Text = "Seleccionar Estante";
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.txtPrecioUnitMedicamento);
             this.panel5.Controls.Add(this.label13);
+            this.panel5.Controls.Add(this.label18);
             this.panel5.Controls.Add(this.txtStockMedicamento);
             this.panel5.Location = new System.Drawing.Point(3, 191);
             this.panel5.Name = "panel5";
@@ -246,10 +245,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label13.Location = new System.Drawing.Point(3, 4);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 15);
+            this.label13.Size = new System.Drawing.Size(47, 20);
             this.label13.TabIndex = 18;
             this.label13.Text = "Stock";
             // 
@@ -260,9 +259,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStockMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtStockMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtStockMedicamento.Location = new System.Drawing.Point(18, 25);
+            this.txtStockMedicamento.Location = new System.Drawing.Point(7, 25);
             this.txtStockMedicamento.Name = "txtStockMedicamento";
-            this.txtStockMedicamento.Size = new System.Drawing.Size(292, 25);
+            this.txtStockMedicamento.Size = new System.Drawing.Size(139, 25);
             this.txtStockMedicamento.TabIndex = 7;
             this.txtStockMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
@@ -277,11 +276,12 @@
             // 
             // dateVencimientoMedicamento
             // 
-            this.dateVencimientoMedicamento.Location = new System.Drawing.Point(18, 25);
+            this.dateVencimientoMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dateVencimientoMedicamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateVencimientoMedicamento.Location = new System.Drawing.Point(9, 25);
             this.dateVencimientoMedicamento.Name = "dateVencimientoMedicamento";
-            this.dateVencimientoMedicamento.Size = new System.Drawing.Size(292, 20);
+            this.dateVencimientoMedicamento.Size = new System.Drawing.Size(305, 25);
             this.dateVencimientoMedicamento.TabIndex = 9;
-            this.dateVencimientoMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // label1
             // 
@@ -289,21 +289,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(3, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 18);
             this.label1.TabIndex = 18;
             this.label1.Text = "Fecha de vencimiento";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.txtPrecioUnitMedicamento);
-            this.panel6.Controls.Add(this.label18);
-            this.panel6.Location = new System.Drawing.Point(3, 313);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(341, 55);
-            this.panel6.TabIndex = 10;
             // 
             // txtPrecioUnitMedicamento
             // 
@@ -312,9 +303,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrecioUnitMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtPrecioUnitMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtPrecioUnitMedicamento.Location = new System.Drawing.Point(18, 26);
+            this.txtPrecioUnitMedicamento.Location = new System.Drawing.Point(175, 25);
             this.txtPrecioUnitMedicamento.Name = "txtPrecioUnitMedicamento";
-            this.txtPrecioUnitMedicamento.Size = new System.Drawing.Size(292, 25);
+            this.txtPrecioUnitMedicamento.Size = new System.Drawing.Size(139, 25);
             this.txtPrecioUnitMedicamento.TabIndex = 11;
             this.txtPrecioUnitMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
@@ -324,17 +315,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label18.Location = new System.Drawing.Point(3, 4);
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label18.Location = new System.Drawing.Point(171, 4);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 15);
+            this.label18.Size = new System.Drawing.Size(113, 20);
             this.label18.TabIndex = 22;
             this.label18.Text = "Precio Unitario";
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btnAgregarMedicamento);
-            this.panel8.Location = new System.Drawing.Point(3, 374);
+            this.panel8.Location = new System.Drawing.Point(3, 313);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(341, 55);
             this.panel8.TabIndex = 21;
@@ -355,6 +346,7 @@
             // 
             // errorProvider
             // 
+            this.errorProvider.BlinkRate = 400;
             this.errorProvider.ContainerControl = this;
             this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
             // 
@@ -382,8 +374,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -409,7 +399,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DateTimePicker dateVencimientoMedicamento;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtPrecioUnitMedicamento;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel8;

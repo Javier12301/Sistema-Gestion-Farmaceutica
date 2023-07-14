@@ -43,5 +43,21 @@ namespace Sistema.formHijos
             }
         }
         //
+
+        private void validacionCamposObligatorios(object sender, CancelEventArgs e)
+        {
+            TextBox txtSender = (TextBox)sender;
+            if (string.IsNullOrEmpty(txtSender.Text))
+            {
+
+                errorProvider.SetError(txtSender, "Campo obligatorio");
+            }
+            else
+            {
+
+                errorProvider.SetError(txtSender, null);
+            }
+
+        }
     }
 }
