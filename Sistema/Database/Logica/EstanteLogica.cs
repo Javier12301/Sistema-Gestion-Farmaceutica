@@ -121,5 +121,35 @@ namespace Sistema.Database.Logica
                 throw;
             }
         }
+
+        // Obtener nombres de estantes
+        public List<string> obtenerNombresEstantes()
+        {
+            List<string> nombresEstantes = new List<string> ();
+            try
+            {
+                using(SqlConnection conex = new SqlConnection())
+                {
+                    conex.ConnectionString = conexionDB.getInstance().getConnectionString();
+                    string query = "SELECT Nombre FROM Estantes";
+                    SqlCommand cmd = new SqlCommand(query, conex);
+                    conex.Open();
+
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string nombreEstante = reader.GetString(0);
+                            nombresEstantes.Add(nombreEstante);
+                        }
+                    }
+                }
+
+            }catch(SqlException ex)
+            {
+                throw;
+            }
+            return nombresEstantes;
+        }
     }
 }

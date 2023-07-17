@@ -188,6 +188,10 @@ namespace Sistema.formHijos
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Selecciona una fila para eliminar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
         private void btnEliminarG_MouseEnter(object sender, EventArgs e)

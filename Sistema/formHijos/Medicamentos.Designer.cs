@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pnlForm = new System.Windows.Forms.Panel();
+            this.gnaFiltros = new Guna.UI.WinForms.GunaGroupBox();
+            this.cmbGEstantes = new Guna.UI.WinForms.GunaCheckBox();
+            this.cmbGCategorias = new Guna.UI.WinForms.GunaCheckBox();
+            this.lblGFiltros = new Guna.UI.WinForms.GunaLabel();
+            this.cmbFilterEst = new System.Windows.Forms.ComboBox();
+            this.cmbFilteCat = new System.Windows.Forms.ComboBox();
             this.btnAgregarMedicamento = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -45,55 +48,112 @@
             this.dtaSecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3.SuspendLayout();
+            this.pnlForm.SuspendLayout();
+            this.gnaFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel3
+            // pnlForm
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.btnAgregarMedicamento);
-            this.panel3.Controls.Add(this.btnSearch);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.txtSearch);
-            this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(573, 299);
-            this.panel3.TabIndex = 9;
+            this.pnlForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.pnlForm.Controls.Add(this.gnaFiltros);
+            this.pnlForm.Controls.Add(this.cmbFilterEst);
+            this.pnlForm.Controls.Add(this.cmbFilteCat);
+            this.pnlForm.Controls.Add(this.btnAgregarMedicamento);
+            this.pnlForm.Controls.Add(this.btnSearch);
+            this.pnlForm.Controls.Add(this.label12);
+            this.pnlForm.Controls.Add(this.txtSearch);
+            this.pnlForm.Controls.Add(this.dataGridView1);
+            this.pnlForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlForm.Location = new System.Drawing.Point(0, 0);
+            this.pnlForm.Name = "pnlForm";
+            this.pnlForm.Size = new System.Drawing.Size(573, 299);
+            this.pnlForm.TabIndex = 9;
             // 
-            // comboBox2
+            // gnaFiltros
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(287, 42);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(91, 21);
-            this.comboBox2.TabIndex = 15;
-            this.comboBox2.Text = "Selec. Categoria";
+            this.gnaFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gnaFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.gnaFiltros.BaseColor = System.Drawing.Color.White;
+            this.gnaFiltros.BorderColor = System.Drawing.Color.Snow;
+            this.gnaFiltros.Controls.Add(this.cmbGEstantes);
+            this.gnaFiltros.Controls.Add(this.cmbGCategorias);
+            this.gnaFiltros.Controls.Add(this.lblGFiltros);
+            this.gnaFiltros.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.gnaFiltros.LineLeft = 10;
+            this.gnaFiltros.LineTop = 0;
+            this.gnaFiltros.Location = new System.Drawing.Point(381, 35);
+            this.gnaFiltros.Name = "gnaFiltros";
+            this.gnaFiltros.Size = new System.Drawing.Size(186, 31);
+            this.gnaFiltros.TabIndex = 9;
+            this.gnaFiltros.TextLocation = new System.Drawing.Point(10, 8);
             // 
-            // dateTimePicker1
+            // cmbGEstantes
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(384, 42);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(99, 20);
-            this.dateTimePicker1.TabIndex = 14;
+            this.cmbGEstantes.BaseColor = System.Drawing.Color.White;
+            this.cmbGEstantes.CheckedOffColor = System.Drawing.Color.Gray;
+            this.cmbGEstantes.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.cmbGEstantes.FillColor = System.Drawing.Color.White;
+            this.cmbGEstantes.Location = new System.Drawing.Point(117, 12);
+            this.cmbGEstantes.Name = "cmbGEstantes";
+            this.cmbGEstantes.Size = new System.Drawing.Size(74, 20);
+            this.cmbGEstantes.TabIndex = 11;
+            this.cmbGEstantes.Tag = "estantesTAG";
+            this.cmbGEstantes.Text = "Estantes";
+            this.cmbGEstantes.CheckedChanged += new System.EventHandler(this.cmbCheck_Changed);
             // 
-            // comboBox1
+            // cmbGCategorias
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(190, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(91, 21);
-            this.comboBox1.TabIndex = 13;
-            this.comboBox1.Text = "Selec. Estante";
+            this.cmbGCategorias.BaseColor = System.Drawing.Color.White;
+            this.cmbGCategorias.CheckedOffColor = System.Drawing.Color.Gray;
+            this.cmbGCategorias.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.cmbGCategorias.FillColor = System.Drawing.Color.White;
+            this.cmbGCategorias.Location = new System.Drawing.Point(13, 12);
+            this.cmbGCategorias.Name = "cmbGCategorias";
+            this.cmbGCategorias.Size = new System.Drawing.Size(85, 20);
+            this.cmbGCategorias.TabIndex = 10;
+            this.cmbGCategorias.Tag = "categoriasTAG";
+            this.cmbGCategorias.Text = "Categorias";
+            this.cmbGCategorias.CheckedChanged += new System.EventHandler(this.cmbCheck_Changed);
+            // 
+            // lblGFiltros
+            // 
+            this.lblGFiltros.AutoSize = true;
+            this.lblGFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.lblGFiltros.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGFiltros.Location = new System.Drawing.Point(78, 0);
+            this.lblGFiltros.Name = "lblGFiltros";
+            this.lblGFiltros.Size = new System.Drawing.Size(41, 15);
+            this.lblGFiltros.TabIndex = 9;
+            this.lblGFiltros.Text = "Filtros";
+            // 
+            // cmbFilterEst
+            // 
+            this.cmbFilterEst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFilterEst.DropDownHeight = 150;
+            this.cmbFilterEst.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilterEst.DropDownWidth = 120;
+            this.cmbFilterEst.FormattingEnabled = true;
+            this.cmbFilterEst.IntegralHeight = false;
+            this.cmbFilterEst.Items.AddRange(new object[] {
+            "Selecionar Estante."});
+            this.cmbFilterEst.Location = new System.Drawing.Point(287, 32);
+            this.cmbFilterEst.Name = "cmbFilterEst";
+            this.cmbFilterEst.Size = new System.Drawing.Size(91, 21);
+            this.cmbFilterEst.TabIndex = 4;
+            // 
+            // cmbFilteCat
+            // 
+            this.cmbFilteCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFilteCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilteCat.DropDownWidth = 120;
+            this.cmbFilteCat.FormattingEnabled = true;
+            this.cmbFilteCat.Items.AddRange(new object[] {
+            "Seleccionar categoria."});
+            this.cmbFilteCat.Location = new System.Drawing.Point(190, 32);
+            this.cmbFilteCat.Name = "cmbFilteCat";
+            this.cmbFilteCat.Size = new System.Drawing.Size(91, 21);
+            this.cmbFilteCat.TabIndex = 3;
             // 
             // btnAgregarMedicamento
             // 
@@ -104,7 +164,7 @@
             this.btnAgregarMedicamento.Location = new System.Drawing.Point(7, 32);
             this.btnAgregarMedicamento.Name = "btnAgregarMedicamento";
             this.btnAgregarMedicamento.Size = new System.Drawing.Size(145, 31);
-            this.btnAgregarMedicamento.TabIndex = 12;
+            this.btnAgregarMedicamento.TabIndex = 1;
             this.btnAgregarMedicamento.Text = "Agregar Medicamento";
             this.btnAgregarMedicamento.UseVisualStyleBackColor = false;
             this.btnAgregarMedicamento.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
@@ -112,10 +172,10 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(499, 14);
+            this.btnSearch.Location = new System.Drawing.Point(499, 6);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(71, 25);
-            this.btnSearch.TabIndex = 11;
+            this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -138,10 +198,10 @@
             this.txtSearch.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(190, 14);
+            this.txtSearch.Location = new System.Drawing.Point(190, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(293, 26);
-            this.txtSearch.TabIndex = 10;
+            this.txtSearch.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -162,7 +222,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(7, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(559, 226);
-            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.TabIndex = 7;
             // 
             // dtaLote
             // 
@@ -209,13 +269,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 299);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Medicamentos";
             this.Tag = "Medicamentos";
             this.Text = "SGF";
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.Load += new System.EventHandler(this.Medicamentos_Load);
+            this.pnlForm.ResumeLayout(false);
+            this.pnlForm.PerformLayout();
+            this.gnaFiltros.ResumeLayout(false);
+            this.gnaFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -223,10 +286,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel pnlForm;
+        private System.Windows.Forms.ComboBox cmbFilterEst;
+        private System.Windows.Forms.ComboBox cmbFilteCat;
         private System.Windows.Forms.Button btnAgregarMedicamento;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label12;
@@ -240,5 +302,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaSecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaSector;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private Guna.UI.WinForms.GunaGroupBox gnaFiltros;
+        private Guna.UI.WinForms.GunaLabel lblGFiltros;
+        private Guna.UI.WinForms.GunaCheckBox cmbGEstantes;
+        private Guna.UI.WinForms.GunaCheckBox cmbGCategorias;
     }
 }

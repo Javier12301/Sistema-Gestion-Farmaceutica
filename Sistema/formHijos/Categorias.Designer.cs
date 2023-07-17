@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categorias));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtNombreCat = new Guna.UI.WinForms.GunaLineTextBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
@@ -39,15 +41,15 @@
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlList = new System.Windows.Forms.Panel();
+            this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
+            this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.lblListE = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dtaViewCategoria = new System.Windows.Forms.DataGridView();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.dtaIDCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaNombreCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaDescripcionCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.pnlButton.SuspendLayout();
@@ -193,6 +195,64 @@
             this.pnlList.Size = new System.Drawing.Size(286, 325);
             this.pnlList.TabIndex = 4;
             // 
+            // btnEliminarG
+            // 
+            this.btnEliminarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarG.Animated = true;
+            this.btnEliminarG.AnimationHoverSpeed = 0.07F;
+            this.btnEliminarG.AnimationSpeed = 0.03F;
+            this.btnEliminarG.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(38)))), ((int)(((byte)(75)))));
+            this.btnEliminarG.BorderColor = System.Drawing.Color.Black;
+            this.btnEliminarG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEliminarG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEliminarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEliminarG.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarG.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarG.Image")));
+            this.btnEliminarG.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEliminarG.ImageSize = new System.Drawing.Size(18, 18);
+            this.btnEliminarG.Location = new System.Drawing.Point(247, 2);
+            this.btnEliminarG.Name = "btnEliminarG";
+            this.btnEliminarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(34)))), ((int)(((byte)(67)))));
+            this.btnEliminarG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEliminarG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEliminarG.OnHoverImage = null;
+            this.btnEliminarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(30)))), ((int)(((byte)(59)))));
+            this.btnEliminarG.Radius = 5;
+            this.btnEliminarG.Size = new System.Drawing.Size(34, 25);
+            this.btnEliminarG.TabIndex = 21;
+            this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
+            this.btnEliminarG.MouseEnter += new System.EventHandler(this.btnEliminarG_MouseEnter);
+            this.btnEliminarG.MouseLeave += new System.EventHandler(this.btnEliminarG_MouseLeave);
+            // 
+            // btnGuardarG
+            // 
+            this.btnGuardarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarG.Animated = true;
+            this.btnGuardarG.AnimationHoverSpeed = 0.07F;
+            this.btnGuardarG.AnimationSpeed = 0.03F;
+            this.btnGuardarG.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(131)))), ((int)(((byte)(173)))));
+            this.btnGuardarG.BorderColor = System.Drawing.Color.Black;
+            this.btnGuardarG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGuardarG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnGuardarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnGuardarG.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarG.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarG.Image")));
+            this.btnGuardarG.ImageSize = new System.Drawing.Size(15, 15);
+            this.btnGuardarG.Location = new System.Drawing.Point(152, 2);
+            this.btnGuardarG.Name = "btnGuardarG";
+            this.btnGuardarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(170)))), ((int)(((byte)(224)))));
+            this.btnGuardarG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnGuardarG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnGuardarG.OnHoverImage = null;
+            this.btnGuardarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(131)))), ((int)(((byte)(173)))));
+            this.btnGuardarG.Radius = 8;
+            this.btnGuardarG.Size = new System.Drawing.Size(93, 25);
+            this.btnGuardarG.TabIndex = 11;
+            this.btnGuardarG.Text = "Guardar";
+            this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
+            // 
             // lblListE
             // 
             this.lblListE.AutoSize = true;
@@ -229,53 +289,31 @@
             this.dtaIDCategoria,
             this.dtaNombreCategoria,
             this.dtaDescripcionCategoria});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtaViewCategoria.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dtaViewCategoria.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dtaViewCategoria.Location = new System.Drawing.Point(2, 36);
             this.dtaViewCategoria.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
             this.dtaViewCategoria.Name = "dtaViewCategoria";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaViewCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtaViewCategoria.Size = new System.Drawing.Size(279, 282);
             this.dtaViewCategoria.TabIndex = 5;
             this.dtaViewCategoria.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewCategoria_CellClick);
             this.dtaViewCategoria.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewCategoria_CellEndEdit);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.lblTitle.Location = new System.Drawing.Point(2, 2);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(113, 39);
-            this.lblTitle.TabIndex = 10;
-            this.lblTitle.Text = "Categorías";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnGuardarG
-            // 
-            this.btnGuardarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardarG.Animated = true;
-            this.btnGuardarG.AnimationHoverSpeed = 0.07F;
-            this.btnGuardarG.AnimationSpeed = 0.03F;
-            this.btnGuardarG.BackColor = System.Drawing.Color.Transparent;
-            this.btnGuardarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(131)))), ((int)(((byte)(173)))));
-            this.btnGuardarG.BorderColor = System.Drawing.Color.Black;
-            this.btnGuardarG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGuardarG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnGuardarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnGuardarG.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarG.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarG.Image")));
-            this.btnGuardarG.ImageSize = new System.Drawing.Size(15, 15);
-            this.btnGuardarG.Location = new System.Drawing.Point(152, 2);
-            this.btnGuardarG.Name = "btnGuardarG";
-            this.btnGuardarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(170)))), ((int)(((byte)(224)))));
-            this.btnGuardarG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnGuardarG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnGuardarG.OnHoverImage = null;
-            this.btnGuardarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(131)))), ((int)(((byte)(173)))));
-            this.btnGuardarG.Radius = 8;
-            this.btnGuardarG.Size = new System.Drawing.Size(93, 25);
-            this.btnGuardarG.TabIndex = 11;
-            this.btnGuardarG.Text = "Guardar";
-            this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
             // 
             // dtaIDCategoria
             // 
@@ -296,35 +334,17 @@
             this.dtaDescripcionCategoria.HeaderText = "Descripción";
             this.dtaDescripcionCategoria.Name = "dtaDescripcionCategoria";
             // 
-            // btnEliminarG
+            // lblTitle
             // 
-            this.btnEliminarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminarG.Animated = true;
-            this.btnEliminarG.AnimationHoverSpeed = 0.07F;
-            this.btnEliminarG.AnimationSpeed = 0.03F;
-            this.btnEliminarG.BackColor = System.Drawing.Color.Transparent;
-            this.btnEliminarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(38)))), ((int)(((byte)(75)))));
-            this.btnEliminarG.BorderColor = System.Drawing.Color.Black;
-            this.btnEliminarG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEliminarG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEliminarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnEliminarG.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarG.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarG.Image")));
-            this.btnEliminarG.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnEliminarG.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnEliminarG.Location = new System.Drawing.Point(247, 2);
-            this.btnEliminarG.Name = "btnEliminarG";
-            this.btnEliminarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(34)))), ((int)(((byte)(67)))));
-            this.btnEliminarG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEliminarG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEliminarG.OnHoverImage = null;
-            this.btnEliminarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(30)))), ((int)(((byte)(59)))));
-            this.btnEliminarG.Radius = 5;
-            this.btnEliminarG.Size = new System.Drawing.Size(34, 25);
-            this.btnEliminarG.TabIndex = 21;
-            this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
-            this.btnEliminarG.MouseEnter += new System.EventHandler(this.btnEliminarG_MouseEnter);
-            this.btnEliminarG.MouseLeave += new System.EventHandler(this.btnEliminarG_MouseLeave);
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
+            this.lblTitle.Location = new System.Drawing.Point(2, 2);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(113, 39);
+            this.lblTitle.TabIndex = 10;
+            this.lblTitle.Text = "Categorías";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Categorias
             // 

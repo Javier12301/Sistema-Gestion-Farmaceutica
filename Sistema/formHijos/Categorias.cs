@@ -224,6 +224,10 @@ namespace Sistema.formHijos
 
                 }
             }
+            else
+            {
+                MessageBox.Show("Selecciona una fila para eliminar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
     }
