@@ -105,7 +105,7 @@ namespace Sistema
         //comprobara cualquier campo de texto vacio
         public bool verificarTextboxG(GunaLineTextBox txtbox)
         {
-            if (!string.IsNullOrEmpty(txtbox.Text))
+            if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
                 
                 //No está vacio
@@ -123,7 +123,7 @@ namespace Sistema
         public bool verificarTextboxT(TextBoxBase txtbox, ErrorProvider errorActivador)
         {
             errorActivador.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            if (!string.IsNullOrEmpty(txtbox.Text))
+            if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
                 //No está vacio
                 

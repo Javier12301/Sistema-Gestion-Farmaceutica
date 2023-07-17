@@ -79,7 +79,7 @@ namespace Sistema.formHijos
         private void validacionCamposObligatorios(object sender, CancelEventArgs e)
         {
             TextBox txtSender = (TextBox)sender;
-            if(string.IsNullOrEmpty(txtSender.Text))
+            if(string.IsNullOrWhiteSpace(txtSender.Text))
             {
                 
                 errorProvider.SetError(txtSender, "Campo obligatorio");

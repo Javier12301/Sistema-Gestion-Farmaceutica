@@ -52,7 +52,7 @@ namespace Sistema.formHijos
         private void validacionCamposObligatorios(object sender, CancelEventArgs e)
         {
             TextBox txtSender = (TextBox)sender;
-            if (string.IsNullOrEmpty(txtSender.Text))
+            if (string.IsNullOrWhiteSpace(txtSender.Text))
             {
                 errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
 
@@ -84,7 +84,7 @@ namespace Sistema.formHijos
             //opcional
             bool txtBoolMail = true;
             //En caso de que el farmaceutico desee agregar el correo electronico del cliente, se deberá verificar que sea un correo valido
-            if (!string.IsNullOrEmpty(txtMailCliente.Text))
+            if (!string.IsNullOrWhiteSpace(txtMailCliente.Text))
             {
                 txtBoolMail = controladora.verificarCorreoT(txtMailCliente, errorProvider);
                 

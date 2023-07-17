@@ -37,12 +37,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtaLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaNameMedicamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNombreCat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaSecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -150,17 +151,23 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtaLote,
             this.dtaNameMedicamento,
             this.Lote,
-            this.dtaLote,
+            this.dtaNumEstante,
+            this.dtaNombreCat,
             this.dtaSecto,
             this.dtaSector,
-            this.dtaNumEstante,
             this.Column1});
             this.dataGridView1.Location = new System.Drawing.Point(7, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(559, 226);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // dtaLote
+            // 
+            this.dtaLote.HeaderText = "Lote";
+            this.dtaLote.Name = "dtaLote";
             // 
             // dtaNameMedicamento
             // 
@@ -172,10 +179,15 @@
             this.Lote.HeaderText = "Cantidad";
             this.Lote.Name = "Lote";
             // 
-            // dtaLote
+            // dtaNumEstante
             // 
-            this.dtaLote.HeaderText = "Lote";
-            this.dtaLote.Name = "dtaLote";
+            this.dtaNumEstante.HeaderText = "Vto.";
+            this.dtaNumEstante.Name = "dtaNumEstante";
+            // 
+            // dtaNombreCat
+            // 
+            this.dtaNombreCat.HeaderText = "Categoría";
+            this.dtaNombreCat.Name = "dtaNombreCat";
             // 
             // dtaSecto
             // 
@@ -186,11 +198,6 @@
             // 
             this.dtaSector.HeaderText = "Sector";
             this.dtaSector.Name = "dtaSector";
-            // 
-            // dtaNumEstante
-            // 
-            this.dtaNumEstante.HeaderText = "Vto.";
-            this.dtaNumEstante.Name = "dtaNumEstante";
             // 
             // Column1
             // 
@@ -225,12 +232,13 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaLote;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaNameMedicamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaLote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreCat;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaSecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtaSector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

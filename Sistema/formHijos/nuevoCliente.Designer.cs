@@ -490,6 +490,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "nuevoCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Cliente";
             this.Load += new System.EventHandler(this.nuevoCliente_Load);
             this.pnlControl.ResumeLayout(false);

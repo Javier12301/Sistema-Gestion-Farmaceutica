@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema;
 using Sistema.Controles;
+using Sistema.Database;
 
 namespace Sistema
 {
@@ -112,6 +114,7 @@ namespace Sistema
                 bool verificar = controladora.verificarCredenciales(txtUser, txtPassword);
                 if (verificar)
                 {
+                    
                     formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
                     this.Hide();
                     if (formHijosPrincipalFORM.ShowDialog() == DialogResult.Cancel)
@@ -138,6 +141,9 @@ namespace Sistema
             btnForgotPassword.ForeColor = btnForgotPasswordLeave;
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -64,3 +64,11 @@ C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.csproj.CopyComplete
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.exe
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.pdb
 C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\FontAwesome.Sharp.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\EntityFramework.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\EntityFramework.SqlServer.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\System.Data.SQLite.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\EntityFramework.xml
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\EntityFramework.SqlServer.xml
+C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\System.Data.SQLite.xml
