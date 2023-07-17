@@ -82,12 +82,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controles\Controladora.cs" />
-    <Compile Include="Controles\ControladoraDB.cs" />
     <Compile Include="Controles\PaletaColores.cs" />
     <Compile Include="Controles\Shortcuts.cs" />
     <Compile Include="Database\conexionDB.cs" />
     <Compile Include="Database\Logica\CategoriaLogica.cs" />
+    <Compile Include="Database\Logica\EstanteLogica.cs" />
     <Compile Include="Database\Modelo\Categoria.cs" />
+    <Compile Include="Database\Modelo\Estante.cs" />
     <Compile Include="formHijos\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>

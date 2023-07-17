@@ -47,29 +47,32 @@ namespace Sistema.formHijos
             // obtener las categorias desde la base de datos
             try
             {
-            List<Categoria> listaCategorias = categoriaLogica.obtenerCategoria();
-            bindingSourceCategorias = new BindingSource(listaCategorias, null);
+                List<Categoria> listaCategorias = categoriaLogica.obtenerCategoria();
+                bindingSourceCategorias = new BindingSource(listaCategorias, null);
 
-            // cargar los datos en el datagridview
-            dtaIDCategoria.DataPropertyName = "Id_Categoria";
-            dtaNombreCategoria.DataPropertyName = "Nombre";
-            dtaDescripcionCategoria.DataPropertyName = "Descripcion";
-            // Se asigna el binding source al datagridview
-            dtaViewCategoria.DataSource = bindingSourceCategorias;
+                // cargar los datos en el datagridview
+                dtaIDCategoria.DataPropertyName = "CategoriaID";
+                dtaNombreCategoria.DataPropertyName = "Nombre";
+                dtaDescripcionCategoria.DataPropertyName = "Descripcion";
+                // Se asigna el binding source al datagridview
+                dtaViewCategoria.DataSource = bindingSourceCategorias;
+                controladora.VerificarDataGridViewVacio(dtaViewCategoria, "dtaIDCategoria");
 
-            }catch(SqlException e)
+            }
+            catch (SqlException e)
             {
                 throw;
             }
         }
-        // // // //
+
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             bool txtBoolNombreCategoria = controladora.verificarTextboxG(txtNombreCat);
             if (txtBoolNombreCategoria)
             {
-                // Se crea una instancia de la clase categoria
+                // Se utiliza la instancia de la clase categoria
                 categoria.Nombre = txtNombreCat.Text;
                 categoria.Descripcion = txtDescripcionCat.Text;
 
@@ -89,8 +92,9 @@ namespace Sistema.formHijos
                     {
                         MessageBox.Show("No se pudo agregar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                      //cargarDatosCategorias();
-                }catch(SqlException ex)
+                    //cargarDatosCategorias();
+                }
+                catch (SqlException ex)
                 {
                     MessageBox.Show("Ocurrio un error al agregar la categoría. " + ex.Message, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -110,13 +114,13 @@ namespace Sistema.formHijos
         // Modificación de celdas
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in modifiedRows)
+            foreach (DataGridViewRow row in modifiedRows)
             {
                 int id = Convert.ToInt32(row.Cells["dtaIDCategoria"].Value);
                 string nombre = row.Cells["dtaNombreCategoria"].Value.ToString();
                 string descripcion = row.Cells["dtaDescripcionCategoria"].Value.ToString();
-           
-                categoria.Id_Categoria = id;
+
+                categoria.CategoriaID = id;
                 categoria.Nombre = nombre;
                 categoria.Descripcion = descripcion;
                 try
@@ -133,7 +137,8 @@ namespace Sistema.formHijos
                         MessageBox.Show("No se pudo modificar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                } catch (SqlException ex)
+                }
+                catch (SqlException ex)
                 {
                     throw;
                 }
@@ -164,7 +169,7 @@ namespace Sistema.formHijos
         private void dtaViewCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // habilitar boton eliminar
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 btnEliminarG.Enabled = true;
             }
@@ -173,7 +178,7 @@ namespace Sistema.formHijos
                 btnEliminarG.Enabled = false;
             }
         }
-   
+
         private void btnEliminarG_MouseEnter(object sender, EventArgs e)
         {
             btnEliminarG.Radius = 12;
@@ -187,10 +192,10 @@ namespace Sistema.formHijos
         private void btnEliminarG_Click(object sender, EventArgs e)
         {
             // verificar si se selecciono una fila
-            if(dtaViewCategoria.SelectedRows.Count > 0)
+            if (dtaViewCategoria.SelectedRows.Count > 0)
             {
                 // Obtenemos el id de la fila seleccionada
-                int id = Convert.ToInt32(dtaViewCategoria.CurrentRow.Cells["dtaIDCategoria"].Value);
+                int _id = Convert.ToInt32(dtaViewCategoria.CurrentRow.Cells["dtaIDCategoria"].Value);
                 // Se crea un cuadro de dialogo para confirmar la eliminacion
                 DialogResult resultado = MessageBox.Show("¿Estás seguro de eliminar la categoría?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resultado == DialogResult.Yes)
@@ -198,7 +203,7 @@ namespace Sistema.formHijos
                     // Eliminar la categoria de la base de datos
                     try
                     {
-                        bool resultadoEliminar = categoriaLogica.eliminarCategoria(id);
+                        bool resultadoEliminar = categoriaLogica.eliminarCategoria(_id);
                         if (resultadoEliminar)
                         {
                             // Eliminar la fila del datagridview
@@ -219,7 +224,7 @@ namespace Sistema.formHijos
 
                 }
             }
-            MessageBox.Show(dtaViewCategoria.SelectedRows.Count.ToString());
+
         }
     }
 }

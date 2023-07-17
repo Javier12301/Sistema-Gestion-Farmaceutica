@@ -269,7 +269,7 @@
             this.lblNumEstantes.AutoSize = true;
             this.lblNumEstantes.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblNumEstantes.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblNumEstantes.Location = new System.Drawing.Point(43, 26);
+            this.lblNumEstantes.Location = new System.Drawing.Point(43, 24);
             this.lblNumEstantes.Name = "lblNumEstantes";
             this.lblNumEstantes.Size = new System.Drawing.Size(20, 23);
             this.lblNumEstantes.TabIndex = 17;
@@ -338,7 +338,7 @@
             this.lblNumMedicamentos.AutoSize = true;
             this.lblNumMedicamentos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblNumMedicamentos.ForeColor = System.Drawing.Color.Teal;
-            this.lblNumMedicamentos.Location = new System.Drawing.Point(43, 26);
+            this.lblNumMedicamentos.Location = new System.Drawing.Point(43, 24);
             this.lblNumMedicamentos.Name = "lblNumMedicamentos";
             this.lblNumMedicamentos.Size = new System.Drawing.Size(20, 23);
             this.lblNumMedicamentos.TabIndex = 23;
@@ -407,7 +407,7 @@
             this.lblNumCategorias.AutoSize = true;
             this.lblNumCategorias.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblNumCategorias.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblNumCategorias.Location = new System.Drawing.Point(44, 26);
+            this.lblNumCategorias.Location = new System.Drawing.Point(44, 24);
             this.lblNumCategorias.Name = "lblNumCategorias";
             this.lblNumCategorias.Size = new System.Drawing.Size(20, 23);
             this.lblNumCategorias.TabIndex = 20;
@@ -437,6 +437,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Principal";
             this.Text = "Principal";
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

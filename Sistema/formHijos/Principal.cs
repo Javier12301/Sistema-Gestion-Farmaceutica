@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema.Controles;
+using Sistema.Database.Logica;
 
 namespace Sistema.formHijos
 {
@@ -15,9 +16,17 @@ namespace Sistema.formHijos
     public partial class Principal : Form
     {
         Shortcuts shortcuts = new Shortcuts();
+        EstanteLogica estanteLogica = new EstanteLogica();
+        CategoriaLogica categoriaLogica = new CategoriaLogica();
         public Principal()
         {
             InitializeComponent();
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            lblNumEstantes.Text = estanteLogica.obtenerCantidadEstantes().ToString();
+            lblNumCategorias.Text = categoriaLogica.obtenerCantidadCategorias().ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -29,5 +38,7 @@ namespace Sistema.formHijos
         {
             shortcuts.LimpiarTextoHastaelEspacio(txtBuscar, e);
         }
+
+       
     }
 }

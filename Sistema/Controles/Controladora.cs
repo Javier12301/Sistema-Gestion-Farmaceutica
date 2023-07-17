@@ -21,6 +21,32 @@ namespace Sistema
             System.Diagnostics.Process.Start("mailto:javierramirez1230123@gmail.com");
         }
 
+        // Solo número e ignora espacios y permite borrado en textbox
+        public void soloNumeros(KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+       
+
+
+
+
         //Se contralará toda las funciones del ojo de contraseña
         public void mostrarPassword(GunaLineTextBox txtPassword)
         {
@@ -137,7 +163,27 @@ namespace Sistema
                 return false;
             }
         }
-         
-        
+
+        // controladora de DataGridView
+        public void VerificarDataGridViewVacio(DataGridView _dtagridview, string IDColumn)
+        {
+            if (_dtagridview.Rows.Count <= 1)
+            {
+                if (_dtagridview.Rows.Count == 0 || string.IsNullOrEmpty(_dtagridview.Rows[0].Cells[IDColumn].Value?.ToString()))
+                {
+                    _dtagridview.Enabled = false;
+                }
+                else
+                {
+                    _dtagridview.Enabled = true;
+                }
+            }
+            else
+            {
+                _dtagridview.Enabled = true;
+            }
+        }
+
+
     }
 }

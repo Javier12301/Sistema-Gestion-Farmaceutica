@@ -39,9 +39,9 @@ namespace Sistema.Database.Logica
                 conex.ConnectionString = conexionDB.getInstance().getConnectionString();
                 conex.Open();
 
-                string query = "UPDATE Categorias SET Nombre = @Nombre, Descripcion = @Descripcion WHERE CategoriaID = @Id_Categoria";
+                string query = "UPDATE Categorias SET Nombre = @Nombre, Descripcion = @Descripcion WHERE CategoriaID = @CategoriaID";
                 SqlCommand cmd = new SqlCommand(query, conex);
-                cmd.Parameters.AddWithValue("@Id_Categoria", categoria.Id_Categoria);
+                cmd.Parameters.AddWithValue("@Id_Categoria", categoria.CategoriaID);
                 cmd.Parameters.AddWithValue("@Nombre", categoria.Nombre);
                 cmd.Parameters.AddWithValue("@Descripcion", categoria.Descripcion);
 
@@ -89,7 +89,7 @@ namespace Sistema.Database.Logica
                     while (reader.Read())
                     {
                         Categoria categoria = new Categoria();
-                        categoria.Id_Categoria = reader.GetInt32(0);
+                        categoria.CategoriaID = reader.GetInt32(0);
                         categoria.Nombre = reader.GetString(1);
                         categoria.Descripcion = reader.GetString(2);
 
@@ -99,10 +99,29 @@ namespace Sistema.Database.Logica
                 }              
             }
             return categorias;
-
-
         }
 
+        // Obtener cantidad total de categorias
+        public int obtenerCantidadCategorias()
+        {
+            try
+            {
+                using(SqlConnection conex = new SqlConnection())
+                {
+                    conex.ConnectionString = conexionDB.getInstance().getConnectionString();
+                    string query = "SELECT COUNT(*) FROM Categorias";
+                    SqlCommand cmd = new SqlCommand(query, conex);
+                    conex.Open();
+
+                    // Ejecutamos el comando y obtenemos el resultado de la consulta
+                    return (int)cmd.ExecuteScalar();
+                }
+
+            }catch(SqlException ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

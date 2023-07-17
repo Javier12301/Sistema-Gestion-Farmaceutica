@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estantes));
             this.lblCategorias = new System.Windows.Forms.Label();
             this.pnlList = new System.Windows.Forms.Panel();
             this.lblListE = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dtaNombreEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaSectorEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaViewEstante = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSectorE = new Guna.UI.WinForms.GunaLineTextBox();
             this.txtNumE = new Guna.UI.WinForms.GunaLineTextBox();
@@ -47,9 +45,15 @@
             this.lblSectorE = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
+            this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
+            this.dtaIDEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNombreEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaSectorEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtaViewEstante)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.pnlButton.SuspendLayout();
@@ -74,9 +78,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.pnlList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlList.Controls.Add(this.btnGuardarG);
+            this.pnlList.Controls.Add(this.btnEliminarG);
             this.pnlList.Controls.Add(this.lblListE);
             this.pnlList.Controls.Add(this.pictureBox1);
-            this.pnlList.Controls.Add(this.dataGridView1);
+            this.pnlList.Controls.Add(this.dtaViewEstante);
             this.pnlList.Location = new System.Drawing.Point(299, 6);
             this.pnlList.Name = "pnlList";
             this.pnlList.Size = new System.Drawing.Size(286, 325);
@@ -107,38 +113,25 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "txtUser";
             // 
-            // dataGridView1
+            // dtaViewEstante
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtaViewEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtaViewEstante.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtaViewEstante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtaViewEstante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtaIDEstante,
             this.dtaNombreEstante,
             this.dtaNumEstante,
             this.dtaSectorEstante});
-            this.dataGridView1.Location = new System.Drawing.Point(2, 36);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(279, 282);
-            this.dataGridView1.TabIndex = 21;
-            this.dataGridView1.TabStop = false;
-            // 
-            // dtaNombreEstante
-            // 
-            this.dtaNombreEstante.HeaderText = "Nombre";
-            this.dtaNombreEstante.Name = "dtaNombreEstante";
-            // 
-            // dtaNumEstante
-            // 
-            this.dtaNumEstante.HeaderText = "Núm Est.";
-            this.dtaNumEstante.Name = "dtaNumEstante";
-            // 
-            // dtaSectorEstante
-            // 
-            this.dtaSectorEstante.HeaderText = "Sector";
-            this.dtaSectorEstante.Name = "dtaSectorEstante";
+            this.dtaViewEstante.Location = new System.Drawing.Point(2, 36);
+            this.dtaViewEstante.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
+            this.dtaViewEstante.Name = "dtaViewEstante";
+            this.dtaViewEstante.Size = new System.Drawing.Size(279, 282);
+            this.dtaViewEstante.TabIndex = 21;
+            this.dtaViewEstante.TabStop = false;
+            this.dtaViewEstante.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewEstante_CellEndEdit);
             // 
             // panel1
             // 
@@ -189,6 +182,7 @@
             this.txtNumE.Size = new System.Drawing.Size(269, 26);
             this.txtNumE.TabIndex = 2;
             this.txtNumE.Enter += new System.EventHandler(this.txtNumE_Enter);
+            this.txtNumE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumE_KeyPress);
             // 
             // txtNombreE
             // 
@@ -291,6 +285,88 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // btnEliminarG
+            // 
+            this.btnEliminarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarG.Animated = true;
+            this.btnEliminarG.AnimationHoverSpeed = 0.07F;
+            this.btnEliminarG.AnimationSpeed = 0.03F;
+            this.btnEliminarG.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(38)))), ((int)(((byte)(75)))));
+            this.btnEliminarG.BorderColor = System.Drawing.Color.Black;
+            this.btnEliminarG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEliminarG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEliminarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEliminarG.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarG.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarG.Image")));
+            this.btnEliminarG.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEliminarG.ImageSize = new System.Drawing.Size(18, 18);
+            this.btnEliminarG.Location = new System.Drawing.Point(247, 2);
+            this.btnEliminarG.Name = "btnEliminarG";
+            this.btnEliminarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(34)))), ((int)(((byte)(67)))));
+            this.btnEliminarG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEliminarG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEliminarG.OnHoverImage = null;
+            this.btnEliminarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(30)))), ((int)(((byte)(59)))));
+            this.btnEliminarG.Radius = 5;
+            this.btnEliminarG.Size = new System.Drawing.Size(34, 25);
+            this.btnEliminarG.TabIndex = 22;
+            this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
+            this.btnEliminarG.MouseEnter += new System.EventHandler(this.btnEliminarG_MouseEnter);
+            this.btnEliminarG.MouseLeave += new System.EventHandler(this.btnEliminarG_MouseLeave);
+            // 
+            // btnGuardarG
+            // 
+            this.btnGuardarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarG.Animated = true;
+            this.btnGuardarG.AnimationHoverSpeed = 0.07F;
+            this.btnGuardarG.AnimationSpeed = 0.03F;
+            this.btnGuardarG.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(131)))), ((int)(((byte)(173)))));
+            this.btnGuardarG.BorderColor = System.Drawing.Color.Black;
+            this.btnGuardarG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGuardarG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnGuardarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnGuardarG.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarG.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarG.Image")));
+            this.btnGuardarG.ImageSize = new System.Drawing.Size(15, 15);
+            this.btnGuardarG.Location = new System.Drawing.Point(152, 2);
+            this.btnGuardarG.Name = "btnGuardarG";
+            this.btnGuardarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(170)))), ((int)(((byte)(224)))));
+            this.btnGuardarG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnGuardarG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnGuardarG.OnHoverImage = null;
+            this.btnGuardarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(131)))), ((int)(((byte)(173)))));
+            this.btnGuardarG.Radius = 8;
+            this.btnGuardarG.Size = new System.Drawing.Size(93, 25);
+            this.btnGuardarG.TabIndex = 23;
+            this.btnGuardarG.Text = "Guardar";
+            this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
+            // 
+            // dtaIDEstante
+            // 
+            this.dtaIDEstante.FillWeight = 54.82233F;
+            this.dtaIDEstante.HeaderText = "ID";
+            this.dtaIDEstante.Name = "dtaIDEstante";
+            // 
+            // dtaNombreEstante
+            // 
+            this.dtaNombreEstante.FillWeight = 115.0592F;
+            this.dtaNombreEstante.HeaderText = "Nombre";
+            this.dtaNombreEstante.Name = "dtaNombreEstante";
+            // 
+            // dtaNumEstante
+            // 
+            this.dtaNumEstante.FillWeight = 115.0592F;
+            this.dtaNumEstante.HeaderText = "Núm Est.";
+            this.dtaNumEstante.Name = "dtaNumEstante";
+            // 
+            // dtaSectorEstante
+            // 
+            this.dtaSectorEstante.FillWeight = 115.0592F;
+            this.dtaSectorEstante.HeaderText = "Sector";
+            this.dtaSectorEstante.Name = "dtaSectorEstante";
+            // 
             // Estantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,10 +379,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Estantes";
             this.Text = "Estantes";
+            this.Load += new System.EventHandler(this.Estantes_Load);
             this.pnlList.ResumeLayout(false);
             this.pnlList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtaViewEstante)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).EndInit();
@@ -321,7 +398,7 @@
         private System.Windows.Forms.Panel pnlList;
         private System.Windows.Forms.Label lblListE;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtaViewEstante;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitlePnl;
         private System.Windows.Forms.PictureBox pctLineSeparator;
@@ -330,11 +407,14 @@
         private System.Windows.Forms.Panel pnlButton;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label lblSectorE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreEstante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSectorEstante;
         private Guna.UI.WinForms.GunaLineTextBox txtNombreE;
         private Guna.UI.WinForms.GunaLineTextBox txtSectorE;
         private Guna.UI.WinForms.GunaLineTextBox txtNumE;
+        private Guna.UI.WinForms.GunaButton btnEliminarG;
+        private Guna.UI.WinForms.GunaButton btnGuardarG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaIDEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSectorEstante;
     }
 }

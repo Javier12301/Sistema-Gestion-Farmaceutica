@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sistema.Database.Modelo
 {
-    public class Categoria
+    public class Estante
     {
-        public int CategoriaID { get; set; }
+        public int EstanteID { get; set; }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
+        public int Num_Estante { get; set; }
+        public string Sector { get; set; }
     }
 }

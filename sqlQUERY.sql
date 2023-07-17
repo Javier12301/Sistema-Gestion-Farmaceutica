@@ -13,6 +13,9 @@ CREATE TABLE Categorias(
 	Descripcion NVARCHAR(255) NOT NULL
 );
 
+SELECT * FROM Medicamentos
+
+
 -- Crear Tabla LOTE
 CREATE TABLE Lotes(
 	LoteID INT IDENTITY(1,1) PRIMARY KEY,
@@ -29,7 +32,8 @@ CREATE TABLE Medicamentos(
 	PRIMARY KEY (LoteID)
 );
 
-SELECT * FROM Categorias
+
+SELECT * FROM Estantes;
 
 UPDATE Categorias 
 SET Nombre = 'probandomodi1', Descripcion = 'xcvxzv' 
