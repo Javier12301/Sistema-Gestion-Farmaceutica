@@ -59,7 +59,7 @@ namespace Sistema.formHijos
                 controladora.VerificarDataGridViewVacio(dtaViewCategoria, "dtaIDCategoria");
 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 throw;
             }
@@ -138,7 +138,7 @@ namespace Sistema.formHijos
                     }
 
                 }
-                catch (SqlException ex)
+                catch (SqlException)
                 {
                     throw;
                 }
@@ -217,7 +217,7 @@ namespace Sistema.formHijos
                             MessageBox.Show("No se pudo eliminar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (SqlException ex)
+                    catch (SqlException)
                     {
                         throw;
                     }

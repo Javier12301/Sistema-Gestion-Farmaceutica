@@ -18,6 +18,7 @@ namespace Sistema.formHijos
         Shortcuts shortcuts = new Shortcuts();
         EstanteLogica estanteLogica = new EstanteLogica();
         CategoriaLogica categoriaLogica = new CategoriaLogica();
+        MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
         public Principal()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace Sistema.formHijos
         {
             lblNumEstantes.Text = estanteLogica.obtenerCantidadEstantes().ToString();
             lblNumCategorias.Text = categoriaLogica.obtenerCantidadCategorias().ToString();
+            lblNumMedicamentos.Text = medicamentoLogica.obtenerCantidadMedicamentos().ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

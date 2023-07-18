@@ -55,7 +55,7 @@ namespace Sistema.formHijos
                 dtaViewEstante.DataSource = bindingSourceEstantes;
                 controladora.VerificarDataGridViewVacio(dtaViewEstante, "dtaIDEstante");
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 throw;
             }
@@ -93,7 +93,7 @@ namespace Sistema.formHijos
                         MessageBox.Show("No se pudo agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                }catch(SqlException ex)
+                }catch(SqlException)
                 {
                    MessageBox.Show("Ocurrio un error al agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -133,7 +133,7 @@ namespace Sistema.formHijos
                         MessageBox.Show("No se pudo modificar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                }catch(SqlException ex)
+                }catch(SqlException)
                 {
                     throw;
                 }
@@ -182,7 +182,7 @@ namespace Sistema.formHijos
                         }
 
 
-                    }catch(SqlException ex)
+                    }catch(SqlException)
                     {
                         throw;
                     }

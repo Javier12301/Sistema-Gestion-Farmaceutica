@@ -1,8 +1,11 @@
 ﻿using Sistema.Controles;
+using Sistema.Database.Logica;
+using Sistema.Database.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +19,11 @@ namespace Sistema.formHijos
         private Point mouseDownLocation;
         Shortcuts shortcuts = new Shortcuts();
         Controladora controladora = new Controladora();
+        CategoriaLogica categoriaLogica = new CategoriaLogica();
+        EstanteLogica estanteLogica = new EstanteLogica();
+        LoteLogica loteLogica = new LoteLogica();
+        MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
+
         public nuevoMedicamento()
         {
             InitializeComponent();
@@ -27,6 +35,32 @@ namespace Sistema.formHijos
             cmbCatMedicamento.SelectedIndex = 0;
             cmbEstanteMedicamento.SelectedIndex = 0;
             //
+            try
+            {
+                cargarDatos();
+
+            }catch(SqlException)
+            {
+                throw;
+            }
+
+        }
+
+        private void cargarDatos()
+        {
+            List<string> listaCategoria = categoriaLogica.obtenerNombresCategorias();
+            List<string> listaEstante = estanteLogica.obtenerNombresEstantes();
+
+            // Agregar item predeterminado
+            listaCategoria.Insert(0, "Seleccionar Categoría.");
+            listaEstante.Insert(0, "Seleccionar Estante.");
+
+            // Cargar combobox
+            cmbCatMedicamento.DataSource = listaCategoria;
+            cmbEstanteMedicamento.DataSource = listaEstante;
+            // Display Member
+            cmbCatMedicamento.DisplayMember = "Seleccionar Categoría";
+            cmbEstanteMedicamento.DisplayMember = "Seleccionar Estante";
         }
 
         private void pnlControl_MouseMove(object sender, MouseEventArgs e)
@@ -55,20 +89,63 @@ namespace Sistema.formHijos
 
             if (txtBoolNombre && txtBoolPrecioUnit && txtBoolStock)
             {
-                DialogResult result = MessageBox.Show("¡Se agrego el medicamento exitosamente!\n¿Desea agregar un nuevo medicamento?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(result == DialogResult.Yes)
+                // Creamos un nuevo Lote con los datos ingresados por el usuario
+                Lote lote = new Lote
                 {
-                    txtNombreMedicamento.Text = "";
-                    cmbCatMedicamento.SelectedIndex = 0;
-                    cmbEstanteMedicamento.SelectedIndex = 0;
-                    txtStockMedicamento.Text = "";
-                    txtPrecioUnitMedicamento.Text = "";
-                    pnlNombreMedicamento.Focus();
-                    txtNombreMedicamento.Focus();
-                }else if(result == DialogResult.No)
+                    NombreMedicamento = txtNombreMedicamento.Text,
+                    LoteID = Convert.ToInt32(txtLoteMedicamento.Text),
+                    Stock = Convert.ToInt32(txtStockMedicamento.Text),
+                    Vencimiento = dtaVencimientoMedicamento.Value
+                };
+
+                // Creamos un nuevo Medicamento con los datos ingresados por el usuario
+
+                Medicamento medicamento = new Medicamento
                 {
-                    this.Close();
+                    // Obtener ID CategoriaID y EstanteID
+                    LoteID = Convert.ToInt32(txtLoteMedicamento.Text),
+                    CategoriaID = categoriaLogica.obtenerIDCategoriaPorNombre(cmbCatMedicamento.Text),
+                    EstanteID = estanteLogica.obtenerIDEstantePorNombre(cmbEstanteMedicamento.Text),
+
+                    // Propiedades especificas del modelo Medicamento                 
+                    PrecioUnitario = Convert.ToInt32(txtPrecioUnitMedicamento.Text)
+                };
+
+                // Agregamos el Lote y el Medicamento a la base de datos
+                try
+                {
+                    bool loteResultado = loteLogica.agregarLote(lote);
+                    bool medicamentoResultado = medicamentoLogica.agregarMedicamento(medicamento);
+                    if(loteResultado && medicamentoResultado)
+                    {
+                        DialogResult result = MessageBox.Show("¡Se agrego el medicamento exitosamente!\n¿Desea agregar un nuevo medicamento?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            txtNombreMedicamento.Text = "";
+                            cmbCatMedicamento.SelectedIndex = 0;
+                            cmbEstanteMedicamento.SelectedIndex = 0;
+                            txtStockMedicamento.Text = "";
+                            txtPrecioUnitMedicamento.Text = "";
+                            pnlNombreMedicamento.Focus();
+                            txtNombreMedicamento.Focus();
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo agregar el medicamento.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }catch(SqlException)
+                {
+                    throw;
                 }
+
+
+                
             }
             else
             {

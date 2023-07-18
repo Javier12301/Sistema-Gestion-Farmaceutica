@@ -87,8 +87,12 @@
     <Compile Include="Database\conexionDB.cs" />
     <Compile Include="Database\Logica\CategoriaLogica.cs" />
     <Compile Include="Database\Logica\EstanteLogica.cs" />
+    <Compile Include="Database\Logica\LoteLogica.cs" />
+    <Compile Include="Database\Logica\MedicamentoLogica.cs" />
     <Compile Include="Database\Modelo\Categoria.cs" />
     <Compile Include="Database\Modelo\Estante.cs" />
+    <Compile Include="Database\Modelo\Lote.cs" />
+    <Compile Include="Database\Modelo\Medicamento.cs" />
     <Compile Include="formHijos\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>

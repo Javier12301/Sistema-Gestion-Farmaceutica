@@ -257,7 +257,8 @@ namespace Sistema
             this.Controls.Add(this.pnlMainLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SGF";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sistema gestión farmacéutica";
             this.Load += new System.EventHandler(this.SGF_Load);
             this.pnlMainLogin.ResumeLayout(false);
             this.pnlMainLogin.PerformLayout();

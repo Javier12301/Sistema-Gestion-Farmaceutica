@@ -117,7 +117,7 @@ namespace Sistema.Database.Logica
                     return (int)cmd.ExecuteScalar();
                 }
 
-            }catch(SqlException ex)
+            }catch(SqlException)
             {
                 throw;
             }
@@ -146,11 +146,32 @@ namespace Sistema.Database.Logica
                     }
                 }
 
-            }catch(SqlException ex)
+            }catch(SqlException)
             {
                 throw;
             }
             return nombresCategorias;
+        }
+
+        // Obtener ID de categoria por nombre
+        public int obtenerIDCategoriaPorNombre(string nombreCategoria)
+        {
+            try
+            {
+                using(SqlConnection conex = new SqlConnection())
+                {
+                    conex.ConnectionString = conexionDB.getInstance().getConnectionString();
+                    string query = "SELECT CategoriaID FROM Categorias WHERE Nombre = @Nombre";
+                    SqlCommand cmd = new SqlCommand(query, conex);
+                    cmd.Parameters.AddWithValue("@Nombre", nombreCategoria);
+                    conex.Open();
+                    // Ejecutamos el comando y obtenemos el resultado de la consulta
+                    return (int)cmd.ExecuteScalar();
+                }
+            }catch(SqlException)
+            {
+                throw;
+            }
         }
 
     }

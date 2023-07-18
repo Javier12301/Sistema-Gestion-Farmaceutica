@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlForm = new System.Windows.Forms.Panel();
             this.gnaFiltros = new Guna.UI.WinForms.GunaGroupBox();
             this.cmbGEstantes = new Guna.UI.WinForms.GunaCheckBox();
@@ -39,18 +41,18 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtaViewMedicamentos = new System.Windows.Forms.DataGridView();
             this.dtaLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaNameMedicamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaNombreCat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaSecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNombreEst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtaSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNumEst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlForm.SuspendLayout();
             this.gnaFiltros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtaViewMedicamentos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlForm
@@ -63,7 +65,7 @@
             this.pnlForm.Controls.Add(this.btnSearch);
             this.pnlForm.Controls.Add(this.label12);
             this.pnlForm.Controls.Add(this.txtSearch);
-            this.pnlForm.Controls.Add(this.dataGridView1);
+            this.pnlForm.Controls.Add(this.dtaViewMedicamentos);
             this.pnlForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlForm.Location = new System.Drawing.Point(0, 0);
             this.pnlForm.Name = "pnlForm";
@@ -203,26 +205,42 @@
             this.txtSearch.Size = new System.Drawing.Size(293, 26);
             this.txtSearch.TabIndex = 2;
             // 
-            // dataGridView1
+            // dtaViewMedicamentos
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtaViewMedicamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtaViewMedicamentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtaViewMedicamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtaViewMedicamentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dtaLote,
             this.dtaNameMedicamento,
-            this.Lote,
-            this.dtaNumEstante,
+            this.dtaCantidad,
+            this.dtaVencimiento,
             this.dtaNombreCat,
-            this.dtaSecto,
+            this.dtaNombreEst,
             this.dtaSector,
-            this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(7, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(559, 226);
-            this.dataGridView1.TabIndex = 7;
+            this.dtaNumEst});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtaViewMedicamentos.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dtaViewMedicamentos.Location = new System.Drawing.Point(7, 69);
+            this.dtaViewMedicamentos.Name = "dtaViewMedicamentos";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaViewMedicamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtaViewMedicamentos.Size = new System.Drawing.Size(559, 226);
+            this.dtaViewMedicamentos.TabIndex = 7;
             // 
             // dtaLote
             // 
@@ -234,35 +252,35 @@
             this.dtaNameMedicamento.HeaderText = "Nombre";
             this.dtaNameMedicamento.Name = "dtaNameMedicamento";
             // 
-            // Lote
+            // dtaCantidad
             // 
-            this.Lote.HeaderText = "Cantidad";
-            this.Lote.Name = "Lote";
+            this.dtaCantidad.HeaderText = "Cantidad";
+            this.dtaCantidad.Name = "dtaCantidad";
             // 
-            // dtaNumEstante
+            // dtaVencimiento
             // 
-            this.dtaNumEstante.HeaderText = "Vto.";
-            this.dtaNumEstante.Name = "dtaNumEstante";
+            this.dtaVencimiento.HeaderText = "Vto.";
+            this.dtaVencimiento.Name = "dtaVencimiento";
             // 
             // dtaNombreCat
             // 
             this.dtaNombreCat.HeaderText = "Categoría";
             this.dtaNombreCat.Name = "dtaNombreCat";
             // 
-            // dtaSecto
+            // dtaNombreEst
             // 
-            this.dtaSecto.HeaderText = "Nombre Est.";
-            this.dtaSecto.Name = "dtaSecto";
+            this.dtaNombreEst.HeaderText = "Nombre Est.";
+            this.dtaNombreEst.Name = "dtaNombreEst";
             // 
             // dtaSector
             // 
             this.dtaSector.HeaderText = "Sector";
             this.dtaSector.Name = "dtaSector";
             // 
-            // Column1
+            // dtaNumEst
             // 
-            this.Column1.HeaderText = "Num. Est.";
-            this.Column1.Name = "Column1";
+            this.dtaNumEst.HeaderText = "Num. Est.";
+            this.dtaNumEst.Name = "dtaNumEst";
             // 
             // Medicamentos
             // 
@@ -279,7 +297,7 @@
             this.pnlForm.PerformLayout();
             this.gnaFiltros.ResumeLayout(false);
             this.gnaFiltros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtaViewMedicamentos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -293,18 +311,18 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaLote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNameMedicamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Lote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEstante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreCat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSecto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridView dtaViewMedicamentos;
         private Guna.UI.WinForms.GunaGroupBox gnaFiltros;
         private Guna.UI.WinForms.GunaLabel lblGFiltros;
         private Guna.UI.WinForms.GunaCheckBox cmbGEstantes;
         private Guna.UI.WinForms.GunaCheckBox cmbGCategorias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaLote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNameMedicamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaVencimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreCat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreEst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEst;
     }
 }

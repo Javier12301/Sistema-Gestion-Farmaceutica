@@ -116,7 +116,7 @@ namespace Sistema.Database.Logica
                     return (int)cmd.ExecuteScalar();
                 }
 
-            }catch(SqlException ex)
+            }catch(SqlException)
             {
                 throw;
             }
@@ -145,11 +145,34 @@ namespace Sistema.Database.Logica
                     }
                 }
 
-            }catch(SqlException ex)
+            }catch(SqlException)
             {
                 throw;
             }
             return nombresEstantes;
         }
+
+        // Obtener ID de estante por nombre
+        public int obtenerIDEstantePorNombre(string _nombre)
+        {
+            try
+            {
+                using (SqlConnection conex = new SqlConnection())
+                {
+                    conex.ConnectionString = conexionDB.getInstance().getConnectionString();
+                    string query = "SELECT EstanteID FROM Estantes WHERE Nombre = @Nombre";
+                    SqlCommand cmd = new SqlCommand(query, conex);
+                    cmd.Parameters.AddWithValue("@Nombre", _nombre);
+                    conex.Open();
+                    // Ejecutamos la consulta y retornamos el resultado
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
     }
 }
