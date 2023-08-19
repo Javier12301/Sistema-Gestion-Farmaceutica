@@ -10,16 +10,16 @@ using System.Windows.Forms;
 using Sistema.Controles;
 using Sistema.Database.Logica;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
     
-    public partial class Principal : Form
+    public partial class PrincipalForm : Form
     {
         Shortcuts shortcuts = new Shortcuts();
         EstanteLogica estanteLogica = new EstanteLogica();
         CategoriaLogica categoriaLogica = new CategoriaLogica();
         MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
-        public Principal()
+        public PrincipalForm()
         {
             InitializeComponent();
         }

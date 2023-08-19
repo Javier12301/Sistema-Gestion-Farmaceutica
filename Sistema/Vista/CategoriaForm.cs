@@ -13,19 +13,19 @@ using Sistema.Database.Logica;
 using Sistema.Database.Modelo;
 using System.Data.SqlClient;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
-    public partial class Categorias : Form
+    public partial class CategoriaForm : Form
     {
         Controladora controladora = new Controladora();
         Shortcuts shortcuts = new Shortcuts();
-        PaletaColores paleta = new PaletaColores();
+        PaletaColores colorPalette = new PaletaColores();
         //Se crea una instancia de la clase CategoriaLogica
         CategoriaLogica categoriaLogica = new CategoriaLogica();
         // Modelos
         Categoria categoria = new Categoria();
 
-        public Categorias()
+        public CategoriaForm()
         {
             InitializeComponent();
         }
@@ -56,7 +56,7 @@ namespace Sistema.formHijos
                 dtaDescripcionCategoria.DataPropertyName = "Descripcion";
                 // Se asigna el binding source al datagridview
                 dtaViewCategoria.DataSource = bindingSourceCategorias;
-                controladora.VerificarDataGridViewVacio(dtaViewCategoria, "dtaIDCategoria");
+                controladora.CheckEmptyDataGridView(dtaViewCategoria, "dtaIDCategoria");
 
             }
             catch (SqlException)
@@ -69,7 +69,7 @@ namespace Sistema.formHijos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            bool txtBoolNombreCategoria = controladora.verificarTextboxG(txtNombreCat);
+            bool txtBoolNombreCategoria = controladora.VerifyTextBoxG(txtNombreCat);
             if (txtBoolNombreCategoria)
             {
                 // Se utiliza la instancia de la clase categoria
@@ -108,7 +108,7 @@ namespace Sistema.formHijos
 
         private void txtNombreCat_Enter(object sender, EventArgs e)
         {
-            txtNombreCat.LineColor = paleta.ColorDisabled;
+            txtNombreCat.LineColor = colorPalette.ColorDisabled;
         }
 
         // Modificación de celdas

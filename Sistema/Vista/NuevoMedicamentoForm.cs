@@ -12,9 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
-    public partial class nuevoMedicamento : Form
+    public partial class NuevoMedicamentoForm : Form
     {
         private Point mouseDownLocation;
         Shortcuts shortcuts = new Shortcuts();
@@ -24,7 +24,7 @@ namespace Sistema.formHijos
         LoteLogica loteLogica = new LoteLogica();
         MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
 
-        public nuevoMedicamento()
+        public NuevoMedicamentoForm()
         {
             InitializeComponent();
         }
@@ -83,9 +83,9 @@ namespace Sistema.formHijos
 
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
         {
-            bool txtBoolNombre = controladora.verificarTextboxT(txtNombreMedicamento, errorProvider);
-            bool txtBoolStock = controladora.verificarTextboxT(txtStockMedicamento, errorProvider);
-            bool txtBoolPrecioUnit = controladora.verificarTextboxT(txtPrecioUnitMedicamento, errorProvider);
+            bool txtBoolNombre = controladora.VerifyTextBoxT(txtNombreMedicamento, errorProvider);
+            bool txtBoolStock = controladora.VerifyTextBoxT(txtStockMedicamento, errorProvider);
+            bool txtBoolPrecioUnit = controladora.VerifyTextBoxT(txtPrecioUnitMedicamento, errorProvider);
 
             if (txtBoolNombre && txtBoolPrecioUnit && txtBoolStock)
             {

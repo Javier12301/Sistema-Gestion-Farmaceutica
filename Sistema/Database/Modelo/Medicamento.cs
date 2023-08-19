@@ -8,7 +8,7 @@ namespace Sistema.Database.Modelo
 {
     public class Medicamento
     {
-        // Propiedades de la tabla Medicamentos
+        // Propiedades de la tabla MedicamentosForm
         public int LoteID { get; set; }
         public int CategoriaID { get; set; }
         public int EstanteID { get; set; }

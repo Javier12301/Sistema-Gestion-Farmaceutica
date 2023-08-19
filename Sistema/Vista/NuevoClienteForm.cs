@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
-    public partial class nuevoCliente : Form
+    public partial class NuevoClienteForm : Form
     {
         private Point mouseDownLocation;
         Controladora controladora = new Controladora();
-        public nuevoCliente()
+        public NuevoClienteForm()
         {
             InitializeComponent();
         }
@@ -77,16 +77,16 @@ namespace Sistema.formHijos
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
             //  Comprobar caracteres vacios
-            bool txtBoolNombre = controladora.verificarTextboxT(txtNombreCliente, errorProvider);
-            bool txtBoolApellido = controladora.verificarTextboxT(txtApellidoCliente, errorProvider);
-            bool txtBoolDNI = controladora.verificarTextboxT(txtDNICliente, errorProvider);
+            bool txtBoolNombre = controladora.VerifyTextBoxT(txtNombreCliente, errorProvider);
+            bool txtBoolApellido = controladora.VerifyTextBoxT(txtApellidoCliente, errorProvider);
+            bool txtBoolDNI = controladora.VerifyTextBoxT(txtDNICliente, errorProvider);
             
             //opcional
             bool txtBoolMail = true;
             //En caso de que el farmaceutico desee agregar el correo electronico del cliente, se deberá verificar que sea un correo valido
             if (!string.IsNullOrWhiteSpace(txtMailCliente.Text))
             {
-                txtBoolMail = controladora.verificarCorreoT(txtMailCliente, errorProvider);
+                txtBoolMail = controladora.VerifyEmailT(txtMailCliente, errorProvider);
                 
             }
             // // // // // // // //

@@ -1,6 +1,6 @@
 ﻿namespace Sistema
 {
-    partial class formHijosPrincipalFORM
+    partial class PrincipalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formHijosPrincipalFORM));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrincipalForm));
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lbl1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -195,7 +195,7 @@
             this.btnClientes.Size = new System.Drawing.Size(177, 45);
             this.btnClientes.TabIndex = 6;
             this.btnClientes.Tag = "btnClientes";
-            this.btnClientes.Text = "Clientes";
+            this.btnClientes.Text = "ClientesForm";
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
@@ -213,7 +213,7 @@
             this.btnMedicamentos.Size = new System.Drawing.Size(177, 45);
             this.btnMedicamentos.TabIndex = 4;
             this.btnMedicamentos.Tag = "btnMedicamento";
-            this.btnMedicamentos.Text = "Medicamentos";
+            this.btnMedicamentos.Text = "MedicamentosForm";
             this.btnMedicamentos.UseVisualStyleBackColor = false;
             this.btnMedicamentos.Click += new System.EventHandler(this.btnMedicamento_Click);
             // 
@@ -246,7 +246,7 @@
             this.btnEstantes.Size = new System.Drawing.Size(177, 45);
             this.btnEstantes.TabIndex = 2;
             this.btnEstantes.Tag = "btnEstante";
-            this.btnEstantes.Text = "Estantes";
+            this.btnEstantes.Text = "EstantesForm";
             this.btnEstantes.UseVisualStyleBackColor = true;
             this.btnEstantes.Click += new System.EventHandler(this.btnEstantes_Click);
             // 
@@ -263,7 +263,7 @@
             this.btnPrincipal.Size = new System.Drawing.Size(172, 45);
             this.btnPrincipal.TabIndex = 0;
             this.btnPrincipal.Tag = "btnPrincipal";
-            this.btnPrincipal.Text = "Principal";
+            this.btnPrincipal.Text = "PrincipalForm";
             this.btnPrincipal.UseVisualStyleBackColor = false;
             this.btnPrincipal.Click += new System.EventHandler(this.btnPrincipal_Click);
             // 
@@ -291,7 +291,7 @@
             this.panelMain.Size = new System.Drawing.Size(605, 352);
             this.panelMain.TabIndex = 2;
             // 
-            // formHijosPrincipalFORM
+            // PrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -299,10 +299,10 @@
             this.ClientSize = new System.Drawing.Size(790, 412);
             this.Controls.Add(this.pnlMAIN);
             this.MinimumSize = new System.Drawing.Size(715, 451);
-            this.Name = "formHijosPrincipalFORM";
-            this.Text = "SGF";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formHijosPrincipalFORM_FormClosing);
-            this.Load += new System.EventHandler(this.formHijosPrincipalFORM_Load);
+            this.Name = "PrincipalForm";
+            this.Text = "LoginForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PrincipalForm_FormClosing);
+            this.Load += new System.EventHandler(this.PrincipalForm_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

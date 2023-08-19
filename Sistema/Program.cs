@@ -16,7 +16,7 @@ namespace Sistema
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SGF());
+            Application.Run(new LoginForm());
         }
     }
 }

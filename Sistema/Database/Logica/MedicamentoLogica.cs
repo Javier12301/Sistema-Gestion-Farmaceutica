@@ -40,7 +40,7 @@ namespace Sistema.Database.Logica
             return medicamento;
         }
 
-        // Obtener todos los medicamentos filtrados por ID Categoria y ID Estante
+        // Obtener todos los medicamentos filtrados por ID CategoriaForm y ID Estante
         public List<Medicamento> obtenerMedicamentoParaDataGridView()
         {
             List<Medicamento> medicamentos = new List<Medicamento>();
@@ -56,14 +56,14 @@ SELECT
     L.Nombre_Medicamento AS Nombre_Medicamento,
     L.Stock AS Cantidad,
     L.FechaVencimiento AS Vencimiento,
-    C.Nombre AS Categoria,
+    C.Nombre AS CategoriaForm,
     E.Nombre AS Nombre_Estante,
     E.Sector AS Sector,
     E.Numero_de_estante AS Numero_Estante
 FROM Medicamentos M
 INNER JOIN Lotes L ON M.LoteID = L.LoteID
 INNER JOIN Categorias C ON M.CategoriaID = C.CategoriaID
-INNER JOIN Estantes E ON M.EstanteID = E.EstanteID;
+INNER JOIN EstantesForm E ON M.EstanteID = E.EstanteID;
 
 ";
                 SqlCommand cmd = new SqlCommand(query, conex);

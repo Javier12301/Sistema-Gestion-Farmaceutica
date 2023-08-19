@@ -14,9 +14,9 @@ using Sistema.Database;
 
 namespace Sistema
 {
-    public partial class SGF : Form
+    public partial class LoginForm : Form
     {
-        public SGF()
+        public LoginForm()
         {
             InitializeComponent();
             
@@ -26,25 +26,25 @@ namespace Sistema
         Controladora controladora = new Controladora();
         Shortcuts shortcuts = new Shortcuts();
         //Variable booleana para controlar el estado del ojo, por defecto lo mejor es false
-        bool showPassword = false;
+        private bool passwordVisible { get; set; } = false;
         //Colores utilizado
-        Color btnForgotPasswordHover = ColorTranslator.FromHtml("#4BAAF9");
-        Color btnForgotPasswordLeave = ColorTranslator.FromHtml("#0078D7");
+        private Color btnForgotPasswordHover { get; } = ColorTranslator.FromHtml("#4BAAF9");
+        private Color btnForgotPasswordLeave { get; } = ColorTranslator.FromHtml("#0078D7");
 
-        private void SGF_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
             //Se inicializa el ojo de contraseña
-            if (showPassword)
+            if (passwordVisible)
             {
-                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Solid;
-                controladora.mostrarPassword(txtPassword);
-                showPassword = false;
+                btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
+                controladora.ShowPassword(txtPassword);
+                passwordVisible = false;
             }
             else
             {
-                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
-                controladora.ocultarPassword(txtPassword);
-                showPassword = true;
+                btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
+                controladora.HidePassword(txtPassword);
+                passwordVisible = true;
             }
             
         }
@@ -53,7 +53,7 @@ namespace Sistema
         {
             try
             {
-                controladora.linkLabel();
+                controladora.OpenMailLink();
             }
             catch
             {
@@ -62,40 +62,40 @@ namespace Sistema
         }
 
         // Controles del icono de OJO para mostrar contraseñas
-        private void ojoMostrarContraseña_MouseHover(object sender, EventArgs e)
+        private void btnShowPassword_MouseHover(object sender, EventArgs e)
         {
-            ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
         }
 
-        private void ojoMostrarContraseña_MouseLeave(object sender, EventArgs e)
+        private void btnShowPassword_MouseLeave(object sender, EventArgs e)
         {
-            ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
         }
 
-        private void ojoMostrarContraseña_Click(object sender, EventArgs e)
+        private void btnShowPassword_Click(object sender, EventArgs e)
         {
-            if (showPassword)
+            if (passwordVisible)
             {
-                showPassword=false;
-                controladora.mostrarPassword(txtPassword);
-                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Solid;
+                passwordVisible=false;
+                controladora.ShowPassword(txtPassword);
+                btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
             }
             else
             {
-                showPassword = true;
-                controladora.ocultarPassword(txtPassword);
-                ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
+                passwordVisible = true;
+                controladora.HidePassword(txtPassword);
+                btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
             }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            bool verificar = controladora.verificarCredenciales(txtUser, txtPassword);
+            bool verificar = controladora.VerifyCredentials(txtUser, txtPassword);
             if (verificar)
             {
-                formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
+                PrincipalForm PrincipalForm = new PrincipalForm();
                 this.Hide();
-                if (formHijosPrincipalFORM.ShowDialog() == DialogResult.Cancel)
+                if (PrincipalForm.ShowDialog() == DialogResult.Cancel)
                 {
                     this.Show();
                 }
@@ -111,13 +111,13 @@ namespace Sistema
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                bool verificar = controladora.verificarCredenciales(txtUser, txtPassword);
+                bool verificar = controladora.VerifyCredentials(txtUser, txtPassword);
                 if (verificar)
                 {
                     
-                    formHijosPrincipalFORM formHijosPrincipalFORM = new formHijosPrincipalFORM();
+                    PrincipalForm PrincipalForm = new PrincipalForm();
                     this.Hide();
-                    if (formHijosPrincipalFORM.ShowDialog() == DialogResult.Cancel)
+                    if (PrincipalForm.ShowDialog() == DialogResult.Cancel)
                     {
                         this.Show();
                     }

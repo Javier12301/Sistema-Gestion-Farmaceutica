@@ -14,15 +14,15 @@ namespace Sistema
 {
     public class Controladora
     {
-        PaletaColores paleta = new PaletaColores();
+        PaletaColores colorPalette = new PaletaColores();
 
-        public void linkLabel()
+        public void OpenMailLink()
         {
             System.Diagnostics.Process.Start("mailto:javierramirez1230123@gmail.com");
         }
 
         // Solo número e ignora espacios y permite borrado en textbox
-        public void soloNumeros(KeyPressEventArgs e)
+        public void OnlyNumbers(KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
             {
@@ -43,23 +43,23 @@ namespace Sistema
         }
 
         //Se contralará toda las funciones del ojo de contraseña
-        public void mostrarPassword(GunaLineTextBox txtPassword)
+        public void ShowPassword(GunaLineTextBox txtPassword)
         {
             txtPassword.PasswordChar = (char)0;
         }
 
-        public void ocultarPassword(GunaLineTextBox txtPassword)
+        public void HidePassword(GunaLineTextBox txtPassword)
         {
             txtPassword.PasswordChar = '*';
         }
 
-        public bool verificarCredenciales(GunaLineTextBox txtUser, GunaLineTextBox txtPassword)
+        public bool VerifyCredentials(GunaLineTextBox txtUser, GunaLineTextBox txtPassword)
         {
             //Será utilizado para registrar nuevos usuarios, con esto podremos especificar los caracteres que se podrán utilizar
-            bool correoValido = verificarCorreoG(txtUser);
-            bool passwordValido = verificarPassword(txtPassword);
+            bool isEmailValid = VerifyEmailG(txtUser);
+            bool isPasswordValid = VerifyPassword(txtPassword);
             //Verificar credenciales
-            if (correoValido && passwordValido)
+            if (isEmailValid && isPasswordValid)
             {
                 if(txtUser.Text == "Admin12301@gmail.com" && txtPassword.Text == "Admin12301")
                 {
@@ -79,88 +79,88 @@ namespace Sistema
         }
 
         // Función en caso de utilizar un TextBox Guna
-        public bool verificarCorreoG(GunaLineTextBox txtUser)
+        public bool VerifyEmailG(GunaLineTextBox txtUser)
         {
-            bool correoValido = false;
+            bool isEmailValid = false;
             if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
             {
-                correoValido = true;
+                isEmailValid = true;
             }
             else
             {
-                txtUser.LineColor = paleta.ColorError;
+                txtUser.LineColor = colorPalette.ColorError;
             }
-            return correoValido;
+            return isEmailValid;
         }
         // Función en caso de utilizar un TextBox normal
-        public bool verificarCorreoT(TextBoxBase txtUser, ErrorProvider errorActivador)
+        public bool VerifyEmailT(TextBoxBase txtUser, ErrorProvider errorActivator)
         {
-            bool correoValido = false;
+            bool isEmailValid = false;
             if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
             {
-                errorActivador.SetError(txtUser, "");
-                correoValido = true;
+                errorActivator.SetError(txtUser, "");
+                isEmailValid = true;
             }
             else
             {
-                errorActivador.SetError(txtUser, "Correo invalido, por favor no se olvide de los @,.,com,org,etc.");
+                errorActivator.SetError(txtUser, "Correo invalido, por favor no se olvide de los @,.,com,org,etc.");
             }
-            return correoValido;
+            return isEmailValid;
         }
 
-        private bool verificarPassword(GunaLineTextBox txtPassword)
+        private bool VerifyPassword(GunaLineTextBox txtPassword)
         {
-            bool passwordValido = false;
+            bool isPasswordValid = false;
             //Las contraseñas de cada empelado tendrán como obligación tener más de 8 caracteres.
             if (txtPassword.Text.Length >= 8)
             {
-                passwordValido = true;
+                isPasswordValid = true;
             }
             else
             {
-                txtPassword.LineColor = paleta.ColorError;
+                txtPassword.LineColor = colorPalette.ColorError;
             }
-            return passwordValido;
+            return isPasswordValid;
         }
 
         //comprobara cualquier campo de texto vacio
-        public bool verificarTextboxG(GunaLineTextBox txtbox)
+        public bool VerifyTextBoxG(GunaLineTextBox txtbox)
         {
             if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
                 
                 //No está vacio
-                txtbox.LineColor = paleta.ColorActive;
+                txtbox.LineColor = colorPalette.ColorActive;
                 return true;
             }
             else
             {
                 //Está vacio
-                txtbox.LineColor = paleta.ColorError;
+                txtbox.LineColor = colorPalette.ColorError;
                 return false;
             }
         }
         //Comprobara cualquier campo de texto vacio TextBox normales no guna
-        public bool verificarTextboxT(TextBoxBase txtbox, ErrorProvider errorActivador)
+        public bool VerifyTextBoxT(TextBoxBase txtbox, ErrorProvider errorActivator)
         {
-            errorActivador.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorActivator.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
                 //No está vacio
                 
-                errorActivador.SetError(txtbox, "");
+                errorActivator.SetError(txtbox, "");
                 return true;
             }
             else
             {
                 //Está vacio
-                errorActivador.SetError(txtbox, "Campo obligatorio");
+                errorActivator.SetError(txtbox, "Campo obligatorio");
                 return false;
             }
         }
 
         // controladora de DataGridView
-        public void VerificarDataGridViewVacio(DataGridView _dtagridview, string IDColumn)
+        public void CheckEmptyDataGridView(DataGridView _dtagridview, string IDColumn)
         {
             if (_dtagridview.Rows.Count <= 1)
             {

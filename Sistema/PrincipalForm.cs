@@ -1,5 +1,5 @@
 ﻿using Sistema.Controles;
-using Sistema.formHijos;
+using Sistema.Vista;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Sistema
 {
-    public partial class formHijosPrincipalFORM : Form
+    public partial class PrincipalForm : Form
     {
         //Fields
         private Form activeForm;
@@ -22,15 +22,15 @@ namespace Sistema
 
         Shortcuts shortcuts = new Shortcuts();
 
-        public formHijosPrincipalFORM()
+        public PrincipalForm()
         {
             InitializeComponent();
         }
 
-        private void formHijosPrincipalFORM_Load(object sender, EventArgs e)
+        private void PrincipalForm_Load(object sender, EventArgs e)
         {
             //Al iniciar el sistema, se abrirá el formulario principal.
-            OpenchildForm(new formHijos.Principal(), btnPrincipal);
+            OpenchildForm(new Vista.PrincipalForm(), btnPrincipal);
             activateButton(btnPrincipal);
         }
 
@@ -106,28 +106,28 @@ namespace Sistema
         //Botones de la barra de navegacion
         private void btnPrincipal_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new formHijos.Principal(), btnPrincipal);
+            OpenchildForm(new Vista.PrincipalForm(), btnPrincipal);
         }
 
         private void btnEstantes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new formHijos.Estantes(), btnEstantes);
+            OpenchildForm(new Vista.EstantesForm(), btnEstantes);
 
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new formHijos.Categorias(), btnCategoria);
+            OpenchildForm(new Vista.CategoriaForm(), btnCategoria);
         }
 
         private void btnMedicamento_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new formHijos.Medicamentos(), btnMedicamentos);
+            OpenchildForm(new Vista.MedicamentosForm(), btnMedicamentos);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new formHijos.Clientes(), btnClientes);
+            OpenchildForm(new Vista.ClientesForm(), btnClientes);
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace Sistema
         }
 
         //Al presionar X en este formulario, se cerrará el sistema.
-        private void formHijosPrincipalFORM_FormClosing(object sender, FormClosingEventArgs e)
+        private void PrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(e.CloseReason == CloseReason.UserClosing)
             {

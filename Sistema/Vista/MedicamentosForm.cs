@@ -12,18 +12,18 @@ using Sistema.Database.Logica;
 using Guna.UI.WinForms;
 using System.Data.SqlClient;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
 
-    public partial class Medicamentos : Form
+    public partial class MedicamentosForm : Form
     {
-        Categoria categoria = new Categoria();
+        CategoriaForm categoria = new CategoriaForm();
         Estante estante = new Estante();
         CategoriaLogica categoriaLogica = new CategoriaLogica();
         EstanteLogica estanteLogica = new EstanteLogica();
         MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
         Controladora controladora = new Controladora();
-        public Medicamentos()
+        public MedicamentosForm()
         {
             InitializeComponent();
         }
@@ -57,10 +57,10 @@ namespace Sistema.formHijos
                 dtaNameMedicamento.DataPropertyName = "Nombre_Medicamento";
                 dtaCantidad.DataPropertyName = "Stock";
                 dtaVencimiento.DataPropertyName = "FechaVencimiento";
-                // configurar columnas de Categoria y Estante
+                // configurar columnas de CategoriaForm y Estante
                 // Categorias
                 dtaNombreCat.DataPropertyName = "CategoriaNombre";
-                // Estantes
+                // EstantesForm
                 dtaNombreEst.DataPropertyName = "Nombre_Estante";
                 dtaSector.DataPropertyName = "Sector";
                 dtaNumEst.DataPropertyName = "Numero_Estante";
@@ -72,7 +72,7 @@ namespace Sistema.formHijos
                 dtaViewMedicamentos.Columns["EstanteID"].Visible = false;
                 dtaViewMedicamentos.Columns["PrecioUnitario"].Visible = false;
                 // Verificar datagridview vacio
-                controladora.VerificarDataGridViewVacio(dtaViewMedicamentos, "dtaLote");
+                controladora.CheckEmptyDataGridView(dtaViewMedicamentos, "dtaLote");
             }
             catch (SqlException)
             {
@@ -141,7 +141,7 @@ namespace Sistema.formHijos
 
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
         {
-            formHijos.nuevoMedicamento formAgregarMedicamento = new formHijos.nuevoMedicamento();
+            Vista.NuevoMedicamentoForm formAgregarMedicamento = new Vista.NuevoMedicamentoForm();
             formAgregarMedicamento.FormClosed += formAgregarMedicamento_FormClosed;
             formAgregarMedicamento.ShowDialog();
         }

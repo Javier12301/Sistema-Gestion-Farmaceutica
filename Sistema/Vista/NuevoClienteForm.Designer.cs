@@ -1,6 +1,6 @@
-﻿namespace Sistema.formHijos
+﻿namespace Sistema.Vista
 {
-    partial class nuevoCliente
+    partial class NuevoClienteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevoCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoClienteForm));
             this.pnlControl = new System.Windows.Forms.Panel();
             this.lblNombreForm = new System.Windows.Forms.Label();
             this.gunaControlCerrar = new Guna.UI.WinForms.GunaControlBox();
@@ -513,7 +513,7 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
             // 
-            // nuevoCliente
+            // NuevoClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -524,7 +524,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "nuevoCliente";
+            this.Name = "NuevoClienteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Cliente";
             this.Load += new System.EventHandler(this.nuevoCliente_Load);

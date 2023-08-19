@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
-    public partial class Clientes : Form
+    public partial class ClientesForm : Form
     {
-        public Clientes()
+        public ClientesForm()
         {
             InitializeComponent();
         }
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            formHijos.nuevoCliente formAgregarCliente = new formHijos.nuevoCliente();
+            Vista.NuevoClienteForm formAgregarCliente = new Vista.NuevoClienteForm();
             formAgregarCliente.ShowDialog();
         }
     }

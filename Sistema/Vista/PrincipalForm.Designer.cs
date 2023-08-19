@@ -1,6 +1,6 @@
-﻿namespace Sistema.formHijos
+﻿namespace Sistema.Vista
 {
-    partial class Principal
+    partial class PrincipalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -234,7 +234,7 @@
             this.gpbNewEstante.Size = new System.Drawing.Size(272, 117);
             this.gpbNewEstante.TabIndex = 0;
             this.gpbNewEstante.TabStop = false;
-            this.gpbNewEstante.Text = "Estantes";
+            this.gpbNewEstante.Text = "EstantesForm";
             // 
             // iconPictureBox1
             // 
@@ -303,7 +303,7 @@
             this.groupBox2.Size = new System.Drawing.Size(304, 117);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Medicamentos";
+            this.groupBox2.Text = "MedicamentosForm";
             // 
             // iconPictureBox3
             // 
@@ -422,10 +422,10 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 39);
             this.label12.TabIndex = 12;
-            this.label12.Text = "Principal";
+            this.label12.Text = "PrincipalForm";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Principal
+            // PrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -435,8 +435,8 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.label12);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Principal";
-            this.Text = "Principal";
+            this.Name = "PrincipalForm";
+            this.Text = "PrincipalForm";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

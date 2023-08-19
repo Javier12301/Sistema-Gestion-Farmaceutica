@@ -1,6 +1,6 @@
-﻿namespace Sistema.formHijos
+﻿namespace Sistema.Vista
 {
-    partial class Medicamentos
+    partial class MedicamentosForm
     {
         /// <summary>
         /// Required designer variable.
@@ -190,7 +190,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(142, 26);
             this.label12.TabIndex = 3;
-            this.label12.Text = "Medicamentos";
+            this.label12.Text = "MedicamentosForm";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtSearch
@@ -282,16 +282,16 @@
             this.dtaNumEst.HeaderText = "Num. Est.";
             this.dtaNumEst.Name = "dtaNumEst";
             // 
-            // Medicamentos
+            // MedicamentosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 299);
             this.Controls.Add(this.pnlForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Medicamentos";
-            this.Tag = "Medicamentos";
-            this.Text = "SGF";
+            this.Name = "MedicamentosForm";
+            this.Tag = "MedicamentosForm";
+            this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.Medicamentos_Load);
             this.pnlForm.ResumeLayout(false);
             this.pnlForm.PerformLayout();

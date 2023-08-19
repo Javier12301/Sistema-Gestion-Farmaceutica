@@ -93,93 +93,93 @@
     <Compile Include="Database\Modelo\Estante.cs" />
     <Compile Include="Database\Modelo\Lote.cs" />
     <Compile Include="Database\Modelo\Medicamento.cs" />
-    <Compile Include="formHijos\Categorias.cs">
+    <Compile Include="Vista\CategoriaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\Categorias.Designer.cs">
-      <DependentUpon>Categorias.cs</DependentUpon>
+    <Compile Include="Vista\CategoriaForm.Designer.cs">
+      <DependentUpon>CategoriaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\Clientes.cs">
+    <Compile Include="Vista\ClientesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\Clientes.Designer.cs">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <Compile Include="Vista\ClientesForm.Designer.cs">
+      <DependentUpon>ClientesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\nuevoCliente.cs">
+    <Compile Include="Vista\NuevoClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\nuevoCliente.Designer.cs">
-      <DependentUpon>nuevoCliente.cs</DependentUpon>
+    <Compile Include="Vista\NuevoClienteForm.Designer.cs">
+      <DependentUpon>NuevoClienteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\nuevoMedicamento.cs">
+    <Compile Include="Vista\NuevoMedicamentoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\nuevoMedicamento.Designer.cs">
-      <DependentUpon>nuevoMedicamento.cs</DependentUpon>
+    <Compile Include="Vista\NuevoMedicamentoForm.Designer.cs">
+      <DependentUpon>NuevoMedicamentoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\Medicamentos.cs">
+    <Compile Include="Vista\MedicamentosForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\Medicamentos.Designer.cs">
-      <DependentUpon>Medicamentos.cs</DependentUpon>
+    <Compile Include="Vista\MedicamentosForm.Designer.cs">
+      <DependentUpon>MedicamentosForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\Estantes.cs">
+    <Compile Include="Vista\EstantesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\Estantes.Designer.cs">
-      <DependentUpon>Estantes.cs</DependentUpon>
+    <Compile Include="Vista\EstantesForm.Designer.cs">
+      <DependentUpon>EstantesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHijos\Principal.cs">
+    <Compile Include="Vista\PrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHijos\Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <Compile Include="Vista\PrincipalForm.Designer.cs">
+      <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SGF.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SGF.Designer.cs">
-      <DependentUpon>SGF.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InventarioPrincipalFORM.cs">
+    <Compile Include="PrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventarioPrincipalFORM.Designer.cs">
-      <DependentUpon>InventarioPrincipalFORM.cs</DependentUpon>
+    <Compile Include="PrincipalForm.Designer.cs">
+      <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="formHijos\Clientes.resx">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\ClientesForm.resx">
+      <DependentUpon>ClientesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\nuevoCliente.resx">
-      <DependentUpon>nuevoCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\NuevoClienteForm.resx">
+      <DependentUpon>NuevoClienteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\PrincipalForm.resx">
+      <DependentUpon>PrincipalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventarioPrincipalFORM.resx">
-      <DependentUpon>InventarioPrincipalFORM.cs</DependentUpon>
+    <EmbeddedResource Include="PrincipalForm.resx">
+      <DependentUpon>PrincipalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\Categorias.resx">
-      <DependentUpon>Categorias.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\CategoriaForm.resx">
+      <DependentUpon>CategoriaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\nuevoMedicamento.resx">
-      <DependentUpon>nuevoMedicamento.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\NuevoMedicamentoForm.resx">
+      <DependentUpon>NuevoMedicamentoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\Medicamentos.resx">
-      <DependentUpon>Medicamentos.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\MedicamentosForm.resx">
+      <DependentUpon>MedicamentosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHijos\Estantes.resx">
-      <DependentUpon>Estantes.cs</DependentUpon>
+    <EmbeddedResource Include="Vista\EstantesForm.resx">
+      <DependentUpon>EstantesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SGF.resx">
-      <DependentUpon>SGF.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -201,7 +201,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Personal\" />
+    <Folder Include="Modelo\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Home_Icon.png" />

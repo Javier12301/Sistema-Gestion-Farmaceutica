@@ -4,7 +4,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sistema
 {
-    partial class SGF
+    partial class LoginForm
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -33,7 +33,7 @@ namespace Sistema
         private void InitializeComponent()
         {
             this.pnlMainLogin = new System.Windows.Forms.Panel();
-            this.ojoMostrarContraseña = new FontAwesome.Sharp.IconPictureBox();
+            this.btnShowPassword = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.txtPassword = new Guna.UI.WinForms.GunaLineTextBox();
@@ -47,7 +47,7 @@ namespace Sistema
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlMainLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ojoMostrarContraseña)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnShowPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.pnlNavLogin.SuspendLayout();
@@ -56,7 +56,7 @@ namespace Sistema
             // pnlMainLogin
             // 
             this.pnlMainLogin.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlMainLogin.Controls.Add(this.ojoMostrarContraseña);
+            this.pnlMainLogin.Controls.Add(this.btnShowPassword);
             this.pnlMainLogin.Controls.Add(this.iconPictureBox2);
             this.pnlMainLogin.Controls.Add(this.iconPictureBox1);
             this.pnlMainLogin.Controls.Add(this.txtPassword);
@@ -72,24 +72,24 @@ namespace Sistema
             this.pnlMainLogin.Size = new System.Drawing.Size(335, 244);
             this.pnlMainLogin.TabIndex = 0;
             // 
-            // ojoMostrarContraseña
+            // btnShowPassword
             // 
-            this.ojoMostrarContraseña.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ojoMostrarContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ojoMostrarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.ojoMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            this.ojoMostrarContraseña.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.ojoMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.ojoMostrarContraseña.IconSize = 31;
-            this.ojoMostrarContraseña.Location = new System.Drawing.Point(297, 101);
-            this.ojoMostrarContraseña.Name = "ojoMostrarContraseña";
-            this.ojoMostrarContraseña.Size = new System.Drawing.Size(35, 31);
-            this.ojoMostrarContraseña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ojoMostrarContraseña.TabIndex = 40;
-            this.ojoMostrarContraseña.TabStop = false;
-            this.ojoMostrarContraseña.Click += new System.EventHandler(this.ojoMostrarContraseña_Click);
-            this.ojoMostrarContraseña.MouseLeave += new System.EventHandler(this.ojoMostrarContraseña_MouseLeave);
-            this.ojoMostrarContraseña.MouseHover += new System.EventHandler(this.ojoMostrarContraseña_MouseHover);
+            this.btnShowPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.btnShowPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.btnShowPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.btnShowPassword.IconSize = 31;
+            this.btnShowPassword.Location = new System.Drawing.Point(297, 101);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(35, 31);
+            this.btnShowPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnShowPassword.TabIndex = 40;
+            this.btnShowPassword.TabStop = false;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
+            this.btnShowPassword.MouseLeave += new System.EventHandler(this.btnShowPassword_MouseLeave);
+            this.btnShowPassword.MouseHover += new System.EventHandler(this.btnShowPassword_MouseHover);
             // 
             // iconPictureBox2
             // 
@@ -248,7 +248,7 @@ namespace Sistema
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido al sistema de gestión farmacéutica";
             // 
-            // SGF
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,13 +256,13 @@ namespace Sistema
             this.Controls.Add(this.pnlNavLogin);
             this.Controls.Add(this.pnlMainLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "SGF";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema gestión farmacéutica";
-            this.Load += new System.EventHandler(this.SGF_Load);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.pnlMainLogin.ResumeLayout(false);
             this.pnlMainLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ojoMostrarContraseña)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnShowPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.pnlNavLogin.ResumeLayout(false);
@@ -283,7 +283,7 @@ namespace Sistema
         private LinkLabel lnkLabel;
         private Guna.UI.WinForms.GunaLineTextBox txtUser;
         private Guna.UI.WinForms.GunaLineTextBox txtPassword;
-        private FontAwesome.Sharp.IconPictureBox ojoMostrarContraseña;
+        private FontAwesome.Sharp.IconPictureBox btnShowPassword;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
     }

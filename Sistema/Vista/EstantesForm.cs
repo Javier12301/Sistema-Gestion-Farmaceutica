@@ -12,15 +12,15 @@ using Sistema.Controles;
 using Sistema.Database.Logica;
 using Sistema.Database.Modelo;
 
-namespace Sistema.formHijos
+namespace Sistema.Vista
 {
-    public partial class Estantes : Form
+    public partial class EstantesForm : Form
     {
         Controladora controladora = new Controladora();
-        PaletaColores paleta = new PaletaColores();
+        PaletaColores colorPalette = new PaletaColores();
         EstanteLogica estanteLogica = new EstanteLogica();
         Estante estante = new Estante();
-        public Estantes()
+        public EstantesForm()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace Sistema.formHijos
 
         private void txtNumE_KeyPress(object sender, KeyPressEventArgs e)
         {
-            controladora.soloNumeros(e);
+            controladora.OnlyNumbers(e);
         }
 
         // Método para obtener los datos del datagridview
@@ -53,7 +53,7 @@ namespace Sistema.formHijos
                 dtaSectorEstante.DataPropertyName = "Sector";
                 // Se asigna el binding source al datagridview
                 dtaViewEstante.DataSource = bindingSourceEstantes;
-                controladora.VerificarDataGridViewVacio(dtaViewEstante, "dtaIDEstante");
+                controladora.CheckEmptyDataGridView(dtaViewEstante, "dtaIDEstante");
             }
             catch (SqlException)
             {
@@ -65,9 +65,9 @@ namespace Sistema.formHijos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             //Validaciones
-            bool txtNombreEstante = controladora.verificarTextboxG(txtNombreE);
-            bool txtNumEstante = controladora.verificarTextboxG(txtNumE);
-            bool txtSectorEstante = controladora.verificarTextboxG(txtSectorE);
+            bool txtNombreEstante = controladora.VerifyTextBoxG(txtNombreE);
+            bool txtNumEstante = controladora.VerifyTextBoxG(txtNumE);
+            bool txtSectorEstante = controladora.VerifyTextBoxG(txtSectorE);
             if (txtNombreEstante && txtNumEstante && txtSectorEstante)
             {
                 // Se utiliza la instancia de la clase Estante
@@ -208,17 +208,17 @@ namespace Sistema.formHijos
         // // // // Controles de colores utilizando la controladora // // // // //
         private void txtNombreE_Enter(object sender, EventArgs e)
         {
-            txtNombreE.LineColor = paleta.ColorDisabled;
+            txtNombreE.LineColor = colorPalette.ColorDisabled;
         }
 
         private void txtNumE_Enter(object sender, EventArgs e)
         {
-            txtNumE.LineColor = paleta.ColorDisabled;
+            txtNumE.LineColor = colorPalette.ColorDisabled;
         }
 
         private void txtSectorE_Enter(object sender, EventArgs e)
         {
-            txtSectorE.LineColor = paleta.ColorDisabled;
+            txtSectorE.LineColor = colorPalette.ColorDisabled;
         }
 
         

@@ -1,6 +1,6 @@
-﻿namespace Sistema.formHijos
+﻿namespace Sistema.Vista
 {
-    partial class Clientes
+    partial class ClientesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -117,7 +117,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 26);
             this.label12.TabIndex = 3;
-            this.label12.Text = "Clientes";
+            this.label12.Text = "ClientesForm";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtSearch
@@ -194,15 +194,15 @@
             this.dtaCategoriaCliente.HeaderText = "Categoría";
             this.dtaCategoriaCliente.Name = "dtaCategoriaCliente";
             // 
-            // Clientes
+            // ClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 338);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Clientes";
-            this.Text = "Clientes";
+            this.Name = "ClientesForm";
+            this.Text = "ClientesForm";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtaGridClientes)).EndInit();

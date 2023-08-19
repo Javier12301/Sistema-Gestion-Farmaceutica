@@ -11,7 +11,7 @@ namespace Sistema.Database.Logica
     public class EstanteLogica
     {
 
-        // Obtener Lista de Categoria para cargar Datagridview
+        // Obtener Lista de CategoriaForm para cargar Datagridview
         public List<Estante> obtenerEstante()
         {
             List<Estante> listaEstante = new List<Estante>();
