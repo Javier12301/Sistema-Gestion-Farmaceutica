@@ -42,11 +42,6 @@ namespace Sistema
             }
         }
 
-       
-
-
-
-
         //Se contralará toda las funciones del ojo de contraseña
         public void mostrarPassword(GunaLineTextBox txtPassword)
         {

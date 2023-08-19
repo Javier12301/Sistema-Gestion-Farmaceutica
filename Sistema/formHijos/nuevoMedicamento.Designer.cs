@@ -76,8 +76,9 @@
             this.pnlControl.Controls.Add(this.lblNombreForm);
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
+            this.pnlControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlControl.Name = "pnlControl";
-            this.pnlControl.Size = new System.Drawing.Size(364, 32);
+            this.pnlControl.Size = new System.Drawing.Size(485, 39);
             this.pnlControl.TabIndex = 0;
             this.pnlControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseDown);
             this.pnlControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseMove);
@@ -89,12 +90,13 @@
             this.gunaControlCerrar.AnimationSpeed = 0.03F;
             this.gunaControlCerrar.IconColor = System.Drawing.Color.White;
             this.gunaControlCerrar.IconSize = 15F;
-            this.gunaControlCerrar.Location = new System.Drawing.Point(319, 0);
+            this.gunaControlCerrar.Location = new System.Drawing.Point(425, 0);
+            this.gunaControlCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gunaControlCerrar.Name = "gunaControlCerrar";
             this.gunaControlCerrar.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.gunaControlCerrar.OnHoverIconColor = System.Drawing.Color.White;
             this.gunaControlCerrar.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gunaControlCerrar.Size = new System.Drawing.Size(45, 32);
+            this.gunaControlCerrar.Size = new System.Drawing.Size(60, 39);
             this.gunaControlCerrar.TabIndex = 4;
             // 
             // lblNombreForm
@@ -102,12 +104,15 @@
             this.lblNombreForm.AutoSize = true;
             this.lblNombreForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreForm.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNombreForm.Location = new System.Drawing.Point(7, 8);
+            this.lblNombreForm.Location = new System.Drawing.Point(9, 10);
+            this.lblNombreForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombreForm.Name = "lblNombreForm";
             this.lblNombreForm.Size = new System.Drawing.Size(136, 17);
             this.lblNombreForm.TabIndex = 3;
             this.lblNombreForm.Tag = "";
             this.lblNombreForm.Text = "Nuevo Medicamento";
+            this.lblNombreForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseDown);
+            this.lblNombreForm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseMove);
             // 
             // flowLayoutPanel1
             // 
@@ -122,9 +127,10 @@
             this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 32);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 39);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(364, 276);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(485, 340);
             this.flowLayoutPanel1.TabIndex = 6;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -132,9 +138,10 @@
             // 
             this.pnlNombreMedicamento.Controls.Add(this.label16);
             this.pnlNombreMedicamento.Controls.Add(this.txtNombreMedicamento);
-            this.pnlNombreMedicamento.Location = new System.Drawing.Point(3, 3);
+            this.pnlNombreMedicamento.Location = new System.Drawing.Point(4, 4);
+            this.pnlNombreMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlNombreMedicamento.Name = "pnlNombreMedicamento";
-            this.pnlNombreMedicamento.Size = new System.Drawing.Size(341, 60);
+            this.pnlNombreMedicamento.Size = new System.Drawing.Size(455, 74);
             this.pnlNombreMedicamento.TabIndex = 0;
             // 
             // label16
@@ -144,7 +151,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(3, 4);
+            this.label16.Location = new System.Drawing.Point(4, 5);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(188, 20);
             this.label16.TabIndex = 15;
@@ -157,9 +165,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtNombreMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtNombreMedicamento.Location = new System.Drawing.Point(7, 27);
+            this.txtNombreMedicamento.Location = new System.Drawing.Point(9, 33);
+            this.txtNombreMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombreMedicamento.Name = "txtNombreMedicamento";
-            this.txtNombreMedicamento.Size = new System.Drawing.Size(307, 25);
+            this.txtNombreMedicamento.Size = new System.Drawing.Size(408, 25);
             this.txtNombreMedicamento.TabIndex = 1;
             this.txtNombreMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
             this.txtNombreMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
@@ -168,9 +177,10 @@
             // 
             this.panel3.Controls.Add(this.cmbCatMedicamento);
             this.panel3.Controls.Add(this.label15);
-            this.panel3.Location = new System.Drawing.Point(3, 69);
+            this.panel3.Location = new System.Drawing.Point(4, 86);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(341, 55);
+            this.panel3.Size = new System.Drawing.Size(455, 68);
             this.panel3.TabIndex = 2;
             // 
             // cmbCatMedicamento
@@ -183,9 +193,10 @@
             this.cmbCatMedicamento.FormattingEnabled = true;
             this.cmbCatMedicamento.Items.AddRange(new object[] {
             "Seleccionar Categoría"});
-            this.cmbCatMedicamento.Location = new System.Drawing.Point(7, 26);
+            this.cmbCatMedicamento.Location = new System.Drawing.Point(9, 32);
+            this.cmbCatMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbCatMedicamento.Name = "cmbCatMedicamento";
-            this.cmbCatMedicamento.Size = new System.Drawing.Size(307, 25);
+            this.cmbCatMedicamento.Size = new System.Drawing.Size(408, 25);
             this.cmbCatMedicamento.TabIndex = 3;
             // 
             // label15
@@ -195,7 +206,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(3, 4);
+            this.label15.Location = new System.Drawing.Point(4, 5);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(158, 20);
             this.label15.TabIndex = 16;
@@ -205,9 +217,10 @@
             // 
             this.panel4.Controls.Add(this.cmbEstanteMedicamento);
             this.panel4.Controls.Add(this.label17);
-            this.panel4.Location = new System.Drawing.Point(3, 130);
+            this.panel4.Location = new System.Drawing.Point(4, 162);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(341, 55);
+            this.panel4.Size = new System.Drawing.Size(455, 68);
             this.panel4.TabIndex = 4;
             // 
             // cmbEstanteMedicamento
@@ -220,9 +233,10 @@
             this.cmbEstanteMedicamento.FormattingEnabled = true;
             this.cmbEstanteMedicamento.Items.AddRange(new object[] {
             "Seleccionar Estante"});
-            this.cmbEstanteMedicamento.Location = new System.Drawing.Point(7, 24);
+            this.cmbEstanteMedicamento.Location = new System.Drawing.Point(9, 30);
+            this.cmbEstanteMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbEstanteMedicamento.Name = "cmbEstanteMedicamento";
-            this.cmbEstanteMedicamento.Size = new System.Drawing.Size(307, 25);
+            this.cmbEstanteMedicamento.Size = new System.Drawing.Size(408, 25);
             this.cmbEstanteMedicamento.TabIndex = 5;
             // 
             // label17
@@ -232,7 +246,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(3, 4);
+            this.label17.Location = new System.Drawing.Point(4, 5);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(143, 20);
             this.label17.TabIndex = 18;
@@ -242,9 +257,10 @@
             // 
             this.panel1.Controls.Add(this.txtLoteMedicamento);
             this.panel1.Controls.Add(this.lblLote);
-            this.panel1.Location = new System.Drawing.Point(3, 191);
+            this.panel1.Location = new System.Drawing.Point(4, 238);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 55);
+            this.panel1.Size = new System.Drawing.Size(455, 68);
             this.panel1.TabIndex = 6;
             // 
             // txtLoteMedicamento
@@ -254,9 +270,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLoteMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtLoteMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtLoteMedicamento.Location = new System.Drawing.Point(7, 24);
+            this.txtLoteMedicamento.Location = new System.Drawing.Point(9, 30);
+            this.txtLoteMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLoteMedicamento.Name = "txtLoteMedicamento";
-            this.txtLoteMedicamento.Size = new System.Drawing.Size(307, 25);
+            this.txtLoteMedicamento.Size = new System.Drawing.Size(408, 25);
             this.txtLoteMedicamento.TabIndex = 7;
             // 
             // lblLote
@@ -265,9 +282,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLote.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblLote.Location = new System.Drawing.Point(3, 4);
+            this.lblLote.Location = new System.Drawing.Point(4, 5);
+            this.lblLote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLote.Name = "lblLote";
-            this.lblLote.Size = new System.Drawing.Size(143, 22);
+            this.lblLote.Size = new System.Drawing.Size(191, 27);
             this.lblLote.TabIndex = 18;
             this.lblLote.Text = "Número Lote";
             // 
@@ -277,9 +295,10 @@
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.label18);
             this.panel5.Controls.Add(this.txtStockMedicamento);
-            this.panel5.Location = new System.Drawing.Point(3, 252);
+            this.panel5.Location = new System.Drawing.Point(4, 314);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(341, 55);
+            this.panel5.Size = new System.Drawing.Size(455, 68);
             this.panel5.TabIndex = 8;
             // 
             // txtPrecioUnitMedicamento
@@ -289,9 +308,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrecioUnitMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtPrecioUnitMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtPrecioUnitMedicamento.Location = new System.Drawing.Point(175, 25);
+            this.txtPrecioUnitMedicamento.Location = new System.Drawing.Point(233, 31);
+            this.txtPrecioUnitMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrecioUnitMedicamento.Name = "txtPrecioUnitMedicamento";
-            this.txtPrecioUnitMedicamento.Size = new System.Drawing.Size(139, 25);
+            this.txtPrecioUnitMedicamento.Size = new System.Drawing.Size(184, 25);
             this.txtPrecioUnitMedicamento.TabIndex = 10;
             this.txtPrecioUnitMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
             this.txtPrecioUnitMedicamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
@@ -304,7 +324,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(3, 4);
+            this.label13.Location = new System.Drawing.Point(4, 5);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 20);
             this.label13.TabIndex = 18;
@@ -317,7 +338,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label18.Location = new System.Drawing.Point(171, 4);
+            this.label18.Location = new System.Drawing.Point(228, 5);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(113, 20);
             this.label18.TabIndex = 22;
@@ -330,9 +352,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStockMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtStockMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtStockMedicamento.Location = new System.Drawing.Point(7, 25);
+            this.txtStockMedicamento.Location = new System.Drawing.Point(9, 31);
+            this.txtStockMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStockMedicamento.Name = "txtStockMedicamento";
-            this.txtStockMedicamento.Size = new System.Drawing.Size(139, 25);
+            this.txtStockMedicamento.Size = new System.Drawing.Size(184, 25);
             this.txtStockMedicamento.TabIndex = 9;
             this.txtStockMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
             this.txtStockMedicamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
@@ -342,18 +365,20 @@
             // 
             this.panel7.Controls.Add(this.dtaVencimientoMedicamento);
             this.panel7.Controls.Add(this.label1);
-            this.panel7.Location = new System.Drawing.Point(3, 313);
+            this.panel7.Location = new System.Drawing.Point(4, 390);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(341, 55);
+            this.panel7.Size = new System.Drawing.Size(455, 68);
             this.panel7.TabIndex = 8;
             // 
             // dtaVencimientoMedicamento
             // 
             this.dtaVencimientoMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dtaVencimientoMedicamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtaVencimientoMedicamento.Location = new System.Drawing.Point(9, 25);
+            this.dtaVencimientoMedicamento.Location = new System.Drawing.Point(12, 31);
+            this.dtaVencimientoMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtaVencimientoMedicamento.Name = "dtaVencimientoMedicamento";
-            this.dtaVencimientoMedicamento.Size = new System.Drawing.Size(305, 25);
+            this.dtaVencimientoMedicamento.Size = new System.Drawing.Size(405, 25);
             this.dtaVencimientoMedicamento.TabIndex = 11;
             // 
             // label1
@@ -363,18 +388,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoEllipsis = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 4);
+            this.label1.Location = new System.Drawing.Point(4, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 18);
+            this.label1.Size = new System.Drawing.Size(240, 22);
             this.label1.TabIndex = 18;
             this.label1.Text = "Fecha de vencimiento";
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btnAgregarMedicamento);
-            this.panel8.Location = new System.Drawing.Point(3, 374);
+            this.panel8.Location = new System.Drawing.Point(4, 466);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(341, 55);
+            this.panel8.Size = new System.Drawing.Size(455, 68);
             this.panel8.TabIndex = 21;
             // 
             // btnAgregarMedicamento
@@ -383,9 +410,10 @@
             this.btnAgregarMedicamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarMedicamento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarMedicamento.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregarMedicamento.Location = new System.Drawing.Point(83, 3);
+            this.btnAgregarMedicamento.Location = new System.Drawing.Point(111, 4);
+            this.btnAgregarMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregarMedicamento.Name = "btnAgregarMedicamento";
-            this.btnAgregarMedicamento.Size = new System.Drawing.Size(180, 49);
+            this.btnAgregarMedicamento.Size = new System.Drawing.Size(240, 60);
             this.btnAgregarMedicamento.TabIndex = 12;
             this.btnAgregarMedicamento.Text = "Agregar";
             this.btnAgregarMedicamento.UseVisualStyleBackColor = false;
@@ -399,13 +427,14 @@
             // 
             // nuevoMedicamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(364, 308);
+            this.ClientSize = new System.Drawing.Size(485, 379);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.pnlControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MinimizeBox = false;
             this.Name = "nuevoMedicamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
