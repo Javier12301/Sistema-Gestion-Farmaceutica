@@ -46,6 +46,7 @@ namespace Sistema
             this.pnlNavLogin = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnTest = new System.Windows.Forms.Button();
             this.pnlMainLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -56,6 +57,7 @@ namespace Sistema
             // pnlMainLogin
             // 
             this.pnlMainLogin.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlMainLogin.Controls.Add(this.btnTest);
             this.pnlMainLogin.Controls.Add(this.btnShowPassword);
             this.pnlMainLogin.Controls.Add(this.iconPictureBox2);
             this.pnlMainLogin.Controls.Add(this.iconPictureBox1);
@@ -248,6 +250,16 @@ namespace Sistema
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido al sistema de gestión farmacéutica";
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(246, 193);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 41;
+            this.btnTest.Text = "button1";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,6 +298,7 @@ namespace Sistema
         private FontAwesome.Sharp.IconPictureBox btnShowPassword;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

@@ -11,11 +11,14 @@ CREATE TABLE Estantes(
 	Sector NVARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Categorias(
+CREATE TABLE CategoriasModel(
 	CategoriaID INT IDENTITY(1,1) PRIMARY KEY,
 	Nombre NVARCHAR(255) NOT NULL,
 	Descripcion NVARCHAR(255) NOT NULL
 );
+
+
+SELECT * FROM EstantesModel;
 
 SELECT * FROM Medicamentos;
 SELECT * FROM Lotes;

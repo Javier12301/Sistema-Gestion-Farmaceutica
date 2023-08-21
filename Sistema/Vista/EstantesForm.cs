@@ -9,17 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema.Controles;
-using Sistema.Database.Logica;
-using Sistema.Database.Modelo;
+using Sistema.Modelo;
+using System.Media;
+using Sistema.Controles.Logica;
+
 
 namespace Sistema.Vista
 {
     public partial class EstantesForm : Form
     {
+        // Instancias de las clases de Control
         Controladora controladora = new Controladora();
         PaletaColores colorPalette = new PaletaColores();
-        EstanteLogica estanteLogica = new EstanteLogica();
-        Estante estante = new Estante();
+        EstanteLogica shelfLogic = new EstanteLogica();
+
         public EstantesForm()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace Sistema.Vista
 
         private void Estantes_Load(object sender, EventArgs e)
         {
-            cargarDatosEstantes();
+            loadShelvesData();
             btnGuardarG.Enabled = false;
         }
 
@@ -37,106 +40,93 @@ namespace Sistema.Vista
         }
 
         // Método para obtener los datos del datagridview
-        private BindingSource bindingSourceEstantes;
-        
-        private void cargarDatosEstantes()
-        {
-            try
-            {
-                List<Estante> listaEstantes = estanteLogica.obtenerEstante();
-                bindingSourceEstantes = new BindingSource(listaEstantes, null);
+        private BindingSource bindingSourceShelves;
 
-                // cargar los datos en el datagridview
-                dtaIDEstante.DataPropertyName = "EstanteID";
-                dtaNombreEstante.DataPropertyName = "Nombre";
-                dtaNumEstante.DataPropertyName = "Num_Estante";
-                dtaSectorEstante.DataPropertyName = "Sector";
-                // Se asigna el binding source al datagridview
-                dtaViewEstante.DataSource = bindingSourceEstantes;
-                controladora.CheckEmptyDataGridView(dtaViewEstante, "dtaIDEstante");
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
+        private void loadShelvesData()
+        {
+            List<EstantesModel> shelvesList = shelfLogic.GetShelves();
+            bindingSourceShelves = new BindingSource(shelvesList, null);
+
+            // cargar los datos en el datagridview
+            dtaIDEstante.DataPropertyName = "EstanteID";
+            dtaNombreEstante.DataPropertyName = "Nombre";
+            dtaNumEstante.DataPropertyName = "Numero_de_estante";
+            dtaSectorEstante.DataPropertyName = "Sector";
+            // Se asigna el binding source al datagridview
+            dtaViewEstante.DataSource = bindingSourceShelves;
+            dtaViewEstante.Columns["MedicamentosModel"].Visible = false;
+            controladora.CheckEmptyDataGridView(dtaViewEstante, "dtaIDEstante");
         }
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            // Model
+            EstantesModel shelves = new EstantesModel();
             //Validaciones
             bool txtNombreEstante = controladora.VerifyTextBoxG(txtNombreE);
             bool txtNumEstante = controladora.VerifyTextBoxG(txtNumE);
             bool txtSectorEstante = controladora.VerifyTextBoxG(txtSectorE);
             if (txtNombreEstante && txtNumEstante && txtSectorEstante)
+
             {
                 // Se utiliza la instancia de la clase Estante
-                estante.Nombre = txtNombreE.Text;
-                estante.Num_Estante = Convert.ToInt32(txtNumE.Text);
-                estante.Sector = txtSectorE.Text;
+                shelves.Nombre = txtNombreE.Text;
+                shelves.Numero_de_estante = Convert.ToInt32(txtNumE.Text);
+                shelves.Sector = txtSectorE.Text;
 
-                try
+                bool resultado = shelfLogic.AddShelf(shelves);
+                if (resultado)
                 {
-                    bool resultado = estanteLogica.agregarEstante(estante);
-                    if (resultado)
-                    {
-                        MessageBox.Show("Se agrego corectamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Se limpian los campos
-                        txtNombreE.Text = "";
-                        txtNumE.Text = "";
-                        txtSectorE.Text = "";
-                        // Se actualiza el datagridview
-                        cargarDatosEstantes();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }catch(SqlException)
+                    MessageBox.Show("Se agrego corectamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se limpian los campos
+                    txtNombreE.Text = "";
+                    txtNumE.Text = "";
+                    txtSectorE.Text = "";
+                    // Se actualiza el datagridview
+                    loadShelvesData();
+                }
+                else
                 {
-                   MessageBox.Show("Ocurrio un error al agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se pudo agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }       
+            }
         }
 
         // Evento cuando se modifique una celda del datagridview
         private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in modifiedRows)
+            // Se crea una instancia de la clase Estante
+            EstantesModel shelf = new EstantesModel();
+            foreach (DataGridViewRow row in modifiedRows)
             {
                 int _id = Convert.ToInt32(row.Cells["dtaIDEstante"].Value);
-                string _nombre = row.Cells["dtaNombreEstante"].Value.ToString();
-                string _numE = row.Cells["dtaNumEstante"].Value.ToString();
-                string _sector = row.Cells["dtaSectorEstante"].Value.ToString();
+                string selectedShelfName = row.Cells["dtaNombreEstante"].Value.ToString();
+                string selectedShelfNumber = row.Cells["dtaNumEstante"].Value.ToString();
+                string selectedShelfSection = row.Cells["dtaSectorEstante"].Value.ToString();
 
-                estante.EstanteID = _id;
-                estante.Nombre = _nombre;
-                estante.Num_Estante = Convert.ToInt32(_numE);
-                estante.Sector = _sector;
-                try
-                {
-                    bool resultado = estanteLogica.modificarEstante(estante);
-                    if (resultado)
-                    {
-                        MessageBox.Show("Se modifico corectamente el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Se actualiza el datagridview
-                        cargarDatosEstantes();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo modificar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                shelf.EstanteID = _id;
+                shelf.Nombre = selectedShelfName;
+                shelf.Numero_de_estante = Convert.ToInt32(selectedShelfNumber);
+                shelf.Sector = selectedShelfSection;
 
-                }catch(SqlException)
+                bool resultado = shelfLogic.ModifyShelf(shelf);
+                if (resultado)
                 {
-                    throw;
+                    MessageBox.Show("Se modifico corectamente el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se actualiza el datagridview
+                    loadShelvesData();
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo modificar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             modifiedRows.Clear();
             btnGuardarG.Enabled = false;
@@ -145,12 +135,12 @@ namespace Sistema.Vista
         private void dtaViewEstante_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dtaViewEstante.Rows[e.RowIndex];
-            if (!modifiedRows.Contains(row))
-            {
-                modifiedRows.Add(row);
-            }
-            btnGuardarG.Enabled = true;
-
+            
+                if (!modifiedRows.Contains(row))
+                {
+                    modifiedRows.Add(row);
+                }
+                btnGuardarG.Enabled = true;        
         }
 
         // Evento para eliminar un estante
@@ -160,32 +150,24 @@ namespace Sistema.Vista
             if (dtaViewEstante.SelectedRows.Count > 0)
             {
                 // Se obtiene el id del estante seleccionado
-                int _id = Convert.ToInt32(dtaViewEstante.CurrentRow.Cells["dtaIDEstante"].Value);
+                int selectedShelfID = Convert.ToInt32(dtaViewEstante.CurrentRow.Cells["dtaIDEstante"].Value);
                 // se crea un cuadro de dialogo para confirmar la eliminacion
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar el estante?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado == DialogResult.Yes)
-                {
-                    try
-                    {
-                        bool resultadoEliminar = estanteLogica.eliminarEstante(_id);
-                        if (resultadoEliminar)
+                DialogResult userConfirmation = MessageBox.Show("¿Está seguro que desea eliminar el estante?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (userConfirmation == DialogResult.Yes)
+                {        
+                        bool deletionResult = shelfLogic.DeleteShelf(selectedShelfID);
+                        if (deletionResult)
                         {
                             // Eliminar la fila del datagridview
-                            Estante estante = (Estante)bindingSourceEstantes[dtaViewEstante.CurrentRow.Index];
-                            bindingSourceEstantes.Remove(estante);
+                            EstantesModel shelf = (EstantesModel)bindingSourceShelves[dtaViewEstante.CurrentRow.Index];
+                            bindingSourceShelves.Remove(shelf);
                             MessageBox.Show("Se elimino corectamente el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            cargarDatosEstantes();
+                            loadShelvesData();
                         }
                         else
                         {
                             MessageBox.Show("No se pudo eliminar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-
-                    }catch(SqlException)
-                    {
-                        throw;
-                    }
+                        }                                         
                 }
             }
             else
@@ -221,6 +203,29 @@ namespace Sistema.Vista
             txtSectorE.LineColor = colorPalette.ColorDisabled;
         }
 
-        
+        // Limitar solo número en la columa número de estante
+        private void dtaViewEstante_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column_KeyPress);
+            if (dtaViewEstante.CurrentCell.OwningColumn.Name == "dtaNumEstante") // Columna deseada
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+                }
+            }
+
+        }
+
+        private void Column_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                SystemSounds.Beep.Play();
+            }
+        }
+        // 
     }
 }

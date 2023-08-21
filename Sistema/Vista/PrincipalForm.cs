@@ -2,33 +2,38 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema.Controles;
-using Sistema.Database.Logica;
+using Sistema.Controles.Logica;
+
+
 
 namespace Sistema.Vista
 {
     
     public partial class PrincipalForm : Form
     {
+        // Instancias de las clases de Control
         Shortcuts shortcuts = new Shortcuts();
-        EstanteLogica estanteLogica = new EstanteLogica();
-        CategoriaLogica categoriaLogica = new CategoriaLogica();
-        MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
+        EstanteLogica shelfLogic = new EstanteLogica();
+        CategoriaLogica categoryLogic = new CategoriaLogica();
+        MedicamentoLogica medicineLogic = new MedicamentoLogica();
         public PrincipalForm()
         {
             InitializeComponent();
         }
 
         private void Principal_Load(object sender, EventArgs e)
-        {
-            lblNumEstantes.Text = estanteLogica.obtenerCantidadEstantes().ToString();
-            lblNumCategorias.Text = categoriaLogica.obtenerCantidadCategorias().ToString();
-            lblNumMedicamentos.Text = medicamentoLogica.obtenerCantidadMedicamentos().ToString();
+        {        
+            lblNumEstantes.Text = shelfLogic.GetTotalShelvesCount().ToString();
+            lblNumCategorias.Text = categoryLogic.GetTotalCategoriesCount().ToString();
+            lblNumMedicamentos.Text = medicineLogic.GetTotalMedicinesCount().ToString();
+                     
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

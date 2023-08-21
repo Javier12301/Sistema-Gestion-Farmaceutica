@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema;
 using Sistema.Controles;
+using Sistema.Controles.Logica;
 using Sistema.Database;
+using Sistema.Modelo;
 
 namespace Sistema
 {
@@ -139,6 +141,11 @@ namespace Sistema
         private void btnForgotPassword_MouseLeave(object sender, EventArgs e)
         {
             btnForgotPassword.ForeColor = btnForgotPasswordLeave;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -115,7 +115,7 @@
             this.cmbGCategorias.Size = new System.Drawing.Size(85, 20);
             this.cmbGCategorias.TabIndex = 10;
             this.cmbGCategorias.Tag = "categoriasTAG";
-            this.cmbGCategorias.Text = "Categorias";
+            this.cmbGCategorias.Text = "CategoriaForm";
             this.cmbGCategorias.CheckedChanged += new System.EventHandler(this.cmbCheck_Changed);
             // 
             // lblGFiltros

@@ -63,7 +63,7 @@ SELECT
 FROM Medicamentos M
 INNER JOIN Lotes L ON M.LoteID = L.LoteID
 INNER JOIN Categorias C ON M.CategoriaID = C.CategoriaID
-INNER JOIN EstantesForm E ON M.EstanteID = E.EstanteID;
+INNER JOIN Estantes E ON M.EstanteID = E.EstanteID;
 
 ";
                 SqlCommand cmd = new SqlCommand(query, conex);

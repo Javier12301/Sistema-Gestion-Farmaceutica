@@ -58,7 +58,7 @@ namespace Sistema.Vista
                 dtaCantidad.DataPropertyName = "Stock";
                 dtaVencimiento.DataPropertyName = "FechaVencimiento";
                 // configurar columnas de CategoriaForm y Estante
-                // Categorias
+                // CategoriaForm
                 dtaNombreCat.DataPropertyName = "CategoriaNombre";
                 // EstantesForm
                 dtaNombreEst.DataPropertyName = "Nombre_Estante";

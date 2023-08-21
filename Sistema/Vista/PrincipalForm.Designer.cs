@@ -372,7 +372,7 @@
             this.groupBox1.Size = new System.Drawing.Size(272, 117);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Categorias";
+            this.groupBox1.Text = "CategoriaForm";
             // 
             // iconPictureBox2
             // 
@@ -400,7 +400,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(210, 40);
             this.label13.TabIndex = 21;
-            this.label13.Text = "Categorias Totales";
+            this.label13.Text = "Categoria Totales";
             // 
             // lblNumCategorias
             // 

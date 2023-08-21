@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 // hacer using de las carpetas de logica y modelo
-using Sistema.Database.Logica;
 using Sistema.Database.Modelo;
 using System.Data.SqlClient;
 
@@ -21,7 +20,7 @@ namespace Sistema.Vista
         Shortcuts shortcuts = new Shortcuts();
         PaletaColores colorPalette = new PaletaColores();
         //Se crea una instancia de la clase CategoriaLogica
-        CategoriaLogica categoriaLogica = new CategoriaLogica();
+        
         // Modelos
         Categoria categoria = new Categoria();
 
@@ -34,7 +33,7 @@ namespace Sistema.Vista
         private void Categorias_Load(object sender, EventArgs e)
         {
             // Se cargan los datos en el datagridview
-            cargarDatosCategorias();
+            //cargarDatosCategorias();
             // Desactivar boton guardar hasta que se haga un cambio en el datagridview
             btnGuardarG.Enabled = false;
         }
@@ -42,6 +41,7 @@ namespace Sistema.Vista
         // Variables para el datagridview
         private BindingSource bindingSourceCategorias;
 
+        /*
         private void cargarDatosCategorias()
         {
             // obtener las categorias desde la base de datos
@@ -63,19 +63,19 @@ namespace Sistema.Vista
             {
                 throw;
             }
-        }
+        }*/
 
 
-
+        
         private void btnAgregar_Click(object sender, EventArgs e)
-        {
+        {/*
             bool txtBoolNombreCategoria = controladora.VerifyTextBoxG(txtNombreCat);
             if (txtBoolNombreCategoria)
             {
                 // Se utiliza la instancia de la clase categoria
                 categoria.Nombre = txtNombreCat.Text;
                 categoria.Descripcion = txtDescripcionCat.Text;
-
+                
                 try
                 {
                     bool resultado = categoriaLogica.agregarCategoria(categoria);
@@ -103,7 +103,7 @@ namespace Sistema.Vista
 
             {
                 MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            }*/
         }
 
         private void txtNombreCat_Enter(object sender, EventArgs e)
@@ -124,7 +124,7 @@ namespace Sistema.Vista
                 categoria.Nombre = nombre;
                 categoria.Descripcion = descripcion;
                 try
-                {
+                {/*
                     bool resultado = categoriaLogica.modificarCategoria(categoria);
                     if (resultado)
                     {
@@ -136,7 +136,7 @@ namespace Sistema.Vista
                     {
                         MessageBox.Show("No se pudo modificar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
+                    */
                 }
                 catch (SqlException)
                 {
@@ -202,7 +202,7 @@ namespace Sistema.Vista
                 {
                     // Eliminar la categoria de la base de datos
                     try
-                    {
+                    {/*
                         bool resultadoEliminar = categoriaLogica.eliminarCategoria(_id);
                         if (resultadoEliminar)
                         {
@@ -215,7 +215,7 @@ namespace Sistema.Vista
                         else
                         {
                             MessageBox.Show("No se pudo eliminar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        }*/
                     }
                     catch (SqlException)
                     {

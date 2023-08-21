@@ -195,7 +195,7 @@
             this.btnClientes.Size = new System.Drawing.Size(177, 45);
             this.btnClientes.TabIndex = 6;
             this.btnClientes.Tag = "btnClientes";
-            this.btnClientes.Text = "ClientesForm";
+            this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
@@ -213,7 +213,7 @@
             this.btnMedicamentos.Size = new System.Drawing.Size(177, 45);
             this.btnMedicamentos.TabIndex = 4;
             this.btnMedicamentos.Tag = "btnMedicamento";
-            this.btnMedicamentos.Text = "MedicamentosForm";
+            this.btnMedicamentos.Text = "Medicamentos";
             this.btnMedicamentos.UseVisualStyleBackColor = false;
             this.btnMedicamentos.Click += new System.EventHandler(this.btnMedicamento_Click);
             // 
@@ -246,7 +246,7 @@
             this.btnEstantes.Size = new System.Drawing.Size(177, 45);
             this.btnEstantes.TabIndex = 2;
             this.btnEstantes.Tag = "btnEstante";
-            this.btnEstantes.Text = "EstantesForm";
+            this.btnEstantes.Text = "Estantes";
             this.btnEstantes.UseVisualStyleBackColor = true;
             this.btnEstantes.Click += new System.EventHandler(this.btnEstantes_Click);
             // 
@@ -263,7 +263,7 @@
             this.btnPrincipal.Size = new System.Drawing.Size(172, 45);
             this.btnPrincipal.TabIndex = 0;
             this.btnPrincipal.Tag = "btnPrincipal";
-            this.btnPrincipal.Text = "PrincipalForm";
+            this.btnPrincipal.Text = "Principal";
             this.btnPrincipal.UseVisualStyleBackColor = false;
             this.btnPrincipal.Click += new System.EventHandler(this.btnPrincipal_Click);
             // 

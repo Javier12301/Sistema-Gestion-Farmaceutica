@@ -208,6 +208,7 @@
             this.dtaViewEstante.TabIndex = 21;
             this.dtaViewEstante.TabStop = false;
             this.dtaViewEstante.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewEstante_CellEndEdit);
+            this.dtaViewEstante.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtaViewEstante_EditingControlShowing);
             // 
             // dtaIDEstante
             // 

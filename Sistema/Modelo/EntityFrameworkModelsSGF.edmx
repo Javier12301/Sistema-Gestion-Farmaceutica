@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SistemaGestionFarmaceuticaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoriasModel">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstantesModel">
+          <Key>
+            <PropertyRef Name="EstanteID" />
+          </Key>
+          <Property Name="EstanteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Numero_de_estante" Type="int" Nullable="false" />
+          <Property Name="Sector" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LotesModel">
+          <Key>
+            <PropertyRef Name="LoteID" />
+          </Key>
+          <Property Name="LoteID" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Nombre_Medicamento" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicamentosModel">
+          <Key>
+            <PropertyRef Name="LoteID" />
+          </Key>
+          <Property Name="LoteID" Type="int" Nullable="false" />
+          <Property Name="EstanteID" Type="int" />
+          <Property Name="CategoriaID" Type="int" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK__Medicamen__Categ__46B27FE2">
+          <End Role="CategoriasModel" Type="Self.CategoriasModel" Multiplicity="0..1" />
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasModel">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="MedicamentosModel">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Estan__45BE5BA9">
+          <End Role="EstantesModel" Type="Self.EstantesModel" Multiplicity="0..1" />
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstantesModel">
+              <PropertyRef Name="EstanteID" />
+            </Principal>
+            <Dependent Role="MedicamentosModel">
+              <PropertyRef Name="EstanteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__LoteI__44CA3770">
+          <End Role="LotesModel" Type="Self.LotesModel" Multiplicity="1" />
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LotesModel">
+              <PropertyRef Name="LoteID" />
+            </Principal>
+            <Dependent Role="MedicamentosModel">
+              <PropertyRef Name="LoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemaGestionFarmaceuticaModelStoreContainer">
+          <EntitySet Name="CategoriasModel" EntityType="Self.CategoriasModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstantesModel" EntityType="Self.EstantesModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LotesModel" EntityType="Self.LotesModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicamentosModel" EntityType="Self.MedicamentosModel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Medicamen__Categ__46B27FE2" Association="Self.FK__Medicamen__Categ__46B27FE2">
+            <End Role="CategoriasModel" EntitySet="CategoriasModel" />
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Estan__45BE5BA9" Association="Self.FK__Medicamen__Estan__45BE5BA9">
+            <End Role="EstantesModel" EntitySet="EstantesModel" />
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__LoteI__44CA3770" Association="Self.FK__Medicamen__LoteI__44CA3770">
+            <End Role="LotesModel" EntitySet="LotesModel" />
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SistemaGestionFarmaceuticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoriasModel">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__Categ__46B27FE2" FromRole="CategoriasModel" ToRole="MedicamentosModel" />
+        </EntityType>
+        <EntityType Name="EstantesModel">
+          <Key>
+            <PropertyRef Name="EstanteID" />
+          </Key>
+          <Property Name="EstanteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero_de_estante" Type="Int32" Nullable="false" />
+          <Property Name="Sector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__Estan__45BE5BA9" FromRole="EstantesModel" ToRole="MedicamentosModel" />
+        </EntityType>
+        <EntityType Name="LotesModel">
+          <Key>
+            <PropertyRef Name="LoteID" />
+          </Key>
+          <Property Name="LoteID" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Medicamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__LoteI__44CA3770" FromRole="LotesModel" ToRole="MedicamentosModel" />
+        </EntityType>
+        <EntityType Name="MedicamentosModel">
+          <Key>
+            <PropertyRef Name="LoteID" />
+          </Key>
+          <Property Name="LoteID" Type="Int32" Nullable="false" />
+          <Property Name="EstanteID" Type="Int32" />
+          <Property Name="CategoriaID" Type="Int32" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="CategoriasModel" Relationship="Self.FK__Medicamen__Categ__46B27FE2" FromRole="MedicamentosModel" ToRole="CategoriasModel" />
+          <NavigationProperty Name="EstantesModel" Relationship="Self.FK__Medicamen__Estan__45BE5BA9" FromRole="MedicamentosModel" ToRole="EstantesModel" />
+          <NavigationProperty Name="LotesModel" Relationship="Self.FK__Medicamen__LoteI__44CA3770" FromRole="MedicamentosModel" ToRole="LotesModel" />
+        </EntityType>
+        <Association Name="FK__Medicamen__Categ__46B27FE2">
+          <End Role="CategoriasModel" Type="Self.CategoriasModel" Multiplicity="0..1" />
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasModel">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="MedicamentosModel">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Estan__45BE5BA9">
+          <End Role="EstantesModel" Type="Self.EstantesModel" Multiplicity="0..1" />
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstantesModel">
+              <PropertyRef Name="EstanteID" />
+            </Principal>
+            <Dependent Role="MedicamentosModel">
+              <PropertyRef Name="EstanteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__LoteI__44CA3770">
+          <End Role="LotesModel" Type="Self.LotesModel" Multiplicity="1" />
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LotesModel">
+              <PropertyRef Name="LoteID" />
+            </Principal>
+            <Dependent Role="MedicamentosModel">
+              <PropertyRef Name="LoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemaGestionFarmaceuticaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoriasModel" EntityType="Self.CategoriasModel" />
+          <EntitySet Name="EstantesModel" EntityType="Self.EstantesModel" />
+          <EntitySet Name="LotesModel" EntityType="Self.LotesModel" />
+          <EntitySet Name="MedicamentosModel" EntityType="Self.MedicamentosModel" />
+          <AssociationSet Name="FK__Medicamen__Categ__46B27FE2" Association="Self.FK__Medicamen__Categ__46B27FE2">
+            <End Role="CategoriasModel" EntitySet="CategoriasModel" />
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Estan__45BE5BA9" Association="Self.FK__Medicamen__Estan__45BE5BA9">
+            <End Role="EstantesModel" EntitySet="EstantesModel" />
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__LoteI__44CA3770" Association="Self.FK__Medicamen__LoteI__44CA3770">
+            <End Role="LotesModel" EntitySet="LotesModel" />
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SistemaGestionFarmaceuticaModelStoreContainer" CdmEntityContainer="SistemaGestionFarmaceuticaEntities">
+          <EntitySetMapping Name="CategoriasModel">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.CategoriasModel">
+              <MappingFragment StoreEntitySet="CategoriasModel">
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstantesModel">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.EstantesModel">
+              <MappingFragment StoreEntitySet="EstantesModel">
+                <ScalarProperty Name="EstanteID" ColumnName="EstanteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Numero_de_estante" ColumnName="Numero_de_estante" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LotesModel">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.LotesModel">
+              <MappingFragment StoreEntitySet="LotesModel">
+                <ScalarProperty Name="LoteID" ColumnName="LoteID" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Nombre_Medicamento" ColumnName="Nombre_Medicamento" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicamentosModel">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.MedicamentosModel">
+              <MappingFragment StoreEntitySet="MedicamentosModel">
+                <ScalarProperty Name="LoteID" ColumnName="LoteID" />
+                <ScalarProperty Name="EstanteID" ColumnName="EstanteID" />
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
