@@ -11,6 +11,8 @@ using System.Windows.Forms;
 // hacer using de las carpetas de logica y modelo
 using Sistema.Database.Modelo;
 using System.Data.SqlClient;
+using Sistema.Modelo;
+using Sistema.Controles.Logica;
 
 namespace Sistema.Vista
 {
@@ -19,10 +21,8 @@ namespace Sistema.Vista
         Controladora controladora = new Controladora();
         Shortcuts shortcuts = new Shortcuts();
         PaletaColores colorPalette = new PaletaColores();
-        //Se crea una instancia de la clase CategoriaLogica
-        
-        // Modelos
-        Categoria categoria = new Categoria();
+        // Se crea una instancia de la clase categoria
+        CategoriaLogica categoryLogic = new CategoriaLogica();
 
         public CategoriaForm()
         {
@@ -33,29 +33,28 @@ namespace Sistema.Vista
         private void Categorias_Load(object sender, EventArgs e)
         {
             // Se cargan los datos en el datagridview
-            //cargarDatosCategorias();
+            loadCategoriesData();
             // Desactivar boton guardar hasta que se haga un cambio en el datagridview
             btnGuardarG.Enabled = false;
         }
 
         // Variables para el datagridview
-        private BindingSource bindingSourceCategorias;
-
-        /*
-        private void cargarDatosCategorias()
+        private BindingSource bindingSourceCategories;
+        private void loadCategoriesData()
         {
             // obtener las categorias desde la base de datos
             try
             {
-                List<Categoria> listaCategorias = categoriaLogica.obtenerCategoria();
-                bindingSourceCategorias = new BindingSource(listaCategorias, null);
+                List<CategoriasModel> categoriesList = categoryLogic.GetCategories();
+                bindingSourceCategories = new BindingSource(categoriesList, null);
 
                 // cargar los datos en el datagridview
                 dtaIDCategoria.DataPropertyName = "CategoriaID";
                 dtaNombreCategoria.DataPropertyName = "Nombre";
                 dtaDescripcionCategoria.DataPropertyName = "Descripcion";
                 // Se asigna el binding source al datagridview
-                dtaViewCategoria.DataSource = bindingSourceCategorias;
+                dtaViewCategoria.DataSource = bindingSourceCategories;
+                dtaViewCategoria.Columns["MedicamentosModel"].Visible = false;
                 controladora.CheckEmptyDataGridView(dtaViewCategoria, "dtaIDCategoria");
 
             }
@@ -63,108 +62,200 @@ namespace Sistema.Vista
             {
                 throw;
             }
-        }*/
+        }
 
 
-        
+        // // // // // // AGREGAR CATEGORIA // // // // // //
+
         private void btnAgregar_Click(object sender, EventArgs e)
-        {/*
-            bool txtBoolNombreCategoria = controladora.VerifyTextBoxG(txtNombreCat);
-            if (txtBoolNombreCategoria)
+        {
+            // Model Categoria
+            CategoriasModel category = new CategoriasModel();
+            bool isCategoryNameValid = controladora.VerifyTextBoxG(txtNombreCat);
+            if (isCategoryNameValid)
             {
                 // Se utiliza la instancia de la clase categoria
-                categoria.Nombre = txtNombreCat.Text;
-                categoria.Descripcion = txtDescripcionCat.Text;
-                
-                try
+                category.Nombre = txtNombreCat.Text;
+                // Se utiliza un operador ternario para verificar si el campo esta vacio o tiene espacio.
+                category.Descripcion = (string.IsNullOrWhiteSpace(txtDescripcionCat.Text)) ? "-" : txtDescripcionCat.Text;
+
+                bool result = categoryLogic.AddCategory(category);
+                if (result)
                 {
-                    bool resultado = categoriaLogica.agregarCategoria(categoria);
-                    if (resultado)
-                    {
-                        MessageBox.Show("Se agrego corectamente una nueva categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Se limpian los campos
-                        txtNombreCat.Text = "";
-                        txtDescripcionCat.Text = "";
-                        // Se cargan los datos en el datagridview
-                        cargarDatosCategorias();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo agregar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    //cargarDatosCategorias();
+                    MessageBox.Show("Se agrego correctamente la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se limpian los campos
+                    controladora.ClearTextBoxG(txtNombreCat);
+                    controladora.ClearTextBoxT(txtDescripcionCat);
+                    // Se cargan los datos en el datagridview
+                    loadCategoriesData();
                 }
-                catch (SqlException ex)
+                else
                 {
-                    MessageBox.Show("Ocurrio un error al agregar la categoría. " + ex.Message, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se pudo agregar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
 
             {
                 MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }*/
+            }
         }
+        // // // // // // AGREGAR CATEGORIA // // // // // //
 
-        private void txtNombreCat_Enter(object sender, EventArgs e)
-        {
-            txtNombreCat.LineColor = colorPalette.ColorDisabled;
-        }
 
+
+        // // // // // // MODIFICAR CATEGORIA // // // // // //
         // Modificación de celdas
+        private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
+            //  Se crea una isntancia de la clase categoria
+            CategoriasModel category = new CategoriasModel();
             foreach (DataGridViewRow row in modifiedRows)
             {
-                int id = Convert.ToInt32(row.Cells["dtaIDCategoria"].Value);
-                string nombre = row.Cells["dtaNombreCategoria"].Value.ToString();
-                string descripcion = row.Cells["dtaDescripcionCategoria"].Value.ToString();
+                int selectedCategoryID = Convert.ToInt32(row.Cells["dtaIDCategoria"].Value);
+                string selectedCategoryName = row.Cells["dtaNombreCategoria"].Value.ToString();
+                string selectedCategoryDescription = row.Cells["dtaDescripcionCategoria"].Value.ToString();
 
-                categoria.CategoriaID = id;
-                categoria.Nombre = nombre;
-                categoria.Descripcion = descripcion;
-                try
-                {/*
-                    bool resultado = categoriaLogica.modificarCategoria(categoria);
-                    if (resultado)
-                    {
-                        MessageBox.Show("Se modifico correctamente la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Se cargan los datos en el datagridview
-                        cargarDatosCategorias();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo modificar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    */
-                }
-                catch (SqlException)
+                category.CategoriaID = selectedCategoryID;
+                category.Nombre = selectedCategoryName;
+                // Se utiliza un operador ternario para verificar si el campo esta vacio o tiene espacio.
+                category.Descripcion = selectedCategoryDescription;
+
+                bool result = categoryLogic.ModifyCategory(category);
+                if (result)
                 {
-                    throw;
+                    MessageBox.Show("Se modifico correctamente la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se cargan los datos en el datagridview
+                    loadCategoriesData();
                 }
-
+                else
+                {
+                    MessageBox.Show("No se pudo modificar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            modifiedRows.Clear();
-            btnGuardarG.Enabled = false;
 
         }
 
-        private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
-        // Evento cuando se modifique una celda del datagridview
-        private void dtaViewCategoria_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+
+        private void showMessageError()
         {
-            DataGridViewRow row = dtaViewCategoria.Rows[e.RowIndex];
-            if (!modifiedRows.Contains(row))
-            {
-                modifiedRows.Add(row);
-            }
-            // Activar boton guardar
-            btnGuardarG.Enabled = true;
+            MessageBox.Show("No se permite dejar este campo vacío.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        // // // // // // MODIFICAR CATEGORIA // // // // // //
 
+
+
+
+        // // // // // // ELIMINAR CATEGORIA // // // // // //
+        private object originalValue { get; set; }
+
+        // Función para retoran una lista con los nombres de las categorias seleccionadas
+        private List<string> getSelectedCategories()
+        {
+            if (dtaViewCategoria.SelectedRows.Count > 0)
+            {
+                // Lista para almacenar los nombres de las categorias seleccionadas
+                List<string> selectedCategories = new List<string>();
+                // Se recorren las filas seleccionadas
+                foreach (DataGridViewRow row in dtaViewCategoria.SelectedRows)
+                {
+                    int selectedCategoryID = Convert.ToInt32(row.Cells["dtaIDCategoria"].Value);
+                    // Se utiliza el id para obtener el objeto categoria y luego obtenemos el nombre
+                    string categoryName = categoryLogic.GetCategory(selectedCategoryID).Nombre.ToString();
+                    selectedCategories.Add(categoryName);
+                }
+                return selectedCategories;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        // Obtener mensaje confirmación para eliminar categorias
+        private string getDeleteConfirmationMessage()
+        {
+            string message = "";
+            // Significa que se selecciono más de una categoria
+            if (dtaViewCategoria.SelectedRows.Count > 1)
+            {
+                // Lista para almacenar los nombres de las categorias seleccionadas
+                List<string> categoryNames = getSelectedCategories();
+                for (int i = 0; i < categoryNames.Count; i++)
+                {
+                    categoryNames[i] = $"- {categoryNames[i]}";
+                }
+                message = "¿Está seguro que desea eliminar las siguientes categorías?\n\n" + string.Join("\n", categoryNames);
+            }
+            else if (dtaViewCategoria.SelectedRows.Count == 1)
+            {
+                // Significa que se selecciono una categoria
+                string categoryName = getSelectedCategories()[0];
+                message = "¿Está seguro que desea eliminar la categoría " + categoryName + "?";
+            }
+            return message;
+        }
+
+        // Mensaje de eliminación de varias categorias o una categoria
+        private void deleteCategoriesMessage(int categories)
+        {
+            if (categories > 1)
+            {
+                MessageBox.Show("Se eliminaron correctamente las categorías seleccionadas.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (categories == 1)
+            {
+                MessageBox.Show("Se elimino correctamente la categoría seleccionada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void btnEliminarG_Click(object sender, EventArgs e)
+        {
+            if (dtaViewCategoria.SelectedRows.Count > 0)
+            {
+                int categoriesCount = dtaViewCategoria.SelectedRows.Count;
+                string message = getDeleteConfirmationMessage();
+                DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (userConfirmation == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dtaViewCategoria.SelectedRows)
+                    {
+                        // Condicional multiples selección
+                        int selectedCategoryId = Convert.ToInt32(row.Cells["dtaIDCategoria"].Value);
+
+                        // bool para verificar si un medicamento esta asociado a una categoria
+                        bool hasMedicine = categoryLogic.CheckIfMedicineHasCategory(selectedCategoryId);
+
+                        // Eliminar el estante
+                        bool deletionResult = categoryLogic.DeleteCategory(selectedCategoryId);
+                        if (deletionResult)
+                        {
+                            CategoriasModel category = (CategoriasModel)bindingSourceCategories[row.Index];
+                            bindingSourceCategories.Remove(category);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar la categoria: " + categoryLogic.GetCategory(selectedCategoryId).Nombre, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                deleteCategoriesMessage(categoriesCount);
+            loadCategoriesData();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila para eliminar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 
+
+        // // // // // // ELIMINAR CATEGORIA // // // // // //
+
+        // // // // // // INTERFAZ // // // // // //
         // Evento cuando se clicke una celda del datagridview
         private void dtaViewCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -179,6 +270,11 @@ namespace Sistema.Vista
             }
         }
 
+        private void txtNombreCat_Enter(object sender, EventArgs e)
+        {
+            txtNombreCat.LineColor = colorPalette.ColorDisabled;
+        }
+
         private void btnEliminarG_MouseEnter(object sender, EventArgs e)
         {
             btnEliminarG.Radius = 12;
@@ -189,46 +285,81 @@ namespace Sistema.Vista
             btnEliminarG.Radius = 5;
         }
 
-        private void btnEliminarG_Click(object sender, EventArgs e)
-        {
-            // verificar si se selecciono una fila
-            if (dtaViewCategoria.SelectedRows.Count > 0)
-            {
-                // Obtenemos el id de la fila seleccionada
-                int _id = Convert.ToInt32(dtaViewCategoria.CurrentRow.Cells["dtaIDCategoria"].Value);
-                // Se crea un cuadro de dialogo para confirmar la eliminacion
-                DialogResult resultado = MessageBox.Show("¿Estás seguro de eliminar la categoría?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado == DialogResult.Yes)
-                {
-                    // Eliminar la categoria de la base de datos
-                    try
-                    {/*
-                        bool resultadoEliminar = categoriaLogica.eliminarCategoria(_id);
-                        if (resultadoEliminar)
-                        {
-                            // Eliminar la fila del datagridview
-                            Categoria categoria = (Categoria)bindingSourceCategorias[dtaViewCategoria.CurrentRow.Index];
-                            bindingSourceCategorias.Remove(categoria);
-                            MessageBox.Show("Se elimino correctamente la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            cargarDatosCategorias();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo eliminar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }*/
-                    }
-                    catch (SqlException)
-                    {
-                        throw;
-                    }
 
+        // Evento cuando se modifique una celda del datagridview
+        private void dtaViewCategoria_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // obtener valor de celda a modificar
+            DataGridViewRow row = dtaViewCategoria.Rows[e.RowIndex];
+            DataGridViewCell cell = row.Cells[e.ColumnIndex];
+            // Verifica si la celda está en la columna de descripción
+            if (cell.OwningColumn.Name == "dtaDescripcionCategoria" && cell.Value == null)
+            {
+                // Si el valor es nulo o está en blanco, establece el valor en "-"
+                if (cell.Value == null || string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                {
+                    cell.Value = "-";
+                    btnGuardarG.Enabled = true;
                 }
             }
             else
             {
-                MessageBox.Show("Selecciona una fila para eliminar la categoría.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Verifica si el valor es un espacio en blanco o una cadena vacía
+                if (cell.Value == null)
+                {
+                    showMessageError();
+                    // Restaura el valor original de la celda
+                    cell.Value = originalValue;
+                }
+                else
+                {
+                    // Si el valor es válido, agrega la fila modificada a la lista
+                    if (!modifiedRows.Contains(row))
+                    {
+                        modifiedRows.Add(row);
+                    }
+                    btnGuardarG.Enabled = true;
+                }
             }
-
         }
+
+
+
+        private void dtaViewCategoria_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dtaViewCategoria.Rows[e.RowIndex];
+            DataGridViewCell cell = row.Cells[e.ColumnIndex];
+
+            // Obtener el valor original de la celda
+            originalValue = cell.Value != null ? cell.Value : null;
+        }
+
+        private void dtaViewCategoria_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // Verifica si el error es causado por el usuario y no por el sistema
+            if (e.Exception is FormatException && e.ColumnIndex >= 0)
+            {
+                DataGridViewCell cell = dtaViewCategoria.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string cellValue = cell.Value != null ? cell.Value.ToString() : string.Empty;
+
+                if (string.IsNullOrWhiteSpace(cellValue))
+                {
+                    // Restaura el valor original de la celda
+                    cell.Value = originalValue;
+                }
+                else
+                {
+                    // Restaura el valor original de la celda
+                    cell.Value = originalValue;
+                }
+
+                e.ThrowException = false;
+            }
+            showMessageError();
+        }
+
+
+        // // // // // // INTERFAZ // // // // // //
+
     }
 }

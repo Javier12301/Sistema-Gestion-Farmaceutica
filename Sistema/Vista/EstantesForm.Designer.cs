@@ -175,6 +175,8 @@
             // 
             // dtaViewEstante
             // 
+            this.dtaViewEstante.AllowUserToAddRows = false;
+            this.dtaViewEstante.AllowUserToDeleteRows = false;
             this.dtaViewEstante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -208,6 +210,8 @@
             this.dtaViewEstante.TabIndex = 21;
             this.dtaViewEstante.TabStop = false;
             this.dtaViewEstante.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewEstante_CellEndEdit);
+            this.dtaViewEstante.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewEstante_CellEnter);
+            this.dtaViewEstante.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtaViewEstante_DataError);
             this.dtaViewEstante.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtaViewEstante_EditingControlShowing);
             // 
             // dtaIDEstante

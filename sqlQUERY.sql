@@ -12,13 +12,16 @@ CREATE TABLE Estantes(
 );
 
 CREATE TABLE CategoriasModel(
-	CategoriaID INT IDENTITY(1,1) PRIMARY KEY,
+	CategoriaID INT IDENTITY(0,1) PRIMARY KEY,
 	Nombre NVARCHAR(255) NOT NULL,
 	Descripcion NVARCHAR(255) NOT NULL
 );
 
+DROP TABLE MedicamentosModel;
 
-SELECT * FROM EstantesModel;
+SELECT * FROM CategoriasModel;
+INSERT INTO CategoriasModel (Nombre, Descripcion)
+VALUES ('(Sin Categoría)', '-');
 
 SELECT * FROM Medicamentos;
 SELECT * FROM Lotes;
@@ -57,10 +60,10 @@ INNER JOIN Categorias C ON M.CategoriaID = C.CategoriaID
 INNER JOIN Estantes E ON M.EstanteID = E.EstanteID;
 
 
-CREATE TABLE Medicamentos(
-	LoteID INT FOREIGN KEY REFERENCES Lotes(LoteID),
-	EstanteID INT FOREIGN KEY REFERENCES Estantes(EstanteID),
-	CategoriaID INT FOREIGN KEY REFERENCES Categorias(CategoriaID),
+CREATE TABLE MedicamentosModel(
+	LoteID INT FOREIGN KEY REFERENCES LotesModel(LoteID),
+	EstanteID INT FOREIGN KEY REFERENCES EstantesModel(EstanteID),
+	CategoriaID INT FOREIGN KEY REFERENCES CategoriasModel(CategoriaID),
 	PrecioUnitario DECIMAL(10, 2),
 	PRIMARY KEY (LoteID)
 );

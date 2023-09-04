@@ -18,7 +18,8 @@ namespace Sistema.Controles.Logica
             {
                 using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
-                    int shelves = db.EstantesModel.Count();
+                    // Obtenemos la cantidad de estantes e ignoramos el estante 0 que es el estante por defecto.
+                    int shelves = db.EstantesModel.Where(x => x.EstanteID != 0).Count();
                     return shelves;
                 }
             }
@@ -36,7 +37,7 @@ namespace Sistema.Controles.Logica
                 using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     // Obtenemos la lista de estantes pero solo los campos que necesitamos
-                    var shelves = db.EstantesModel.Select(shelf => new
+                    var shelves = db.EstantesModel.Where(shelf => shelf.EstanteID != 0).Select(shelf => new
                     {
                         EstanteID = shelf.EstanteID,
                         Nombre = shelf.Nombre,
@@ -61,6 +62,25 @@ namespace Sistema.Controles.Logica
             }
 
         }
+
+        // Obtener estante por ID
+        public EstantesModel GetShelf(int shelfID)
+        {
+            try
+            {
+                using (var db = new SistemaGestionFarmaceuticaEntities())
+                {
+                    // Obtenemos el estante por ID
+                    EstantesModel shelf = db.EstantesModel.Find(shelfID);
+                    return shelf;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+        
 
         // Agregar Estantes
         public bool AddShelf(EstantesModel shelf)
@@ -145,7 +165,83 @@ namespace Sistema.Controles.Logica
             }
         }
         
+        // Verificar si hay medicamentos en el estante
+        public bool CheckIfShelfHasMedicines(int shelfID)
+        {
+            try
+            {
+                using(var db = new SistemaGestionFarmaceuticaEntities())
+                {
+                    // Buscamos el estante
+                    EstantesModel shelf = db.EstantesModel.Find(shelfID);
+                    if(shelf != null)
+                    {
+                        // Buscamos los medicamentos que esten en el estante
+                        var medicines = db.MedicamentosModel.Where(medicine => medicine.EstanteID == shelfID).ToList();
+                        if(medicines.Count > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        // Si no existe el estante retornamos false
+                        return false;
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
 
+        // Reasignar medicamentos al estante por defecto
+        public bool ReassignMedicinesToDefaultShelf(int shelfID)
+        {
+            try
+            {
+                int shelfDefaultID = 0;
+                using(var db = new SistemaGestionFarmaceuticaEntities())
+                {
+                    // Buscamos el estante por defecto
+                    EstantesModel shelfDefault = db.EstantesModel.Find(shelfDefaultID);
+                    if(shelfDefault != null)
+                    {
+                        // Buscamos los medicamentos que esten en el estante que queremos eliminar
+                        var medicines = db.MedicamentosModel.Where(medicine => medicine.EstanteID == shelfID).ToList();
+                        if(medicines.Count > 0)
+                        {
+                            // Recorremos la lista de medicamentos y los reasignamos al estante por defecto
+                            foreach(var medicine in medicines)
+                            {
+                                medicine.EstanteID = shelfDefaultID;
+                                db.Entry(medicine).State = EntityState.Modified;
+                            }
+                            db.SaveChanges();
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        // Si no existe el estante por defecto retornamos false
+                        return false;
+                    }
+                }
+
+            }catch (SqlException)
+            {
+                throw;
+            }
+        }
 
     }
 }

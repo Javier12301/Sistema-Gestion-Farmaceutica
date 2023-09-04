@@ -179,6 +179,25 @@ namespace Sistema
             }
         }
 
+        // Controladora para limpiar los campos de texto GunaLine
+        public void ClearTextBoxG(params GunaLineTextBox[] textBoxes)
+        {
+            foreach (GunaLineTextBox txtbox in textBoxes)
+            {
+                txtbox.Text = "";
+            }
+            
+        }
+
+        // Controladora para limpiar los campos de texto TextBox normales
+        public void ClearTextBoxT(params TextBoxBase[] textBoxes)
+        {
+            foreach (TextBoxBase txtbox in textBoxes)
+            {
+                txtbox.Text = "";
+            }
+        }
+        
 
     }
 }
