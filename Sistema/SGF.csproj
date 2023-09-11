@@ -91,6 +91,7 @@
     <Compile Include="Controles\Interfaz\Shortcuts.cs" />
     <Compile Include="Controles\Logica\CategoriaLogica.cs" />
     <Compile Include="Controles\Logica\EstanteLogica.cs" />
+    <Compile Include="Controles\Logica\LoteLogica.cs" />
     <Compile Include="Controles\Logica\MedicamentoLogica.cs" />
     <Compile Include="Database\conexionDB.cs" />
     <Compile Include="Database\Logica\CategoriaLogica.cs" />

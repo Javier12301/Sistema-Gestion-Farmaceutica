@@ -68,7 +68,6 @@ namespace Sistema.Vista
             bool isShelfNumberValid = controladora.VerifyTextBoxG(txtNumE);
             bool isShelfSectorValid = controladora.VerifyTextBoxG(txtSectorE);
             if (isShelfNameValid && isShelfNumberValid && isShelfSectorValid)
-
             {
                 // Se utiliza la instancia de la clase Estante
                 shelves.Nombre = txtNombreE.Text;

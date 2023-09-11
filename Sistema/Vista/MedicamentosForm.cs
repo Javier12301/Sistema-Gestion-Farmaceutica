@@ -47,6 +47,7 @@ namespace Sistema.Vista
 
         private void cargarDatosMedicamentos()
         {
+            /*
             try
             {
                 List<Medicamento> listaMedicamentos = medicamentoLogica.obtenerMedicamentoParaDataGridView();
@@ -78,6 +79,7 @@ namespace Sistema.Vista
             {
                 throw;
             }
+            */
         }
 
 
@@ -115,7 +117,7 @@ namespace Sistema.Vista
         }
 
         private void cargarFiltros()
-        {
+        {/*
             try
             {
                 List<string> listaCategoria = categoriaLogica.obtenerNombresCategorias();
@@ -136,7 +138,7 @@ namespace Sistema.Vista
             {
                 throw;
             }
-
+            */
         }
 
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
@@ -147,9 +149,9 @@ namespace Sistema.Vista
         }
 
         private void formAgregarMedicamento_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            cargarDatosMedicamentos();
+        {/*
+            cargarDatosMedicamentos();*/
         }
-
+           
     }
 }

@@ -19,5 +19,7 @@ namespace Sistema.Controles.Logica
                 return medicines;
             }
         }
+
+
     }
 }

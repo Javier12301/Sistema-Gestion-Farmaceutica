@@ -61,7 +61,7 @@ namespace Sistema.Controles.Logica
                 throw;
             }
 
-        }
+        }       
 
         // Obtener estante por ID
         public EstantesModel GetShelf(int shelfID)
@@ -80,6 +80,8 @@ namespace Sistema.Controles.Logica
                 throw;
             }
         }
+
+        // Obtener 
         
 
         // Agregar Estantes
