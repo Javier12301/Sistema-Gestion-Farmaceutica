@@ -1,6 +1,6 @@
-﻿namespace Sistema.Vista
+﻿namespace Sistema.Views
 {
-    partial class NuevoMedicamentoForm
+    partial class NuevoProductoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoMedicamentoForm));
             this.pnlControl = new System.Windows.Forms.Panel();
             this.gunaControlCerrar = new Guna.UI.WinForms.GunaControlBox();
             this.lblNombreForm = new System.Windows.Forms.Label();
@@ -38,25 +36,21 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtNombreMedicamento = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cmbCatMedicamento = new System.Windows.Forms.ComboBox();
+            this.cmbCatProducto = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.cmbEstanteMedicamento = new System.Windows.Forms.ComboBox();
+            this.cmbEstanteProducto = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtLoteMedicamento = new System.Windows.Forms.TextBox();
-            this.lblLote = new System.Windows.Forms.Label();
+            this.txtDescripcionP = new System.Windows.Forms.TextBox();
+            this.lblDescripcion = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.txtPrecioUnitMedicamento = new System.Windows.Forms.TextBox();
+            this.txtPrecioUniP = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtStockMedicamento = new System.Windows.Forms.TextBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.dtaVencimientoMedicamento = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtStockP = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnAgregarMedicamento = new System.Windows.Forms.Button();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlControl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.pnlNombreMedicamento.SuspendLayout();
@@ -64,9 +58,7 @@
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlControl
@@ -78,9 +70,7 @@
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.Size = new System.Drawing.Size(364, 32);
-            this.pnlControl.TabIndex = 0;
-            this.pnlControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseDown);
-            this.pnlControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseMove);
+            this.pnlControl.TabIndex = 1;
             // 
             // gunaControlCerrar
             // 
@@ -104,12 +94,10 @@
             this.lblNombreForm.ForeColor = System.Drawing.SystemColors.Control;
             this.lblNombreForm.Location = new System.Drawing.Point(7, 8);
             this.lblNombreForm.Name = "lblNombreForm";
-            this.lblNombreForm.Size = new System.Drawing.Size(136, 17);
+            this.lblNombreForm.Size = new System.Drawing.Size(108, 17);
             this.lblNombreForm.TabIndex = 3;
             this.lblNombreForm.Tag = "";
-            this.lblNombreForm.Text = "Nuevo Medicamento";
-            this.lblNombreForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseDown);
-            this.lblNombreForm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlControl_MouseMove);
+            this.lblNombreForm.Text = "Nuevo Producto";
             // 
             // flowLayoutPanel1
             // 
@@ -118,16 +106,15 @@
             this.flowLayoutPanel1.Controls.Add(this.pnlNombreMedicamento);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
-            this.flowLayoutPanel1.Controls.Add(this.panel7);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(364, 276);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.flowLayoutPanel1.TabIndex = 7;
             this.flowLayoutPanel1.WrapContents = false;
             // 
             // pnlNombreMedicamento
@@ -148,9 +135,9 @@
             this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label16.Location = new System.Drawing.Point(3, 4);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(188, 20);
+            this.label16.Size = new System.Drawing.Size(156, 20);
             this.label16.TabIndex = 15;
-            this.label16.Text = "Nombre de Medicamento";
+            this.label16.Text = "Nombre de Producto";
             // 
             // txtNombreMedicamento
             // 
@@ -163,32 +150,30 @@
             this.txtNombreMedicamento.Name = "txtNombreMedicamento";
             this.txtNombreMedicamento.Size = new System.Drawing.Size(318, 25);
             this.txtNombreMedicamento.TabIndex = 1;
-            this.txtNombreMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
-            this.txtNombreMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.cmbCatMedicamento);
+            this.panel3.Controls.Add(this.cmbCatProducto);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Location = new System.Drawing.Point(3, 69);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(341, 55);
             this.panel3.TabIndex = 2;
             // 
-            // cmbCatMedicamento
+            // cmbCatProducto
             // 
-            this.cmbCatMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmbCatProducto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCatMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCatMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cmbCatMedicamento.FormattingEnabled = true;
-            this.cmbCatMedicamento.Items.AddRange(new object[] {
+            this.cmbCatProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCatProducto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbCatProducto.FormattingEnabled = true;
+            this.cmbCatProducto.Items.AddRange(new object[] {
             "Seleccionar Categoría"});
-            this.cmbCatMedicamento.Location = new System.Drawing.Point(7, 26);
-            this.cmbCatMedicamento.Name = "cmbCatMedicamento";
-            this.cmbCatMedicamento.Size = new System.Drawing.Size(318, 25);
-            this.cmbCatMedicamento.TabIndex = 3;
+            this.cmbCatProducto.Location = new System.Drawing.Point(7, 26);
+            this.cmbCatProducto.Name = "cmbCatProducto";
+            this.cmbCatProducto.Size = new System.Drawing.Size(318, 25);
+            this.cmbCatProducto.TabIndex = 3;
             // 
             // label15
             // 
@@ -205,27 +190,27 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.cmbEstanteMedicamento);
+            this.panel4.Controls.Add(this.cmbEstanteProducto);
             this.panel4.Controls.Add(this.label17);
             this.panel4.Location = new System.Drawing.Point(3, 130);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(341, 55);
             this.panel4.TabIndex = 4;
             // 
-            // cmbEstanteMedicamento
+            // cmbEstanteProducto
             // 
-            this.cmbEstanteMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmbEstanteProducto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbEstanteMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstanteMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cmbEstanteMedicamento.FormattingEnabled = true;
-            this.cmbEstanteMedicamento.Items.AddRange(new object[] {
+            this.cmbEstanteProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstanteProducto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbEstanteProducto.FormattingEnabled = true;
+            this.cmbEstanteProducto.Items.AddRange(new object[] {
             "Seleccionar Estante"});
-            this.cmbEstanteMedicamento.Location = new System.Drawing.Point(7, 24);
-            this.cmbEstanteMedicamento.Name = "cmbEstanteMedicamento";
-            this.cmbEstanteMedicamento.Size = new System.Drawing.Size(318, 25);
-            this.cmbEstanteMedicamento.TabIndex = 5;
+            this.cmbEstanteProducto.Location = new System.Drawing.Point(7, 24);
+            this.cmbEstanteProducto.Name = "cmbEstanteProducto";
+            this.cmbEstanteProducto.Size = new System.Drawing.Size(318, 25);
+            this.cmbEstanteProducto.TabIndex = 5;
             // 
             // label17
             // 
@@ -242,62 +227,60 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtLoteMedicamento);
-            this.panel1.Controls.Add(this.lblLote);
-            this.panel1.Location = new System.Drawing.Point(3, 191);
+            this.panel1.Controls.Add(this.txtDescripcionP);
+            this.panel1.Controls.Add(this.lblDescripcion);
+            this.panel1.Location = new System.Drawing.Point(3, 252);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 55);
+            this.panel1.Size = new System.Drawing.Size(341, 107);
             this.panel1.TabIndex = 6;
             // 
-            // txtLoteMedicamento
+            // txtDescripcionP
             // 
-            this.txtLoteMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDescripcionP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLoteMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtLoteMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtLoteMedicamento.Location = new System.Drawing.Point(7, 24);
-            this.txtLoteMedicamento.Name = "txtLoteMedicamento";
-            this.txtLoteMedicamento.Size = new System.Drawing.Size(318, 25);
-            this.txtLoteMedicamento.TabIndex = 7;
+            this.txtDescripcionP.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDescripcionP.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtDescripcionP.Location = new System.Drawing.Point(22, 26);
+            this.txtDescripcionP.Multiline = true;
+            this.txtDescripcionP.Name = "txtDescripcionP";
+            this.txtDescripcionP.Size = new System.Drawing.Size(305, 71);
+            this.txtDescripcionP.TabIndex = 7;
             // 
-            // lblLote
+            // lblDescripcion
             // 
-            this.lblLote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblLote.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblLote.Location = new System.Drawing.Point(3, 4);
-            this.lblLote.Name = "lblLote";
-            this.lblLote.Size = new System.Drawing.Size(143, 22);
-            this.lblLote.TabIndex = 18;
-            this.lblLote.Text = "Número Lote";
+            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblDescripcion.Location = new System.Drawing.Point(3, 4);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(189, 74);
+            this.lblDescripcion.TabIndex = 18;
+            this.lblDescripcion.Text = "Descripción del Producto";
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.txtPrecioUnitMedicamento);
+            this.panel5.Controls.Add(this.txtPrecioUniP);
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.label18);
-            this.panel5.Controls.Add(this.txtStockMedicamento);
-            this.panel5.Location = new System.Drawing.Point(3, 252);
+            this.panel5.Controls.Add(this.txtStockP);
+            this.panel5.Location = new System.Drawing.Point(3, 191);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(341, 55);
             this.panel5.TabIndex = 8;
             // 
-            // txtPrecioUnitMedicamento
+            // txtPrecioUniP
             // 
-            this.txtPrecioUnitMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtPrecioUniP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPrecioUnitMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPrecioUnitMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtPrecioUnitMedicamento.Location = new System.Drawing.Point(175, 25);
-            this.txtPrecioUnitMedicamento.Name = "txtPrecioUnitMedicamento";
-            this.txtPrecioUnitMedicamento.Size = new System.Drawing.Size(150, 25);
-            this.txtPrecioUnitMedicamento.TabIndex = 10;
-            this.txtPrecioUnitMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
-            this.txtPrecioUnitMedicamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
-            this.txtPrecioUnitMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
+            this.txtPrecioUniP.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPrecioUniP.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtPrecioUniP.Location = new System.Drawing.Point(175, 25);
+            this.txtPrecioUniP.Name = "txtPrecioUniP";
+            this.txtPrecioUniP.Size = new System.Drawing.Size(150, 25);
+            this.txtPrecioUniP.TabIndex = 10;
             // 
             // label13
             // 
@@ -325,56 +308,22 @@
             this.label18.TabIndex = 22;
             this.label18.Text = "Precio Unitario";
             // 
-            // txtStockMedicamento
+            // txtStockP
             // 
-            this.txtStockMedicamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtStockP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStockMedicamento.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtStockMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtStockMedicamento.Location = new System.Drawing.Point(7, 25);
-            this.txtStockMedicamento.Name = "txtStockMedicamento";
-            this.txtStockMedicamento.Size = new System.Drawing.Size(150, 25);
-            this.txtStockMedicamento.TabIndex = 9;
-            this.txtStockMedicamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limpiarHastaElEspacio);
-            this.txtStockMedicamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumericos_KeyPress);
-            this.txtStockMedicamento.Validating += new System.ComponentModel.CancelEventHandler(this.validacionCamposObligatorios);
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.dtaVencimientoMedicamento);
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Location = new System.Drawing.Point(3, 313);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(341, 55);
-            this.panel7.TabIndex = 8;
-            // 
-            // dtaVencimientoMedicamento
-            // 
-            this.dtaVencimientoMedicamento.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.dtaVencimientoMedicamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtaVencimientoMedicamento.Location = new System.Drawing.Point(9, 25);
-            this.dtaVencimientoMedicamento.Name = "dtaVencimientoMedicamento";
-            this.dtaVencimientoMedicamento.Size = new System.Drawing.Size(316, 25);
-            this.dtaVencimientoMedicamento.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 18);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Fecha de vencimiento";
+            this.txtStockP.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtStockP.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtStockP.Location = new System.Drawing.Point(7, 25);
+            this.txtStockP.Name = "txtStockP";
+            this.txtStockP.Size = new System.Drawing.Size(150, 25);
+            this.txtStockP.TabIndex = 9;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btnAgregarMedicamento);
-            this.panel8.Location = new System.Drawing.Point(3, 374);
+            this.panel8.Location = new System.Drawing.Point(3, 365);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(341, 55);
             this.panel8.TabIndex = 21;
@@ -391,15 +340,8 @@
             this.btnAgregarMedicamento.TabIndex = 12;
             this.btnAgregarMedicamento.Text = "Agregar";
             this.btnAgregarMedicamento.UseVisualStyleBackColor = false;
-            this.btnAgregarMedicamento.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
             // 
-            // errorProvider
-            // 
-            this.errorProvider.BlinkRate = 400;
-            this.errorProvider.ContainerControl = this;
-            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
-            // 
-            // NuevoMedicamentoForm
+            // NuevoProductoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -409,10 +351,9 @@
             this.Controls.Add(this.pnlControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
-            this.Name = "NuevoMedicamentoForm";
+            this.Name = "NuevoProductoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nuevo Medicamento";
-            this.Load += new System.EventHandler(this.nuevoMedicamento_Load);
+            this.Text = "Nuevo Producto";
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -426,9 +367,7 @@
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -436,31 +375,27 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlControl;
+        private Guna.UI.WinForms.GunaControlBox gunaControlCerrar;
+        private System.Windows.Forms.Label lblNombreForm;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel pnlNombreMedicamento;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtNombreMedicamento;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox cmbCatMedicamento;
+        private System.Windows.Forms.ComboBox cmbCatProducto;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ComboBox cmbEstanteMedicamento;
+        private System.Windows.Forms.ComboBox cmbEstanteProducto;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtDescripcionP;
+        private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox txtPrecioUniP;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtStockMedicamento;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DateTimePicker dtaVencimientoMedicamento;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPrecioUnitMedicamento;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtStockP;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button btnAgregarMedicamento;
-        private System.Windows.Forms.Label lblNombreForm;
-        private Guna.UI.WinForms.GunaControlBox gunaControlCerrar;
-        private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblLote;
-        private System.Windows.Forms.TextBox txtLoteMedicamento;
     }
 }

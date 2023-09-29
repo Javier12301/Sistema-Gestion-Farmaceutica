@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b78b0502d70b4a4ba232a13cad90dc64" Name="Diagram1">
+      <Diagram DiagramId="63df3a35bd07477baf255682e43c90de" Name="Diagram1">
         <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.CategoriasModel" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.EstantesModel" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.LotesModel" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.MedicamentosModel" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Categ__46B27FE2" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Estan__45BE5BA9" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__LoteI__44CA3770" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.MedicamentosDetalle" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Categ__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Estan__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__LoteI__336AA144" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

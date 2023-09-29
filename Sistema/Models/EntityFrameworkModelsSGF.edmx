@@ -26,7 +26,8 @@
           <Key>
             <PropertyRef Name="LoteID" />
           </Key>
-          <Property Name="LoteID" Type="int" Nullable="false" />
+          <Property Name="LoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero_Lote" Type="nvarchar" MaxLength="255" />
           <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="Nombre_Medicamento" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="FechaVencimiento" Type="date" Nullable="false" />
@@ -40,7 +41,29 @@
           <Property Name="CategoriaID" Type="int" />
           <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
-        <Association Name="FK__Medicamen__Categ__46B27FE2">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.MedicamentosDetalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="MedicamentosDetalle">
+          <Key>
+            <PropertyRef Name="Lote" />
+            <PropertyRef Name="Medicamento" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Vencimiento" />
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Estante" />
+            <PropertyRef Name="Sector" />
+            <PropertyRef Name="NumEstante" />
+          </Key>
+          <Property Name="Lote" Type="int" Nullable="false" />
+          <Property Name="Medicamento" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Vencimiento" Type="date" Nullable="false" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Estante" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Sector" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NumEstante" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Medicamen__Categ__3552E9B6">
           <End Role="CategoriasModel" Type="Self.CategoriasModel" Multiplicity="0..1" />
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -52,7 +75,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicamen__Estan__45BE5BA9">
+        <Association Name="FK__Medicamen__Estan__345EC57D">
           <End Role="EstantesModel" Type="Self.EstantesModel" Multiplicity="0..1" />
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -64,7 +87,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicamen__LoteI__44CA3770">
+        <Association Name="FK__Medicamen__LoteI__336AA144">
           <End Role="LotesModel" Type="Self.LotesModel" Multiplicity="1" />
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -81,15 +104,27 @@
           <EntitySet Name="EstantesModel" EntityType="Self.EstantesModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LotesModel" EntityType="Self.LotesModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicamentosModel" EntityType="Self.MedicamentosModel" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Medicamen__Categ__46B27FE2" Association="Self.FK__Medicamen__Categ__46B27FE2">
+          <EntitySet Name="MedicamentosDetalle" EntityType="Self.MedicamentosDetalle" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MedicamentosDetalle].[Lote] AS [Lote], 
+    [MedicamentosDetalle].[Medicamento] AS [Medicamento], 
+    [MedicamentosDetalle].[Cantidad] AS [Cantidad], 
+    [MedicamentosDetalle].[Vencimiento] AS [Vencimiento], 
+    [MedicamentosDetalle].[Categoria] AS [Categoria], 
+    [MedicamentosDetalle].[Estante] AS [Estante], 
+    [MedicamentosDetalle].[Sector] AS [Sector], 
+    [MedicamentosDetalle].[NumEstante] AS [NumEstante]
+    FROM [dbo].[MedicamentosDetalle] AS [MedicamentosDetalle]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Medicamen__Categ__3552E9B6" Association="Self.FK__Medicamen__Categ__3552E9B6">
             <End Role="CategoriasModel" EntitySet="CategoriasModel" />
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicamen__Estan__45BE5BA9" Association="Self.FK__Medicamen__Estan__45BE5BA9">
+          <AssociationSet Name="FK__Medicamen__Estan__345EC57D" Association="Self.FK__Medicamen__Estan__345EC57D">
             <End Role="EstantesModel" EntitySet="EstantesModel" />
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicamen__LoteI__44CA3770" Association="Self.FK__Medicamen__LoteI__44CA3770">
+          <AssociationSet Name="FK__Medicamen__LoteI__336AA144" Association="Self.FK__Medicamen__LoteI__336AA144">
             <End Role="LotesModel" EntitySet="LotesModel" />
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
           </AssociationSet>
@@ -106,7 +141,7 @@
           <Property Name="CategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__Categ__46B27FE2" FromRole="CategoriasModel" ToRole="MedicamentosModel" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__Categ__3552E9B6" FromRole="CategoriasModel" ToRole="MedicamentosModel" />
         </EntityType>
         <EntityType Name="EstantesModel">
           <Key>
@@ -116,17 +151,18 @@
           <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Numero_de_estante" Type="Int32" Nullable="false" />
           <Property Name="Sector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__Estan__45BE5BA9" FromRole="EstantesModel" ToRole="MedicamentosModel" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__Estan__345EC57D" FromRole="EstantesModel" ToRole="MedicamentosModel" />
         </EntityType>
         <EntityType Name="LotesModel">
           <Key>
             <PropertyRef Name="LoteID" />
           </Key>
-          <Property Name="LoteID" Type="Int32" Nullable="false" />
+          <Property Name="LoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero_Lote" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="Nombre_Medicamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__LoteI__44CA3770" FromRole="LotesModel" ToRole="MedicamentosModel" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="Self.FK__Medicamen__LoteI__336AA144" FromRole="LotesModel" ToRole="MedicamentosModel" />
         </EntityType>
         <EntityType Name="MedicamentosModel">
           <Key>
@@ -136,11 +172,31 @@
           <Property Name="EstanteID" Type="Int32" />
           <Property Name="CategoriaID" Type="Int32" />
           <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="CategoriasModel" Relationship="Self.FK__Medicamen__Categ__46B27FE2" FromRole="MedicamentosModel" ToRole="CategoriasModel" />
-          <NavigationProperty Name="EstantesModel" Relationship="Self.FK__Medicamen__Estan__45BE5BA9" FromRole="MedicamentosModel" ToRole="EstantesModel" />
-          <NavigationProperty Name="LotesModel" Relationship="Self.FK__Medicamen__LoteI__44CA3770" FromRole="MedicamentosModel" ToRole="LotesModel" />
+          <NavigationProperty Name="CategoriasModel" Relationship="Self.FK__Medicamen__Categ__3552E9B6" FromRole="MedicamentosModel" ToRole="CategoriasModel" />
+          <NavigationProperty Name="EstantesModel" Relationship="Self.FK__Medicamen__Estan__345EC57D" FromRole="MedicamentosModel" ToRole="EstantesModel" />
+          <NavigationProperty Name="LotesModel" Relationship="Self.FK__Medicamen__LoteI__336AA144" FromRole="MedicamentosModel" ToRole="LotesModel" />
         </EntityType>
-        <Association Name="FK__Medicamen__Categ__46B27FE2">
+        <EntityType Name="MedicamentosDetalle">
+          <Key>
+            <PropertyRef Name="Lote" />
+            <PropertyRef Name="Medicamento" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Vencimiento" />
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="Estante" />
+            <PropertyRef Name="Sector" />
+            <PropertyRef Name="NumEstante" />
+          </Key>
+          <Property Name="Lote" Type="Int32" Nullable="false" />
+          <Property Name="Medicamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Vencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estante" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumEstante" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Medicamen__Categ__3552E9B6">
           <End Role="CategoriasModel" Type="Self.CategoriasModel" Multiplicity="0..1" />
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +208,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicamen__Estan__45BE5BA9">
+        <Association Name="FK__Medicamen__Estan__345EC57D">
           <End Role="EstantesModel" Type="Self.EstantesModel" Multiplicity="0..1" />
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +220,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicamen__LoteI__44CA3770">
+        <Association Name="FK__Medicamen__LoteI__336AA144">
           <End Role="LotesModel" Type="Self.LotesModel" Multiplicity="1" />
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -181,15 +237,16 @@
           <EntitySet Name="EstantesModel" EntityType="Self.EstantesModel" />
           <EntitySet Name="LotesModel" EntityType="Self.LotesModel" />
           <EntitySet Name="MedicamentosModel" EntityType="Self.MedicamentosModel" />
-          <AssociationSet Name="FK__Medicamen__Categ__46B27FE2" Association="Self.FK__Medicamen__Categ__46B27FE2">
+          <EntitySet Name="MedicamentosDetalle" EntityType="Self.MedicamentosDetalle" />
+          <AssociationSet Name="FK__Medicamen__Categ__3552E9B6" Association="Self.FK__Medicamen__Categ__3552E9B6">
             <End Role="CategoriasModel" EntitySet="CategoriasModel" />
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicamen__Estan__45BE5BA9" Association="Self.FK__Medicamen__Estan__45BE5BA9">
+          <AssociationSet Name="FK__Medicamen__Estan__345EC57D" Association="Self.FK__Medicamen__Estan__345EC57D">
             <End Role="EstantesModel" EntitySet="EstantesModel" />
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicamen__LoteI__44CA3770" Association="Self.FK__Medicamen__LoteI__44CA3770">
+          <AssociationSet Name="FK__Medicamen__LoteI__336AA144" Association="Self.FK__Medicamen__LoteI__336AA144">
             <End Role="LotesModel" EntitySet="LotesModel" />
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
           </AssociationSet>
@@ -223,6 +280,7 @@
             <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.LotesModel">
               <MappingFragment StoreEntitySet="LotesModel">
                 <ScalarProperty Name="LoteID" ColumnName="LoteID" />
+                <ScalarProperty Name="Numero_Lote" ColumnName="Numero_Lote" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="Nombre_Medicamento" ColumnName="Nombre_Medicamento" />
                 <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
@@ -236,6 +294,20 @@
                 <ScalarProperty Name="EstanteID" ColumnName="EstanteID" />
                 <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
                 <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicamentosDetalle">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.MedicamentosDetalle">
+              <MappingFragment StoreEntitySet="MedicamentosDetalle">
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Medicamento" ColumnName="Medicamento" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Vencimiento" ColumnName="Vencimiento" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Estante" ColumnName="Estante" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="NumEstante" ColumnName="NumEstante" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

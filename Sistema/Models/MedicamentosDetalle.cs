@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sistema.Modelo
+namespace Sistema.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class MedicamentosModel
+    public partial class MedicamentosDetalle
     {
-        public int LoteID { get; set; }
-        public Nullable<int> EstanteID { get; set; }
-        public Nullable<int> CategoriaID { get; set; }
-        public Nullable<decimal> PrecioUnitario { get; set; }
-    
-        public virtual CategoriasModel CategoriasModel { get; set; }
-        public virtual EstantesModel EstantesModel { get; set; }
-        public virtual LotesModel LotesModel { get; set; }
+        public int Lote { get; set; }
+        public string Medicamento { get; set; }
+        public int Cantidad { get; set; }
+        public System.DateTime Vencimiento { get; set; }
+        public string Categoria { get; set; }
+        public string Estante { get; set; }
+        public string Sector { get; set; }
+        public int NumEstante { get; set; }
     }
 }

@@ -45,6 +45,7 @@
             this.btnPrincipal = new System.Windows.Forms.Button();
             this.pnlMAIN = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.btnProductos = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -138,6 +139,7 @@
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.pnlMenu.Controls.Add(this.btnProductos);
             this.pnlMenu.Controls.Add(this.btnLogOut);
             this.pnlMenu.Controls.Add(this.btnAjustes);
             this.pnlMenu.Controls.Add(this.btnClientes);
@@ -157,10 +159,10 @@
             this.btnLogOut.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogOut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogOut.Image")));
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 270);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 314);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(177, 45);
-            this.btnLogOut.TabIndex = 13;
+            this.btnLogOut.TabIndex = 7;
             this.btnLogOut.Tag = "btnLogOut";
             this.btnLogOut.Text = "Cerrar Sesión";
             this.btnLogOut.UseVisualStyleBackColor = true;
@@ -174,10 +176,10 @@
             this.btnAjustes.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjustes.Image = ((System.Drawing.Image)(resources.GetObject("btnAjustes.Image")));
             this.btnAjustes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAjustes.Location = new System.Drawing.Point(0, 225);
+            this.btnAjustes.Location = new System.Drawing.Point(0, 265);
             this.btnAjustes.Name = "btnAjustes";
             this.btnAjustes.Size = new System.Drawing.Size(177, 45);
-            this.btnAjustes.TabIndex = 12;
+            this.btnAjustes.TabIndex = 6;
             this.btnAjustes.Tag = "btnAjuste";
             this.btnAjustes.Text = "Ajustes";
             this.btnAjustes.UseVisualStyleBackColor = false;
@@ -190,10 +192,10 @@
             this.btnClientes.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
             this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.Location = new System.Drawing.Point(0, 180);
+            this.btnClientes.Location = new System.Drawing.Point(0, 222);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(177, 45);
-            this.btnClientes.TabIndex = 6;
+            this.btnClientes.TabIndex = 5;
             this.btnClientes.Tag = "btnClientes";
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
@@ -202,6 +204,7 @@
             // btnMedicamentos
             // 
             this.btnMedicamentos.BackColor = System.Drawing.Color.White;
+            this.btnMedicamentos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMedicamentos.FlatAppearance.BorderSize = 0;
             this.btnMedicamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMedicamentos.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -210,8 +213,8 @@
             this.btnMedicamentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMedicamentos.Location = new System.Drawing.Point(0, 135);
             this.btnMedicamentos.Name = "btnMedicamentos";
-            this.btnMedicamentos.Size = new System.Drawing.Size(177, 45);
-            this.btnMedicamentos.TabIndex = 4;
+            this.btnMedicamentos.Size = new System.Drawing.Size(172, 45);
+            this.btnMedicamentos.TabIndex = 3;
             this.btnMedicamentos.Tag = "btnMedicamento";
             this.btnMedicamentos.Text = "Medicamentos";
             this.btnMedicamentos.UseVisualStyleBackColor = false;
@@ -220,6 +223,7 @@
             // btnCategoria
             // 
             this.btnCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnCategoria.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCategoria.FlatAppearance.BorderSize = 0;
             this.btnCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategoria.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -227,8 +231,8 @@
             this.btnCategoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCategoria.Location = new System.Drawing.Point(0, 90);
             this.btnCategoria.Name = "btnCategoria";
-            this.btnCategoria.Size = new System.Drawing.Size(177, 45);
-            this.btnCategoria.TabIndex = 3;
+            this.btnCategoria.Size = new System.Drawing.Size(172, 45);
+            this.btnCategoria.TabIndex = 2;
             this.btnCategoria.Tag = "btnCategoria";
             this.btnCategoria.Text = "Categorías";
             this.btnCategoria.UseVisualStyleBackColor = false;
@@ -236,6 +240,7 @@
             // 
             // btnEstantes
             // 
+            this.btnEstantes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEstantes.FlatAppearance.BorderSize = 0;
             this.btnEstantes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstantes.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,8 +248,8 @@
             this.btnEstantes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEstantes.Location = new System.Drawing.Point(0, 45);
             this.btnEstantes.Name = "btnEstantes";
-            this.btnEstantes.Size = new System.Drawing.Size(177, 45);
-            this.btnEstantes.TabIndex = 2;
+            this.btnEstantes.Size = new System.Drawing.Size(172, 45);
+            this.btnEstantes.TabIndex = 1;
             this.btnEstantes.Tag = "btnEstante";
             this.btnEstantes.Text = "Estantes";
             this.btnEstantes.UseVisualStyleBackColor = true;
@@ -253,6 +258,7 @@
             // btnPrincipal
             // 
             this.btnPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPrincipal.FlatAppearance.BorderSize = 0;
             this.btnPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrincipal.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -290,6 +296,23 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(605, 352);
             this.panelMain.TabIndex = 2;
+            // 
+            // btnProductos
+            // 
+            this.btnProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnProductos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductos.FlatAppearance.BorderSize = 0;
+            this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductos.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
+            this.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductos.Location = new System.Drawing.Point(0, 180);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(172, 45);
+            this.btnProductos.TabIndex = 4;
+            this.btnProductos.Tag = "btnProductos";
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.UseVisualStyleBackColor = false;
             // 
             // PrincipalForm
             // 
@@ -332,5 +355,6 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button btnProductos;
     }
 }

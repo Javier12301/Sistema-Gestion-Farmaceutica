@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema.Controles;
-using Sistema.Modelo;
+using Sistema.Models;
 using System.Media;
 using Sistema.Controles.Logica;
 using System.Data.Entity.Core.Objects;

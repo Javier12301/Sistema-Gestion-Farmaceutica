@@ -102,73 +102,83 @@
     <Compile Include="Database\Modelo\Estante.cs" />
     <Compile Include="Database\Modelo\Lote.cs" />
     <Compile Include="Database\Modelo\Medicamento.cs" />
-    <Compile Include="Modelo\CategoriasModel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Models\CategoriasModel.cs">
+      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\EstantesModel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\LotesModel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\MedicamentosModel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\Model1.Context.cs">
+    <Compile Include="Models\EntityFrameworkModelsSGF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>EntityFrameworkModelsSGF.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Model1.cs">
+    <Compile Include="Models\EntityFrameworkModelsSGF.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\EntityFrameworkModelsSGF.Designer.cs">
+    <Compile Include="Models\EntityFrameworkModelsSGF.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Vista\CategoriaForm.cs">
+    <Compile Include="Models\EstantesModel.cs">
+      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LotesModel.cs">
+      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MedicamentosDetalle.cs">
+      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MedicamentosModel.cs">
+      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CacheManager.cs" />
+    <Compile Include="Views\CategoriaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\CategoriaForm.Designer.cs">
+    <Compile Include="Views\CategoriaForm.Designer.cs">
       <DependentUpon>CategoriaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\ClientesForm.cs">
+    <Compile Include="Views\ClientesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\ClientesForm.Designer.cs">
+    <Compile Include="Views\ClientesForm.Designer.cs">
       <DependentUpon>ClientesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\NuevoClienteForm.cs">
+    <Compile Include="Views\NuevoClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\NuevoClienteForm.Designer.cs">
+    <Compile Include="Views\NuevoClienteForm.Designer.cs">
       <DependentUpon>NuevoClienteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\NuevoMedicamentoForm.cs">
+    <Compile Include="Views\NuevoMedicamentoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\NuevoMedicamentoForm.Designer.cs">
+    <Compile Include="Views\NuevoMedicamentoForm.Designer.cs">
       <DependentUpon>NuevoMedicamentoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\MedicamentosForm.cs">
+    <Compile Include="Views\MedicamentosForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\MedicamentosForm.Designer.cs">
+    <Compile Include="Views\MedicamentosForm.Designer.cs">
       <DependentUpon>MedicamentosForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\EstantesForm.cs">
+    <Compile Include="Views\EstantesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\EstantesForm.Designer.cs">
+    <Compile Include="Views\EstantesForm.Designer.cs">
       <DependentUpon>EstantesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\PrincipalForm.cs">
+    <Compile Include="Views\NuevoProductoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\PrincipalForm.Designer.cs">
+    <Compile Include="Views\NuevoProductoForm.Designer.cs">
+      <DependentUpon>NuevoProductoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrincipalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PrincipalForm.Designer.cs">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -190,28 +200,37 @@
     <Compile Include="PrincipalForm.Designer.cs">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Vista\ClientesForm.resx">
+    <Compile Include="Views\ProductosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductosForm.Designer.cs">
+      <DependentUpon>ProductosForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\ClientesForm.resx">
       <DependentUpon>ClientesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\NuevoClienteForm.resx">
+    <EmbeddedResource Include="Views\NuevoClienteForm.resx">
       <DependentUpon>NuevoClienteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\PrincipalForm.resx">
+    <EmbeddedResource Include="Views\NuevoProductoForm.resx">
+      <DependentUpon>NuevoProductoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\CategoriaForm.resx">
+    <EmbeddedResource Include="Views\CategoriaForm.resx">
       <DependentUpon>CategoriaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\NuevoMedicamentoForm.resx">
+    <EmbeddedResource Include="Views\NuevoMedicamentoForm.resx">
       <DependentUpon>NuevoMedicamentoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\MedicamentosForm.resx">
+    <EmbeddedResource Include="Views\MedicamentosForm.resx">
       <DependentUpon>MedicamentosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\EstantesForm.resx">
+    <EmbeddedResource Include="Views\EstantesForm.resx">
       <DependentUpon>EstantesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
@@ -222,11 +241,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Modelo\EntityFrameworkModelsSGF.edmx">
+    <EmbeddedResource Include="Views\ProductosForm.resx">
+      <DependentUpon>ProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\EntityFrameworkModelsSGF.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EntityFrameworkModelsSGF.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Modelo\EntityFrameworkModelsSGF.edmx.diagram">
+    <None Include="Models\EntityFrameworkModelsSGF.edmx.diagram">
       <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -242,18 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Modelo\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Modelo\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Home_Icon.png" />
@@ -273,7 +283,18 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\EntityFrameworkModelsSGF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameworkModelsSGF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EntityFrameworkModelsSGF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameworkModelsSGF.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

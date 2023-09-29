@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlForm = new System.Windows.Forms.Panel();
             this.gnaFiltros = new Guna.UI.WinForms.GunaGroupBox();
             this.cmbGEstantes = new Guna.UI.WinForms.GunaCheckBox();
@@ -37,7 +37,7 @@
             this.lblGFiltros = new Guna.UI.WinForms.GunaLabel();
             this.cmbFilterEst = new System.Windows.Forms.ComboBox();
             this.cmbFilteCat = new System.Windows.Forms.ComboBox();
-            this.btnAgregarMedicamento = new System.Windows.Forms.Button();
+            this.btnAddMedicine = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -61,7 +61,7 @@
             this.pnlForm.Controls.Add(this.gnaFiltros);
             this.pnlForm.Controls.Add(this.cmbFilterEst);
             this.pnlForm.Controls.Add(this.cmbFilteCat);
-            this.pnlForm.Controls.Add(this.btnAgregarMedicamento);
+            this.pnlForm.Controls.Add(this.btnAddMedicine);
             this.pnlForm.Controls.Add(this.btnSearch);
             this.pnlForm.Controls.Add(this.label12);
             this.pnlForm.Controls.Add(this.txtSearch);
@@ -115,7 +115,7 @@
             this.cmbGCategorias.Size = new System.Drawing.Size(85, 20);
             this.cmbGCategorias.TabIndex = 10;
             this.cmbGCategorias.Tag = "categoriasTAG";
-            this.cmbGCategorias.Text = "CategoriaForm";
+            this.cmbGCategorias.Text = "Categorias";
             this.cmbGCategorias.CheckedChanged += new System.EventHandler(this.cmbCheck_Changed);
             // 
             // lblGFiltros
@@ -157,19 +157,19 @@
             this.cmbFilteCat.Size = new System.Drawing.Size(91, 21);
             this.cmbFilteCat.TabIndex = 3;
             // 
-            // btnAgregarMedicamento
+            // btnAddMedicine
             // 
-            this.btnAgregarMedicamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnAgregarMedicamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarMedicamento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarMedicamento.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregarMedicamento.Location = new System.Drawing.Point(7, 32);
-            this.btnAgregarMedicamento.Name = "btnAgregarMedicamento";
-            this.btnAgregarMedicamento.Size = new System.Drawing.Size(145, 31);
-            this.btnAgregarMedicamento.TabIndex = 1;
-            this.btnAgregarMedicamento.Text = "Agregar Medicamento";
-            this.btnAgregarMedicamento.UseVisualStyleBackColor = false;
-            this.btnAgregarMedicamento.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
+            this.btnAddMedicine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAddMedicine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMedicine.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAddMedicine.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddMedicine.Location = new System.Drawing.Point(7, 32);
+            this.btnAddMedicine.Name = "btnAddMedicine";
+            this.btnAddMedicine.Size = new System.Drawing.Size(145, 31);
+            this.btnAddMedicine.TabIndex = 1;
+            this.btnAddMedicine.Text = "Agregar Medicamento";
+            this.btnAddMedicine.UseVisualStyleBackColor = false;
+            this.btnAddMedicine.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
             // 
             // btnSearch
             // 
@@ -221,24 +221,24 @@
             this.dtaNombreEst,
             this.dtaSector,
             this.dtaNumEst});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtaViewMedicamentos.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtaViewMedicamentos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtaViewMedicamentos.Location = new System.Drawing.Point(7, 69);
             this.dtaViewMedicamentos.Name = "dtaViewMedicamentos";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaViewMedicamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaViewMedicamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtaViewMedicamentos.Size = new System.Drawing.Size(559, 226);
             this.dtaViewMedicamentos.TabIndex = 7;
             // 
@@ -307,7 +307,7 @@
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.ComboBox cmbFilterEst;
         private System.Windows.Forms.ComboBox cmbFilteCat;
-        private System.Windows.Forms.Button btnAgregarMedicamento;
+        private System.Windows.Forms.Button btnAddMedicine;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSearch;

@@ -39,13 +39,13 @@ namespace Sistema.Vista
             // Cargar combobox filtros
             cargarFiltros();
             // Cargar datos en el datagridview
-            cargarDatosMedicamentos();
+            loadMedicine();
         }
 
         // Cargar datos en el datagridview
-        private BindingSource bindingSourceMedicamentos;
+        private BindingSource bindingSourceMedicine;
 
-        private void cargarDatosMedicamentos()
+        private void loadMedicine()
         {
             /*
             try

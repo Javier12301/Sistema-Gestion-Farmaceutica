@@ -12,7 +12,7 @@ using Sistema;
 using Sistema.Controles;
 using Sistema.Controles.Logica;
 using Sistema.Database;
-using Sistema.Modelo;
+using Sistema.Models;
 
 namespace Sistema
 {
@@ -143,9 +143,5 @@ namespace Sistema
             btnForgotPassword.ForeColor = btnForgotPasswordLeave;
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

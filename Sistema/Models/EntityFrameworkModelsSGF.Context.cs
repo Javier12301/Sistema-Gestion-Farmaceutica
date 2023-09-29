@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sistema.Modelo
+namespace Sistema.Models
 {
     using System;
     using System.Data.Entity;
@@ -29,5 +29,6 @@ namespace Sistema.Modelo
         public virtual DbSet<EstantesModel> EstantesModel { get; set; }
         public virtual DbSet<LotesModel> LotesModel { get; set; }
         public virtual DbSet<MedicamentosModel> MedicamentosModel { get; set; }
+        public virtual DbSet<MedicamentosDetalle> MedicamentosDetalle { get; set; }
     }
 }

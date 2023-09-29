@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sistema.Modelo;
+using Sistema.Models;
 using System.Data.Entity;
 
 
@@ -272,7 +272,7 @@ namespace Sistema.Controles.Logica
             }
         }
 
-        /* using (var db = new SistemaGestionFarmaceuticaEntities())
+        /* using (var db = new EntityInventory())
                         {
                             if (hasMedicine)
                             {

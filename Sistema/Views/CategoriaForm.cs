@@ -11,7 +11,7 @@ using System.Windows.Forms;
 // hacer using de las carpetas de logica y modelo
 using Sistema.Database.Modelo;
 using System.Data.SqlClient;
-using Sistema.Modelo;
+using Sistema.Models;
 using Sistema.Controles.Logica;
 
 namespace Sistema.Vista

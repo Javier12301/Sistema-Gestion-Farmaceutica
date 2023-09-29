@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sistema.Modelo;
-
+using Sistema.Models;
+using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace Sistema.Controles.Logica
 {
@@ -18,6 +19,28 @@ namespace Sistema.Controles.Logica
                 int medicines = db.MedicamentosModel.Count();
                 return medicines;
             }
+        }
+
+        // Agregar un nuevo medicamento
+        public bool AddMedicine(MedicamentosModel medicine)
+        {
+            try
+            {
+                using (var db = new SistemaGestionFarmaceuticaEntities())
+                {
+                    db.MedicamentosModel.Add(medicine);
+                    db.Entry(medicine).State = EntityState.Added;
+                    db.SaveChanges();
+                    return true;
+                }
+
+            }
+            catch (SqlException)
+            {
+                return false;
+                throw;
+            }
+
         }
 
 

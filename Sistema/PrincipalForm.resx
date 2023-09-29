@@ -553,6 +553,15 @@
         bFmHrkvXqevWbdBt0W3KHzh8ghT2iuLx0w5B+0BEXmL+z/8PQ2AmKbtJTX8AAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnProductos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACuSURBVDhP7dQxCsJAEIXhPYa159BO0QuIYGmvkguIlQiC
+        h9DCQ9jaeQW18BQWQf0HhmiGXZgF7XzwwTDJvjRJwq/Sw8oYKrvvI5oZSjyNnbL7BxaopYFBQlvFrgk5
+        W2UD+0QvOVslVXTFQckcu8dVNEFTTXVnuYo8/kVvRywhL22BM2SfXbTFCDe0cILss4su2Ou8xl3n7KIx
+        Pj+NOWSfXZRSK+rC/ia8OvhWQngBPA3Htgxm9JwAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnLogOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
