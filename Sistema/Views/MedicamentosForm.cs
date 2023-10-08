@@ -7,84 +7,86 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema.Database.Modelo;
-using Sistema.Database.Logica;
+using Sistema.Controles.Logica;
 using Guna.UI.WinForms;
 using System.Data.SqlClient;
+using Sistema.Services;
+using Sistema.Models;
 
 namespace Sistema.Vista
 {
 
     public partial class MedicamentosForm : Form
     {
-        CategoriaForm categoria = new CategoriaForm();
-        Estante estante = new Estante();
-        CategoriaLogica categoriaLogica = new CategoriaLogica();
-        EstanteLogica estanteLogica = new EstanteLogica();
-        MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
-        Controladora controladora = new Controladora();
+        private CategoriaLogica categoryLogic = new CategoriaLogica();
+        private EstanteLogica shelfLogic = new EstanteLogica();
+        private MedicamentoLogica medicineLogic = new MedicamentoLogica();
+        private Controladora controladora = new Controladora();
+        private CacheManagerList cacheManagerList = new CacheManagerList();
+
         public MedicamentosForm()
         {
             InitializeComponent();
         }
-            
+
         private void Medicamentos_Load(object sender, EventArgs e)
         {
-            // inicializar combo box index 0
-            cmbFilteCat.SelectedIndex = 0;
-            cmbFilterEst.SelectedIndex = 0;
-            // desactivar filtros checkbox
-            cmbFilteCat.Enabled = false;
-            cmbFilterEst.Enabled = false;
+        
             // Cargar combobox filtros
-            cargarFiltros();
+            //cargarFiltros();
             // Cargar datos en el datagridview
             loadMedicine();
+            // Establecer nuevo tamaño al formulario
+            this.Size = new Size(573, 299);
+            // MENSAJE PARA FUTURO, CREAR UN FILTRO QUE PERMITA AGRANDAR EL DATAGRIDVIEW CON DATOS DE LOS MEDICAMENTOS
+            // CON ESTO SE LOGRARÁ OPTIMIZAR EL TAMAÑO DEL FORMULARIO
         }
 
         // Cargar datos en el datagridview
+
+
         private BindingSource bindingSourceMedicine;
 
         private void loadMedicine()
         {
-            /*
             try
             {
-                List<Medicamento> listaMedicamentos = medicamentoLogica.obtenerMedicamentoParaDataGridView();
-                bindingSourceMedicamentos = new BindingSource(listaMedicamentos, null);
+                //List<MedicamentosDetalle> medicineList = medicineLogic.GetAllMedicineDetails();
+                //bindingSourceMedicine = new BindingSource(medicineList, null);
 
                 // configurar las columnas del datagridview
-                dtaLote.DataPropertyName = "LoteID";
-                dtaNameMedicamento.DataPropertyName = "Nombre_Medicamento";
-                dtaCantidad.DataPropertyName = "Stock";
-                dtaVencimiento.DataPropertyName = "FechaVencimiento";
+                //FALTA ARREGLAR LOTE, TIRA EL LOTE ID, NO NÚMERO DE LOTE
+                dtaLote.DataPropertyName = "Lote";
+                dtaNameMedicamento.DataPropertyName = "Medicamento";
+                dtaStock.DataPropertyName = "Cantidad";
+                dtaVencimiento.DataPropertyName = "Vencimiento";
                 // configurar columnas de CategoriaForm y Estante
                 // CategoriaForm
-                dtaNombreCat.DataPropertyName = "CategoriaNombre";
+                dtaNombreCat.DataPropertyName = "Categoria";
                 // EstantesForm
-                dtaNombreEst.DataPropertyName = "Nombre_Estante";
+                dtaNombreEst.DataPropertyName = "Estante";
                 dtaSector.DataPropertyName = "Sector";
-                dtaNumEst.DataPropertyName = "Numero_Estante";
-             
+                dtaNumEst.DataPropertyName = "NumEstante";
                 // Se asigna el binding source al datagridview
-                dtaViewMedicamentos.DataSource = bindingSourceMedicamentos;
+                dtaViewMedicamentos.DataSource = bindingSourceMedicine;
                 // Se esconde los campos que no se quieren mostrar
-                dtaViewMedicamentos.Columns["CategoriaID"].Visible = false;
-                dtaViewMedicamentos.Columns["EstanteID"].Visible = false;
-                dtaViewMedicamentos.Columns["PrecioUnitario"].Visible = false;
+
                 // Verificar datagridview vacio
                 controladora.CheckEmptyDataGridView(dtaViewMedicamentos, "dtaLote");
             }
-            catch (SqlException)
+            catch (Exception ex)
             {
                 throw;
             }
-            */
         }
+
+
+
 
 
         private void cmbCheck_Changed(object sender, EventArgs e)
         {
+            /*
             GunaCheckBox check = (GunaCheckBox)sender;
             if (check.Checked)
             {
@@ -113,32 +115,21 @@ namespace Sistema.Vista
                     default:
                         break;
                 }
-            }
+            }*/
         }
 
-        private void cargarFiltros()
-        {/*
-            try
-            {
-                List<string> listaCategoria = categoriaLogica.obtenerNombresCategorias();
-                List<string> listaEstante = estanteLogica.obtenerNombresEstantes();
+        private void loadCMBData()
+        {
+            // Obtener lista de nombres de estantes y categorías para cargar los combobox
 
-                // Agregar item predeterminado
-                listaCategoria.Insert(0, "Seleccionar Categoría.");
-                listaEstante.Insert(0, "Seleccionar Estante.");
-
-                // Cargar combobox filtros
-                cmbFilteCat.DataSource = listaCategoria;
-                cmbFilterEst.DataSource = listaEstante;
-                // Display Member
-                cmbFilteCat.DisplayMember = "Nombre";
-                cmbFilterEst.DisplayMember = "Nombre";
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            */
+            List<string> shelvesList = cacheManagerList.ShelvesListModel.Select(shelf => shelf.Nombre).ToList();
+            List<string> categoryList = cacheManagerList.CategoryListModel.Select(category => category.Nombre).ToList();
+            // Insertar en la primera posición de la lista
+            categoryList.Insert(0, "Seleccionar Categoría.");
+            shelvesList.Insert(0, "Seleccionar Estante.");
+            // Cargar combobox
+            //cmbFilteCat.DataSource = categoryList;
+            //cmbFilterEst.DataSource = shelvesList;
         }
 
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
@@ -152,6 +143,6 @@ namespace Sistema.Vista
         {/*
             cargarDatosMedicamentos();*/
         }
-           
+
     }
 }

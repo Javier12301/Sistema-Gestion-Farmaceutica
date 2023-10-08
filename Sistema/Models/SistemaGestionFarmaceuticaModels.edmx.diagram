@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59be2053c2954abb915c6dbaba783c57" Name="Diagram1">
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.CategoriasModel" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.CodigosDeBarrasModel" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.EstantesModel" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.LotesModel" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.MedicamentosLotesModel" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.MedicamentosModel" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.ProductosModel" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.VentasModel" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.VistaInventarioMedicamento" Width="1.5" PointX="2.75" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Categ__762C88DA" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Productos__Categ__7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Codig__7720AD13" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Productos__Codig__7BE56230" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Estan__753864A1" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Productos__Estan__79FD19BE" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__LoteI__7EC1CEDB" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Medic__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__VentasMod__Medic__038683F8" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__VentasMod__Produ__02925FBF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -40,6 +40,39 @@ CREATE TABLE ProductosModel (
     CategoriaID INT FOREIGN KEY REFERENCES CategoriasModel(CategoriaID)
 );
 
+CREATE TABLE CodigosDeBarrasModel(
+	CodigoID INT IDENTITY(1,1) PRIMARY KEY,
+	CodigoDeBarras NVARCHAR(255) NOT NULL
+);
+
+ALTER TABLE MedicamentosModel
+ADD CodigoID INT FOREIGN KEY REFERENCES CodigosDeBarrasModel(CodigoID);
+
+ALTER TABLE ProductosModel
+ADD CodigoID INT FOREIGN KEY REFERENCES CodigosDeBarrasModel(CodigoID);
+
+
+-- Crear la vista que muestra la información deseada
+CREATE VIEW VistaMedicamentos AS
+SELECT
+    Lotes.Numero_Lote,
+    Lotes.Nombre_Medicamento,
+    Lotes.Stock AS Stock_Medicamento,
+    Lotes.FechaVencimiento AS Vencimiento,
+    Categorias.Nombre AS Categoria,
+    Estantes.Nombre AS Estante,
+    Estantes.Sector,
+    Estantes.Numero_de_estante AS NumEstante
+FROM
+    MedicamentosModel Medicamentos
+INNER JOIN
+    LotesModel Lotes ON Medicamentos.LoteID = Lotes.LoteID
+INNER JOIN
+    CategoriasModel Categorias ON Medicamentos.CategoriaID = Categorias.CategoriaID
+INNER JOIN
+    EstantesModel Estantes ON Medicamentos.EstanteID = Estantes.EstanteID;
+
+
 DROP TABLE ProductosModel;
 SELECT * FROM CategoriasModel;
 
@@ -48,3 +81,9 @@ SELECT * FROM EstantesModel;
 SELECT * FROM LotesModel;
 
 SELECT * FROM MedicamentosModel;
+
+SELECT * FROM ProductosModel;
+
+SELECT * FROM MedicamentosDetalle
+
+SELECT * FROM VistaMedicamentos;

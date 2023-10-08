@@ -14,12 +14,19 @@ namespace Sistema.Models
     
     public partial class LotesModel
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LotesModel()
+        {
+            this.MedicamentosLotesModel = new HashSet<MedicamentosLotesModel>();
+        }
+    
         public int LoteID { get; set; }
         public string Numero_Lote { get; set; }
         public int Stock { get; set; }
         public string Nombre_Medicamento { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
     
-        public virtual MedicamentosModel MedicamentosModel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MedicamentosLotesModel> MedicamentosLotesModel { get; set; }
     }
 }

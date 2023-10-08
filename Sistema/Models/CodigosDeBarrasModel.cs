@@ -12,19 +12,17 @@ namespace Sistema.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EstantesModel
+    public partial class CodigosDeBarrasModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EstantesModel()
+        public CodigosDeBarrasModel()
         {
             this.MedicamentosModel = new HashSet<MedicamentosModel>();
             this.ProductosModel = new HashSet<ProductosModel>();
         }
     
-        public int EstanteID { get; set; }
-        public string Nombre { get; set; }
-        public int Numero_de_estante { get; set; }
-        public string Sector { get; set; }
+        public int CodigoID { get; set; }
+        public string CodigoDeBarras { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicamentosModel> MedicamentosModel { get; set; }

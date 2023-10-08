@@ -38,10 +38,6 @@
             this.lblListE = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dtaViewEstante = new System.Windows.Forms.DataGridView();
-            this.dtaIDEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNombreEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaSectorEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSectorE = new Guna.UI.WinForms.GunaLineTextBox();
             this.txtNumE = new Guna.UI.WinForms.GunaLineTextBox();
@@ -53,6 +49,10 @@
             this.lblSectorE = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.dtaIDEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNombreEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaNumEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtaSectorEstante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtaViewEstante)).BeginInit();
@@ -214,31 +214,6 @@
             this.dtaViewEstante.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtaViewEstante_DataError);
             this.dtaViewEstante.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtaViewEstante_EditingControlShowing);
             // 
-            // dtaIDEstante
-            // 
-            this.dtaIDEstante.FillWeight = 54.82233F;
-            this.dtaIDEstante.HeaderText = "ID";
-            this.dtaIDEstante.Name = "dtaIDEstante";
-            this.dtaIDEstante.ReadOnly = true;
-            // 
-            // dtaNombreEstante
-            // 
-            this.dtaNombreEstante.FillWeight = 115.0592F;
-            this.dtaNombreEstante.HeaderText = "Nombre";
-            this.dtaNombreEstante.Name = "dtaNombreEstante";
-            // 
-            // dtaNumEstante
-            // 
-            this.dtaNumEstante.FillWeight = 115.0592F;
-            this.dtaNumEstante.HeaderText = "Número de estante";
-            this.dtaNumEstante.Name = "dtaNumEstante";
-            // 
-            // dtaSectorEstante
-            // 
-            this.dtaSectorEstante.FillWeight = 115.0592F;
-            this.dtaSectorEstante.HeaderText = "Sector";
-            this.dtaSectorEstante.Name = "dtaSectorEstante";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -390,6 +365,31 @@
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // dtaIDEstante
+            // 
+            this.dtaIDEstante.FillWeight = 54.82233F;
+            this.dtaIDEstante.HeaderText = "ID";
+            this.dtaIDEstante.Name = "dtaIDEstante";
+            this.dtaIDEstante.ReadOnly = true;
+            // 
+            // dtaNombreEstante
+            // 
+            this.dtaNombreEstante.FillWeight = 115.0592F;
+            this.dtaNombreEstante.HeaderText = "Nombre";
+            this.dtaNombreEstante.Name = "dtaNombreEstante";
+            // 
+            // dtaNumEstante
+            // 
+            this.dtaNumEstante.FillWeight = 115.0592F;
+            this.dtaNumEstante.HeaderText = "Número de estante";
+            this.dtaNumEstante.Name = "dtaNumEstante";
+            // 
+            // dtaSectorEstante
+            // 
+            this.dtaSectorEstante.FillWeight = 115.0592F;
+            this.dtaSectorEstante.HeaderText = "Sector";
+            this.dtaSectorEstante.Name = "dtaSectorEstante";
             // 
             // EstantesForm
             // 

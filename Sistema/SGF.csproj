@@ -39,6 +39,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.2.28405.11, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DG.AdvancedDataGridView.1.2.28405.11\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\SGF\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
@@ -73,6 +76,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -103,34 +107,49 @@
     <Compile Include="Database\Modelo\Lote.cs" />
     <Compile Include="Database\Modelo\Medicamento.cs" />
     <Compile Include="Models\CategoriasModel.cs">
-      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EntityFrameworkModelsSGF.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityFrameworkModelsSGF.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EntityFrameworkModelsSGF.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EntityFrameworkModelsSGF.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
+    <Compile Include="Models\CodigosDeBarrasModel.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EstantesModel.cs">
-      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LotesModel.cs">
-      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MedicamentosDetalle.cs">
-      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+    <Compile Include="Models\MedicamentosLotesModel.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MedicamentosModel.cs">
-      <DependentUpon>EntityFrameworkModelsSGF.tt</DependentUpon>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductosModel.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SistemaGestionFarmaceuticaModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SistemaGestionFarmaceuticaModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SistemaGestionFarmaceuticaModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VentasModel.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VistaInventarioMedicamento.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\CacheManager.cs" />
     <Compile Include="Views\CategoriaForm.cs">
@@ -244,12 +263,12 @@
     <EmbeddedResource Include="Views\ProductosForm.resx">
       <DependentUpon>ProductosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\EntityFrameworkModelsSGF.edmx">
+    <EntityDeploy Include="Models\SistemaGestionFarmaceuticaModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EntityFrameworkModelsSGF.Designer.cs</LastGenOutput>
+      <LastGenOutput>SistemaGestionFarmaceuticaModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\EntityFrameworkModelsSGF.edmx.diagram">
-      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
+    <None Include="Models\SistemaGestionFarmaceuticaModels.edmx.diagram">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -283,16 +302,17 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\EntityFrameworkModelsSGF.Context.tt">
+    <Content Include="Models\SistemaGestionFarmaceuticaModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
-      <LastGenOutput>EntityFrameworkModelsSGF.Context.cs</LastGenOutput>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
+      <LastGenOutput>SistemaGestionFarmaceuticaModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EntityFrameworkModelsSGF.tt">
+    <Content Include="Models\SistemaGestionFarmaceuticaModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityFrameworkModelsSGF.edmx</DependentUpon>
-      <LastGenOutput>EntityFrameworkModelsSGF.cs</LastGenOutput>
+      <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
+      <LastGenOutput>SistemaGestionFarmaceuticaModels.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

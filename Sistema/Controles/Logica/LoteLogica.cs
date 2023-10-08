@@ -16,7 +16,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new PharmacyDbContext())
                 {
                     var lote = db.LotesModel.Where(x => x.LoteID == loteID).FirstOrDefault();
                     return lote;
@@ -33,7 +33,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new PharmacyDbContext())
                 {
                     var lotes = db.LotesModel.Select(lote => new
                     {
@@ -66,7 +66,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new PharmacyDbContext())
                 {
                     db.LotesModel.Add(lote);
                     db.Entry(lote).State = EntityState.Added;

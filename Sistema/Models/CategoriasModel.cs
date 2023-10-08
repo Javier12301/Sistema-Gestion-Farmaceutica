@@ -18,6 +18,7 @@ namespace Sistema.Models
         public CategoriasModel()
         {
             this.MedicamentosModel = new HashSet<MedicamentosModel>();
+            this.ProductosModel = new HashSet<ProductosModel>();
         }
     
         public int CategoriaID { get; set; }
@@ -26,5 +27,7 @@ namespace Sistema.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicamentosModel> MedicamentosModel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductosModel> ProductosModel { get; set; }
     }
 }

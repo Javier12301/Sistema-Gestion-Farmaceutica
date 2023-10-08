@@ -72,3 +72,5 @@ C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Vista.CategoriaForm.re
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Vista.NuevoMedicamentoForm.resources
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Vista.MedicamentosForm.resources
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Vista.EstantesForm.resources
+C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.NuevoProductoForm.resources
+C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.ProductosForm.resources

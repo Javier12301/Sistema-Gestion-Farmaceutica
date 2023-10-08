@@ -99,7 +99,8 @@ namespace Sistema.Vista
                     MedicamentosModel medicine = new MedicamentosModel();
                     // Utilizar Nombre de medicamento, Numero de lote y Stock para obtener el ID del lote
                     MessageBox.Show(lote.LoteID.ToString());
-                    medicine.LoteID = lote.LoteID;
+                    
+                    //medicine.LoteID = lote.LoteID;
                     // Utilizamos el nombre del combo box para obtener el ID de la categoría
                     medicine.CategoriaID = cacheManagerList.CategoryListModel.Where(category => category.Nombre == cmbCatMedicamento.Text).Select(category => category.CategoriaID).FirstOrDefault();
                     medicine.EstanteID = cacheManagerList.ShelvesListModel.Where(shelf => shelf.Nombre == cmbEstanteMedicamento.Text).Select(shelf => shelf.EstanteID).FirstOrDefault();

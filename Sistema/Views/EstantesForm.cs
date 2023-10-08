@@ -44,18 +44,26 @@ namespace Sistema.Vista
 
         private void loadShelvesData()
         {
-            List<EstantesModel> shelvesList = shelfLogic.GetShelves();
-            bindingSourceShelves = new BindingSource(shelvesList, null);
+            try
+            {
+                List<EstantesModel> shelvesList = shelfLogic.GetShelves();
+                bindingSourceShelves = new BindingSource(shelvesList, null);
 
-            // cargar los datos en el datagridview
-            dtaIDEstante.DataPropertyName = "EstanteID";
-            dtaNombreEstante.DataPropertyName = "Nombre";
-            dtaNumEstante.DataPropertyName = "Numero_de_estante";
-            dtaSectorEstante.DataPropertyName = "Sector";
-            // Se asigna el binding source al datagridview
-            dtaViewEstante.DataSource = bindingSourceShelves;
-            dtaViewEstante.Columns["MedicamentosModel"].Visible = false;
-            controladora.CheckEmptyDataGridView(dtaViewEstante, "dtaIDEstante");
+                // cargar los datos en el datagridview
+                dtaIDEstante.DataPropertyName = "EstanteID";
+                dtaNombreEstante.DataPropertyName = "Nombre";
+                dtaNumEstante.DataPropertyName = "Numero_de_estante";
+                dtaSectorEstante.DataPropertyName = "Sector";
+                // Se asigna el binding source al datagridview
+                dtaViewEstante.DataSource = bindingSourceShelves;
+                dtaViewEstante.Columns["MedicamentosModel"].Visible = false;
+                controladora.CheckEmptyDataGridView(dtaViewEstante, "dtaIDEstante");
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+           
         }
 
 
@@ -221,7 +229,7 @@ namespace Sistema.Vista
 
                         bool hasMedicine = shelfLogic.CheckIfShelfHasMedicines(selectedShelfID);
 
-                        using (var db = new SistemaGestionFarmaceuticaEntities())
+                        using (var db = new PharmacyDbContext())
                         {
                             if (hasMedicine)
                             {

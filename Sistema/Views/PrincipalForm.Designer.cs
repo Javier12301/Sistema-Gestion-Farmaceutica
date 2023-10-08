@@ -57,6 +57,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblNumCategorias = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -69,6 +74,9 @@
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -192,18 +200,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.AutoScroll = true;
             this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.pnlgpbEstanteFORM, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel4, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 57);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 33);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(798, 116);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(798, 136);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // pnlgpbEstanteFORM
@@ -215,7 +225,7 @@
             this.pnlgpbEstanteFORM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlgpbEstanteFORM.Location = new System.Drawing.Point(3, 3);
             this.pnlgpbEstanteFORM.Name = "pnlgpbEstanteFORM";
-            this.pnlgpbEstanteFORM.Size = new System.Drawing.Size(259, 110);
+            this.pnlgpbEstanteFORM.Size = new System.Drawing.Size(193, 130);
             this.pnlgpbEstanteFORM.TabIndex = 3;
             // 
             // gpbNewEstante
@@ -229,12 +239,12 @@
             this.gpbNewEstante.Controls.Add(this.label11);
             this.gpbNewEstante.Controls.Add(this.lblNumEstantes);
             this.gpbNewEstante.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.gpbNewEstante.Location = new System.Drawing.Point(2, 3);
+            this.gpbNewEstante.Location = new System.Drawing.Point(2, -1);
             this.gpbNewEstante.Name = "gpbNewEstante";
-            this.gpbNewEstante.Size = new System.Drawing.Size(272, 117);
+            this.gpbNewEstante.Size = new System.Drawing.Size(197, 130);
             this.gpbNewEstante.TabIndex = 0;
             this.gpbNewEstante.TabStop = false;
-            this.gpbNewEstante.Text = "EstantesForm";
+            this.gpbNewEstante.Text = "Estantes";
             // 
             // iconPictureBox1
             // 
@@ -252,15 +262,14 @@
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoEllipsis = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(1, 51);
+            this.label11.Location = new System.Drawing.Point(6, 55);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(187, 40);
+            this.label11.Size = new System.Drawing.Size(126, 49);
             this.label11.TabIndex = 18;
             this.label11.Text = "Estantes Totales";
             // 
@@ -282,9 +291,9 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(534, 3);
+            this.panel2.Location = new System.Drawing.Point(600, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(261, 110);
+            this.panel2.Size = new System.Drawing.Size(195, 130);
             this.panel2.TabIndex = 5;
             // 
             // groupBox2
@@ -298,12 +307,12 @@
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.lblNumMedicamentos);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox2.Location = new System.Drawing.Point(2, 3);
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(304, 117);
+            this.groupBox2.Size = new System.Drawing.Size(194, 129);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "MedicamentosForm";
+            this.groupBox2.Text = "Medicamentos";
             // 
             // iconPictureBox3
             // 
@@ -321,15 +330,14 @@
             // 
             // label16
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoEllipsis = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DimGray;
-            this.label16.Location = new System.Drawing.Point(1, 51);
+            this.label16.Location = new System.Drawing.Point(6, 53);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(273, 40);
+            this.label16.Size = new System.Drawing.Size(132, 50);
             this.label16.TabIndex = 24;
             this.label16.Text = "Medicamentos Totales ";
             // 
@@ -351,9 +359,9 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.groupBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(268, 3);
+            this.panel4.Location = new System.Drawing.Point(401, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(260, 110);
+            this.panel4.Size = new System.Drawing.Size(193, 130);
             this.panel4.TabIndex = 4;
             // 
             // groupBox1
@@ -367,24 +375,24 @@
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.lblNumCategorias);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox1.Location = new System.Drawing.Point(2, 3);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 117);
+            this.groupBox1.Size = new System.Drawing.Size(192, 129);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "CategoriaForm";
+            this.groupBox1.Text = "Productos";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // iconPictureBox2
             // 
             this.iconPictureBox2.BackColor = System.Drawing.Color.White;
-            this.iconPictureBox2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Tag;
-            this.iconPictureBox2.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.DarkOrange;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Box;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.DarkOrange;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 28;
             this.iconPictureBox2.Location = new System.Drawing.Point(5, 23);
             this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Rotation = 85D;
             this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox2.TabIndex = 20;
             this.iconPictureBox2.TabStop = false;
@@ -396,17 +404,17 @@
             this.label13.AutoEllipsis = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DimGray;
-            this.label13.Location = new System.Drawing.Point(1, 51);
+            this.label13.Location = new System.Drawing.Point(6, 54);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(210, 40);
+            this.label13.Size = new System.Drawing.Size(132, 49);
             this.label13.TabIndex = 21;
-            this.label13.Text = "Categoria Totales";
+            this.label13.Text = "Productos Totales";
             // 
             // lblNumCategorias
             // 
             this.lblNumCategorias.AutoSize = true;
             this.lblNumCategorias.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblNumCategorias.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblNumCategorias.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblNumCategorias.Location = new System.Drawing.Point(44, 24);
             this.lblNumCategorias.Name = "lblNumCategorias";
             this.lblNumCategorias.Size = new System.Drawing.Size(20, 23);
@@ -424,6 +432,76 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "PrincipalForm";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(202, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(193, 130);
+            this.panel1.TabIndex = 6;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.AutoSize = true;
+            this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.iconPictureBox4);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.groupBox3.Location = new System.Drawing.Point(0, -1);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(198, 130);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Categorías";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // iconPictureBox4
+            // 
+            this.iconPictureBox4.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox4.ForeColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Tag;
+            this.iconPictureBox4.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox4.IconSize = 28;
+            this.iconPictureBox4.Location = new System.Drawing.Point(5, 23);
+            this.iconPictureBox4.Name = "iconPictureBox4";
+            this.iconPictureBox4.Rotation = 85D;
+            this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox4.TabIndex = 20;
+            this.iconPictureBox4.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoEllipsis = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(3, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 49);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Categoria Totales";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label2.Location = new System.Drawing.Point(44, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 23);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "0";
             // 
             // PrincipalForm
             // 
@@ -457,6 +535,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,5 +576,10 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconButton btnBuscar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

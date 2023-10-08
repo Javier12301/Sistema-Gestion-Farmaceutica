@@ -16,7 +16,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new PharmacyDbContext())
                 {
                     // Obtenemos la cantidad de estantes e ignoramos el estante 0 que es el estante por defecto.
                     int shelves = db.EstantesModel.Where(x => x.EstanteID != 0).Count();
@@ -34,7 +34,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new PharmacyDbContext())
                 {
                     // Obtenemos la lista de estantes pero solo los campos que necesitamos
                     var shelves = db.EstantesModel.Where(shelf => shelf.EstanteID != 0).Select(shelf => new
@@ -68,7 +68,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new PharmacyDbContext())
                 {
                     // Obtenemos el estante por ID
                     EstantesModel shelf = db.EstantesModel.Find(shelfID);
@@ -89,7 +89,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using(var db = new SistemaGestionFarmaceuticaEntities())
+                using(var db = new PharmacyDbContext())
                 {
                     db.EstantesModel.Add(shelf);
                     db.Entry(shelf).State = EntityState.Added;
@@ -109,7 +109,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using(var db = new SistemaGestionFarmaceuticaEntities())
+                using(var db = new PharmacyDbContext())
                 {
                     EstantesModel originalShelf = db.EstantesModel.Find(shelf.EstanteID);
 
@@ -144,7 +144,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using(var db = new SistemaGestionFarmaceuticaEntities())
+                using(var db = new PharmacyDbContext())
                 {
                     // Buscamos el estante que queremos eliminar
                     EstantesModel shelf = db.EstantesModel.Find(shelfID);
@@ -172,7 +172,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using(var db = new SistemaGestionFarmaceuticaEntities())
+                using(var db = new PharmacyDbContext())
                 {
                     // Buscamos el estante
                     EstantesModel shelf = db.EstantesModel.Find(shelfID);
@@ -208,7 +208,7 @@ namespace Sistema.Controles.Logica
             try
             {
                 int shelfDefaultID = 0;
-                using(var db = new SistemaGestionFarmaceuticaEntities())
+                using(var db = new PharmacyDbContext())
                 {
                     // Buscamos el estante por defecto
                     EstantesModel shelfDefault = db.EstantesModel.Find(shelfDefaultID);

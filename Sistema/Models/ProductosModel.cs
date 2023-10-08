@@ -12,23 +12,26 @@ namespace Sistema.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EstantesModel
+    public partial class ProductosModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EstantesModel()
+        public ProductosModel()
         {
-            this.MedicamentosModel = new HashSet<MedicamentosModel>();
-            this.ProductosModel = new HashSet<ProductosModel>();
+            this.VentasModel = new HashSet<VentasModel>();
         }
     
-        public int EstanteID { get; set; }
-        public string Nombre { get; set; }
-        public int Numero_de_estante { get; set; }
-        public string Sector { get; set; }
+        public int ProductoID { get; set; }
+        public string NombreProducto { get; set; }
+        public string DescripcionProducto { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public Nullable<int> EstanteID { get; set; }
+        public Nullable<int> CategoriaID { get; set; }
+        public Nullable<int> CodigoID { get; set; }
     
+        public virtual CategoriasModel CategoriasModel { get; set; }
+        public virtual CodigosDeBarrasModel CodigosDeBarrasModel { get; set; }
+        public virtual EstantesModel EstantesModel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MedicamentosModel> MedicamentosModel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductosModel> ProductosModel { get; set; }
+        public virtual ICollection<VentasModel> VentasModel { get; set; }
     }
 }

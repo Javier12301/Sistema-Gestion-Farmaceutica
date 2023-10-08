@@ -13,10 +13,10 @@ namespace Sistema.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SistemaGestionFarmaceuticaEntities : DbContext
+    public partial class PharmacyDbContext : DbContext
     {
-        public SistemaGestionFarmaceuticaEntities()
-            : base("name=SistemaGestionFarmaceuticaEntities")
+        public PharmacyDbContext()
+            : base("name=PharmacyDbContext")
         {
         }
     
@@ -26,9 +26,14 @@ namespace Sistema.Models
         }
     
         public virtual DbSet<CategoriasModel> CategoriasModel { get; set; }
+        public virtual DbSet<CodigosDeBarrasModel> CodigosDeBarrasModel { get; set; }
         public virtual DbSet<EstantesModel> EstantesModel { get; set; }
         public virtual DbSet<LotesModel> LotesModel { get; set; }
+        public virtual DbSet<MedicamentosLotesModel> MedicamentosLotesModel { get; set; }
         public virtual DbSet<MedicamentosModel> MedicamentosModel { get; set; }
-        public virtual DbSet<MedicamentosDetalle> MedicamentosDetalle { get; set; }
+        public virtual DbSet<ProductosModel> ProductosModel { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<VentasModel> VentasModel { get; set; }
+        public virtual DbSet<VistaInventarioMedicamento> VistaInventarioMedicamento { get; set; }
     }
 }

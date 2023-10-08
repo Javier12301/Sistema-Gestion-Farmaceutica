@@ -12,15 +12,16 @@ namespace Sistema.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MedicamentosDetalle
+    public partial class VistaInventarioMedicamento
     {
-        public int Lote { get; set; }
-        public string Medicamento { get; set; }
+        public string Codigo { get; set; }
+        public string Lote { get; set; }
+        public string Descripcion { get; set; }
         public int Cantidad { get; set; }
         public System.DateTime Vencimiento { get; set; }
         public string Categoria { get; set; }
-        public string Estante { get; set; }
+        public string Nombre_estante { get; set; }
         public string Sector { get; set; }
-        public int NumEstante { get; set; }
+        public int Numero_estante { get; set; }
     }
 }
