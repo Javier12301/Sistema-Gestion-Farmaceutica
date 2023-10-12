@@ -1,5 +1,6 @@
 ﻿using Guna.UI.WinForms;
 using Sistema.Controles;
+using Sistema.Controles.Interfaz;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,6 +15,22 @@ namespace Sistema
 {
     public class Controladora
     {
+        // Singleton Controladora
+        private static Controladora instance = null;
+        private Controladora()
+        {
+        }
+        public static Controladora GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Controladora();
+                }
+                return instance;
+            }
+        }
         PaletaColores colorPalette = new PaletaColores();
 
         public void OpenMailLink()
@@ -61,7 +78,7 @@ namespace Sistema
             //Verificar credenciales
             if (isEmailValid && isPasswordValid)
             {
-                if(txtUser.Text == "Admin12301@gmail.com" && txtPassword.Text == "Admin12301")
+                if (txtUser.Text == "Admin12301@gmail.com" && txtPassword.Text == "Admin12301")
                 {
                     return true;
                 }
@@ -69,7 +86,7 @@ namespace Sistema
                 {
                     return false;
                 }
-                
+
             }
             {
 
@@ -128,7 +145,7 @@ namespace Sistema
         {
             if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
-                
+
                 //No está vacio
                 txtbox.LineColor = colorPalette.ColorActive;
                 return true;
@@ -147,7 +164,7 @@ namespace Sistema
             if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
                 //No está vacio
-                
+
                 errorActivator.SetError(txtbox, "");
                 return true;
             }
@@ -186,7 +203,7 @@ namespace Sistema
             {
                 txtbox.Text = "";
             }
-            
+
         }
 
         // Controladora para limpiar los campos de texto TextBox normales
@@ -197,7 +214,43 @@ namespace Sistema
                 txtbox.Text = "";
             }
         }
-        
+
+        // Manejo de observador para comprobar si el usuario modifico datagridview
+        private bool isDatagridViewModified = false;
+        private List<IObserverDataGridView> observers = new List<IObserverDataGridView>();
+
+        public bool IsDatagridViewModified
+        {
+            get { return isDatagridViewModified; }
+            set
+            {
+                if (value != isDatagridViewModified)
+                {
+                    isDatagridViewModified = value;
+                    NotifyObservers();
+                }
+            }
+        }
+
+        public void Attach(IObserverDataGridView observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void Detach(IObserverDataGridView observer)
+        {
+            observers.Remove(observer);
+        }
+
+        private void NotifyObservers()
+        {
+            foreach (var observer in observers)
+            {
+                observer.Update(isDatagridViewModified);
+            }
+        }
+
+        // // // // // // // // // // // //
 
     }
 }

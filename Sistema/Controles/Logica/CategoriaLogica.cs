@@ -15,7 +15,7 @@ namespace Sistema.Controles.Logica
         // Obtener cantidad total de categorias
         public int GetTotalCategoriesCount()
         {
-            using (var db = new PharmacyDbContext())
+            using (var db = new SistemaGestionFarmaceuticaEntities())
             {
                 int categories = db.CategoriasModel.Count();
                 return categories;
@@ -27,7 +27,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     var categories = db.CategoriasModel.Where(category => category.CategoriaID != 0).Select(category => new
                     {
@@ -56,7 +56,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     // Obtenemos la categoria por ID
                     CategoriasModel category = db.CategoriasModel.Find(categoryID);
@@ -74,7 +74,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     db.CategoriasModel.Add(category);
                     db.Entry(category).State = EntityState.Added;
@@ -96,7 +96,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     CategoriasModel originalCategory = db.CategoriasModel.Find(category.CategoriaID);
                     if (originalCategory != null)
@@ -128,7 +128,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using(var db = new PharmacyDbContext())
+                using(var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     // Buscamos la categoria por ID
                     CategoriasModel category = db.CategoriasModel.Find(categoryID);
@@ -157,7 +157,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     // Buscamos la categoria por ID
                     CategoriasModel category = db.CategoriasModel.Find(categoryID);
@@ -193,7 +193,7 @@ namespace Sistema.Controles.Logica
             try
             {
                 int categoryDefaultID = 0;
-                using(var db = new PharmacyDbContext())
+                using(var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     // Buscamos la categoria por defecto
                     CategoriasModel categoryDefault = db.CategoriasModel.Find(categoryDefaultID);
@@ -236,7 +236,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     // Buscamos la categoria por defecto
                     CategoriasModel categoryReassign = db.CategoriasModel.Find(categoryReassignID);

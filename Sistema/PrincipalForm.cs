@@ -1,4 +1,5 @@
 ﻿using Sistema.Controles;
+using Sistema.Controles.Interfaz;
 using Sistema.Vista;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,10 @@ namespace Sistema
         //Fields
         private Form activeForm;
         private Button currentButton;
-
         Shortcuts shortcuts = new Shortcuts();
+        // Obtener Controladora Que tiene Singleton
+        Controladora controladora = Controladora.GetInstance;
+        ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
 
         public PrincipalForm()
         {
@@ -48,9 +51,9 @@ namespace Sistema
                 if (currentButton != (Button)btnSender)
                 {
                     disableButton();
-                    
+
                     currentButton = (Button)btnSender;
-                    currentButton.BackColor = Color.FromArgb(234, 234, 234);                   
+                    currentButton.BackColor = Color.FromArgb(234, 234, 234);
                     currentButton.ForeColor = Color.Black;
                     //Fuente diseñada para el botón activo
                     currentButton.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -61,7 +64,7 @@ namespace Sistema
         // Controlar colores de los botones de la barra de navegación //Código de stackOVERFLOW
         private void disableButton()
         {
-            
+
             foreach (Control previousBtn in pnlMenu.Controls)
             {
                 if (previousBtn.GetType() == typeof(Button))
@@ -84,24 +87,41 @@ namespace Sistema
         //Abrir formularios en el panel Main utilizando el formulario principal
         private void OpenchildForm(Form childForm, Button btnSender)
         {
+            // Si el DataGridView ha sido modificado, preguntar al usuario si desea guardar los cambios
+            if (controladora.IsDatagridViewModified)
+            {
+                DialogResult result = MessageBox.Show("Has realizado cambios que no se han guardado. ¿Estás seguro de que deseas salir?", "Confirmación", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    // Si el usuario elige "No", no cierra el formulario activo ni abre uno nuevo.
+                    return;
+                }
+            }
+
+            // Si el DataGridView no ha sido modificado o si el usuario eligió "Sí" en el cuadro de diálogo, proceder a cerrar el formulario activo y abrir uno nuevo
             if (activeForm != null)
             {
                 activeForm.Close();
             }
-            //Configuración de los botones de la barra de navegación
-            //Resaltar boton presionado
+
+            // Resaltar botón 
             activateButton(btnSender);
-            //Abrir formulario en el panel Main
+
+            // Configuración de los botones de la barra de navegación
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill; //Rellenar el panel Main
-            this.panelMain.Controls.Add(childForm); //Agregar formulario al panel Main
+            childForm.Dock = DockStyle.Fill; // Rellenar el panel Main
+            this.panelMain.Controls.Add(childForm); // Agregar formulario al panel Main
             this.panelMain.Tag = childForm;
-            childForm.BringToFront(); //Traer formulario al frente
-            childForm.Show(); //Mostrar formulario
-            
+            childForm.BringToFront(); // Traer formulario al frente
+
+            // Se ha abierto un nuevo formulario
+            controladora.IsDatagridViewModified = false;
+            childForm.Show(); // Mostrar formulario    
         }
+
+
 
         //Botones de la barra de navegacion
         private void btnPrincipal_Click(object sender, EventArgs e)
@@ -132,7 +152,7 @@ namespace Sistema
 
         private void btnAjustes_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -145,7 +165,7 @@ namespace Sistema
         //Al presionar X en este formulario, se cerrará el sistema.
         private void PrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason == CloseReason.UserClosing)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
                 Application.Exit();
             }

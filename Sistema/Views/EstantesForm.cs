@@ -13,15 +13,20 @@ using Sistema.Models;
 using System.Media;
 using Sistema.Controles.Logica;
 using System.Data.Entity.Core.Objects;
+using Sistema.Controles.Interfaz;
 
 namespace Sistema.Vista
 {
     public partial class EstantesForm : Form
     {
         // Instancias de las clases de Control
-        Controladora controladora = new Controladora();
+        Controladora controladora = Controladora.GetInstance;
         PaletaColores colorPalette = new PaletaColores();
         EstanteLogica shelfLogic = new EstanteLogica();
+        ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
+
+        private bool isModifyButtonPressed = false;
+        
 
         public EstantesForm()
         {
@@ -30,8 +35,11 @@ namespace Sistema.Vista
 
         private void Estantes_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'sistemaGestionFarmaceuticaDataSet.EstantesModel' Puede moverla o quitarla según sea necesario.
             loadShelvesData();
             btnGuardarG.Enabled = false;
+            // Acomodar tamaño de la celda selectora de filas
+            dgvShelvesList.RowHeadersWidth = 30;
         }
 
         private void txtNumE_KeyPress(object sender, KeyPressEventArgs e)
@@ -40,31 +48,13 @@ namespace Sistema.Vista
         }
 
         // Método para obtener los datos del datagridview
-        private BindingSource bindingSourceShelves;
 
         private void loadShelvesData()
         {
-            try
-            {
-                List<EstantesModel> shelvesList = shelfLogic.GetShelves();
-                bindingSourceShelves = new BindingSource(shelvesList, null);
-
-                // cargar los datos en el datagridview
-                dtaIDEstante.DataPropertyName = "EstanteID";
-                dtaNombreEstante.DataPropertyName = "Nombre";
-                dtaNumEstante.DataPropertyName = "Numero_de_estante";
-                dtaSectorEstante.DataPropertyName = "Sector";
-                // Se asigna el binding source al datagridview
-                dtaViewEstante.DataSource = bindingSourceShelves;
-                dtaViewEstante.Columns["MedicamentosModel"].Visible = false;
-                controladora.CheckEmptyDataGridView(dtaViewEstante, "dtaIDEstante");
-            }
-            catch(Exception)
-            {
-                throw;
-            }
-           
+            this.estantesModelTableAdapter.Fill(this.sistemaGestionFarmaceuticaDataSet.EstantesModel);           
         }
+
+
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -106,16 +96,21 @@ namespace Sistema.Vista
         private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
+            updateShelfData();
+        }
+
+        private void updateShelfData()
+        {
             // Se crea una instancia de la clase Estante
             EstantesModel shelf = new EstantesModel();
             foreach (DataGridViewRow row in modifiedRows)
             {
-                int selectedShelfID = Convert.ToInt32(row.Cells["dtaIDEstante"].Value);
-                if (row.Cells["dtaNombreEstante"] != null && row.Cells["dtaNombreEstante"].Value != null)
+                int selectedShelfID = Convert.ToInt32(row.Cells["dgvcID"].Value);
+                if (row.Cells["dgvcShelfName"] != null && row.Cells["dgvcShelfName"].Value != null)
                 {
-                    string selectedShelfName = row.Cells["dtaNombreEstante"].Value.ToString();
-                    string selectedShelfNumber = (row.Cells["dtaNumEstante"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["dtaNumEstante"].Value.ToString())) ? row.Cells["dtaNumEstante"].Value.ToString() : "-";
-                    string selectedShelfSection = (row.Cells["dtaSectorEstante"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["dtaSectorEstante"].Value.ToString())) ? row.Cells["dtaSectorEstante"].Value.ToString() : "-";
+                    string selectedShelfName = row.Cells["dgvcShelfName"].Value.ToString();
+                    string selectedShelfNumber = (row.Cells["dgvcNumShelf"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["dgvcNumShelf"].Value.ToString())) ? row.Cells["dgvcNumShelf"].Value.ToString() : "-";
+                    string selectedShelfSection = (row.Cells["dgvcSector"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["dgvcSector"].Value.ToString())) ? row.Cells["dgvcSector"].Value.ToString() : "-";
 
                     // Verificar si el nombre del estante está vacío o contiene solo espacios en blanco
                     shelf.EstanteID = selectedShelfID;
@@ -142,6 +137,7 @@ namespace Sistema.Vista
                 }
             }
             modifiedRows.Clear();
+            controladora.IsDatagridViewModified = false;
             btnGuardarG.Enabled = false;
         }
 
@@ -150,6 +146,54 @@ namespace Sistema.Vista
             MessageBox.Show("No se permite dejar este campo vacío.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private void btnModifyG_Click(object sender, EventArgs e)
+        {
+            toggleEditMode();
+        }
+
+        // QUEDA ARREGLAR ESTO DE CUANDO SE TERMINA DE MODIFICAR UN DATAGRIDVIEW
+
+        private void toggleEditMode()
+        {
+            if (isModifyButtonPressed)
+            {
+                // Activar el modo edición del datagridview
+                isModifyButtonPressed = false;
+                btnModifyG.Image = Properties.Resources.EditingIcon;
+                btnModifyG.BaseColor = Color.FromArgb(135, 176, 81);
+
+                dgvShelvesList.ReadOnly = false;
+            }
+            else
+            {
+                // Si se han realizado cambios, muestra un MessageBox.
+                if (controladora.IsDatagridViewModified)
+                {
+                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Guarda los cambios.                      
+                        updateShelfData();
+                                             
+                    }
+                    else
+                    {
+                        // Restaura los datos originales.
+                        loadShelvesData();
+                    }
+                    controladora.IsDatagridViewModified = false;
+                }
+
+                // Desactivar el modo edición del datagridview
+                isModifyButtonPressed = true;
+                btnModifyG.Image = Properties.Resources.PencilIcon;
+                btnModifyG.BaseColor = Color.FromArgb(176, 224, 104);
+
+                dgvShelvesList.ReadOnly = true;
+            }
+        }
+
+
         // // // // // // ELIMINAR ESTANTES // // // // // //
         // Función para retornar una lista con los nombres de los estantes seleccionados
         private object originalValue { get; set; }
@@ -157,15 +201,15 @@ namespace Sistema.Vista
 
         private List<string> getSelectedShelvesNames()
         {
-            if (dtaViewEstante.SelectedRows.Count > 0)
+            if (dgvShelvesList.SelectedRows.Count > 0)
             {
 
                 // Lista para almacenar los nombres de los estantes seleccionados
                 List<string> shelfNames = new List<string>();
                 // Iterar sobre las filas seleccionadas
-                foreach (DataGridViewRow row in dtaViewEstante.SelectedRows)
+                foreach (DataGridViewRow row in dgvShelvesList.SelectedRows)
                 {
-                    int selectedShelfID = Convert.ToInt32(row.Cells["dtaIDEstante"].Value);
+                    int selectedShelfID = Convert.ToInt32(row.Cells["dgvcID"].Value);
                     string shelfName = shelfLogic.GetShelf(selectedShelfID).Nombre.ToString();
                     shelfNames.Add(shelfName);
                 }
@@ -181,7 +225,7 @@ namespace Sistema.Vista
         private string getDeleteConfirmationMessage()
         {
             string message = "";
-            if (dtaViewEstante.SelectedRows.Count > 1)
+            if (dgvShelvesList.SelectedRows.Count > 1)
             {
                 // Lista para almacenar los nombres de los estantes seleccionados
                 List<string> shelfNames = getSelectedShelvesNames();
@@ -191,7 +235,7 @@ namespace Sistema.Vista
                 }
                 message = "¿Está seguro que desea eliminar los siguientes estantes?\n\n" + string.Join("\n", shelfNames);
             }
-            else if (dtaViewEstante.SelectedRows.Count == 1)
+            else if (dgvShelvesList.SelectedRows.Count == 1)
             {
                 string shelfName = getSelectedShelvesNames()[0];
                 message = "¿Está seguro que desea eliminar el estante " + shelfName + "?";
@@ -215,21 +259,21 @@ namespace Sistema.Vista
         // Evento para eliminar un estante
         private void btnEliminarG_Click(object sender, EventArgs e)
         {
-            if (dtaViewEstante.SelectedRows.Count > 0)
+            if (dgvShelvesList.SelectedRows.Count > 0)
             {
-                int shelvesCount = dtaViewEstante.SelectedRows.Count;
+                int shelvesCount = dgvShelvesList.SelectedRows.Count;
                 string message = getDeleteConfirmationMessage();
                 DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (userConfirmation == DialogResult.Yes)
                 {
-                    foreach (DataGridViewRow row in dtaViewEstante.SelectedRows)
+                    foreach (DataGridViewRow row in dgvShelvesList.SelectedRows)
                     {
                         // condicional multiples SelectedRows
-                        int selectedShelfID = Convert.ToInt32(row.Cells["dtaIDEstante"].Value);
+                        int selectedShelfID = Convert.ToInt32(row.Cells["dgvcID"].Value);
 
                         bool hasMedicine = shelfLogic.CheckIfShelfHasMedicines(selectedShelfID);
 
-                        using (var db = new PharmacyDbContext())
+                        using (var db = new SistemaGestionFarmaceuticaEntities())
                         {
                             if (hasMedicine)
                             {
@@ -305,7 +349,7 @@ namespace Sistema.Vista
         private void dtaViewEstante_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(Column_KeyPress);
-            if (dtaViewEstante.CurrentCell.OwningColumn.Name == "dtaNumEstante") // Columna deseada
+            if (dgvShelvesList.CurrentCell.OwningColumn.Name == "dgvcNumShelf") // Columna deseada
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
@@ -328,7 +372,7 @@ namespace Sistema.Vista
         private void dtaViewEstante_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
 
-            DataGridViewRow row = dtaViewEstante.Rows[e.RowIndex];
+            DataGridViewRow row = dgvShelvesList.Rows[e.RowIndex];
             DataGridViewCell cell = row.Cells[e.ColumnIndex];
 
             // Obtener el valor original de la celda
@@ -336,10 +380,12 @@ namespace Sistema.Vista
         }
 
 
+      
+
         private void dtaViewEstante_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // obtener valor de celda a modificar
-            DataGridViewRow row = dtaViewEstante.Rows[e.RowIndex];
+            DataGridViewRow row = dgvShelvesList.Rows[e.RowIndex];
             DataGridViewCell cell = row.Cells[e.ColumnIndex];
 
             // Verifica si el valor es un espacio en blanco o una cadena vacía, y si la celda está en la columna de números de estante
@@ -348,6 +394,7 @@ namespace Sistema.Vista
                 showMessageError();
                 // Restaura el valor original de la celda
                 cell.Value = originalValue;
+
             }
             else
             {
@@ -357,6 +404,8 @@ namespace Sistema.Vista
                     modifiedRows.Add(row);
                 }
                 btnGuardarG.Enabled = true;
+                controladora.Attach(dgvObserver);
+                controladora.IsDatagridViewModified = true;
             }
 
         }
@@ -366,7 +415,7 @@ namespace Sistema.Vista
             // Verifica si el error es causado por el usuario
             if (e.Exception is FormatException && e.ColumnIndex >= 0)
             {
-                DataGridViewCell cell = dtaViewEstante.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                DataGridViewCell cell = dgvShelvesList.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 string cellValue = cell.Value != null ? cell.Value.ToString() : string.Empty;
 
                 if (string.IsNullOrWhiteSpace(cellValue))
@@ -395,7 +444,24 @@ namespace Sistema.Vista
         {
             btnEliminarG.Radius = 5;
         }
+        // // // //
 
-        // 
+        // Manejo de filtros y ordenamiento del datagridview
+        private void dgvShelvesList_SortStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.SortEventArgs e)
+        {
+            bindingSourceShelves.Sort = dgvShelvesList.SortString;         
+        }
+        private void dgvShelvesList_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
+        {
+            bindingSourceShelves.Filter = dgvShelvesList.FilterString;            
+        }
+
+        private void bindingSourceShelves_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            // Actualiza el contador de estantes
+            lblTotalRow.Text = "Total de estantes: " + bindingSourceShelves.List.Count.ToString();
+
+        }
+        //  // // // //
     }
 }

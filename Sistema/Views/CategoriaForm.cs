@@ -18,7 +18,7 @@ namespace Sistema.Vista
 {
     public partial class CategoriaForm : Form
     {
-        Controladora controladora = new Controladora();
+        Controladora controladora = Controladora.GetInstance;
         Shortcuts shortcuts = new Shortcuts();
         PaletaColores colorPalette = new PaletaColores();
         // Se crea una instancia de la clase categoria

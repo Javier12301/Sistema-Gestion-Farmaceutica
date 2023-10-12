@@ -21,7 +21,7 @@ namespace Sistema.Vista
         private CategoriaLogica categoryLogic = new CategoriaLogica();
         private EstanteLogica shelfLogic = new EstanteLogica();
         private MedicamentoLogica medicineLogic = new MedicamentoLogica();
-        private Controladora controladora = new Controladora();
+        Controladora controladora = Controladora.GetInstance;
         private CacheManagerList cacheManagerList = new CacheManagerList();
 
         public MedicamentosForm()

@@ -21,7 +21,7 @@ namespace Sistema.Vista
     {
         private Point mouseDownLocation;
         Shortcuts shortcuts = new Shortcuts();
-        Controladora controladora = new Controladora();
+        Controladora controladora = Controladora.GetInstance;
 
         private CategoriaLogica categoryLogic = new CategoriaLogica();
         private EstanteLogica shelfLogic = new EstanteLogica();

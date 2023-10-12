@@ -14,7 +14,7 @@ namespace Sistema.Vista
     public partial class NuevoClienteForm : Form
     {
         private Point mouseDownLocation;
-        Controladora controladora = new Controladora();
+        Controladora controladora = Controladora.GetInstance;
         public NuevoClienteForm()
         {
             InitializeComponent();

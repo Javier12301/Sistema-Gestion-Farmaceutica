@@ -25,29 +25,17 @@ namespace Sistema
         }
 
         //Global
-        Controladora controladora = new Controladora();
+        Controladora controladora = Controladora.GetInstance;
         Shortcuts shortcuts = new Shortcuts();
         //Variable booleana para controlar el estado del ojo, por defecto lo mejor es false
-        private bool passwordVisible { get; set; } = false;
+        private bool passwordVisible = false;
         //Colores utilizado
         private Color btnForgotPasswordHover { get; } = ColorTranslator.FromHtml("#4BAAF9");
         private Color btnForgotPasswordLeave { get; } = ColorTranslator.FromHtml("#0078D7");
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            //Se inicializa el ojo de contraseña
-            if (passwordVisible)
-            {
-                btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
-                controladora.ShowPassword(txtPassword);
-                passwordVisible = false;
-            }
-            else
-            {
-                btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
-                controladora.HidePassword(txtPassword);
-                passwordVisible = true;
-            }
+            showPasswordIcon();
             
         }
 
@@ -67,18 +55,27 @@ namespace Sistema
         private void btnShowPassword_MouseHover(object sender, EventArgs e)
         {
             btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            showPasswordIcon();
         }
 
         private void btnShowPassword_MouseLeave(object sender, EventArgs e)
         {
             btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            showPasswordIcon();
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
         {
+
+            showPasswordIcon();
+        }
+
+        // Función para cambiar el ojo de contraseña y el icono
+        private void showPasswordIcon()
+        {
             if (passwordVisible)
             {
-                passwordVisible=false;
+                passwordVisible = false;
                 controladora.ShowPassword(txtPassword);
                 btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
             }

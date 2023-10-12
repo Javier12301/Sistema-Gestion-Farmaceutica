@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controles\Interfaz\Controladora.cs" />
+    <Compile Include="Controles\Interfaz\Observador.cs" />
     <Compile Include="Controles\Interfaz\PaletaColores.cs" />
     <Compile Include="Controles\Interfaz\Shortcuts.cs" />
     <Compile Include="Controles\Logica\CategoriaLogica.cs" />
@@ -142,9 +143,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\VentasModel.cs">
       <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
@@ -152,6 +150,11 @@
       <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\CacheManager.cs" />
+    <Compile Include="SistemaGestionFarmaceuticaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGestionFarmaceuticaDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Views\CategoriaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +283,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SistemaGestionFarmaceuticaDataSet.xsc">
+      <DependentUpon>SistemaGestionFarmaceuticaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGestionFarmaceuticaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGestionFarmaceuticaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGestionFarmaceuticaDataSet.xss">
+      <DependentUpon>SistemaGestionFarmaceuticaDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -314,6 +328,9 @@
       <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
       <LastGenOutput>SistemaGestionFarmaceuticaModels.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\PencilIcon.png" />
+    <None Include="Resources\ModifyIcon.png" />
+    <None Include="Resources\EditingIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -14,7 +14,7 @@ namespace Sistema.Controles.Logica
         // Obtener cantidad total de medicamentos
         public int GetTotalMedicinesCount()
         {
-            using (var db = new PharmacyDbContext())
+            using (var db = new SistemaGestionFarmaceuticaEntities())
             {
                 int medicines = db.MedicamentosModel.Count();
                 return medicines;
@@ -26,7 +26,7 @@ namespace Sistema.Controles.Logica
         {
             try
             {
-                using (var db = new PharmacyDbContext())
+                using (var db = new SistemaGestionFarmaceuticaEntities())
                 {
                     db.MedicamentosModel.Add(medicine);
                     db.Entry(medicine).State = EntityState.Added;
@@ -45,7 +45,7 @@ namespace Sistema.Controles.Logica
         // Obtener todos los medicamentos para cargar el DatagridView utilizando view MedicamentoDetalle
         /*public List<MedicamentosDetalle> GetAllMedicineDetails()
         {
-            using (var db = new PharmacyDbContext())
+            using (var db = new SistemaGestionFarmaceuticaEntities())
             {
                 var medicines = db.MedicamentosDetalle.ToList();
                 return medicines;
