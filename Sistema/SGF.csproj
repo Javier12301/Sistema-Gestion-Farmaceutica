@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controles\Interfaz\Controladora.cs" />
+    <Compile Include="Controles\Interfaz\MessageBoxManager.cs" />
     <Compile Include="Controles\Interfaz\Observador.cs" />
     <Compile Include="Controles\Interfaz\PaletaColores.cs" />
     <Compile Include="Controles\Interfaz\Shortcuts.cs" />

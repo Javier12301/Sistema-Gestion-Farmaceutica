@@ -97,7 +97,46 @@ SELECT * FROM LotesModel;
 
 SELECT * FROM MedicamentosModel;
 
+SELECT * FROM CodigosDeBarrasModel;
+
 DROP VIEW VistaInventarioMedicamento;
+
+CREATE TABLE MedicamentosLotesModel(
+	MedicamentoLoteID INT IDENTITY(1,1) PRIMARY KEY,  -- Clave primaria autonumérica
+	LoteID INT FOREIGN KEY REFERENCES LotesModel(LoteID),           -- Clave externa que se relaciona con la tabla de lotes
+	MedicamentoID INT FOREIGN KEY REFERENCES MedicamentosModel(MedicamentoID) -- Clave externa que se relaciona con la tabla de medicamentos
+);
+
+-- Crear un lote
+INSERT INTO LotesModel (Numero_Lote, Stock, Nombre_Medicamento, FechaVencimiento)
+VALUES ('Lote1', 100, 'Medicamento C', '2024-12-31');
+
+INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Analgésicos', 'Medicamentos para el alivio del dolor');
+INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antibióticos', 'Medicamentos para combatir infecciones bacterianas');
+INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antiinflamatorios', 'Medicamentos para reducir la inflamación');
+INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antipiréticos', 'Medicamentos para reducir la fiebre');
+INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antihistamínicos', 'Medicamentos para aliviar alergias');
+
+
+-- Crear un medicamento y relacionarlo con el lote
+INSERT INTO MedicamentosModel (EstanteID, CategoriaID, PrecioUnitario, CodigoID)
+VALUES (13, 7, 2, 1); -- Supongamos que el ID del Código de Barras es 1
+
+INSERT INTO MedicamentosModel (EstanteID, CategoriaID, PrecioUnitario, CodigoID)
+VALUES (14, 13, 15.99,3);
+
+-- Medicamento 2
+INSERT INTO MedicamentosModel (EstanteID, CategoriaID, PrecioUnitario, CodigoID)
+VALUES (17, 7, 9.99,2);
+
+-- Medicamento 3
+INSERT INTO MedicamentosModel (EstanteID, CategoriaID, PrecioUnitario)
+VALUES (11, 14, 12.99);
+
+
+SELECT * 
+FROM MedicamentosModel
+WHERE CategoriaID = CategoriaID;
 
 --SELECT * FROM MedicamentosDetalle
 

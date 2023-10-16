@@ -4423,24 +4423,23 @@ namespace Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[CategoriasModel] WHERE (([CategoriaID] = @Original_CategoriaID" +
-                ") AND ([Nombre] = @Original_Nombre) AND ([Descripcion] = @Original_Descripcion))" +
-                "";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [CategoriasModel] WHERE (([CategoriaID] = @Original_CategoriaID) AND " +
+                "([Nombre] = @Original_Nombre) AND ([Descripcion] = @Original_Descripcion))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CategoriaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoriaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[CategoriasModel] ([Nombre], [Descripcion]) VALUES (@Nombre, @D" +
-                "escripcion);\r\nSELECT CategoriaID, Nombre, Descripcion FROM CategoriasModel WHERE" +
-                " (CategoriaID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [CategoriasModel] ([Nombre], [Descripcion]) VALUES (@Nombre, @Descrip" +
+                "cion);\r\nSELECT CategoriaID, Nombre, Descripcion FROM CategoriasModel WHERE (Cate" +
+                "goriaID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CategoriasModel] SET [Nombre] = @Nombre, [Descripcion] = @Descripcion WHERE (([CategoriaID] = @Original_CategoriaID) AND ([Nombre] = @Original_Nombre) AND ([Descripcion] = @Original_Descripcion));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [CategoriasModel] SET [Nombre] = @Nombre, [Descripcion] = @Descripcion WHERE (([CategoriaID] = @Original_CategoriaID) AND ([Nombre] = @Original_Nombre) AND ([Descripcion] = @Original_Descripcion));
 SELECT CategoriaID, Nombre, Descripcion FROM CategoriasModel WHERE (CategoriaID = @CategoriaID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4464,7 +4463,8 @@ SELECT CategoriaID, Nombre, Descripcion FROM CategoriasModel WHERE (CategoriaID 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CategoriaID, Nombre, Descripcion FROM dbo.CategoriasModel";
+            this._commandCollection[0].CommandText = "SELECT        CategoriaID, Nombre, Descripcion\r\nFROM            CategoriasModel\r\n" +
+                "WHERE        (CategoriaID > 0)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

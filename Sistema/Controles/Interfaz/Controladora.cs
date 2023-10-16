@@ -31,6 +31,7 @@ namespace Sistema
                 return instance;
             }
         }
+        // // // Singleton // // //
         PaletaColores colorPalette = new PaletaColores();
 
         public void OpenMailLink()

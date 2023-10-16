@@ -41,6 +41,11 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblNumCategorias = new System.Windows.Forms.Label();
             this.pnlgpbEstanteFORM = new System.Windows.Forms.Panel();
             this.gpbNewEstante = new System.Windows.Forms.GroupBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -55,16 +60,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.lblNumCategorias = new System.Windows.Forms.Label();
+            this.lblNumeroProductos = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             this.pnlgpbEstanteFORM.SuspendLayout();
             this.gpbNewEstante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -74,9 +77,6 @@
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -215,6 +215,76 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(798, 136);
             this.tableLayoutPanel2.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(202, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(193, 130);
+            this.panel1.TabIndex = 6;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.AutoSize = true;
+            this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.iconPictureBox4);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.lblNumCategorias);
+            this.groupBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.groupBox3.Location = new System.Drawing.Point(0, -1);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(198, 130);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Categorías";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // iconPictureBox4
+            // 
+            this.iconPictureBox4.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox4.ForeColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Tag;
+            this.iconPictureBox4.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox4.IconSize = 28;
+            this.iconPictureBox4.Location = new System.Drawing.Point(5, 23);
+            this.iconPictureBox4.Name = "iconPictureBox4";
+            this.iconPictureBox4.Rotation = 85D;
+            this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox4.TabIndex = 20;
+            this.iconPictureBox4.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoEllipsis = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(3, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 49);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Categoria Totales";
+            // 
+            // lblNumCategorias
+            // 
+            this.lblNumCategorias.AutoSize = true;
+            this.lblNumCategorias.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblNumCategorias.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblNumCategorias.Location = new System.Drawing.Point(44, 24);
+            this.lblNumCategorias.Name = "lblNumCategorias";
+            this.lblNumCategorias.Size = new System.Drawing.Size(20, 23);
+            this.lblNumCategorias.TabIndex = 20;
+            this.lblNumCategorias.Text = "0";
             // 
             // pnlgpbEstanteFORM
             // 
@@ -373,7 +443,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.iconPictureBox2);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.lblNumCategorias);
+            this.groupBox1.Controls.Add(this.lblNumeroProductos);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -410,16 +480,16 @@
             this.label13.TabIndex = 21;
             this.label13.Text = "Productos Totales";
             // 
-            // lblNumCategorias
+            // lblNumeroProductos
             // 
-            this.lblNumCategorias.AutoSize = true;
-            this.lblNumCategorias.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblNumCategorias.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lblNumCategorias.Location = new System.Drawing.Point(44, 24);
-            this.lblNumCategorias.Name = "lblNumCategorias";
-            this.lblNumCategorias.Size = new System.Drawing.Size(20, 23);
-            this.lblNumCategorias.TabIndex = 20;
-            this.lblNumCategorias.Text = "0";
+            this.lblNumeroProductos.AutoSize = true;
+            this.lblNumeroProductos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblNumeroProductos.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lblNumeroProductos.Location = new System.Drawing.Point(44, 24);
+            this.lblNumeroProductos.Name = "lblNumeroProductos";
+            this.lblNumeroProductos.Size = new System.Drawing.Size(20, 23);
+            this.lblNumeroProductos.TabIndex = 20;
+            this.lblNumeroProductos.Text = "0";
             // 
             // label12
             // 
@@ -432,76 +502,6 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "PrincipalForm";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(202, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(193, 130);
-            this.panel1.TabIndex = 6;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.AutoSize = true;
-            this.groupBox3.BackColor = System.Drawing.Color.White;
-            this.groupBox3.Controls.Add(this.iconPictureBox4);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox3.Location = new System.Drawing.Point(0, -1);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(198, 130);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Categorías";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
-            // 
-            // iconPictureBox4
-            // 
-            this.iconPictureBox4.BackColor = System.Drawing.Color.White;
-            this.iconPictureBox4.ForeColor = System.Drawing.Color.SeaGreen;
-            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Tag;
-            this.iconPictureBox4.IconColor = System.Drawing.Color.SeaGreen;
-            this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox4.IconSize = 28;
-            this.iconPictureBox4.Location = new System.Drawing.Point(5, 23);
-            this.iconPictureBox4.Name = "iconPictureBox4";
-            this.iconPictureBox4.Rotation = 85D;
-            this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox4.TabIndex = 20;
-            this.iconPictureBox4.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(3, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 49);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Categoria Totales";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label2.Location = new System.Drawing.Point(44, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 23);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "0";
             // 
             // PrincipalForm
             // 
@@ -520,6 +520,11 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
             this.pnlgpbEstanteFORM.ResumeLayout(false);
             this.pnlgpbEstanteFORM.PerformLayout();
             this.gpbNewEstante.ResumeLayout(false);
@@ -535,11 +540,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,7 +569,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblNumCategorias;
+        private System.Windows.Forms.Label lblNumeroProductos;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtBuscar;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
@@ -580,6 +580,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNumCategorias;
     }
 }

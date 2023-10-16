@@ -90,7 +90,8 @@ namespace Sistema
             // Si el DataGridView ha sido modificado, preguntar al usuario si desea guardar los cambios
             if (controladora.IsDatagridViewModified)
             {
-                DialogResult result = MessageBox.Show("Has realizado cambios que no se han guardado. ¿Estás seguro de que deseas salir?", "Confirmación", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Has realizado cambios que no se han guardado \n         ¿Estás seguro de que deseas salir?", "Cambios no guardados", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
                 if (result == DialogResult.No)
                 {
                     // Si el usuario elige "No", no cierra el formulario activo ni abre uno nuevo.
