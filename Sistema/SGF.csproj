@@ -126,7 +126,13 @@
     <Compile Include="Models\MedicamentosModel.cs">
       <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MedicamentosProveedoresModel.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProductosModel.cs">
+      <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProveedoresModel.cs">
       <DependentUpon>SistemaGestionFarmaceuticaModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SistemaGestionFarmaceuticaModels.Context.cs">

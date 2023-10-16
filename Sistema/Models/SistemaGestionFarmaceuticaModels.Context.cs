@@ -34,5 +34,7 @@ namespace Sistema.Models
         public virtual DbSet<ProductosModel> ProductosModel { get; set; }
         public virtual DbSet<VentasModel> VentasModel { get; set; }
         public virtual DbSet<VistaInventarioMedicamento> VistaInventarioMedicamento { get; set; }
+        public virtual DbSet<MedicamentosProveedoresModel> MedicamentosProveedoresModel { get; set; }
+        public virtual DbSet<ProveedoresModel> ProveedoresModel { get; set; }
     }
 }

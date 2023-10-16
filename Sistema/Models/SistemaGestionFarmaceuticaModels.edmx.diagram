@@ -24,6 +24,10 @@
         <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Medic__7FB5F314" ManuallyRouted="false" />
         <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__VentasMod__Medic__038683F8" ManuallyRouted="false" />
         <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__VentasMod__Produ__02925FBF" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.MedicamentosProveedoresModel" Width="1.5" PointX="8.25" PointY="8" />
+        <EntityTypeShape EntityType="SistemaGestionFarmaceuticaModel.ProveedoresModel" Width="1.5" PointX="6" PointY="9" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Medic__0FEC5ADD" />
+        <AssociationConnector Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Prove__10E07F16" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

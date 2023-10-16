@@ -93,6 +93,7 @@ namespace Sistema.Controles.Logica
             }
         }
 
+
         public bool DeleteCategory(int categoryID)
         {
             using (var db = new SistemaGestionFarmaceuticaEntities())

@@ -19,6 +19,7 @@ namespace Sistema.Models
         {
             this.MedicamentosLotesModel = new HashSet<MedicamentosLotesModel>();
             this.VentasModel = new HashSet<VentasModel>();
+            this.MedicamentosProveedoresModel = new HashSet<MedicamentosProveedoresModel>();
         }
     
         public int MedicamentoID { get; set; }
@@ -34,5 +35,7 @@ namespace Sistema.Models
         public virtual ICollection<MedicamentosLotesModel> MedicamentosLotesModel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VentasModel> VentasModel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MedicamentosProveedoresModel> MedicamentosProveedoresModel { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SistemaGestionFarmaceuticaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SistemaGestionFarmaceuticaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CategoriasModel">
           <Key>
             <PropertyRef Name="CategoriaID" />
@@ -57,6 +57,14 @@
           <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
           <Property Name="CodigoID" Type="int" />
         </EntityType>
+        <EntityType Name="MedicamentosProveedoresModel">
+          <Key>
+            <PropertyRef Name="MedicamentoProveedorID" />
+          </Key>
+          <Property Name="MedicamentoProveedorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicamentoID" Type="int" />
+          <Property Name="ProveedorID" Type="int" />
+        </EntityType>
         <EntityType Name="ProductosModel">
           <Key>
             <PropertyRef Name="ProductoID" />
@@ -68,6 +76,15 @@
           <Property Name="EstanteID" Type="int" />
           <Property Name="CategoriaID" Type="int" />
           <Property Name="CodigoID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProveedoresModel">
+          <Key>
+            <PropertyRef Name="ProveedorID" />
+          </Key>
+          <Property Name="ProveedorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="VentasModel">
           <Key>
@@ -150,6 +167,18 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Medicamen__Medic__0FEC5ADD">
+          <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="0..1" />
+          <End Role="MedicamentosProveedoresModel" Type="Self.MedicamentosProveedoresModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicamentosModel">
+              <PropertyRef Name="MedicamentoID" />
+            </Principal>
+            <Dependent Role="MedicamentosProveedoresModel">
+              <PropertyRef Name="MedicamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Medicamen__Medic__7FB5F314">
           <End Role="MedicamentosModel" Type="Self.MedicamentosModel" Multiplicity="0..1" />
           <End Role="MedicamentosLotesModel" Type="Self.MedicamentosLotesModel" Multiplicity="*" />
@@ -159,6 +188,18 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
             </Principal>
             <Dependent Role="MedicamentosLotesModel">
               <PropertyRef Name="MedicamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Prove__10E07F16">
+          <End Role="ProveedoresModel" Type="Self.ProveedoresModel" Multiplicity="0..1" />
+          <End Role="MedicamentosProveedoresModel" Type="Self.MedicamentosProveedoresModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProveedoresModel">
+              <PropertyRef Name="ProveedorID" />
+            </Principal>
+            <Dependent Role="MedicamentosProveedoresModel">
+              <PropertyRef Name="ProveedorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -229,7 +270,9 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
           <EntitySet Name="LotesModel" EntityType="Self.LotesModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicamentosLotesModel" EntityType="Self.MedicamentosLotesModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicamentosModel" EntityType="Self.MedicamentosModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicamentosProveedoresModel" EntityType="Self.MedicamentosProveedoresModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosModel" EntityType="Self.ProductosModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProveedoresModel" EntityType="Self.ProveedoresModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentasModel" EntityType="Self.VentasModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VistaInventarioMedicamento" EntityType="Self.VistaInventarioMedicamento" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -260,9 +303,17 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
             <End Role="LotesModel" EntitySet="LotesModel" />
             <End Role="MedicamentosLotesModel" EntitySet="MedicamentosLotesModel" />
           </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Medic__0FEC5ADD" Association="Self.FK__Medicamen__Medic__0FEC5ADD">
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+            <End Role="MedicamentosProveedoresModel" EntitySet="MedicamentosProveedoresModel" />
+          </AssociationSet>
           <AssociationSet Name="FK__Medicamen__Medic__7FB5F314" Association="Self.FK__Medicamen__Medic__7FB5F314">
             <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
             <End Role="MedicamentosLotesModel" EntitySet="MedicamentosLotesModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Prove__10E07F16" Association="Self.FK__Medicamen__Prove__10E07F16">
+            <End Role="ProveedoresModel" EntitySet="ProveedoresModel" />
+            <End Role="MedicamentosProveedoresModel" EntitySet="MedicamentosProveedoresModel" />
           </AssociationSet>
           <AssociationSet Name="FK__Productos__Categ__7AF13DF7" Association="Self.FK__Productos__Categ__7AF13DF7">
             <End Role="CategoriasModel" EntitySet="CategoriasModel" />
@@ -285,8 +336,7 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
             <End Role="VentasModel" EntitySet="VentasModel" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SistemaGestionFarmaceuticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -355,6 +405,7 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
           <NavigationProperty Name="EstantesModel" Relationship="Self.FK__Medicamen__Estan__753864A1" FromRole="MedicamentosModel" ToRole="EstantesModel" />
           <NavigationProperty Name="MedicamentosLotesModel" Relationship="Self.FK__Medicamen__Medic__7FB5F314" FromRole="MedicamentosModel" ToRole="MedicamentosLotesModel" />
           <NavigationProperty Name="VentasModel" Relationship="Self.FK__VentasMod__Medic__038683F8" FromRole="MedicamentosModel" ToRole="VentasModel" />
+          <NavigationProperty Name="MedicamentosProveedoresModel" Relationship="SistemaGestionFarmaceuticaModel.FK__Medicamen__Medic__0FEC5ADD" FromRole="MedicamentosModel" ToRole="MedicamentosProveedoresModel" />
         </EntityType>
         <EntityType Name="ProductosModel">
           <Key>
@@ -575,7 +626,61 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
             <End Role="ProductosModel" EntitySet="ProductosModel" />
             <End Role="VentasModel" EntitySet="VentasModel" />
           </AssociationSet>
+          <EntitySet Name="MedicamentosProveedoresModel" EntityType="SistemaGestionFarmaceuticaModel.MedicamentosProveedoresModel" />
+          <EntitySet Name="ProveedoresModel" EntityType="SistemaGestionFarmaceuticaModel.ProveedoresModel" />
+          <AssociationSet Name="FK__Medicamen__Medic__0FEC5ADD" Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Medic__0FEC5ADD">
+            <End Role="MedicamentosModel" EntitySet="MedicamentosModel" />
+            <End Role="MedicamentosProveedoresModel" EntitySet="MedicamentosProveedoresModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Prove__10E07F16" Association="SistemaGestionFarmaceuticaModel.FK__Medicamen__Prove__10E07F16">
+            <End Role="ProveedoresModel" EntitySet="ProveedoresModel" />
+            <End Role="MedicamentosProveedoresModel" EntitySet="MedicamentosProveedoresModel" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MedicamentosProveedoresModel">
+          <Key>
+            <PropertyRef Name="MedicamentoProveedorID" />
+          </Key>
+          <Property Name="MedicamentoProveedorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicamentoID" Type="Int32" />
+          <Property Name="ProveedorID" Type="Int32" />
+          <NavigationProperty Name="MedicamentosModel" Relationship="SistemaGestionFarmaceuticaModel.FK__Medicamen__Medic__0FEC5ADD" FromRole="MedicamentosProveedoresModel" ToRole="MedicamentosModel" />
+          <NavigationProperty Name="ProveedoresModel" Relationship="SistemaGestionFarmaceuticaModel.FK__Medicamen__Prove__10E07F16" FromRole="MedicamentosProveedoresModel" ToRole="ProveedoresModel" />
+        </EntityType>
+        <EntityType Name="ProveedoresModel">
+          <Key>
+            <PropertyRef Name="ProveedorID" />
+          </Key>
+          <Property Name="ProveedorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MedicamentosProveedoresModel" Relationship="SistemaGestionFarmaceuticaModel.FK__Medicamen__Prove__10E07F16" FromRole="ProveedoresModel" ToRole="MedicamentosProveedoresModel" />
+        </EntityType>
+        <Association Name="FK__Medicamen__Medic__0FEC5ADD">
+          <End Type="SistemaGestionFarmaceuticaModel.MedicamentosModel" Role="MedicamentosModel" Multiplicity="0..1" />
+          <End Type="SistemaGestionFarmaceuticaModel.MedicamentosProveedoresModel" Role="MedicamentosProveedoresModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicamentosModel">
+              <PropertyRef Name="MedicamentoID" />
+            </Principal>
+            <Dependent Role="MedicamentosProveedoresModel">
+              <PropertyRef Name="MedicamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Prove__10E07F16">
+          <End Type="SistemaGestionFarmaceuticaModel.ProveedoresModel" Role="ProveedoresModel" Multiplicity="0..1" />
+          <End Type="SistemaGestionFarmaceuticaModel.MedicamentosProveedoresModel" Role="MedicamentosProveedoresModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProveedoresModel">
+              <PropertyRef Name="ProveedorID" />
+            </Principal>
+            <Dependent Role="MedicamentosProveedoresModel">
+              <PropertyRef Name="ProveedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -676,6 +781,25 @@ advertencia 6002: La tabla o vista 'SistemaGestionFarmaceutica.dbo.VistaInventar
                 <ScalarProperty Name="Nombre_estante" ColumnName="Nombre estante" />
                 <ScalarProperty Name="Sector" ColumnName="Sector" />
                 <ScalarProperty Name="Numero_estante" ColumnName="Numero estante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicamentosProveedoresModel">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.MedicamentosProveedoresModel">
+              <MappingFragment StoreEntitySet="MedicamentosProveedoresModel">
+                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
+                <ScalarProperty Name="MedicamentoID" ColumnName="MedicamentoID" />
+                <ScalarProperty Name="MedicamentoProveedorID" ColumnName="MedicamentoProveedorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProveedoresModel">
+            <EntityTypeMapping TypeName="SistemaGestionFarmaceuticaModel.ProveedoresModel">
+              <MappingFragment StoreEntitySet="ProveedoresModel">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
