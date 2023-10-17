@@ -22,4 +22,4 @@ El objetivo de este sistema es proporcionar a los administradores de farmacias e
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más información.
 
-## Desarrollo del proyecto de trabajo de diploma en la Rama "Developer" - ** Segunda iteración Sistema de Ventas y Productos**
+### :rotating_light: Atención: Segunda Iteración del Sistema de Ventas y Productos :rotating_light:
