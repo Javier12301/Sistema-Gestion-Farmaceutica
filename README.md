@@ -1,1 +1,1 @@
-# Sistema-Gestion-Farmaceutica
+#Desarrollo del nuevo sistema en rama "developer"
