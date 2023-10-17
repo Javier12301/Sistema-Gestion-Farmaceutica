@@ -8,11 +8,11 @@ El objetivo de este sistema es proporcionar a los administradores de farmacias e
 
 - **🗃 Gestión de Categorías:** Los administradores pueden agregar, modificar y eliminar categorías para clasificar productos y medicamentos. Esto permite una organización efectiva y la capacidad de ajustar los precios de manera rápida y dinámica.
 
-- **🚚 Control de Proveedores:** Se pueden cargar detalles de proveedores para permitir a los encargados de inventario ordenar productos y medicamentos de acuerdo con los proveedores. Esto optimiza la gestión de inventario y las relaciones con los proveedores.
+- **🚚 Control de Proveedores:** Se pueden cargar detalles de proveedores para permitir a los encargados de inventario ordenar productos y medicamentos de acuerdo con los proveedores. Esto optimiza la gestión de inventario y las relaciones de productos médicos y no médicos con los proveedores.
 
 - **🍱 Estantes:** El sistema proporciona una funcionalidad de estantes, lo que permite a los usuarios categorizar productos y medicamentos de una manera adicional. Esto facilita la organización y la búsqueda de productos.
 
-- **💊 Gestión de Medicamentos:** Los administradores pueden agregar medicamentos, incluyendo información detallada como nombre, dosis y fecha de vencimiento. Esto es esencial para mantener un registro preciso de los medicamentos disponibles.
+- **💊 Gestión de Medicamentos:** Los administradores pueden agregar medicamentos, incluyendo información detallada como nombre, lote y fecha de vencimiento.
 
 - **📦 Productos No Médicos:** Como una iteración adicional del proyecto, se permite agregar productos no médicos al sistema. Esto amplía la gama de productos que se pueden gestionar y vender.
 
