@@ -1,4 +1,3 @@
-# Desarrollo del proyecto de trabajo de diploma en la Rama "Developer" - ** Segunda iteración Sistema de Ventas y Productos**
 # Sistema de Gestión Farmacéutica
 
 Este proyecto es parte de mi trabajo de diploma en la carrera de Ingeniería en Sistemas de la **Universidad Abierta Interamericana** (UAI)📚. 
@@ -23,3 +22,4 @@ El objetivo de este sistema es proporcionar a los administradores de farmacias e
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más información.
 
+## Desarrollo del proyecto de trabajo de diploma en la Rama "Developer" - ** Segunda iteración Sistema de Ventas y Productos**
