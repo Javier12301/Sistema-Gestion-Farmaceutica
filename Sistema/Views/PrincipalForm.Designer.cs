@@ -267,7 +267,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(3, 55);
             this.label1.Name = "label1";
@@ -335,7 +335,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoEllipsis = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label11.ForeColor = System.Drawing.Color.DimGray;
             this.label11.Location = new System.Drawing.Point(6, 55);
             this.label11.Name = "label11";
@@ -403,13 +403,13 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoEllipsis = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DimGray;
             this.label16.Location = new System.Drawing.Point(6, 53);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(132, 50);
             this.label16.TabIndex = 24;
-            this.label16.Text = "Medicamentos Totales ";
+            this.label16.Text = "Medicamentos Totales";
             // 
             // lblNumMedicamentos
             // 
@@ -472,7 +472,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoEllipsis = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label13.ForeColor = System.Drawing.Color.DimGray;
             this.label13.Location = new System.Drawing.Point(6, 54);
             this.label13.Name = "label13";

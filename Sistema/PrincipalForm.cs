@@ -218,5 +218,10 @@ namespace Sistema
             }
             
         }
+
+        private void PrincipalForm_SizeChanged(object sender, EventArgs e)
+        {
+            lblSize.Text = this.Size.ToString();
+        }
     }
 }
