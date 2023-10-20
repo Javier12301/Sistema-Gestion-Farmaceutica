@@ -92,9 +92,9 @@ namespace Sistema
             bool verificar = controladora.VerifyCredentials(txtUser, txtPassword);
             if (verificar)
             {
-                PrincipalForm PrincipalForm = new PrincipalForm();
+                PrincipalForm principalForm = new PrincipalForm();
                 this.Hide();
-                if (PrincipalForm.ShowDialog() == DialogResult.Cancel)
+                if (principalForm.ShowDialog() == DialogResult.Cancel)
                 {
                     this.Show();
                 }
@@ -114,9 +114,9 @@ namespace Sistema
                 if (verificar)
                 {
                     
-                    PrincipalForm PrincipalForm = new PrincipalForm();
+                    PrincipalForm prinicpalForm = new PrincipalForm();
                     this.Hide();
-                    if (PrincipalForm.ShowDialog() == DialogResult.Cancel)
+                    if (prinicpalForm.ShowDialog() == DialogResult.Cancel)
                     {
                         this.Show();
                     }

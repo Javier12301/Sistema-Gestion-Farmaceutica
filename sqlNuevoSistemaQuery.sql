@@ -34,6 +34,14 @@ CREATE TABLE CategoriasModel(
 	Descripcion NVARCHAR(255) NOT NULL          -- Descripción de la categoría
 );
 
+-- Tabla para almacenar información sobre proveedores o droguerías
+CREATE TABLE ProveedoresModel(
+	ProveedorID INT IDENTITY(1,1) PRIMARY KEY,   -- Clave primaria autonumérica
+	Nombre NVARCHAR(255) NOT NULL,               -- Nombre del proveedor
+	Direccion NVARCHAR(255) NOT NULL,            -- Dirección del proveedor
+	Telefono NVARCHAR(20) NOT NULL               -- Teléfono del proveedor
+);
+
 -- -- -- -- -- -- Productos y Medicamentos -- -- -- -- -- --
 -- Tabla para almacenar información sobre códigos de barras
 CREATE TABLE CodigosDeBarrasModel(
@@ -50,6 +58,7 @@ CREATE TABLE LotesModel(
 	FechaVencimiento DATE NOT NULL               -- Fecha de vencimiento del lote
 );
 
+
 -- Tabla para almacenar información sobre medicamentos
 CREATE TABLE MedicamentosModel(
 	MedicamentoID INT IDENTITY(1,1) PRIMARY KEY,  -- Clave primaria autonumérica
@@ -59,12 +68,22 @@ CREATE TABLE MedicamentosModel(
 	CodigoID INT FOREIGN KEY REFERENCES CodigosDeBarrasModel(CodigoID)   -- Clave externa que se relaciona con la tabla de códigos de barras
 );
 
+-- -- -- -- -- -- Tablas de Relaciones de Medicamentos con Lotes y Proveedores -- -- -- -- -- --
 -- Tabla para relacionar medicamentos con sus lotes
 CREATE TABLE MedicamentosLotesModel(
 	MedicamentoLoteID INT IDENTITY(1,1) PRIMARY KEY,  -- Clave primaria autonumérica
 	LoteID INT FOREIGN KEY REFERENCES LotesModel(LoteID),           -- Clave externa que se relaciona con la tabla de lotes
 	MedicamentoID INT FOREIGN KEY REFERENCES MedicamentosModel(MedicamentoID) -- Clave externa que se relaciona con la tabla de medicamentos
 );
+
+-- Tabla para relacionar medicamentos con sus proveedores
+CREATE TABLE MedicamentosProveedoresModel(
+	MedicamentoProveedorID INT IDENTITY(1,1) PRIMARY KEY,  -- Clave primaria autonumérica
+	MedicamentoID INT FOREIGN KEY REFERENCES MedicamentosModel(MedicamentoID), -- Clave externa que se relaciona con la tabla de medicamentos
+	ProveedorID INT FOREIGN KEY REFERENCES ProveedoresModel(ProveedorID)       -- Clave externa que se relaciona con la tabla de proveedores
+);
+
+
 
 -- Tabla para almacenar información sobre productos
 CREATE TABLE ProductosModel (

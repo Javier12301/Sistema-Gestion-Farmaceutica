@@ -335,6 +335,14 @@
       <DependentUpon>SistemaGestionFarmaceuticaModels.edmx</DependentUpon>
       <LastGenOutput>SistemaGestionFarmaceuticaModels.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\black-icon\supplier.png" />
+    <None Include="Resources\black-icon\tag.png" />
+    <None Include="Resources\black-icon\settings.png" />
+    <None Include="Resources\black-icon\rack.png" />
+    <None Include="Resources\black-icon\product.png" />
+    <None Include="Resources\black-icon\pill.png" />
+    <None Include="Resources\black-icon\home-page.png" />
+    <None Include="Resources\black-icon\exit.png" />
     <None Include="Resources\PencilIcon.png" />
     <None Include="Resources\ModifyIcon.png" />
     <None Include="Resources\EditingIcon.png" />

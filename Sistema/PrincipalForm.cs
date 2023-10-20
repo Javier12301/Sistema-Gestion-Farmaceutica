@@ -1,4 +1,5 @@
-﻿using Sistema.Controles;
+﻿using Guna.UI.WinForms;
+using Sistema.Controles;
 using Sistema.Controles.Interfaz;
 using Sistema.Vista;
 using System;
@@ -19,11 +20,13 @@ namespace Sistema
     {
         //Fields
         private Form activeForm;
-        private Button currentButton;
+        private GunaButton currentButton;
         Shortcuts shortcuts = new Shortcuts();
         // Obtener Controladora Que tiene Singleton
         Controladora controladora = Controladora.GetInstance;
         ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
+        private bool sidebarExpand { get; set; } = true;
+        private Image originalButtonImage { get; set; }
 
         public PrincipalForm()
         {
@@ -44,36 +47,37 @@ namespace Sistema
         }
 
         //Controlar colores de los botones de la barra de navegación
-        private void activateButton(Button btnSender)
+        private void activateButton(GunaButton btnSender)
         {
             if (btnSender != null)
             {
-                if (currentButton != (Button)btnSender)
+                if (currentButton != (GunaButton)btnSender)
                 {
-                    disableButton();
+                    // Desactiva el botón previamente activado
+                    if (currentButton != null)
+                    {
+                        disableButton(currentButton);
+                    }
 
-                    currentButton = (Button)btnSender;
-                    currentButton.BackColor = Color.FromArgb(234, 234, 234);
-                    currentButton.ForeColor = Color.Black;
-                    //Fuente diseñada para el botón activo
-                    currentButton.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    currentButton = (GunaButton)btnSender;
+                    currentButton.BaseColor = Color.FromArgb(38, 125, 166);
+                    currentButton.ForeColor = Color.White;
+                    // Almacena la imagen original del botón
+                    originalButtonImage = currentButton.Image;
+                    // Almacena la imagen de Hover del botón, que es blanca por defecto
+                    currentButton.Image = currentButton.OnHoverImage;
+                    // Cambia la fuente del botón activo
+                    currentButton.Font = new System.Drawing.Font("Segoe UI", 10F);
                 }
             }
         }
 
-        // Controlar colores de los botones de la barra de navegación //Código de stackOVERFLOW
-        private void disableButton()
+        private void disableButton(GunaButton button)
         {
-
-            foreach (Control previousBtn in pnlMenu.Controls)
-            {
-                if (previousBtn.GetType() == typeof(Button))
-                {
-                    previousBtn.BackColor = Color.FromArgb(252, 252, 252);
-                    previousBtn.ForeColor = Color.Black;
-                    previousBtn.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                }
-            }
+            button.BaseColor = Color.FromArgb(252, 252, 252);
+            button.ForeColor = Color.Black;
+            button.Image = originalButtonImage;
+            button.Font = new System.Drawing.Font("Segoe UI", 10F);
         }
 
 
@@ -85,7 +89,7 @@ namespace Sistema
 
 
         //Abrir formularios en el panel Main utilizando el formulario principal
-        private void OpenchildForm(Form childForm, Button btnSender)
+        private void OpenchildForm(Form childForm, GunaButton btnSender)
         {
             // Si el DataGridView ha sido modificado, preguntar al usuario si desea guardar los cambios
             if (controladora.IsDatagridViewModified)
@@ -113,8 +117,8 @@ namespace Sistema
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill; // Rellenar el panel Main
-            this.panelMain.Controls.Add(childForm); // Agregar formulario al panel Main
-            this.panelMain.Tag = childForm;
+            this.pnlMenu.Controls.Add(childForm); // Agregar formulario al panel Main
+            this.pnlMenu.Tag = childForm;
             childForm.BringToFront(); // Traer formulario al frente
 
             // Se ha abierto un nuevo formulario
@@ -138,7 +142,7 @@ namespace Sistema
 
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Vista.CategoriaForm(), btnCategoria);
+            OpenchildForm(new Vista.CategoriaForm(), btnCategorias);
         }
 
         private void btnMedicamento_Click(object sender, EventArgs e)
@@ -170,6 +174,49 @@ namespace Sistema
             {
                 Application.Exit();
             }
+        }
+
+        // Evento Timer para expandir y contraer el sidebar
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            
+            if (sidebarExpand)
+            {
+                // Si se toca el botón de menu se minimiza el sidebar
+                sidebarContainer.Width -= 10;
+                pnlMenu.Width += 10;
+                if (sidebarContainer.Width == sidebarContainer.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebarContainer.Width += 10;
+                pnlMenu.Width -= 10;
+                if (sidebarContainer.Width == sidebarContainer.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
+        }
+
+        private void btnResizingMenu_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+            if(pnlDescInventario.Visible && pnlDescControl.Visible)
+            {
+                pnlDescInventario.Visible = false;
+                pnlDescControl.Visible = false;
+            }
+            else
+            {
+                pnlDescInventario.Visible = true;
+                pnlDescControl.Visible = true;
+            }
+            
         }
     }
 }
