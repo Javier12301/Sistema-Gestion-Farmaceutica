@@ -61,10 +61,18 @@ namespace Sistema.Controles.Logica
         {
             using (var db = new SistemaGestionFarmaceuticaEntities())
             {
-                db.CategoriasModel.Add(category);
-                db.Entry(category).State = EntityState.Added;
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    db.CategoriasModel.Add(category);
+                    db.Entry(category).State = EntityState.Added;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
             }
         }
 
@@ -74,7 +82,7 @@ namespace Sistema.Controles.Logica
         {
             using (var db = new SistemaGestionFarmaceuticaEntities())
             {
-                CategoriasModel originalCategory = db.CategoriasModel.Find(category.CategoriaID);
+                CategoriasModel originalCategory = GetCategory(category.CategoriaID);
                 if (originalCategory != null)
                 {
                     // Modificamos la categoria

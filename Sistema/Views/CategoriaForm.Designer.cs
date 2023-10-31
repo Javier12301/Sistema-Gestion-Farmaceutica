@@ -210,7 +210,7 @@
             this.panel2.Controls.Add(this.btnEliminarG);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(298, 9);
+            this.panel2.Location = new System.Drawing.Point(298, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(286, 325);
             this.panel2.TabIndex = 21;

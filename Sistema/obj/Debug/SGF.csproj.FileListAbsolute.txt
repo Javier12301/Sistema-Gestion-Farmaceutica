@@ -75,3 +75,4 @@ C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Vista.EstantesForm.res
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.NuevoProductoForm.resources
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.ProductosForm.resources
 C:\Sistema-Gestion-Farmaceutica\Sistema\bin\Debug\AdvancedDataGridView.dll
+C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.ProveedoresForm.resources

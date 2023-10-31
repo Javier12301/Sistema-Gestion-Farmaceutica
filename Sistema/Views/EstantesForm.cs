@@ -22,12 +22,12 @@ namespace Sistema.Vista
     {
         // Instancias de las clases de Control
         Controladora controladora = Controladora.GetInstance;
-        PaletaColores colorPalette = new PaletaColores();
+        PaletaColores palette = PaletaColores.GetInstance;
         EstanteLogica shelfLogic = new EstanteLogica();
         ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
         MessageBoxManager messageManager = MessageBoxManager.GetInstance;
 
-        private bool isModifyButtonPressed = false;
+        private bool isModifyButtonPressed { get; set; } = false;
 
 
         public EstantesForm()
@@ -65,7 +65,7 @@ namespace Sistema.Vista
                 // Activar el modo edición del datagridview
                 isModifyButtonPressed = false;
                 btnModifyG.Image = Properties.Resources.EditingIcon;
-                btnModifyG.BaseColor = Color.FromArgb(135, 176, 81);
+                btnModifyG.BaseColor = palette.ButtonActive;
 
                 dgvShelvesList.ReadOnly = false;
             }
@@ -92,7 +92,7 @@ namespace Sistema.Vista
                 // Desactivar el modo edición del datagridview
                 isModifyButtonPressed = true;
                 btnModifyG.Image = Properties.Resources.PencilIcon;
-                btnModifyG.BaseColor = Color.FromArgb(176, 224, 104);
+                btnModifyG.BaseColor = palette.ButtonModifyDisabled;
 
                 dgvShelvesList.ReadOnly = true;
             }
@@ -361,17 +361,17 @@ namespace Sistema.Vista
         // // // // INTERFAZ // // // // //
         private void txtNombreE_Enter(object sender, EventArgs e)
         {
-            txtNombreE.LineColor = colorPalette.ColorDisabled;
+            txtNombreE.LineColor = palette.ColorDisabled;
         }
 
         private void txtNumE_Enter(object sender, EventArgs e)
         {
-            txtNumE.LineColor = colorPalette.ColorDisabled;
+            txtNumE.LineColor = palette.ColorDisabled;
         }
 
         private void txtSectorE_Enter(object sender, EventArgs e)
         {
-            txtSectorE.LineColor = colorPalette.ColorDisabled;
+            txtSectorE.LineColor = palette.ColorDisabled;
         }
 
         // Limitar solo número en la columa número de estante

@@ -99,6 +99,7 @@
     <Compile Include="Controles\Logica\EstanteLogica.cs" />
     <Compile Include="Controles\Logica\LoteLogica.cs" />
     <Compile Include="Controles\Logica\MedicamentoLogica.cs" />
+    <Compile Include="Controles\Logica\ProveedorLogica.cs" />
     <Compile Include="Database\conexionDB.cs" />
     <Compile Include="Database\Logica\CategoriaLogica.cs" />
     <Compile Include="Database\Logica\EstanteLogica.cs" />
@@ -235,6 +236,12 @@
     <Compile Include="Views\ProductosForm.Designer.cs">
       <DependentUpon>ProductosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProveedoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProveedoresForm.Designer.cs">
+      <DependentUpon>ProveedoresForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\ClientesForm.resx">
       <DependentUpon>ClientesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProductosForm.resx">
       <DependentUpon>ProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProveedoresForm.resx">
+      <DependentUpon>ProveedoresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Models\SistemaGestionFarmaceuticaModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

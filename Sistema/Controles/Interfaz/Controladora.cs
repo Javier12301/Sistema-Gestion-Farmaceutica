@@ -31,8 +31,8 @@ namespace Sistema
                 return instance;
             }
         }
-        // // // Singleton // // //
-        PaletaColores colorPalette = new PaletaColores();
+        
+        PaletaColores palette = PaletaColores.GetInstance;
 
         public void OpenMailLink()
         {
@@ -106,7 +106,7 @@ namespace Sistema
             }
             else
             {
-                txtUser.LineColor = colorPalette.ColorError;
+                txtUser.LineColor = palette.ColorError;
             }
             return isEmailValid;
         }
@@ -136,7 +136,7 @@ namespace Sistema
             }
             else
             {
-                txtPassword.LineColor = colorPalette.ColorError;
+                txtPassword.LineColor = palette.ColorError;
             }
             return isPasswordValid;
         }
@@ -148,13 +148,13 @@ namespace Sistema
             {
 
                 //No está vacio
-                txtbox.LineColor = colorPalette.ColorActive;
+                txtbox.LineColor = palette.ColorActive;
                 return true;
             }
             else
             {
                 //Está vacio
-                txtbox.LineColor = colorPalette.ColorError;
+                txtbox.LineColor = palette.ColorError;
                 return false;
             }
         }

@@ -5,6 +5,11 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGF", "Sistema\SGF.csproj", "{20728DA6-E229-49DB-809B-A00FA70CD4D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{CB2C88C2-E548-4B6D-BFF4-F4E9968FA0B9}"
+	ProjectSection(SolutionItems) = preProject
+		sqlNuevoSistemaQuery.sql = sqlNuevoSistemaQuery.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

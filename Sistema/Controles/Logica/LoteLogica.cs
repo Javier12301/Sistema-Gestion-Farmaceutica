@@ -76,7 +76,7 @@ namespace Sistema.Controles.Logica
             }
             catch (Exception)
             {
-                throw;
+                return false;
             }
         }
     }

@@ -71,10 +71,18 @@ namespace Sistema.Controles.Logica
         {
             using (var db = new SistemaGestionFarmaceuticaEntities())
             {
-                db.EstantesModel.Add(shelf);
-                db.Entry(shelf).State = EntityState.Added;
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    db.EstantesModel.Add(shelf);
+                    db.Entry(shelf).State = EntityState.Added;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
             }
 
         }
@@ -84,7 +92,7 @@ namespace Sistema.Controles.Logica
         {
             using (var db = new SistemaGestionFarmaceuticaEntities())
             {
-                EstantesModel originalShelf = db.EstantesModel.Find(shelf.EstanteID);
+                EstantesModel originalShelf = GetShelf(shelf.EstanteID);
 
                 if (originalShelf != null)
                 {

@@ -11,6 +11,8 @@ namespace Sistema.Controles.Logica
 {
     public class MedicamentoLogica
     {
+        // Instancias de modelos de relaciones de medicamentos
+        MedicamentosProveedoresModel medicineSupplier = new MedicamentosProveedoresModel();
         // Obtener cantidad total de medicamentos
         public int GetTotalMedicinesCount()
         {
@@ -37,8 +39,7 @@ namespace Sistema.Controles.Logica
             }
             catch (SqlException)
             {
-                return false;
-                throw;
+                return false;            
             }
         }
 
@@ -82,8 +83,17 @@ namespace Sistema.Controles.Logica
                 db.Entry(medicine).State = EntityState.Modified;
             }
         }
-
         // // // FIN MANEJO DE LÓGICA DE ESTANTES EN MEDICAMENTOS // // //
+
+        // // // MANEJO DE LÓGICA DE PROVEEDORES DE MEDICAMENTOS // // //
+        // Lógica para obtener medicamentos pertenecientes a un proveedor
+        public bool HasMedicineSupplierAssociated(SistemaGestionFarmaceuticaEntities db, int supplierID)
+        {
+            return db.MedicamentosProveedoresModel.Any(m => m.ProveedorID == supplierID);
+        }
+
+        // Lógica para reasignar proveedor de medicamento como "Sin Proveedor"
+
 
 
         // Obtener todos los medicamentos para cargar el DatagridView utilizando view MedicamentoDetalle

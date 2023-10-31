@@ -2,6 +2,7 @@
 using Sistema.Controles;
 using Sistema.Controles.Interfaz;
 using Sistema.Vista;
+using Sistema.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,7 +95,7 @@ namespace Sistema
             // Si el DataGridView ha sido modificado, preguntar al usuario si desea guardar los cambios
             if (controladora.IsDatagridViewModified)
             {
-                DialogResult result = MessageBox.Show("Has realizado cambios que no se han guardado \n         ¿Estás seguro de que deseas salir?", "Cambios no guardados", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Has realizado algunos cambios que no se han guardado.\n¿Estás seguro de que deseas salir?", "Cambios no guardados", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.No)
                 {
@@ -136,23 +137,28 @@ namespace Sistema
 
         private void btnEstantes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Vista.EstantesForm(), btnEstantes);
+            OpenchildForm(new EstantesForm(), btnEstantes);
 
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Vista.CategoriaForm(), btnCategorias);
+            OpenchildForm(new CategoriaForm(), btnCategorias);
+        }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            OpenchildForm(new ProveedoresForm(), btnProveedores);
         }
 
         private void btnMedicamento_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Vista.MedicamentosForm(), btnMedicamentos);
+            OpenchildForm(new MedicamentosForm(), btnMedicamentos);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Vista.ClientesForm(), btnClientes);
+            OpenchildForm(new ClientesForm(), btnClientes);
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)
@@ -223,5 +229,7 @@ namespace Sistema
         {
             lblSize.Text = this.Size.ToString();
         }
+
+       
     }
 }

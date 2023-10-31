@@ -34,6 +34,10 @@
             this.pnlList = new System.Windows.Forms.Panel();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvShelvesList = new Zuby.ADGV.AdvancedDataGridView();
+            this.dgvcShelfID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcShelfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNumShelf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcShelfSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceShelves = new System.Windows.Forms.BindingSource(this.components);
             this.sistemaGestionFarmaceuticaDataSet = new Sistema.SistemaGestionFarmaceuticaDataSet();
             this.lblTotalRow = new System.Windows.Forms.Label();
@@ -53,10 +57,6 @@
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.estantesModelTableAdapter = new Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters.EstantesModelTableAdapter();
-            this.dgvcShelfID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcShelfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNumShelf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcShelfSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShelvesList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceShelves)).BeginInit();
@@ -72,10 +72,10 @@
             this.lblCategorias.BackColor = System.Drawing.Color.Transparent;
             this.lblCategorias.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.lblCategorias.Location = new System.Drawing.Point(4, 2);
+            this.lblCategorias.Location = new System.Drawing.Point(7, 11);
             this.lblCategorias.Name = "lblCategorias";
             this.lblCategorias.Size = new System.Drawing.Size(85, 39);
-            this.lblCategorias.TabIndex = 6;
+            this.lblCategorias.TabIndex = 0;
             this.lblCategorias.Text = "EstantesForm";
             this.lblCategorias.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -93,10 +93,10 @@
             this.pnlList.Controls.Add(this.btnEliminarG);
             this.pnlList.Controls.Add(this.lblListE);
             this.pnlList.Controls.Add(this.pictureBox1);
-            this.pnlList.Location = new System.Drawing.Point(299, 6);
+            this.pnlList.Location = new System.Drawing.Point(299, 4);
             this.pnlList.Name = "pnlList";
             this.pnlList.Size = new System.Drawing.Size(286, 325);
-            this.pnlList.TabIndex = 8;
+            this.pnlList.TabIndex = 0;
             // 
             // btnModifyG
             // 
@@ -122,7 +122,7 @@
             this.btnModifyG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(176)))), ((int)(((byte)(81)))));
             this.btnModifyG.Radius = 8;
             this.btnModifyG.Size = new System.Drawing.Size(35, 25);
-            this.btnModifyG.TabIndex = 36;
+            this.btnModifyG.TabIndex = 6;
             this.btnModifyG.Click += new System.EventHandler(this.btnModifyG_Click);
             // 
             // dgvShelvesList
@@ -150,10 +150,51 @@
             this.dgvShelvesList.Size = new System.Drawing.Size(272, 256);
             this.dgvShelvesList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             this.dgvShelvesList.TabIndex = 35;
+            this.dgvShelvesList.TabStop = false;
             this.dgvShelvesList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewEstante_CellEndEdit);
             this.dgvShelvesList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaViewEstante_CellEnter);
             this.dgvShelvesList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtaViewEstante_DataError);
             this.dgvShelvesList.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtaViewEstante_EditingControlShowing);
+            // 
+            // dgvcShelfID
+            // 
+            this.dgvcShelfID.DataPropertyName = "EstanteID";
+            this.dgvcShelfID.FillWeight = 112.9913F;
+            this.dgvcShelfID.HeaderText = "ID";
+            this.dgvcShelfID.MinimumWidth = 22;
+            this.dgvcShelfID.Name = "dgvcShelfID";
+            this.dgvcShelfID.ReadOnly = true;
+            this.dgvcShelfID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcShelfName
+            // 
+            this.dgvcShelfName.DataPropertyName = "Nombre";
+            this.dgvcShelfName.FillWeight = 112.9913F;
+            this.dgvcShelfName.HeaderText = "Nombre";
+            this.dgvcShelfName.MinimumWidth = 22;
+            this.dgvcShelfName.Name = "dgvcShelfName";
+            this.dgvcShelfName.ReadOnly = true;
+            this.dgvcShelfName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNumShelf
+            // 
+            this.dgvcNumShelf.DataPropertyName = "Numero_de_estante";
+            this.dgvcNumShelf.FillWeight = 112.9913F;
+            this.dgvcNumShelf.HeaderText = "Núm. Estante";
+            this.dgvcNumShelf.MinimumWidth = 22;
+            this.dgvcNumShelf.Name = "dgvcNumShelf";
+            this.dgvcNumShelf.ReadOnly = true;
+            this.dgvcNumShelf.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcShelfSector
+            // 
+            this.dgvcShelfSector.DataPropertyName = "Sector";
+            this.dgvcShelfSector.FillWeight = 112.9913F;
+            this.dgvcShelfSector.HeaderText = "Sector";
+            this.dgvcShelfSector.MinimumWidth = 22;
+            this.dgvcShelfSector.Name = "dgvcShelfSector";
+            this.dgvcShelfSector.ReadOnly = true;
+            this.dgvcShelfSector.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // bindingSourceShelves
             // 
@@ -203,7 +244,7 @@
             this.btnGuardarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(95)))), ((int)(((byte)(126)))));
             this.btnGuardarG.Radius = 8;
             this.btnGuardarG.Size = new System.Drawing.Size(35, 25);
-            this.btnGuardarG.TabIndex = 23;
+            this.btnGuardarG.TabIndex = 5;
             this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
             // 
             // btnEliminarG
@@ -231,7 +272,7 @@
             this.btnEliminarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
             this.btnEliminarG.Radius = 5;
             this.btnEliminarG.Size = new System.Drawing.Size(34, 25);
-            this.btnEliminarG.TabIndex = 22;
+            this.btnEliminarG.TabIndex = 7;
             this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
             this.btnEliminarG.MouseEnter += new System.EventHandler(this.btnEliminarG_MouseEnter);
             this.btnEliminarG.MouseLeave += new System.EventHandler(this.btnEliminarG_MouseLeave);
@@ -245,7 +286,7 @@
             this.lblListE.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblListE.Name = "lblListE";
             this.lblListE.Size = new System.Drawing.Size(130, 21);
-            this.lblListE.TabIndex = 20;
+            this.lblListE.TabIndex = 0;
             this.lblListE.Text = "Lista de Estantes";
             // 
             // pictureBox1
@@ -281,7 +322,7 @@
             this.panel1.MinimumSize = new System.Drawing.Size(278, 270);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 286);
-            this.panel1.TabIndex = 9;
+            this.panel1.TabIndex = 0;
             // 
             // txtSectorE
             // 
@@ -335,7 +376,7 @@
             this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblTitlePnl.Name = "lblTitlePnl";
             this.lblTitlePnl.Size = new System.Drawing.Size(115, 21);
-            this.lblTitlePnl.TabIndex = 26;
+            this.lblTitlePnl.TabIndex = 0;
             this.lblTitlePnl.Text = "Nuevo Estante";
             // 
             // pctLineSeparator
@@ -358,7 +399,7 @@
             this.lblNombreE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblNombreE.Name = "lblNombreE";
             this.lblNombreE.Size = new System.Drawing.Size(51, 15);
-            this.lblNombreE.TabIndex = 27;
+            this.lblNombreE.TabIndex = 0;
             this.lblNombreE.Text = "Nombre";
             // 
             // lblNumE
@@ -370,7 +411,7 @@
             this.lblNumE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblNumE.Name = "lblNumE";
             this.lblNumE.Size = new System.Drawing.Size(92, 15);
-            this.lblNumE.TabIndex = 29;
+            this.lblNumE.TabIndex = 0;
             this.lblNumE.Text = "Número Estante";
             // 
             // lblSectorE
@@ -382,7 +423,7 @@
             this.lblSectorE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblSectorE.Name = "lblSectorE";
             this.lblSectorE.Size = new System.Drawing.Size(41, 15);
-            this.lblSectorE.TabIndex = 31;
+            this.lblSectorE.TabIndex = 0;
             this.lblSectorE.Text = "Sector";
             // 
             // pnlButton
@@ -416,46 +457,6 @@
             // estantesModelTableAdapter
             // 
             this.estantesModelTableAdapter.ClearBeforeFill = true;
-            // 
-            // dgvcShelfID
-            // 
-            this.dgvcShelfID.DataPropertyName = "EstanteID";
-            this.dgvcShelfID.FillWeight = 112.9913F;
-            this.dgvcShelfID.HeaderText = "ID";
-            this.dgvcShelfID.MinimumWidth = 22;
-            this.dgvcShelfID.Name = "dgvcShelfID";
-            this.dgvcShelfID.ReadOnly = true;
-            this.dgvcShelfID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcShelfName
-            // 
-            this.dgvcShelfName.DataPropertyName = "Nombre";
-            this.dgvcShelfName.FillWeight = 112.9913F;
-            this.dgvcShelfName.HeaderText = "Nombre";
-            this.dgvcShelfName.MinimumWidth = 22;
-            this.dgvcShelfName.Name = "dgvcShelfName";
-            this.dgvcShelfName.ReadOnly = true;
-            this.dgvcShelfName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNumShelf
-            // 
-            this.dgvcNumShelf.DataPropertyName = "Numero_de_estante";
-            this.dgvcNumShelf.FillWeight = 112.9913F;
-            this.dgvcNumShelf.HeaderText = "Núm. Estante";
-            this.dgvcNumShelf.MinimumWidth = 22;
-            this.dgvcNumShelf.Name = "dgvcNumShelf";
-            this.dgvcNumShelf.ReadOnly = true;
-            this.dgvcNumShelf.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcShelfSector
-            // 
-            this.dgvcShelfSector.DataPropertyName = "Sector";
-            this.dgvcShelfSector.FillWeight = 112.9913F;
-            this.dgvcShelfSector.HeaderText = "Sector";
-            this.dgvcShelfSector.MinimumWidth = 22;
-            this.dgvcShelfSector.Name = "dgvcShelfSector";
-            this.dgvcShelfSector.ReadOnly = true;
-            this.dgvcShelfSector.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // EstantesForm
             // 

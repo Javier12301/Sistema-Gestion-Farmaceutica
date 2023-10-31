@@ -18,6 +18,13 @@ DROP TABLE IF EXISTS CategoriasModel;
 -- Eliminar la tabla EstantesModel
 DROP TABLE IF EXISTS EstantesModel;
 
+-- Deshabilitar Identity, por ejemplo
+-- Deshabilitar la propiedad IDENTITY
+SET IDENTITY_INSERT ProveedoresModel ON;
+-- Volver a habilitar IDENTITY
+SET IDENTITY_INSERT ProveedoresModel OFF;
+
+
 
 -- Tabla para almacenar información sobre estantes en el inventario
 CREATE TABLE EstantesModel(
@@ -33,6 +40,8 @@ CREATE TABLE CategoriasModel(
 	Nombre NVARCHAR(255) NOT NULL,               -- Nombre de la categoría
 	Descripcion NVARCHAR(255) NOT NULL          -- Descripción de la categoría
 );
+
+
 
 -- Tabla para almacenar información sobre proveedores o droguerías
 CREATE TABLE ProveedoresModel(
@@ -83,8 +92,6 @@ CREATE TABLE MedicamentosProveedoresModel(
 	ProveedorID INT FOREIGN KEY REFERENCES ProveedoresModel(ProveedorID)       -- Clave externa que se relaciona con la tabla de proveedores
 );
 
-
-
 -- Tabla para almacenar información sobre productos
 CREATE TABLE ProductosModel (
     ProductoID INT IDENTITY(1,1) PRIMARY KEY,   -- Clave primaria autonumérica
@@ -112,9 +119,14 @@ SELECT * FROM CategoriasModel;
 
 SELECT * FROM EstantesModel;
 
+SELECT * FROM ProveedoresModel;
+
 SELECT * FROM LotesModel;
 
 SELECT * FROM MedicamentosModel;
+
+-- Eliminar todo los valores de la tabla MedicamentosModel
+DELETE FROM CategoriasModel;
 
 SELECT * FROM CodigosDeBarrasModel;
 
@@ -136,6 +148,8 @@ INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antiinflamatorios', '
 INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antipiréticos', 'Medicamentos para reducir la fiebre');
 INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antihistamínicos', 'Medicamentos para aliviar alergias');
 
+INSERT INTO ProveedoresModel (ProveedorID, Nombre, Direccion, Telefono)
+VALUES (0, 'N/A', 'N/A', 'N/A');
 
 -- Crear un medicamento y relacionarlo con el lote
 INSERT INTO MedicamentosModel (EstanteID, CategoriaID, PrecioUnitario, CodigoID)
@@ -161,22 +175,22 @@ WHERE CategoriaID = CategoriaID;
 
 SELECT * FROM VistaInventarioMedicamento;
 
-CREATE VIEW VistaInventarioMedicamento AS
-SELECT
-    CodigosDeBarrasModel.CodigoDeBarras AS Codigo,
-    LotesModel.Numero_Lote AS Lote,
-    LotesModel.Nombre_Medicamento AS Descripcion,
-    LotesModel.Stock AS Cantidad,
-    LotesModel.FechaVencimiento AS Vencimiento,
-    CategoriasModel.Nombre AS Categoria,
-    EstantesModel.Nombre AS [Nombre estante],
-    EstantesModel.Sector AS Sector,
-    EstantesModel.Numero_de_estante AS [Numero estante]
-FROM
-    LotesModel
-INNER JOIN MedicamentosLotesModel ON LotesModel.LoteID = MedicamentosLotesModel.LoteID
-INNER JOIN MedicamentosModel ON MedicamentosLotesModel.MedicamentoID = MedicamentosModel.MedicamentoID
-INNER JOIN CategoriasModel ON MedicamentosModel.CategoriaID = CategoriasModel.CategoriaID
-INNER JOIN EstantesModel ON MedicamentosModel.EstanteID = EstantesModel.EstanteID
-INNER JOIN CodigosDeBarrasModel ON MedicamentosModel.CodigoID = CodigosDeBarrasModel.CodigoID;
+--CREATE VIEW VistaInventarioMedicamento AS
+--SELECT
+--    CodigosDeBarrasModel.CodigoDeBarras AS Codigo,
+--    LotesModel.Numero_Lote AS Lote,
+--    LotesModel.Nombre_Medicamento AS Descripcion,
+--    LotesModel.Stock AS Cantidad,
+--    LotesModel.FechaVencimiento AS Vencimiento,
+--    CategoriasModel.Nombre AS Categoria,
+--    EstantesModel.Nombre AS [Nombre estante],
+--    EstantesModel.Sector AS Sector,
+--    EstantesModel.Numero_de_estante AS [Numero estante]
+--FROM
+--    LotesModel
+--INNER JOIN MedicamentosLotesModel ON LotesModel.LoteID = MedicamentosLotesModel.LoteID
+--INNER JOIN MedicamentosModel ON MedicamentosLotesModel.MedicamentoID = MedicamentosModel.MedicamentoID
+--INNER JOIN CategoriasModel ON MedicamentosModel.CategoriaID = CategoriasModel.CategoriaID
+--INNER JOIN EstantesModel ON MedicamentosModel.EstanteID = EstantesModel.EstanteID
+--INNER JOIN CodigosDeBarrasModel ON MedicamentosModel.CodigoID = CodigosDeBarrasModel.CodigoID;
 

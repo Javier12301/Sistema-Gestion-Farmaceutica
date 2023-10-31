@@ -51,9 +51,13 @@ namespace Sistema.Controles.Interfaz
                 {
                     message = $"Se modificó correctamente 1 {elementName}.";
                 }
-                else
+                else if(elementName != "proveedor")
                 {
                     message = $"Se modificaron correctamente {modifiedCount} {elementName}s.";
+                }
+                else
+                {
+                    message = $"Se modificaron correctamente {modifiedCount} {elementName}es.";
                 }
                 MessageBox.Show(message, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -68,10 +72,16 @@ namespace Sistema.Controles.Interfaz
                 {
                     message = $"Se eliminó correctamente 1 {elementName}.";
                 }
-                else
-                {
+               
+                else if(elementName != "proveedor")
+                { 
                     message = $"Se eliminarón correctamente {modifiedCount} {elementName}s.";
                 }
+                else
+                {
+                    message = $"Se eliminarón correctamente {modifiedCount} {elementName}es.";
+                }
+               
                 MessageBox.Show(message, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
