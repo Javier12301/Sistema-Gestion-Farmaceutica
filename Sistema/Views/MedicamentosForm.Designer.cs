@@ -28,551 +28,616 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicamentosForm));
             this.pnlForm = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tcInformation = new System.Windows.Forms.TabControl();
-            this.dtaViewMedicamentos = new System.Windows.Forms.DataGridView();
-            this.dtaNumEst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNombreEst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNombreCat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaNameMedicamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtaCodB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.grpMedicamentos = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtCodM = new System.Windows.Forms.TextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCantidadM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVencimientoM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvMedicineList = new Zuby.ADGV.AdvancedDataGridView();
+            this.dgvcCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcCantidadM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcVtoM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSectorE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNumeroE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceMedicine = new System.Windows.Forms.BindingSource(this.components);
+            this.viewSGF = new Sistema.ViewSGF();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtLoteM = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnExcelG = new Guna.UI.WinForms.GunaButton();
+            this.btnPrintG = new Guna.UI.WinForms.GunaButton();
+            this.btnPDFG = new Guna.UI.WinForms.GunaButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNombreM = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPrecioM = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.dtaVtoM = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbEntradas = new System.Windows.Forms.ComboBox();
+            this.lblTitlePnl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTotalRow = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.medicamentoModelTableAdapter = new Sistema.ViewSGFTableAdapters.VistaInventarioMedicamentoTableAdapter();
+            this.asdfasdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlForm.SuspendLayout();
-            this.tcInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaViewMedicamentos)).BeginInit();
-            this.toolStrip.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.grpMedicamentos.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicineList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMedicine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewSGF)).BeginInit();
             this.panel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlForm
             // 
             this.pnlForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.pnlForm.Controls.Add(this.tcInformation);
+            this.pnlForm.Controls.Add(this.toolStrip1);
+            this.pnlForm.Controls.Add(this.dgvMedicineList);
+            this.pnlForm.Controls.Add(this.panel2);
+            this.pnlForm.Controls.Add(this.panel1);
             this.pnlForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlForm.Location = new System.Drawing.Point(0, 0);
             this.pnlForm.Name = "pnlForm";
-            this.pnlForm.Size = new System.Drawing.Size(702, 382);
-            this.pnlForm.TabIndex = 9;
+            this.pnlForm.Size = new System.Drawing.Size(589, 338);
+            this.pnlForm.TabIndex = 10;
             // 
-            // tabPage2
+            // toolStrip1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(682, 356);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tcInformation
-            // 
-            this.tcInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcInformation.Controls.Add(this.tabPage1);
-            this.tcInformation.Controls.Add(this.tabPage2);
-            this.tcInformation.Location = new System.Drawing.Point(0, 0);
-            this.tcInformation.Name = "tcInformation";
-            this.tcInformation.SelectedIndex = 0;
-            this.tcInformation.Size = new System.Drawing.Size(699, 382);
-            this.tcInformation.TabIndex = 9;
-            // 
-            // dtaViewMedicamentos
-            // 
-            this.dtaViewMedicamentos.AllowUserToAddRows = false;
-            this.dtaViewMedicamentos.AllowUserToDeleteRows = false;
-            this.dtaViewMedicamentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtaViewMedicamentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtaViewMedicamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtaViewMedicamentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dtaCodB,
-            this.dtaLote,
-            this.dtaNameMedicamento,
-            this.dtaStock,
-            this.dtaVencimiento,
-            this.dtaNombreCat,
-            this.dtaNombreEst,
-            this.dtaSector,
-            this.dtaNumEst});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtaViewMedicamentos.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dtaViewMedicamentos.Location = new System.Drawing.Point(3, 222);
-            this.dtaViewMedicamentos.Name = "dtaViewMedicamentos";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaViewMedicamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dtaViewMedicamentos.Size = new System.Drawing.Size(688, 131);
-            this.dtaViewMedicamentos.TabIndex = 8;
-            // 
-            // dtaNumEst
-            // 
-            this.dtaNumEst.HeaderText = "Num. Est.";
-            this.dtaNumEst.Name = "dtaNumEst";
-            // 
-            // dtaSector
-            // 
-            this.dtaSector.HeaderText = "Sector";
-            this.dtaSector.Name = "dtaSector";
-            // 
-            // dtaNombreEst
-            // 
-            this.dtaNombreEst.HeaderText = "Nombre Est.";
-            this.dtaNombreEst.Name = "dtaNombreEst";
-            // 
-            // dtaNombreCat
-            // 
-            this.dtaNombreCat.HeaderText = "Categoría";
-            this.dtaNombreCat.Name = "dtaNombreCat";
-            // 
-            // dtaVencimiento
-            // 
-            this.dtaVencimiento.HeaderText = "Vto.";
-            this.dtaVencimiento.Name = "dtaVencimiento";
-            // 
-            // dtaStock
-            // 
-            this.dtaStock.HeaderText = "Cantidad";
-            this.dtaStock.Name = "dtaStock";
-            // 
-            // dtaNameMedicamento
-            // 
-            this.dtaNameMedicamento.HeaderText = "Descripción";
-            this.dtaNameMedicamento.Name = "dtaNameMedicamento";
-            // 
-            // dtaLote
-            // 
-            this.dtaLote.HeaderText = "Lote";
-            this.dtaLote.Name = "dtaLote";
-            // 
-            // dtaCodB
-            // 
-            this.dtaCodB.HeaderText = "Código";
-            this.dtaCodB.Name = "dtaCodB";
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1});
-            this.toolStrip.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(685, 28);
-            this.toolStrip.TabIndex = 9;
-            this.toolStrip.Text = "toolStrip1";
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripSeparator1,
+            this.tsdMostrarCol});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(589, 28);
+            this.toolStrip1.TabIndex = 37;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel1.ForeColor = System.Drawing.Color.White;
+            this.toolStripLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(142, 25);
             this.toolStripLabel1.Text = "Medicamentos";
             // 
-            // tabPage1
+            // toolStripSeparator1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.grpMedicamentos);
-            this.tabPage1.Controls.Add(this.toolStrip);
-            this.tabPage1.Controls.Add(this.dtaViewMedicamentos);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(691, 356);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
-            // groupBox1
+            // tsdMostrarCol
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(509, 34);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(163, 126);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Inventario";
+            this.tsdMostrarCol.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCod,
+            this.tsmiNumL,
+            this.tsmiNombreM,
+            this.tsmiCantidadM,
+            this.tsmiVencimientoM,
+            this.tsmiNombreE,
+            this.tsmiNombreC,
+            this.tsmiSectorE,
+            this.tsmiNumeroE});
+            this.tsdMostrarCol.Image = ((System.Drawing.Image)(resources.GetObject("tsdMostrarCol.Image")));
+            this.tsdMostrarCol.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdMostrarCol.Name = "tsdMostrarCol";
+            this.tsdMostrarCol.Size = new System.Drawing.Size(134, 25);
+            this.tsdMostrarCol.Text = "Mostrar Columnas";
             // 
-            // flowLayoutPanel2
+            // tsmiCod
             // 
-            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.Controls.Add(this.panel7);
-            this.flowLayoutPanel2.Controls.Add(this.panel8);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 18);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(151, 101);
-            this.flowLayoutPanel2.TabIndex = 0;
+            this.tsmiCod.Checked = true;
+            this.tsmiCod.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiCod.Name = "tsmiCod";
+            this.tsmiCod.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCod.Tag = "codigoTAG";
+            this.tsmiCod.Text = "Código";
+            this.tsmiCod.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiCod.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // panel7
+            // tsmiNumL
             // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.AutoSize = true;
-            this.panel7.Controls.Add(this.comboBox2);
-            this.panel7.Controls.Add(this.label6);
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(143, 44);
-            this.panel7.TabIndex = 6;
+            this.tsmiNumL.Checked = true;
+            this.tsmiNumL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNumL.Name = "tsmiNumL";
+            this.tsmiNumL.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNumL.Tag = "loteTAG";
+            this.tsmiNumL.Text = "Lote";
+            this.tsmiNumL.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNumL.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // label6
+            // tsmiNombreM
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoEllipsis = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 12);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Categoría";
+            this.tsmiNombreM.Checked = true;
+            this.tsmiNombreM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreM.Name = "tsmiNombreM";
+            this.tsmiNombreM.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNombreM.Tag = "nombreMTAG";
+            this.tsmiNombreM.Text = "Nombre";
+            this.tsmiNombreM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreM.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // panel8
+            // tsmiCantidadM
             // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.AutoSize = true;
-            this.panel8.Controls.Add(this.comboBox3);
-            this.panel8.Controls.Add(this.label7);
-            this.panel8.Location = new System.Drawing.Point(3, 53);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(143, 44);
-            this.panel8.TabIndex = 7;
+            this.tsmiCantidadM.Checked = true;
+            this.tsmiCantidadM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiCantidadM.Name = "tsmiCantidadM";
+            this.tsmiCantidadM.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCantidadM.Tag = "cantidadMTAG";
+            this.tsmiCantidadM.Text = "Cantidad";
+            this.tsmiCantidadM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiCantidadM.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // label7
+            // tsmiVencimientoM
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoEllipsis = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 12);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Estante";
+            this.tsmiVencimientoM.Checked = true;
+            this.tsmiVencimientoM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiVencimientoM.Name = "tsmiVencimientoM";
+            this.tsmiVencimientoM.Size = new System.Drawing.Size(180, 22);
+            this.tsmiVencimientoM.Tag = "vencimientoMTAG";
+            this.tsmiVencimientoM.Text = "Vencimiento";
+            this.tsmiVencimientoM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiVencimientoM.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // grpMedicamentos
+            // tsmiNombreE
             // 
-            this.grpMedicamentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpMedicamentos.Controls.Add(this.flowLayoutPanel1);
-            this.grpMedicamentos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpMedicamentos.Location = new System.Drawing.Point(8, 34);
-            this.grpMedicamentos.Name = "grpMedicamentos";
-            this.grpMedicamentos.Size = new System.Drawing.Size(477, 139);
-            this.grpMedicamentos.TabIndex = 20;
-            this.grpMedicamentos.TabStop = false;
-            this.grpMedicamentos.Text = "Información del Medicamento";
+            this.tsmiNombreE.Checked = true;
+            this.tsmiNombreE.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreE.Name = "tsmiNombreE";
+            this.tsmiNombreE.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNombreE.Tag = "nombreETAG";
+            this.tsmiNombreE.Text = "Nombre de Estante";
+            this.tsmiNombreE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreE.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // comboBox2
+            // tsmiNombreC
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 20);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(134, 21);
-            this.comboBox2.TabIndex = 19;
+            this.tsmiNombreC.Checked = true;
+            this.tsmiNombreC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreC.Name = "tsmiNombreC";
+            this.tsmiNombreC.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNombreC.Tag = "nombreCTAG";
+            this.tsmiNombreC.Text = "Categoría";
+            this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreC.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // comboBox3
+            // tsmiSectorE
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(6, 20);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(134, 21);
-            this.comboBox3.TabIndex = 19;
+            this.tsmiSectorE.Checked = true;
+            this.tsmiSectorE.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiSectorE.Name = "tsmiSectorE";
+            this.tsmiSectorE.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSectorE.Tag = "sectorETAG";
+            this.tsmiSectorE.Text = "Sector";
+            this.tsmiSectorE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiSectorE.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // flowLayoutPanel1
+            // tsmiNumeroE
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Controls.Add(this.panel3);
-            this.flowLayoutPanel1.Controls.Add(this.panel4);
-            this.flowLayoutPanel1.Controls.Add(this.panel5);
-            this.flowLayoutPanel1.Controls.Add(this.panel6);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 17);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(464, 115);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.tsmiNumeroE.Checked = true;
+            this.tsmiNumeroE.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNumeroE.Name = "tsmiNumeroE";
+            this.tsmiNumeroE.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNumeroE.Tag = "numeroETAG";
+            this.tsmiNumeroE.Text = "Numero de Estante";
+            this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNumeroE.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // panel1
+            // dgvMedicineList
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.txtCodM);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(146, 50);
-            this.panel1.TabIndex = 0;
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvMedicineList.AllowUserToAddRows = false;
+            this.dgvMedicineList.AllowUserToDeleteRows = false;
+            this.dgvMedicineList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoEllipsis = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(6, 5);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(109, 12);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "Código";
+            this.dgvMedicineList.AutoGenerateColumns = false;
+            this.dgvMedicineList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMedicineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMedicineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvcCod,
+            this.dgvcLote,
+            this.dgvcNombreM,
+            this.dgvcCantidadM,
+            this.dgvcVtoM,
+            this.dgvcNombreC,
+            this.dgvcNombreE,
+            this.dgvcSectorE,
+            this.dgvcNumeroE});
+            this.dgvMedicineList.DataSource = this.bindingSourceMedicine;
+            this.dgvMedicineList.FilterAndSortEnabled = true;
+            this.dgvMedicineList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.dgvMedicineList.Location = new System.Drawing.Point(12, 83);
+            this.dgvMedicineList.Name = "dgvMedicineList";
+            this.dgvMedicineList.ReadOnly = true;
+            this.dgvMedicineList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvMedicineList.Size = new System.Drawing.Size(566, 201);
+            this.dgvMedicineList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.dgvMedicineList.TabIndex = 36;
+            this.dgvMedicineList.TabStop = false;
+            this.dgvMedicineList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvMedicineList_SortStringChanged);
+            this.dgvMedicineList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvMedicineList_FilterStringChanged);
             // 
-            // txtCodM
+            // dgvcCod
             // 
-            this.txtCodM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodM.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCodM.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodM.Location = new System.Drawing.Point(6, 21);
-            this.txtCodM.Name = "txtCodM";
-            this.txtCodM.Size = new System.Drawing.Size(134, 22);
-            this.txtCodM.TabIndex = 18;
+            this.dgvcCod.DataPropertyName = "Codigo";
+            this.dgvcCod.HeaderText = "Codigo";
+            this.dgvcCod.MinimumWidth = 22;
+            this.dgvcCod.Name = "dgvcCod";
+            this.dgvcCod.ReadOnly = true;
+            this.dgvcCod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcLote
+            // 
+            this.dgvcLote.DataPropertyName = "Lote";
+            this.dgvcLote.HeaderText = "Lote";
+            this.dgvcLote.MinimumWidth = 22;
+            this.dgvcLote.Name = "dgvcLote";
+            this.dgvcLote.ReadOnly = true;
+            this.dgvcLote.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreM
+            // 
+            this.dgvcNombreM.DataPropertyName = "Descripcion";
+            this.dgvcNombreM.HeaderText = "Nombre";
+            this.dgvcNombreM.MinimumWidth = 22;
+            this.dgvcNombreM.Name = "dgvcNombreM";
+            this.dgvcNombreM.ReadOnly = true;
+            this.dgvcNombreM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcCantidadM
+            // 
+            this.dgvcCantidadM.DataPropertyName = "Cantidad";
+            this.dgvcCantidadM.HeaderText = "Cantidad";
+            this.dgvcCantidadM.MinimumWidth = 22;
+            this.dgvcCantidadM.Name = "dgvcCantidadM";
+            this.dgvcCantidadM.ReadOnly = true;
+            this.dgvcCantidadM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcVtoM
+            // 
+            this.dgvcVtoM.DataPropertyName = "Vencimiento";
+            this.dgvcVtoM.HeaderText = "Vencimiento";
+            this.dgvcVtoM.MinimumWidth = 22;
+            this.dgvcVtoM.Name = "dgvcVtoM";
+            this.dgvcVtoM.ReadOnly = true;
+            this.dgvcVtoM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreC
+            // 
+            this.dgvcNombreC.DataPropertyName = "Categoria";
+            this.dgvcNombreC.HeaderText = "Categoria";
+            this.dgvcNombreC.MinimumWidth = 22;
+            this.dgvcNombreC.Name = "dgvcNombreC";
+            this.dgvcNombreC.ReadOnly = true;
+            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreE
+            // 
+            this.dgvcNombreE.DataPropertyName = "Nombre estante";
+            this.dgvcNombreE.HeaderText = "Nombre estante";
+            this.dgvcNombreE.MinimumWidth = 22;
+            this.dgvcNombreE.Name = "dgvcNombreE";
+            this.dgvcNombreE.ReadOnly = true;
+            this.dgvcNombreE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcSectorE
+            // 
+            this.dgvcSectorE.DataPropertyName = "Sector";
+            this.dgvcSectorE.HeaderText = "Sector";
+            this.dgvcSectorE.MinimumWidth = 22;
+            this.dgvcSectorE.Name = "dgvcSectorE";
+            this.dgvcSectorE.ReadOnly = true;
+            this.dgvcSectorE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNumeroE
+            // 
+            this.dgvcNumeroE.DataPropertyName = "Numero estante";
+            this.dgvcNumeroE.HeaderText = "Numero estante";
+            this.dgvcNumeroE.MinimumWidth = 22;
+            this.dgvcNumeroE.Name = "dgvcNumeroE";
+            this.dgvcNumeroE.ReadOnly = true;
+            this.dgvcNumeroE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // bindingSourceMedicine
+            // 
+            this.bindingSourceMedicine.DataMember = "VistaInventarioMedicamento";
+            this.bindingSourceMedicine.DataSource = this.viewSGF;
+            this.bindingSourceMedicine.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceMedicine_ListChanged);
+            // 
+            // viewSGF
+            // 
+            this.viewSGF.DataSetName = "ViewSGF";
+            this.viewSGF.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtLoteM);
-            this.panel2.Location = new System.Drawing.Point(155, 3);
+            this.panel2.Controls.Add(this.cmbEntradas);
+            this.panel2.Controls.Add(this.lblTitlePnl);
+            this.panel2.Location = new System.Drawing.Point(12, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(146, 50);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(566, 44);
+            this.panel2.TabIndex = 20;
             // 
-            // label1
+            // flowLayoutPanel1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 12);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Número Lote";
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.btnExcelG);
+            this.flowLayoutPanel1.Controls.Add(this.btnPrintG);
+            this.flowLayoutPanel1.Controls.Add(this.btnPDFG);
+            this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(211, 1);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 41);
+            this.flowLayoutPanel1.TabIndex = 53;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
-            // txtLoteM
+            // btnExcelG
             // 
-            this.txtLoteM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLoteM.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtLoteM.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.txtLoteM.Location = new System.Drawing.Point(6, 21);
-            this.txtLoteM.Name = "txtLoteM";
-            this.txtLoteM.Size = new System.Drawing.Size(134, 22);
-            this.txtLoteM.TabIndex = 18;
+            this.btnExcelG.AnimationHoverSpeed = 0.07F;
+            this.btnExcelG.AnimationSpeed = 0.03F;
+            this.btnExcelG.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcelG.BaseColor = System.Drawing.Color.Green;
+            this.btnExcelG.BorderColor = System.Drawing.Color.Black;
+            this.btnExcelG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExcelG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnExcelG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcelG.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExcelG.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelG.Image")));
+            this.btnExcelG.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExcelG.Location = new System.Drawing.Point(3, 3);
+            this.btnExcelG.Name = "btnExcelG";
+            this.btnExcelG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnExcelG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnExcelG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnExcelG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnExcelG.OnHoverImage")));
+            this.btnExcelG.OnPressedColor = System.Drawing.Color.Green;
+            this.btnExcelG.Radius = 10;
+            this.btnExcelG.Size = new System.Drawing.Size(42, 32);
+            this.btnExcelG.TabIndex = 44;
+            this.btnExcelG.TabStop = false;
+            this.btnExcelG.Text = "Excel";
+            this.btnExcelG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnPrintG
+            // 
+            this.btnPrintG.AnimationHoverSpeed = 0.07F;
+            this.btnPrintG.AnimationSpeed = 0.03F;
+            this.btnPrintG.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrintG.BaseColor = System.Drawing.Color.DarkOrange;
+            this.btnPrintG.BorderColor = System.Drawing.Color.Black;
+            this.btnPrintG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPrintG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnPrintG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintG.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrintG.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintG.Image")));
+            this.btnPrintG.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnPrintG.Location = new System.Drawing.Point(51, 3);
+            this.btnPrintG.Name = "btnPrintG";
+            this.btnPrintG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnPrintG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnPrintG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnPrintG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrintG.OnHoverImage")));
+            this.btnPrintG.OnPressedColor = System.Drawing.Color.Green;
+            this.btnPrintG.Radius = 10;
+            this.btnPrintG.Size = new System.Drawing.Size(42, 32);
+            this.btnPrintG.TabIndex = 46;
+            this.btnPrintG.TabStop = false;
+            this.btnPrintG.Text = "Imprimir";
+            this.btnPrintG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnPDFG
+            // 
+            this.btnPDFG.AnimationHoverSpeed = 0.07F;
+            this.btnPDFG.AnimationSpeed = 0.03F;
+            this.btnPDFG.BackColor = System.Drawing.Color.Transparent;
+            this.btnPDFG.BaseColor = System.Drawing.Color.Firebrick;
+            this.btnPDFG.BorderColor = System.Drawing.Color.Black;
+            this.btnPDFG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPDFG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnPDFG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDFG.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPDFG.Image = ((System.Drawing.Image)(resources.GetObject("btnPDFG.Image")));
+            this.btnPDFG.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnPDFG.Location = new System.Drawing.Point(99, 3);
+            this.btnPDFG.Name = "btnPDFG";
+            this.btnPDFG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnPDFG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnPDFG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnPDFG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPDFG.OnHoverImage")));
+            this.btnPDFG.OnPressedColor = System.Drawing.Color.Green;
+            this.btnPDFG.Radius = 10;
+            this.btnPDFG.Size = new System.Drawing.Size(42, 32);
+            this.btnPDFG.TabIndex = 45;
+            this.btnPDFG.TabStop = false;
+            this.btnPDFG.Text = "PDF";
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.txtNombreM);
-            this.panel3.Location = new System.Drawing.Point(307, 3);
+            this.panel3.Controls.Add(this.txtBuscar);
+            this.panel3.Location = new System.Drawing.Point(147, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(146, 50);
-            this.panel3.TabIndex = 2;
+            this.panel3.Size = new System.Drawing.Size(200, 35);
+            this.panel3.TabIndex = 47;
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoEllipsis = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 5);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(5, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 12);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Nombre de Medicamento";
+            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Buscar";
             // 
-            // txtNombreM
+            // txtBuscar
             // 
-            this.txtNombreM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombreM.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNombreM.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.txtNombreM.Location = new System.Drawing.Point(6, 21);
-            this.txtNombreM.Name = "txtNombreM";
-            this.txtNombreM.Size = new System.Drawing.Size(134, 22);
-            this.txtNombreM.TabIndex = 18;
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBuscar.Location = new System.Drawing.Point(54, 6);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(143, 23);
+            this.txtBuscar.TabIndex = 53;
             // 
-            // panel4
+            // label1
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.txtPrecioM);
-            this.panel4.Location = new System.Drawing.Point(3, 59);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(146, 50);
-            this.panel4.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(135, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 17);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Filas";
             // 
-            // label3
+            // cmbEntradas
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoEllipsis = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 12);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Precio Unitario";
+            this.cmbEntradas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEntradas.FormattingEnabled = true;
+            this.cmbEntradas.Location = new System.Drawing.Point(61, 10);
+            this.cmbEntradas.Name = "cmbEntradas";
+            this.cmbEntradas.Size = new System.Drawing.Size(74, 23);
+            this.cmbEntradas.TabIndex = 27;
             // 
-            // txtPrecioM
+            // lblTitlePnl
             // 
-            this.txtPrecioM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPrecioM.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPrecioM.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.txtPrecioM.Location = new System.Drawing.Point(6, 21);
-            this.txtPrecioM.Name = "txtPrecioM";
-            this.txtPrecioM.Size = new System.Drawing.Size(134, 22);
-            this.txtPrecioM.TabIndex = 18;
+            this.lblTitlePnl.AutoSize = true;
+            this.lblTitlePnl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlePnl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTitlePnl.Location = new System.Drawing.Point(5, 12);
+            this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblTitlePnl.Name = "lblTitlePnl";
+            this.lblTitlePnl.Size = new System.Drawing.Size(56, 17);
+            this.lblTitlePnl.TabIndex = 26;
+            this.lblTitlePnl.Text = "Mostrar";
             // 
-            // panel5
+            // panel1
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.dtaVtoM);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(155, 59);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(146, 50);
-            this.panel5.TabIndex = 4;
+            this.panel1.Controls.Add(this.lblTotalRow);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 286);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(589, 52);
+            this.panel1.TabIndex = 19;
             // 
-            // dtaVtoM
+            // lblTotalRow
             // 
-            this.dtaVtoM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtaVtoM.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.dtaVtoM.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtaVtoM.Location = new System.Drawing.Point(6, 21);
-            this.dtaVtoM.Name = "dtaVtoM";
-            this.dtaVtoM.Size = new System.Drawing.Size(134, 22);
-            this.dtaVtoM.TabIndex = 18;
+            this.lblTotalRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalRow.AutoSize = true;
+            this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTotalRow.Location = new System.Drawing.Point(477, 6);
+            this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblTotalRow.Name = "lblTotalRow";
+            this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
+            this.lblTotalRow.TabIndex = 35;
+            this.lblTotalRow.Text = "Filas Totales: n";
             // 
-            // label4
+            // button3
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoEllipsis = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 12);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Vencimiento";
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(11)))), ((int)(((byte)(53)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(230, 4);
+            this.button3.MaximumSize = new System.Drawing.Size(97, 46);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 45);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "Eliminar";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // panel6
+            // button2
             // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.comboBox1);
-            this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(307, 59);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(146, 50);
-            this.panel6.TabIndex = 5;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(153)))), ((int)(((byte)(72)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(184)))), ((int)(((byte)(89)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(120, 4);
+            this.button2.MaximumSize = new System.Drawing.Size(97, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 45);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Modificar";
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // button1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 21);
-            this.comboBox1.TabIndex = 18;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(11, 4);
+            this.button1.MaximumSize = new System.Drawing.Size(97, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 45);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Agregar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // medicamentoModelTableAdapter
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoEllipsis = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 12);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Proveedor";
+            this.medicamentoModelTableAdapter.ClearBeforeFill = true;
+            // 
+            // asdfasdfToolStripMenuItem
+            // 
+            this.asdfasdfToolStripMenuItem.Name = "asdfasdfToolStripMenuItem";
+            this.asdfasdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asdfasdfToolStripMenuItem.Text = "asdfasdf";
             // 
             // MedicamentosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 382);
+            this.ClientSize = new System.Drawing.Size(589, 338);
             this.Controls.Add(this.pnlForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MedicamentosForm";
@@ -580,29 +645,19 @@
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.Medicamentos_Load);
             this.pnlForm.ResumeLayout(false);
-            this.tcInformation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtaViewMedicamentos)).EndInit();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.grpMedicamentos.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlForm.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicineList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMedicine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewSGF)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -610,48 +665,48 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlForm;
-        private System.Windows.Forms.TabControl tcInformation;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.DataGridView dtaViewMedicamentos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaCodB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaLote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNameMedicamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaVencimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreCat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNombreEst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaSector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtaNumEst;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox grpMedicamentos;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtCodM;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtLoteM;
+        private System.Windows.Forms.ComboBox cmbEntradas;
+        private System.Windows.Forms.Label lblTitlePnl;
+        private ViewSGF viewSGF;
+        private System.Windows.Forms.BindingSource bindingSourceMedicine;
+        private ViewSGFTableAdapters.VistaInventarioMedicamentoTableAdapter medicamentoModelTableAdapter;
+        private Zuby.ADGV.AdvancedDataGridView dgvMedicineList;
+        private System.Windows.Forms.Label lblTotalRow;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI.WinForms.GunaButton btnExcelG;
+        private Guna.UI.WinForms.GunaButton btnPrintG;
+        private Guna.UI.WinForms.GunaButton btnPDFG;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNombreM;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtPrecioM;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DateTimePicker dtaVtoM;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripDropDownButton tsdMostrarCol;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCod;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNumL;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNombreM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCantidadM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVencimientoM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNombreC;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNombreE;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSectorE;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNumeroE;
+        private System.Windows.Forms.ToolStripMenuItem asdfasdfToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCantidadM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcVtoM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSectorE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumeroE;
     }
 }

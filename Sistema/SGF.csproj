@@ -163,6 +163,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaGestionFarmaceuticaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SistemaGestionFarmaceuticaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGestionFarmaceuticaDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Views\CategoriaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +315,17 @@
     </None>
     <None Include="SistemaGestionFarmaceuticaDataSet.xss">
       <DependentUpon>SistemaGestionFarmaceuticaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGestionFarmaceuticaDataSet1.xsc">
+      <DependentUpon>SistemaGestionFarmaceuticaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGestionFarmaceuticaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGestionFarmaceuticaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGestionFarmaceuticaDataSet1.xss">
+      <DependentUpon>SistemaGestionFarmaceuticaDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

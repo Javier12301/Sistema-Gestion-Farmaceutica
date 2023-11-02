@@ -175,6 +175,9 @@ WHERE CategoriaID = CategoriaID;
 
 SELECT * FROM VistaInventarioMedicamento;
 
+-- Crear un view para mostrar datos de inventarios de medicamentos, que se vea código, lote, descripción, cantidad, vencimiento, categoría, nombre estante, sector y número de estante
+
+
 --CREATE VIEW VistaInventarioMedicamento AS
 --SELECT
 --    CodigosDeBarrasModel.CodigoDeBarras AS Codigo,

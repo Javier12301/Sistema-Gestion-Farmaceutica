@@ -358,6 +358,13 @@
         QmCC
 </value>
   </data>
+  <data name="btnMenuG.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAD9JREFUaEPt17ENACAQA7Hff2loGAGJENkbXJcMALy0yghK1xcEAMC/zqarISid
+        PwQAQI6z6WoISucPAcA1MxvJ4rbIEd94OQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="pcbUser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -791,13 +798,6 @@
         iTN+htqEiJIDBonIW4rGHPVLOVEozx8wfHxev6rlUkjPye3Zf0tO1973SXF9Lruyy9+yKjq9n1XecXdW
         WeWnmaUVX2SWlH2VUVT6TUZhyb/kk/Z/9Lfz9Jy877Q4p2VkRma7U/pvjenf9DX62sh75L26DF2WLjOy
         bFmHrkvXqevWbdBt0W3KHzh8ghT2iuLx0w5B+0BEXmL+z/8PQ2AmKbtJTX8AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnMenuG.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAD9JREFUaEPt17ENACAQA7Hff2loGAGJENkbXJcMALy0yghK1xcEAMC/zqarISid
-        PwQAQI6z6WoISucPAcA1MxvJ4rbIEd94OQAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

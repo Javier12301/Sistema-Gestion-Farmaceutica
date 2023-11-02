@@ -31,13 +31,16 @@ namespace Sistema.Vista
 
         private void Medicamentos_Load(object sender, EventArgs e)
         {
-        
-            // Cargar combobox filtros
-            //cargarFiltros();
+            // TODO: esta línea de código carga datos en la tabla 'viewSGF.VistaInventarioMedicamento' Puede moverla o quitarla según sea necesario.
+            this.medicamentoModelTableAdapter.Fill(this.viewSGF.VistaInventarioMedicamento);
             // Cargar datos en el datagridview
             loadMedicine();
             // Establecer nuevo tamaño al formulario
             this.Size = new Size(573, 299);
+            // Establecer tamaño de botones de imprimir, pdf y excel
+            btnExcelG.Size = new Size(73, 32);
+            btnPrintG.Size = new Size(90, 32);
+            btnPDFG.Size = new Size(71, 32);
             // MENSAJE PARA FUTURO, CREAR UN FILTRO QUE PERMITA AGRANDAR EL DATAGRIDVIEW CON DATOS DE LOS MEDICAMENTOS
             // CON ESTO SE LOGRARÁ OPTIMIZAR EL TAMAÑO DEL FORMULARIO
         }
@@ -45,7 +48,6 @@ namespace Sistema.Vista
         // Cargar datos en el datagridview
 
 
-        private BindingSource bindingSourceMedicine;
 
         private void loadMedicine()
         {
@@ -56,23 +58,23 @@ namespace Sistema.Vista
 
                 // configurar las columnas del datagridview
                 //FALTA ARREGLAR LOTE, TIRA EL LOTE ID, NO NÚMERO DE LOTE
-                dtaLote.DataPropertyName = "Lote";
-                dtaNameMedicamento.DataPropertyName = "Medicamento";
-                dtaStock.DataPropertyName = "Cantidad";
-                dtaVencimiento.DataPropertyName = "Vencimiento";
-                // configurar columnas de CategoriaForm y Estante
-                // CategoriaForm
-                dtaNombreCat.DataPropertyName = "Categoria";
-                // EstantesForm
-                dtaNombreEst.DataPropertyName = "Estante";
-                dtaSector.DataPropertyName = "Sector";
-                dtaNumEst.DataPropertyName = "NumEstante";
-                // Se asigna el binding source al datagridview
-                dtaViewMedicamentos.DataSource = bindingSourceMedicine;
+                //dtaLote.DataPropertyName = "Lote";
+                //dtaNameMedicamento.DataPropertyName = "Medicamento";
+                //dtaStock.DataPropertyName = "Cantidad";
+                //dtaVencimiento.DataPropertyName = "Vencimiento";
+                //// configurar columnas de CategoriaForm y Estante
+                //// CategoriaForm
+                //dtaNombreCat.DataPropertyName = "Categoria";
+                //// EstantesForm
+                //dtaNombreEst.DataPropertyName = "Estante";
+                //dtaSector.DataPropertyName = "Sector";
+                //dtaNumEst.DataPropertyName = "NumEstante";
+                //// Se asigna el binding source al datagridview
+                //dtaViewMedicamentos.DataSource = bindingSourceMedicine;
                 // Se esconde los campos que no se quieren mostrar
 
                 // Verificar datagridview vacio
-                controladora.CheckEmptyDataGridView(dtaViewMedicamentos, "dtaLote");
+                //controladora.CheckEmptyDataGridView(dtaViewMedicamentos, "dtaLote");
             }
             catch (Exception ex)
             {
@@ -138,11 +140,84 @@ namespace Sistema.Vista
             formAgregarMedicamento.FormClosed += formAgregarMedicamento_FormClosed;
             formAgregarMedicamento.ShowDialog();
         }
-
+      
+        
+        // // // // INTERFAZ // // // //
         private void formAgregarMedicamento_FormClosed(object sender, FormClosedEventArgs e)
         {/*
             cargarDatosMedicamentos();*/
         }
 
+        private void tsmiButtons_Click(object sender, EventArgs e)
+        {
+            // variable del toolstripmenuitem que fue clickeado
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            // poner el item en checked o unchecked si ya está seleccionado
+            item.Checked = !item.Checked;
+            
+        }
+
+        private void tsmiButtons_CheckedChanged(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            // se hará un switch para saber que item fue seleccionado y dependiendo si está checked o no, se desactivará su datagridview
+            // en los case pon estos tag de item: codigoTAG loteTAG nombreMTAG cantidadMTAG vencimientoMTAG nombreETAG nombreCTAG sectorETAG numeroETAG
+            switch (item.Tag)
+            {
+                case "codigoTAG":
+                    dgvMedicineList.Columns[0].Visible = item.Checked;
+                    break;
+                case "loteTAG":
+                    dgvMedicineList.Columns[1].Visible = item.Checked;
+                    break;
+                case "nombreMTAG":
+                    dgvMedicineList.Columns[2].Visible = item.Checked;
+                    break;
+                case "cantidadMTAG":
+                    dgvMedicineList.Columns[3].Visible = item.Checked;
+                    break;
+                case "vencimientoMTAG":
+                    dgvMedicineList.Columns[4].Visible = item.Checked;
+                    break;
+                case "nombreETAG":
+                    dgvMedicineList.Columns[5].Visible = item.Checked;
+                    break;
+                case "nombreCTAG":
+                    dgvMedicineList.Columns[6].Visible = item.Checked;
+                    break;
+                case "sectorETAG":
+                    dgvMedicineList.Columns[7].Visible = item.Checked;
+                    break;
+                case "numeroETAG":
+                    dgvMedicineList.Columns[8].Visible = item.Checked;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+
+
+
+        private void dgvMedicineList_SortStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.SortEventArgs e)
+        {
+            bindingSourceMedicine.Sort = dgvMedicineList.SortString;
+        }
+
+        private void dgvMedicineList_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
+        {
+            bindingSourceMedicine.Filter = dgvMedicineList.FilterString;
+        }
+
+        private void bindingSourceMedicine_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            lblTotalRow.Text = "Total de Medicamentos: " + bindingSourceMedicine.List.Count;
+        }
+
+        
+
+
+        // // // // INTERFAZ // // // //
     }
 }

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ViewSGF" targetNamespace="http://tempuri.org/SistemaGestionFarmaceuticaDataSet1.xsd" xmlns:mstns="http://tempuri.org/SistemaGestionFarmaceuticaDataSet1.xsd" xmlns="http://tempuri.org/SistemaGestionFarmaceuticaDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SistemaGestionFarmaceuticaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SistemaGestionFarmaceuticaConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Sistema.Properties.Settings.GlobalReference.Default.SistemaGestionFarmaceuticaConnectionString1" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VistaInventarioMedicamentoTableAdapter" GeneratorDataComponentClassName="VistaInventarioMedicamentoTableAdapter" Name="VistaInventarioMedicamento" UserDataComponentName="VistaInventarioMedicamentoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SistemaGestionFarmaceuticaConnectionString1 (Settings)" DbObjectName="SistemaGestionFarmaceutica.dbo.VistaInventarioMedicamento" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Codigo, Lote, Descripcion, Cantidad, Vencimiento, Categoria, [Nombre estante], Sector, [Numero estante] FROM dbo.VistaInventarioMedicamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Lote" DataSetColumn="Lote" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
+              <Mapping SourceColumn="Vencimiento" DataSetColumn="Vencimiento" />
+              <Mapping SourceColumn="Categoria" DataSetColumn="Categoria" />
+              <Mapping SourceColumn="Nombre estante" DataSetColumn="Nombre estante" />
+              <Mapping SourceColumn="Sector" DataSetColumn="Sector" />
+              <Mapping SourceColumn="Numero estante" DataSetColumn="Numero estante" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ViewSGF" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ViewSGF" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ViewSGF">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VistaInventarioMedicamento" msprop:Generator_RowClassName="VistaInventarioMedicamentoRow" msprop:Generator_RowEvHandlerName="VistaInventarioMedicamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="VistaInventarioMedicamentoRowDeleted" msprop:Generator_RowDeletingName="VistaInventarioMedicamentoRowDeleting" msprop:Generator_RowEvArgName="VistaInventarioMedicamentoRowChangeEvent" msprop:Generator_TablePropName="VistaInventarioMedicamento" msprop:Generator_RowChangedName="VistaInventarioMedicamentoRowChanged" msprop:Generator_UserTableName="VistaInventarioMedicamento" msprop:Generator_RowChangingName="VistaInventarioMedicamentoRowChanging" msprop:Generator_TableClassName="VistaInventarioMedicamentoDataTable" msprop:Generator_TableVarName="tableVistaInventarioMedicamento">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnPropNameInTable="LoteColumn" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" type="xs:int" />
+              <xs:element name="Vencimiento" msprop:Generator_UserColumnName="Vencimiento" msprop:Generator_ColumnPropNameInTable="VencimientoColumn" msprop:Generator_ColumnPropNameInRow="Vencimiento" msprop:Generator_ColumnVarNameInTable="columnVencimiento" type="xs:dateTime" />
+              <xs:element name="Categoria" msprop:Generator_UserColumnName="Categoria" msprop:Generator_ColumnPropNameInTable="CategoriaColumn" msprop:Generator_ColumnPropNameInRow="Categoria" msprop:Generator_ColumnVarNameInTable="columnCategoria">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_x0020_estante" msprop:Generator_UserColumnName="Nombre estante" msprop:Generator_ColumnPropNameInTable="Nombre_estanteColumn" msprop:Generator_ColumnPropNameInRow="Nombre_estante" msprop:Generator_ColumnVarNameInTable="columnNombre_estante">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sector" msprop:Generator_UserColumnName="Sector" msprop:Generator_ColumnPropNameInTable="SectorColumn" msprop:Generator_ColumnPropNameInRow="Sector" msprop:Generator_ColumnVarNameInTable="columnSector">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Numero_x0020_estante" msprop:Generator_UserColumnName="Numero estante" msprop:Generator_ColumnPropNameInTable="Numero_estanteColumn" msprop:Generator_ColumnPropNameInRow="Numero_estante" msprop:Generator_ColumnVarNameInTable="columnNumero_estante" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

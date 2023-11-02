@@ -33,5 +33,16 @@ namespace Sistema.Properties {
                 return ((string)(this["SistemaGestionFarmaceuticaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=SistemaGestionFarmaceutica;Integrated Secur" +
+            "ity=True")]
+        public string SistemaGestionFarmaceuticaConnectionString1 {
+            get {
+                return ((string)(this["SistemaGestionFarmaceuticaConnectionString1"]));
+            }
+        }
     }
 }
