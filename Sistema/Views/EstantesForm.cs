@@ -54,7 +54,29 @@ namespace Sistema.Vista
 
         private void loadShelvesData()
         {
+            try
+            {
             this.estantesModelTableAdapter.Fill(this.sistemaGestionFarmaceuticaDataSet.EstantesModel);
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
         }
 
         // // // // // Funciones de botones // // // // //

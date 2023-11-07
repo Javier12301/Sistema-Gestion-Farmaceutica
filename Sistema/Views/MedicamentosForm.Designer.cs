@@ -65,13 +65,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbEntradas = new System.Windows.Forms.ComboBox();
+            this.cmbFilas = new System.Windows.Forms.ComboBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.lblTotalRow = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.medicamentoModelTableAdapter = new Sistema.ViewSGFTableAdapters.VistaInventarioMedicamentoTableAdapter();
             this.asdfasdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlForm.SuspendLayout();
@@ -83,6 +84,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlForm
@@ -147,7 +149,7 @@
             this.tsmiCod.Checked = true;
             this.tsmiCod.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiCod.Name = "tsmiCod";
-            this.tsmiCod.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCod.Size = new System.Drawing.Size(175, 22);
             this.tsmiCod.Tag = "codigoTAG";
             this.tsmiCod.Text = "Código";
             this.tsmiCod.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -158,7 +160,7 @@
             this.tsmiNumL.Checked = true;
             this.tsmiNumL.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNumL.Name = "tsmiNumL";
-            this.tsmiNumL.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNumL.Size = new System.Drawing.Size(175, 22);
             this.tsmiNumL.Tag = "loteTAG";
             this.tsmiNumL.Text = "Lote";
             this.tsmiNumL.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -169,7 +171,7 @@
             this.tsmiNombreM.Checked = true;
             this.tsmiNombreM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNombreM.Name = "tsmiNombreM";
-            this.tsmiNombreM.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNombreM.Size = new System.Drawing.Size(175, 22);
             this.tsmiNombreM.Tag = "nombreMTAG";
             this.tsmiNombreM.Text = "Nombre";
             this.tsmiNombreM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -180,7 +182,7 @@
             this.tsmiCantidadM.Checked = true;
             this.tsmiCantidadM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiCantidadM.Name = "tsmiCantidadM";
-            this.tsmiCantidadM.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCantidadM.Size = new System.Drawing.Size(175, 22);
             this.tsmiCantidadM.Tag = "cantidadMTAG";
             this.tsmiCantidadM.Text = "Cantidad";
             this.tsmiCantidadM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -191,7 +193,7 @@
             this.tsmiVencimientoM.Checked = true;
             this.tsmiVencimientoM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiVencimientoM.Name = "tsmiVencimientoM";
-            this.tsmiVencimientoM.Size = new System.Drawing.Size(180, 22);
+            this.tsmiVencimientoM.Size = new System.Drawing.Size(175, 22);
             this.tsmiVencimientoM.Tag = "vencimientoMTAG";
             this.tsmiVencimientoM.Text = "Vencimiento";
             this.tsmiVencimientoM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -202,7 +204,7 @@
             this.tsmiNombreE.Checked = true;
             this.tsmiNombreE.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNombreE.Name = "tsmiNombreE";
-            this.tsmiNombreE.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNombreE.Size = new System.Drawing.Size(175, 22);
             this.tsmiNombreE.Tag = "nombreETAG";
             this.tsmiNombreE.Text = "Nombre de Estante";
             this.tsmiNombreE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -213,7 +215,7 @@
             this.tsmiNombreC.Checked = true;
             this.tsmiNombreC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNombreC.Name = "tsmiNombreC";
-            this.tsmiNombreC.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNombreC.Size = new System.Drawing.Size(175, 22);
             this.tsmiNombreC.Tag = "nombreCTAG";
             this.tsmiNombreC.Text = "Categoría";
             this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -224,7 +226,7 @@
             this.tsmiSectorE.Checked = true;
             this.tsmiSectorE.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiSectorE.Name = "tsmiSectorE";
-            this.tsmiSectorE.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSectorE.Size = new System.Drawing.Size(175, 22);
             this.tsmiSectorE.Tag = "sectorETAG";
             this.tsmiSectorE.Text = "Sector";
             this.tsmiSectorE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -235,7 +237,7 @@
             this.tsmiNumeroE.Checked = true;
             this.tsmiNumeroE.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNumeroE.Name = "tsmiNumeroE";
-            this.tsmiNumeroE.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNumeroE.Size = new System.Drawing.Size(175, 22);
             this.tsmiNumeroE.Tag = "numeroETAG";
             this.tsmiNumeroE.Text = "Numero de Estante";
             this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
@@ -374,7 +376,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.cmbEntradas);
+            this.panel2.Controls.Add(this.cmbFilas);
             this.panel2.Controls.Add(this.lblTitlePnl);
             this.panel2.Location = new System.Drawing.Point(12, 35);
             this.panel2.Name = "panel2";
@@ -411,7 +413,7 @@
             this.btnExcelG.ImageSize = new System.Drawing.Size(20, 20);
             this.btnExcelG.Location = new System.Drawing.Point(3, 3);
             this.btnExcelG.Name = "btnExcelG";
-            this.btnExcelG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnExcelG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
             this.btnExcelG.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnExcelG.OnHoverForeColor = System.Drawing.Color.White;
             this.btnExcelG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnExcelG.OnHoverImage")));
@@ -438,11 +440,11 @@
             this.btnPrintG.ImageSize = new System.Drawing.Size(20, 20);
             this.btnPrintG.Location = new System.Drawing.Point(51, 3);
             this.btnPrintG.Name = "btnPrintG";
-            this.btnPrintG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnPrintG.OnHoverBaseColor = System.Drawing.Color.Orange;
             this.btnPrintG.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnPrintG.OnHoverForeColor = System.Drawing.Color.White;
             this.btnPrintG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrintG.OnHoverImage")));
-            this.btnPrintG.OnPressedColor = System.Drawing.Color.Green;
+            this.btnPrintG.OnPressedColor = System.Drawing.Color.DarkOrange;
             this.btnPrintG.Radius = 10;
             this.btnPrintG.Size = new System.Drawing.Size(42, 32);
             this.btnPrintG.TabIndex = 46;
@@ -465,11 +467,11 @@
             this.btnPDFG.ImageSize = new System.Drawing.Size(22, 22);
             this.btnPDFG.Location = new System.Drawing.Point(99, 3);
             this.btnPDFG.Name = "btnPDFG";
-            this.btnPDFG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnPDFG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnPDFG.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnPDFG.OnHoverForeColor = System.Drawing.Color.White;
             this.btnPDFG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPDFG.OnHoverImage")));
-            this.btnPDFG.OnPressedColor = System.Drawing.Color.Green;
+            this.btnPDFG.OnPressedColor = System.Drawing.Color.DarkRed;
             this.btnPDFG.Radius = 10;
             this.btnPDFG.Size = new System.Drawing.Size(42, 32);
             this.btnPDFG.TabIndex = 45;
@@ -521,14 +523,14 @@
             this.label1.TabIndex = 28;
             this.label1.Text = "Filas";
             // 
-            // cmbEntradas
+            // cmbFilas
             // 
-            this.cmbEntradas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEntradas.FormattingEnabled = true;
-            this.cmbEntradas.Location = new System.Drawing.Point(61, 10);
-            this.cmbEntradas.Name = "cmbEntradas";
-            this.cmbEntradas.Size = new System.Drawing.Size(74, 23);
-            this.cmbEntradas.TabIndex = 27;
+            this.cmbFilas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFilas.FormattingEnabled = true;
+            this.cmbFilas.Location = new System.Drawing.Point(61, 10);
+            this.cmbFilas.Name = "cmbFilas";
+            this.cmbFilas.Size = new System.Drawing.Size(74, 23);
+            this.cmbFilas.TabIndex = 27;
             // 
             // lblTitlePnl
             // 
@@ -544,84 +546,95 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblTotalRow);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnModificar);
+            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 286);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(589, 52);
             this.panel1.TabIndex = 19;
             // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel4.Controls.Add(this.lblTotalRow);
+            this.panel4.Location = new System.Drawing.Point(445, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(134, 36);
+            this.panel4.TabIndex = 38;
+            // 
             // lblTotalRow
             // 
-            this.lblTotalRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalRow.AutoEllipsis = true;
             this.lblTotalRow.AutoSize = true;
             this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTotalRow.Location = new System.Drawing.Point(477, 6);
+            this.lblTotalRow.Location = new System.Drawing.Point(10, 6);
             this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblTotalRow.Name = "lblTotalRow";
-            this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
-            this.lblTotalRow.TabIndex = 35;
-            this.lblTotalRow.Text = "Filas Totales: n";
+            this.lblTotalRow.Size = new System.Drawing.Size(122, 19);
+            this.lblTotalRow.TabIndex = 36;
+            this.lblTotalRow.Text = "Filas Totales: 1000";
             // 
-            // button3
+            // btnEliminar
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(11)))), ((int)(((byte)(53)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(230, 4);
-            this.button3.MaximumSize = new System.Drawing.Size(97, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 45);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Eliminar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(11)))), ((int)(((byte)(53)))));
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminar.Location = new System.Drawing.Point(230, 4);
+            this.btnEliminar.MaximumSize = new System.Drawing.Size(97, 46);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(97, 45);
+            this.btnEliminar.TabIndex = 20;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnModificar
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(153)))), ((int)(((byte)(72)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(184)))), ((int)(((byte)(89)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(120, 4);
-            this.button2.MaximumSize = new System.Drawing.Size(97, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 45);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
+            this.btnModificar.FlatAppearance.BorderSize = 0;
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(153)))), ((int)(((byte)(72)))));
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(184)))), ((int)(((byte)(89)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModificar.Location = new System.Drawing.Point(120, 4);
+            this.btnModificar.MaximumSize = new System.Drawing.Size(97, 46);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(97, 45);
+            this.btnModificar.TabIndex = 19;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAgregar
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(11, 4);
-            this.button1.MaximumSize = new System.Drawing.Size(97, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 45);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(11, 4);
+            this.btnAgregar.MaximumSize = new System.Drawing.Size(97, 46);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(97, 45);
+            this.btnAgregar.TabIndex = 18;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
             // 
             // medicamentoModelTableAdapter
             // 
@@ -657,7 +670,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -666,18 +680,17 @@
 
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbEntradas;
+        private System.Windows.Forms.ComboBox cmbFilas;
         private System.Windows.Forms.Label lblTitlePnl;
         private ViewSGF viewSGF;
         private System.Windows.Forms.BindingSource bindingSourceMedicine;
         private ViewSGFTableAdapters.VistaInventarioMedicamentoTableAdapter medicamentoModelTableAdapter;
         private Zuby.ADGV.AdvancedDataGridView dgvMedicineList;
-        private System.Windows.Forms.Label lblTotalRow;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI.WinForms.GunaButton btnExcelG;
         private Guna.UI.WinForms.GunaButton btnPrintG;
@@ -708,5 +721,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSectorE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumeroE;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblTotalRow;
     }
 }

@@ -1,54 +1,27 @@
 use SistemaGestionFarmaceutica;
 
--- Eliminar la tabla CodigosDeBarrasModel
-DROP TABLE IF EXISTS CodigosDeBarrasModel;
-
--- Eliminar la tabla ProductosModel
-DROP TABLE IF EXISTS ProductosModel;
-
--- Eliminar la tabla MedicamentosModel
-DROP TABLE IF EXISTS MedicamentosModel;
-
--- Eliminar la tabla LotesModel
-DROP TABLE IF EXISTS LotesModel;
-
--- Eliminar la tabla CategoriasModel
-DROP TABLE IF EXISTS CategoriasModel;
-
--- Eliminar la tabla EstantesModel
-DROP TABLE IF EXISTS EstantesModel;
-
--- Deshabilitar Identity, por ejemplo
--- Deshabilitar la propiedad IDENTITY
-SET IDENTITY_INSERT ProveedoresModel ON;
--- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT ProveedoresModel OFF;
-
-
-
 -- Tabla para almacenar información sobre estantes en el inventario
 CREATE TABLE EstantesModel(
 	EstanteID INT IDENTITY(1,1) PRIMARY KEY,      -- Clave primaria autonumérica
-	Nombre NVARCHAR(255) NOT NULL,               -- Nombre del estante
-	Numero_de_estante INT NOT NULL,              -- Número de estante
-	Sector NVARCHAR(255) NOT NULL                -- Sector del estante
+	NombreEstante NVARCHAR(255) NOT NULL,               -- Nombre del estante
+	NumeroEstante INT NOT NULL,              -- Número de estante
+	SectorEstante NVARCHAR(255) NOT NULL                -- Sector del estante
 );
+
 
 -- Tabla para almacenar información sobre categorías de productos y medicamentos
 CREATE TABLE CategoriasModel(
-	CategoriaID INT IDENTITY(0,1) PRIMARY KEY,    -- Clave primaria autonumérica
-	Nombre NVARCHAR(255) NOT NULL,               -- Nombre de la categoría
-	Descripcion NVARCHAR(255) NOT NULL          -- Descripción de la categoría
+	CategoriaID INT IDENTITY(1,1) PRIMARY KEY,    -- Clave primaria autonumérica
+	NombreCategoria NVARCHAR(255) NOT NULL,               -- Nombre de la categoría
+	DescripcionCategoria NVARCHAR(255) NOT NULL          -- Descripción de la categoría
 );
-
-
 
 -- Tabla para almacenar información sobre proveedores o droguerías
 CREATE TABLE ProveedoresModel(
 	ProveedorID INT IDENTITY(1,1) PRIMARY KEY,   -- Clave primaria autonumérica
-	Nombre NVARCHAR(255) NOT NULL,               -- Nombre del proveedor
-	Direccion NVARCHAR(255) NOT NULL,            -- Dirección del proveedor
-	Telefono NVARCHAR(20) NOT NULL               -- Teléfono del proveedor
+	NombreProveedor NVARCHAR(255) NOT NULL,               -- Nombre del proveedor
+	DireccionProveedor NVARCHAR(255) NOT NULL,            -- Dirección del proveedor
+	TelefonoProveedor NVARCHAR(20) NOT NULL               -- Teléfono del proveedor
 );
 
 -- -- -- -- -- -- Productos y Medicamentos -- -- -- -- -- --
@@ -77,20 +50,17 @@ CREATE TABLE MedicamentosModel(
 	CodigoID INT FOREIGN KEY REFERENCES CodigosDeBarrasModel(CodigoID)   -- Clave externa que se relaciona con la tabla de códigos de barras
 );
 
--- -- -- -- -- -- Tablas de Relaciones de Medicamentos con Lotes y Proveedores -- -- -- -- -- --
--- Tabla para relacionar medicamentos con sus lotes
-CREATE TABLE MedicamentosLotesModel(
-	MedicamentoLoteID INT IDENTITY(1,1) PRIMARY KEY,  -- Clave primaria autonumérica
-	LoteID INT FOREIGN KEY REFERENCES LotesModel(LoteID),           -- Clave externa que se relaciona con la tabla de lotes
-	MedicamentoID INT FOREIGN KEY REFERENCES MedicamentosModel(MedicamentoID) -- Clave externa que se relaciona con la tabla de medicamentos
+CREATE TABLE MedicamentosModel(
+    MedicamentoID INT IDENTITY(1,1) PRIMARY KEY,
+    EstanteID INT FOREIGN KEY REFERENCES EstantesModel(EstanteID),
+    CategoriaID INT FOREIGN KEY REFERENCES CategoriasModel(CategoriaID),
+	ProveedoresID INT FOREIGN KEY REFERENCES ProveedoresModel(ProveedoresID),
+	CodigoBarrasProductoID INT FOREIGN KEY REFERENCES CodigosDeBarrasModel(CodigoID),
+	PrecioProductoID INT FOREIGN KEY REFERENCES PrecioProductoModel(PrecioProductoID),
+	CostoProductoID INT FOREIGN KEY REFERENCES CostoProductoModel(CostoProductoID),
+    LoteID INT FOREIGN KEY REFERENCES LotesModel(LoteID) -- Agregada columna para el número de lote
 );
 
--- Tabla para relacionar medicamentos con sus proveedores
-CREATE TABLE MedicamentosProveedoresModel(
-	MedicamentoProveedorID INT IDENTITY(1,1) PRIMARY KEY,  -- Clave primaria autonumérica
-	MedicamentoID INT FOREIGN KEY REFERENCES MedicamentosModel(MedicamentoID), -- Clave externa que se relaciona con la tabla de medicamentos
-	ProveedorID INT FOREIGN KEY REFERENCES ProveedoresModel(ProveedorID)       -- Clave externa que se relaciona con la tabla de proveedores
-);
 
 -- Tabla para almacenar información sobre productos
 CREATE TABLE ProductosModel (
@@ -103,6 +73,23 @@ CREATE TABLE ProductosModel (
     CodigoID INT FOREIGN KEY REFERENCES CodigosDeBarrasModel(CodigoID)   -- Clave externa que se relaciona con la tabla de códigos de barras
 );
 
+--TABLAS DE ALMACENAMIENTO DE COSTO Y PRECIOS DE VENTA --
+CREATE TABLE CostoProductoModel (
+    CostoProductoID INT IDENTITY(1,1) PRIMARY KEY,
+    CostoProducto DECIMAL(10, 2) NOT NULL,
+    IVA DECIMAL(5, 2) NOT NULL,
+    CostoConIVA DECIMAL(10, 2) NOT NULL
+);
+
+-- Tabla para almacenar información de precios de venta
+CREATE TABLE PrecioProductoModel (
+    PrecioProductoID INT IDENTITY(1,1) PRIMARY KEY,
+    PrecioVenta DECIMAL(10, 2) NOT NULL,
+    Descuento DECIMAL(5, 2) NOT NULL,
+    IVA DECIMAL(5, 2) NOT NULL,
+    PrecioConIVA DECIMAL(10, 2) NOT NULL,
+);
+-- FIN DE TABLAS DE ALMACENAMIENTO DE COSTO Y PRECIOS DE VENTA --
 
 -- Tabla para registrar información sobre ventas
 CREATE TABLE VentasModel(
@@ -148,8 +135,7 @@ INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antiinflamatorios', '
 INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antipiréticos', 'Medicamentos para reducir la fiebre');
 INSERT INTO CategoriasModel (Nombre, Descripcion) VALUES ('Antihistamínicos', 'Medicamentos para aliviar alergias');
 
-INSERT INTO ProveedoresModel (ProveedorID, Nombre, Direccion, Telefono)
-VALUES (0, 'N/A', 'N/A', 'N/A');
+
 
 -- Crear un medicamento y relacionarlo con el lote
 INSERT INTO MedicamentosModel (EstanteID, CategoriaID, PrecioUnitario, CodigoID)

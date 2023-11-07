@@ -12,6 +12,8 @@ using Guna.UI.WinForms;
 using System.Data.SqlClient;
 using Sistema.Services;
 using Sistema.Models;
+using Sistema.Controles.Interfaz;
+using System.Data.Entity.Infrastructure;
 
 namespace Sistema.Vista
 {
@@ -22,6 +24,7 @@ namespace Sistema.Vista
         private EstanteLogica shelfLogic = new EstanteLogica();
         private MedicamentoLogica medicineLogic = new MedicamentoLogica();
         Controladora controladora = Controladora.GetInstance;
+        private MessageBoxManager messageManager = MessageBoxManager.GetInstance;
         private CacheManagerList cacheManagerList = new CacheManagerList();
 
         public MedicamentosForm()
@@ -32,7 +35,6 @@ namespace Sistema.Vista
         private void Medicamentos_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'viewSGF.VistaInventarioMedicamento' Puede moverla o quitarla según sea necesario.
-            this.medicamentoModelTableAdapter.Fill(this.viewSGF.VistaInventarioMedicamento);
             // Cargar datos en el datagridview
             loadMedicine();
             // Establecer nuevo tamaño al formulario
@@ -53,71 +55,28 @@ namespace Sistema.Vista
         {
             try
             {
-                //List<MedicamentosDetalle> medicineList = medicineLogic.GetAllMedicineDetails();
-                //bindingSourceMedicine = new BindingSource(medicineList, null);
-
-                // configurar las columnas del datagridview
-                //FALTA ARREGLAR LOTE, TIRA EL LOTE ID, NO NÚMERO DE LOTE
-                //dtaLote.DataPropertyName = "Lote";
-                //dtaNameMedicamento.DataPropertyName = "Medicamento";
-                //dtaStock.DataPropertyName = "Cantidad";
-                //dtaVencimiento.DataPropertyName = "Vencimiento";
-                //// configurar columnas de CategoriaForm y Estante
-                //// CategoriaForm
-                //dtaNombreCat.DataPropertyName = "Categoria";
-                //// EstantesForm
-                //dtaNombreEst.DataPropertyName = "Estante";
-                //dtaSector.DataPropertyName = "Sector";
-                //dtaNumEst.DataPropertyName = "NumEstante";
-                //// Se asigna el binding source al datagridview
-                //dtaViewMedicamentos.DataSource = bindingSourceMedicine;
-                // Se esconde los campos que no se quieren mostrar
-
-                // Verificar datagridview vacio
-                //controladora.CheckEmptyDataGridView(dtaViewMedicamentos, "dtaLote");
+                this.medicamentoModelTableAdapter.Fill(this.viewSGF.VistaInventarioMedicamento);
             }
-            catch (Exception ex)
+            catch (DbUpdateException)
             {
-                throw;
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
             }
-        }
-
-
-
-
-
-        private void cmbCheck_Changed(object sender, EventArgs e)
-        {
-            /*
-            GunaCheckBox check = (GunaCheckBox)sender;
-            if (check.Checked)
+            catch (SqlException)
             {
-                switch (check.Tag)
-                {
-                    case "categoriasTAG":
-                        cmbFilteCat.Enabled = true;
-                        break;
-                    case "estantesTAG":
-                        cmbFilterEst.Enabled = true;
-                        break;
-                    default:
-                        break;
-                }
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
             }
-            else
+            catch (Exception)
             {
-                switch (check.Tag)
-                {
-                    case "categoriasTAG":
-                        cmbFilteCat.Enabled = false;
-                        break;
-                    case "estantesTAG":
-                        cmbFilterEst.Enabled = false;
-                        break;
-                    default:
-                        break;
-                }
-            }*/
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
+
         }
 
         private void loadCMBData()
@@ -140,12 +99,11 @@ namespace Sistema.Vista
             formAgregarMedicamento.FormClosed += formAgregarMedicamento_FormClosed;
             formAgregarMedicamento.ShowDialog();
         }
-      
-        
+
         // // // // INTERFAZ // // // //
         private void formAgregarMedicamento_FormClosed(object sender, FormClosedEventArgs e)
-        {/*
-            cargarDatosMedicamentos();*/
+        {
+            
         }
 
         private void tsmiButtons_Click(object sender, EventArgs e)
@@ -212,10 +170,12 @@ namespace Sistema.Vista
 
         private void bindingSourceMedicine_ListChanged(object sender, ListChangedEventArgs e)
         {
-            lblTotalRow.Text = "Total de Medicamentos: " + bindingSourceMedicine.List.Count;
+            lblTotalRow.Text = "Filas Totales: " + bindingSourceMedicine.List.Count;
         }
 
         
+
+
 
 
         // // // // INTERFAZ // // // //
