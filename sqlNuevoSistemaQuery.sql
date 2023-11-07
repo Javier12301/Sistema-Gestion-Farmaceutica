@@ -1,28 +1,40 @@
 use SistemaGestionFarmaceutica;
 
 -- Tabla para almacenar información sobre estantes en el inventario
-CREATE TABLE EstantesModel(
-	EstanteID INT IDENTITY(1,1) PRIMARY KEY,      -- Clave primaria autonumérica
-	NombreEstante NVARCHAR(255) NOT NULL,               -- Nombre del estante
-	NumeroEstante INT NOT NULL,              -- Número de estante
-	SectorEstante NVARCHAR(255) NOT NULL                -- Sector del estante
+CREATE TABLE ESTANTE(
+	EstanteID INT IDENTITY PRIMARY KEY,      -- Clave primaria autonumérica
+	Nombre NVARCHAR(255) NOT NULL,               -- Nombre del estante
+	Numero INT NOT NULL,              -- Número de estante
+	Sector NVARCHAR(255) NOT NULL                -- Sector del estante
 );
 
 
 -- Tabla para almacenar información sobre categorías de productos y medicamentos
-CREATE TABLE CategoriasModel(
-	CategoriaID INT IDENTITY(1,1) PRIMARY KEY,    -- Clave primaria autonumérica
-	NombreCategoria NVARCHAR(255) NOT NULL,               -- Nombre de la categoría
-	DescripcionCategoria NVARCHAR(255) NOT NULL          -- Descripción de la categoría
+CREATE TABLE CATEGORIA(
+	CategoriaID INT IDENTITY PRIMARY KEY,    -- Clave primaria autonumérica
+	Nombre NVARCHAR(255) NOT NULL,               -- Nombre de la categoría
+	Descripcion NVARCHAR(255) NOT NULL          -- Descripción de la categoría
 );
 
 -- Tabla para almacenar información sobre proveedores o droguerías
-CREATE TABLE ProveedoresModel(
-	ProveedorID INT IDENTITY(1,1) PRIMARY KEY,   -- Clave primaria autonumérica
-	NombreProveedor NVARCHAR(255) NOT NULL,               -- Nombre del proveedor
-	DireccionProveedor NVARCHAR(255) NOT NULL,            -- Dirección del proveedor
-	TelefonoProveedor NVARCHAR(20) NOT NULL               -- Teléfono del proveedor
+CREATE TABLE PROVEEDOR(
+	ProveedorID INT IDENTITY PRIMARY KEY,   
+	RazonSocial VARCHAR(50),  
+	Documento VARCHAR(50),
+	Direccion VARCHAR(50),            
+	TelefonoProveedor VARCHAR(20),          	
+	Correo VARCHAR(50),
 );
+
+CREATE TABLE CLIENTE(
+	ClienteID INT IDENTITY PRIMARY KEY,   
+	RazonSocial VARCHAR(50),  
+	Documento VARCHAR(50),
+	Direccion VARCHAR(50),            
+	TelefonoProveedor VARCHAR(20),          	
+	Correo VARCHAR(50),
+);
+
 
 -- -- -- -- -- -- Productos y Medicamentos -- -- -- -- -- --
 -- Tabla para almacenar información sobre códigos de barras
@@ -99,6 +111,7 @@ CREATE TABLE VentasModel(
 	Cantidad INT NOT NULL,                                -- Cantidad vendida
 	FechaVenta DATE NOT NULL                             -- Fecha de la venta
 );
+
 
 
 

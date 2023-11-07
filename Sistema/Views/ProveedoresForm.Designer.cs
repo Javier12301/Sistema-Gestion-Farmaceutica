@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProveedoresForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTotalRow = new System.Windows.Forms.Label();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvSupplierList = new Zuby.ADGV.AdvancedDataGridView();
             this.dgvcSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,19 +45,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.proveedoresModelTableAdapter = new Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters.ProveedoresModelTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtTelefonoP = new Guna.UI.WinForms.GunaLineTextBox();
-            this.txtDireccionP = new Guna.UI.WinForms.GunaLineTextBox();
-            this.txtNombreP = new Guna.UI.WinForms.GunaLineTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTelefonoP_G = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtDocumentoP_G = new Guna.UI.WinForms.GunaLineTextBox();
+            this.lblDocumento = new System.Windows.Forms.Label();
+            this.txtCorreoP_G = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtDireccionP_G = new Guna.UI.WinForms.GunaLineTextBox();
+            this.txtNombreP_G = new Guna.UI.WinForms.GunaLineTextBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
             this.pctLineSeparator = new System.Windows.Forms.PictureBox();
-            this.lblNombreP = new System.Windows.Forms.Label();
+            this.lblRazonSocialP = new System.Windows.Forms.Label();
             this.lblDireccionP = new System.Windows.Forms.Label();
             this.lblTelefonoP = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.proveedoresModelTableAdapter = new Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters.ProveedoresModelTableAdapter();
-            this.lblTotalRow = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSupplier)).BeginInit();
@@ -85,6 +89,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(286, 325);
             this.panel2.TabIndex = 6;
+            // 
+            // lblTotalRow
+            // 
+            this.lblTotalRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalRow.AutoSize = true;
+            this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTotalRow.Location = new System.Drawing.Point(108, 298);
+            this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblTotalRow.Name = "lblTotalRow";
+            this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
+            this.lblTotalRow.TabIndex = 36;
+            this.lblTotalRow.Text = "Filas Totales: n";
             // 
             // btnModifyG
             // 
@@ -286,18 +303,26 @@
             this.lblTitle.Text = "Proveedores";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // proveedoresModelTableAdapter
+            // 
+            this.proveedoresModelTableAdapter.ClearBeforeFill = true;
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtTelefonoP);
-            this.panel1.Controls.Add(this.txtDireccionP);
-            this.panel1.Controls.Add(this.txtNombreP);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtTelefonoP_G);
+            this.panel1.Controls.Add(this.txtDocumentoP_G);
+            this.panel1.Controls.Add(this.lblDocumento);
+            this.panel1.Controls.Add(this.txtCorreoP_G);
+            this.panel1.Controls.Add(this.txtDireccionP_G);
+            this.panel1.Controls.Add(this.txtNombreP_G);
             this.panel1.Controls.Add(this.lblTitlePnl);
             this.panel1.Controls.Add(this.pctLineSeparator);
-            this.panel1.Controls.Add(this.lblNombreP);
+            this.panel1.Controls.Add(this.lblRazonSocialP);
             this.panel1.Controls.Add(this.lblDireccionP);
             this.panel1.Controls.Add(this.lblTelefonoP);
             this.panel1.Controls.Add(this.pnlButton);
@@ -306,49 +331,96 @@
             this.panel1.MinimumSize = new System.Drawing.Size(278, 270);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 286);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 37;
             // 
-            // txtTelefonoP
+            // label2
             // 
-            this.txtTelefonoP.BackColor = System.Drawing.Color.White;
-            this.txtTelefonoP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTelefonoP.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.txtTelefonoP.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtTelefonoP.LineColor = System.Drawing.Color.LightGray;
-            this.txtTelefonoP.Location = new System.Drawing.Point(4, 171);
-            this.txtTelefonoP.Name = "txtTelefonoP";
-            this.txtTelefonoP.PasswordChar = '\0';
-            this.txtTelefonoP.Size = new System.Drawing.Size(269, 26);
-            this.txtTelefonoP.TabIndex = 3;
-            this.txtTelefonoP.Enter += new System.EventHandler(this.txtTelefonoP_Enter);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(148, 100);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 15);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Teléfono (Opcional)";
             // 
-            // txtDireccionP
+            // txtTelefonoP_G
             // 
-            this.txtDireccionP.BackColor = System.Drawing.Color.White;
-            this.txtDireccionP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDireccionP.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.txtDireccionP.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDireccionP.LineColor = System.Drawing.Color.LightGray;
-            this.txtDireccionP.Location = new System.Drawing.Point(4, 117);
-            this.txtDireccionP.Name = "txtDireccionP";
-            this.txtDireccionP.PasswordChar = '\0';
-            this.txtDireccionP.Size = new System.Drawing.Size(269, 26);
-            this.txtDireccionP.TabIndex = 2;
-            this.txtDireccionP.Enter += new System.EventHandler(this.txtDireccionP_Enter);
+            this.txtTelefonoP_G.BackColor = System.Drawing.Color.White;
+            this.txtTelefonoP_G.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTelefonoP_G.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtTelefonoP_G.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTelefonoP_G.LineColor = System.Drawing.Color.LightGray;
+            this.txtTelefonoP_G.Location = new System.Drawing.Point(151, 117);
+            this.txtTelefonoP_G.Name = "txtTelefonoP_G";
+            this.txtTelefonoP_G.PasswordChar = '\0';
+            this.txtTelefonoP_G.Size = new System.Drawing.Size(122, 26);
+            this.txtTelefonoP_G.TabIndex = 36;
             // 
-            // txtNombreP
+            // txtDocumentoP_G
             // 
-            this.txtNombreP.BackColor = System.Drawing.Color.White;
-            this.txtNombreP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNombreP.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
-            this.txtNombreP.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNombreP.LineColor = System.Drawing.Color.LightGray;
-            this.txtNombreP.Location = new System.Drawing.Point(4, 63);
-            this.txtNombreP.Name = "txtNombreP";
-            this.txtNombreP.PasswordChar = '\0';
-            this.txtNombreP.Size = new System.Drawing.Size(269, 26);
-            this.txtNombreP.TabIndex = 1;
-            this.txtNombreP.Enter += new System.EventHandler(this.txtNombreP_Enter);
+            this.txtDocumentoP_G.BackColor = System.Drawing.Color.White;
+            this.txtDocumentoP_G.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDocumentoP_G.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtDocumentoP_G.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDocumentoP_G.LineColor = System.Drawing.Color.LightGray;
+            this.txtDocumentoP_G.Location = new System.Drawing.Point(151, 61);
+            this.txtDocumentoP_G.Name = "txtDocumentoP_G";
+            this.txtDocumentoP_G.PasswordChar = '\0';
+            this.txtDocumentoP_G.Size = new System.Drawing.Size(122, 26);
+            this.txtDocumentoP_G.TabIndex = 35;
+            // 
+            // lblDocumento
+            // 
+            this.lblDocumento.AutoSize = true;
+            this.lblDocumento.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDocumento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblDocumento.Location = new System.Drawing.Point(148, 43);
+            this.lblDocumento.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lblDocumento.Name = "lblDocumento";
+            this.lblDocumento.Size = new System.Drawing.Size(97, 15);
+            this.lblDocumento.TabIndex = 34;
+            this.lblDocumento.Text = "Nro. Documento";
+            // 
+            // txtCorreoP_G
+            // 
+            this.txtCorreoP_G.BackColor = System.Drawing.Color.White;
+            this.txtCorreoP_G.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCorreoP_G.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtCorreoP_G.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtCorreoP_G.LineColor = System.Drawing.Color.LightGray;
+            this.txtCorreoP_G.Location = new System.Drawing.Point(4, 171);
+            this.txtCorreoP_G.Name = "txtCorreoP_G";
+            this.txtCorreoP_G.PasswordChar = '\0';
+            this.txtCorreoP_G.Size = new System.Drawing.Size(269, 26);
+            this.txtCorreoP_G.TabIndex = 3;
+            // 
+            // txtDireccionP_G
+            // 
+            this.txtDireccionP_G.BackColor = System.Drawing.Color.White;
+            this.txtDireccionP_G.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDireccionP_G.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtDireccionP_G.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDireccionP_G.LineColor = System.Drawing.Color.LightGray;
+            this.txtDireccionP_G.Location = new System.Drawing.Point(4, 117);
+            this.txtDireccionP_G.Name = "txtDireccionP_G";
+            this.txtDireccionP_G.PasswordChar = '\0';
+            this.txtDireccionP_G.Size = new System.Drawing.Size(125, 26);
+            this.txtDireccionP_G.TabIndex = 2;
+            // 
+            // txtNombreP_G
+            // 
+            this.txtNombreP_G.BackColor = System.Drawing.Color.White;
+            this.txtNombreP_G.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombreP_G.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(168)))), ((int)(((byte)(225)))));
+            this.txtNombreP_G.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNombreP_G.LineColor = System.Drawing.Color.LightGray;
+            this.txtNombreP_G.Location = new System.Drawing.Point(7, 61);
+            this.txtNombreP_G.Name = "txtNombreP_G";
+            this.txtNombreP_G.PasswordChar = '\0';
+            this.txtNombreP_G.Size = new System.Drawing.Size(122, 26);
+            this.txtNombreP_G.TabIndex = 1;
             // 
             // lblTitlePnl
             // 
@@ -373,17 +445,17 @@
             this.pctLineSeparator.TabStop = false;
             this.pctLineSeparator.Tag = "txtUser";
             // 
-            // lblNombreP
+            // lblRazonSocialP
             // 
-            this.lblNombreP.AutoSize = true;
-            this.lblNombreP.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblNombreP.Location = new System.Drawing.Point(4, 43);
-            this.lblNombreP.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
-            this.lblNombreP.Name = "lblNombreP";
-            this.lblNombreP.Size = new System.Drawing.Size(51, 15);
-            this.lblNombreP.TabIndex = 1;
-            this.lblNombreP.Text = "Nombre";
+            this.lblRazonSocialP.AutoSize = true;
+            this.lblRazonSocialP.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRazonSocialP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblRazonSocialP.Location = new System.Drawing.Point(4, 43);
+            this.lblRazonSocialP.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lblRazonSocialP.Name = "lblRazonSocialP";
+            this.lblRazonSocialP.Size = new System.Drawing.Size(75, 15);
+            this.lblRazonSocialP.TabIndex = 1;
+            this.lblRazonSocialP.Text = "Razon Social";
             // 
             // lblDireccionP
             // 
@@ -407,7 +479,7 @@
             this.lblTelefonoP.Name = "lblTelefonoP";
             this.lblTelefonoP.Size = new System.Drawing.Size(112, 15);
             this.lblTelefonoP.TabIndex = 5;
-            this.lblTelefonoP.Text = "Teléfono (Opcional)";
+            this.lblTelefonoP.Text = "Dirección de Correo";
             // 
             // pnlButton
             // 
@@ -435,24 +507,6 @@
             this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // proveedoresModelTableAdapter
-            // 
-            this.proveedoresModelTableAdapter.ClearBeforeFill = true;
-            // 
-            // lblTotalRow
-            // 
-            this.lblTotalRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalRow.AutoSize = true;
-            this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTotalRow.Location = new System.Drawing.Point(108, 298);
-            this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.lblTotalRow.Name = "lblTotalRow";
-            this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
-            this.lblTotalRow.TabIndex = 36;
-            this.lblTotalRow.Text = "Filas Totales: n";
             // 
             // ProveedoresForm
             // 
@@ -490,17 +544,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Panel panel1;
-        private Guna.UI.WinForms.GunaLineTextBox txtTelefonoP;
-        private Guna.UI.WinForms.GunaLineTextBox txtDireccionP;
-        private Guna.UI.WinForms.GunaLineTextBox txtNombreP;
-        private System.Windows.Forms.Label lblTitlePnl;
-        private System.Windows.Forms.PictureBox pctLineSeparator;
-        private System.Windows.Forms.Label lblNombreP;
-        private System.Windows.Forms.Label lblDireccionP;
-        private System.Windows.Forms.Label lblTelefonoP;
-        private System.Windows.Forms.Panel pnlButton;
-        private System.Windows.Forms.Button btnAgregar;
         private SistemaGestionFarmaceuticaDataSet sistemaGestionFarmaceuticaDataSet;
         private System.Windows.Forms.BindingSource bindingSourceSupplier;
         private SistemaGestionFarmaceuticaDataSetTableAdapters.ProveedoresModelTableAdapter proveedoresModelTableAdapter;
@@ -509,5 +552,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSupplierDirection;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSupplierPhoneNumber;
         private System.Windows.Forms.Label lblTotalRow;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI.WinForms.GunaLineTextBox txtTelefonoP_G;
+        private Guna.UI.WinForms.GunaLineTextBox txtDocumentoP_G;
+        private System.Windows.Forms.Label lblDocumento;
+        private Guna.UI.WinForms.GunaLineTextBox txtCorreoP_G;
+        private Guna.UI.WinForms.GunaLineTextBox txtDireccionP_G;
+        private Guna.UI.WinForms.GunaLineTextBox txtNombreP_G;
+        private System.Windows.Forms.Label lblTitlePnl;
+        private System.Windows.Forms.PictureBox pctLineSeparator;
+        private System.Windows.Forms.Label lblRazonSocialP;
+        private System.Windows.Forms.Label lblDireccionP;
+        private System.Windows.Forms.Label lblTelefonoP;
+        private System.Windows.Forms.Panel pnlButton;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
