@@ -34,7 +34,7 @@ CREATE TABLE CLIENTE(
 	TelefonoProveedor VARCHAR(20),          	
 	Correo VARCHAR(50),
 );
-
+25 17
 
 -- -- -- -- -- -- Productos y Medicamentos -- -- -- -- -- --
 -- Tabla para almacenar información sobre códigos de barras
