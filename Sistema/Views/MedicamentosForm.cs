@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Sistema.Controles.Interfaz;
 using Sistema.Controles.Logica;
-using Guna.UI.WinForms;
-using System.Data.SqlClient;
-using Sistema.Services;
-using Sistema.Models;
-using Sistema.Controles.Interfaz;
+using System;
+using System.ComponentModel;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Sistema.Vista
 {
@@ -25,7 +17,6 @@ namespace Sistema.Vista
         private MedicamentoLogica medicineLogic = new MedicamentoLogica();
         Controladora controladora = Controladora.GetInstance;
         private MessageBoxManager messageManager = MessageBoxManager.GetInstance;
-        private CacheManagerList cacheManagerList = new CacheManagerList();
 
         public MedicamentosForm()
         {
@@ -55,7 +46,7 @@ namespace Sistema.Vista
         {
             try
             {
-                this.medicamentoModelTableAdapter.Fill(this.viewSGF.VistaInventarioMedicamento);
+                //this.medicamentoModelTableAdapter.Fill(this.viewSGF.);
             }
             catch (DbUpdateException)
             {
@@ -83,11 +74,10 @@ namespace Sistema.Vista
         {
             // Obtener lista de nombres de estantes y categorías para cargar los combobox
 
-            List<string> shelvesList = cacheManagerList.ShelvesListModel.Select(shelf => shelf.Nombre).ToList();
-            List<string> categoryList = cacheManagerList.CategoryListModel.Select(category => category.Nombre).ToList();
+
             // Insertar en la primera posición de la lista
-            categoryList.Insert(0, "Seleccionar Categoría.");
-            shelvesList.Insert(0, "Seleccionar Estante.");
+            //categoryList.Insert(0, "Seleccionar Categoría.");
+            //shelvesList.Insert(0, "Seleccionar Estante.");
             // Cargar combobox
             //cmbFilteCat.DataSource = categoryList;
             //cmbFilterEst.DataSource = shelvesList;
@@ -103,7 +93,7 @@ namespace Sistema.Vista
         // // // // INTERFAZ // // // //
         private void formAgregarMedicamento_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
         }
 
         private void tsmiButtons_Click(object sender, EventArgs e)
@@ -112,7 +102,7 @@ namespace Sistema.Vista
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             // poner el item en checked o unchecked si ya está seleccionado
             item.Checked = !item.Checked;
-            
+
         }
 
         private void tsmiButtons_CheckedChanged(object sender, EventArgs e)
@@ -160,20 +150,20 @@ namespace Sistema.Vista
 
         private void dgvMedicineList_SortStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.SortEventArgs e)
         {
-            bindingSourceMedicine.Sort = dgvMedicineList.SortString;
+            //bindingSourceMedicine.Sort = dgvMedicineList.SortString;
         }
 
         private void dgvMedicineList_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
         {
-            bindingSourceMedicine.Filter = dgvMedicineList.FilterString;
+            //bindingSourceMedicine.Filter = dgvMedicineList.FilterString;
         }
 
         private void bindingSourceMedicine_ListChanged(object sender, ListChangedEventArgs e)
         {
-            lblTotalRow.Text = "Filas Totales: " + bindingSourceMedicine.List.Count;
+            //lblTotalRow.Text = "Filas Totales: " + bindingSourceMedicine.List.Count;
         }
 
-        
+
 
 
 

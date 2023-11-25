@@ -34,18 +34,19 @@
             this.lblTotalRow = new System.Windows.Forms.Label();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvSupplierList = new Zuby.ADGV.AdvancedDataGridView();
-            this.dgvcSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSupplierDirection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSupplierPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcRazonSocialP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDocumentoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDireccionP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcTelefonoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcCorreoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceSupplier = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaGestionFarmaceuticaDataSet = new Sistema.SistemaGestionFarmaceuticaDataSet();
+            this.farmaciaDBData = new Sistema.FarmaciaDBData();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.proveedoresModelTableAdapter = new Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters.ProveedoresModelTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTelefonoP_G = new Guna.UI.WinForms.GunaLineTextBox();
@@ -61,10 +62,11 @@
             this.lblTelefonoP = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.proveedoresModelTableAdapter = new Sistema.FarmaciaDBDataTableAdapters.PROVEEDORTableAdapter();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSupplier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGestionFarmaceuticaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
@@ -88,7 +90,7 @@
             this.panel2.Location = new System.Drawing.Point(299, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(286, 325);
-            this.panel2.TabIndex = 6;
+            this.panel2.TabIndex = 8;
             // 
             // lblTotalRow
             // 
@@ -100,7 +102,7 @@
             this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblTotalRow.Name = "lblTotalRow";
             this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
-            this.lblTotalRow.TabIndex = 36;
+            this.lblTotalRow.TabIndex = 0;
             this.lblTotalRow.Text = "Filas Totales: n";
             // 
             // btnModifyG
@@ -127,7 +129,7 @@
             this.btnModifyG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(176)))), ((int)(((byte)(81)))));
             this.btnModifyG.Radius = 8;
             this.btnModifyG.Size = new System.Drawing.Size(35, 25);
-            this.btnModifyG.TabIndex = 8;
+            this.btnModifyG.TabIndex = 10;
             this.btnModifyG.Click += new System.EventHandler(this.btnModifyG_Click);
             // 
             // dgvSupplierList
@@ -141,10 +143,12 @@
             this.dgvSupplierList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSupplierList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSupplierList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcSupplierID,
-            this.dgvcSupplierName,
-            this.dgvcSupplierDirection,
-            this.dgvcSupplierPhoneNumber});
+            this.dgvcID,
+            this.dgvcRazonSocialP,
+            this.dgvcDocumentoP,
+            this.dgvcDireccionP,
+            this.dgvcTelefonoP,
+            this.dgvcCorreoP});
             this.dgvSupplierList.DataSource = this.bindingSourceSupplier;
             this.dgvSupplierList.FilterAndSortEnabled = true;
             this.dgvSupplierList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -154,7 +158,7 @@
             this.dgvSupplierList.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvSupplierList.Size = new System.Drawing.Size(272, 256);
             this.dgvSupplierList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.dgvSupplierList.TabIndex = 35;
+            this.dgvSupplierList.TabIndex = 0;
             this.dgvSupplierList.TabStop = false;
             this.dgvSupplierList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvSupplierList_SortStringChanged);
             this.dgvSupplierList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvSupplierList_FilterStringChanged);
@@ -162,52 +166,69 @@
             this.dgvSupplierList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellEndEdit);
             this.dgvSupplierList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellEnter);
             // 
-            // dgvcSupplierID
+            // dgvcID
             // 
-            this.dgvcSupplierID.DataPropertyName = "ProveedorID";
-            this.dgvcSupplierID.HeaderText = "ID";
-            this.dgvcSupplierID.MinimumWidth = 22;
-            this.dgvcSupplierID.Name = "dgvcSupplierID";
-            this.dgvcSupplierID.ReadOnly = true;
-            this.dgvcSupplierID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcID.DataPropertyName = "ProveedorID";
+            this.dgvcID.HeaderText = "ID";
+            this.dgvcID.MinimumWidth = 22;
+            this.dgvcID.Name = "dgvcID";
+            this.dgvcID.ReadOnly = true;
+            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcSupplierName
+            // dgvcRazonSocialP
             // 
-            this.dgvcSupplierName.DataPropertyName = "Nombre";
-            this.dgvcSupplierName.HeaderText = "Nombre";
-            this.dgvcSupplierName.MinimumWidth = 22;
-            this.dgvcSupplierName.Name = "dgvcSupplierName";
-            this.dgvcSupplierName.ReadOnly = true;
-            this.dgvcSupplierName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcRazonSocialP.DataPropertyName = "RazonSocial";
+            this.dgvcRazonSocialP.HeaderText = "RazonSocial";
+            this.dgvcRazonSocialP.MinimumWidth = 22;
+            this.dgvcRazonSocialP.Name = "dgvcRazonSocialP";
+            this.dgvcRazonSocialP.ReadOnly = true;
+            this.dgvcRazonSocialP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcSupplierDirection
+            // dgvcDocumentoP
             // 
-            this.dgvcSupplierDirection.DataPropertyName = "Direccion";
-            this.dgvcSupplierDirection.HeaderText = "Direccion";
-            this.dgvcSupplierDirection.MinimumWidth = 22;
-            this.dgvcSupplierDirection.Name = "dgvcSupplierDirection";
-            this.dgvcSupplierDirection.ReadOnly = true;
-            this.dgvcSupplierDirection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcDocumentoP.DataPropertyName = "Documento";
+            this.dgvcDocumentoP.HeaderText = "Documento";
+            this.dgvcDocumentoP.MinimumWidth = 22;
+            this.dgvcDocumentoP.Name = "dgvcDocumentoP";
+            this.dgvcDocumentoP.ReadOnly = true;
+            this.dgvcDocumentoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcSupplierPhoneNumber
+            // dgvcDireccionP
             // 
-            this.dgvcSupplierPhoneNumber.DataPropertyName = "Telefono";
-            this.dgvcSupplierPhoneNumber.HeaderText = "Telefono";
-            this.dgvcSupplierPhoneNumber.MinimumWidth = 22;
-            this.dgvcSupplierPhoneNumber.Name = "dgvcSupplierPhoneNumber";
-            this.dgvcSupplierPhoneNumber.ReadOnly = true;
-            this.dgvcSupplierPhoneNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcDireccionP.DataPropertyName = "Direccion";
+            this.dgvcDireccionP.HeaderText = "Direccion";
+            this.dgvcDireccionP.MinimumWidth = 22;
+            this.dgvcDireccionP.Name = "dgvcDireccionP";
+            this.dgvcDireccionP.ReadOnly = true;
+            this.dgvcDireccionP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcTelefonoP
+            // 
+            this.dgvcTelefonoP.DataPropertyName = "TelefonoProveedor";
+            this.dgvcTelefonoP.HeaderText = "TelefonoProveedor";
+            this.dgvcTelefonoP.MinimumWidth = 22;
+            this.dgvcTelefonoP.Name = "dgvcTelefonoP";
+            this.dgvcTelefonoP.ReadOnly = true;
+            this.dgvcTelefonoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcCorreoP
+            // 
+            this.dgvcCorreoP.DataPropertyName = "Correo";
+            this.dgvcCorreoP.HeaderText = "Correo";
+            this.dgvcCorreoP.MinimumWidth = 22;
+            this.dgvcCorreoP.Name = "dgvcCorreoP";
+            this.dgvcCorreoP.ReadOnly = true;
+            this.dgvcCorreoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // bindingSourceSupplier
             // 
-            this.bindingSourceSupplier.DataMember = "ProveedoresModel";
-            this.bindingSourceSupplier.DataSource = this.sistemaGestionFarmaceuticaDataSet;
-            this.bindingSourceSupplier.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceSupplier_ListChanged);
+            this.bindingSourceSupplier.DataMember = "PROVEEDOR";
+            this.bindingSourceSupplier.DataSource = this.farmaciaDBData;
             // 
-            // sistemaGestionFarmaceuticaDataSet
+            // farmaciaDBData
             // 
-            this.sistemaGestionFarmaceuticaDataSet.DataSetName = "SistemaGestionFarmaceuticaDataSet";
-            this.sistemaGestionFarmaceuticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.farmaciaDBData.DataSetName = "FarmaciaDBData";
+            this.farmaciaDBData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnGuardarG
             // 
@@ -233,7 +254,7 @@
             this.btnGuardarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(95)))), ((int)(((byte)(126)))));
             this.btnGuardarG.Radius = 8;
             this.btnGuardarG.Size = new System.Drawing.Size(35, 25);
-            this.btnGuardarG.TabIndex = 7;
+            this.btnGuardarG.TabIndex = 9;
             this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
             // 
             // btnEliminarG
@@ -261,10 +282,8 @@
             this.btnEliminarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
             this.btnEliminarG.Radius = 5;
             this.btnEliminarG.Size = new System.Drawing.Size(34, 25);
-            this.btnEliminarG.TabIndex = 9;
+            this.btnEliminarG.TabIndex = 11;
             this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
-            this.btnEliminarG.MouseEnter += new System.EventHandler(this.btnEliminarG_MouseEnter);
-            this.btnEliminarG.MouseLeave += new System.EventHandler(this.btnEliminarG_MouseLeave);
             // 
             // label1
             // 
@@ -275,7 +294,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 21);
-            this.label1.TabIndex = 20;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Lista de Proveedores";
             // 
             // pictureBox2
@@ -299,13 +318,9 @@
             this.lblTitle.Location = new System.Drawing.Point(3, 3);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(128, 39);
-            this.lblTitle.TabIndex = 23;
+            this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Proveedores";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // proveedoresModelTableAdapter
-            // 
-            this.proveedoresModelTableAdapter.ClearBeforeFill = true;
             // 
             // panel1
             // 
@@ -331,7 +346,7 @@
             this.panel1.MinimumSize = new System.Drawing.Size(278, 270);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 286);
-            this.panel1.TabIndex = 37;
+            this.panel1.TabIndex = 12;
             // 
             // label2
             // 
@@ -342,7 +357,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 15);
-            this.label2.TabIndex = 37;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Teléfono (Opcional)";
             // 
             // txtTelefonoP_G
@@ -356,7 +371,7 @@
             this.txtTelefonoP_G.Name = "txtTelefonoP_G";
             this.txtTelefonoP_G.PasswordChar = '\0';
             this.txtTelefonoP_G.Size = new System.Drawing.Size(122, 26);
-            this.txtTelefonoP_G.TabIndex = 36;
+            this.txtTelefonoP_G.TabIndex = 4;
             // 
             // txtDocumentoP_G
             // 
@@ -369,7 +384,7 @@
             this.txtDocumentoP_G.Name = "txtDocumentoP_G";
             this.txtDocumentoP_G.PasswordChar = '\0';
             this.txtDocumentoP_G.Size = new System.Drawing.Size(122, 26);
-            this.txtDocumentoP_G.TabIndex = 35;
+            this.txtDocumentoP_G.TabIndex = 2;
             // 
             // lblDocumento
             // 
@@ -379,9 +394,9 @@
             this.lblDocumento.Location = new System.Drawing.Point(148, 43);
             this.lblDocumento.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblDocumento.Name = "lblDocumento";
-            this.lblDocumento.Size = new System.Drawing.Size(97, 15);
-            this.lblDocumento.TabIndex = 34;
-            this.lblDocumento.Text = "Nro. Documento";
+            this.lblDocumento.Size = new System.Drawing.Size(105, 15);
+            this.lblDocumento.TabIndex = 0;
+            this.lblDocumento.Text = "Nro. Documento *";
             // 
             // txtCorreoP_G
             // 
@@ -394,7 +409,7 @@
             this.txtCorreoP_G.Name = "txtCorreoP_G";
             this.txtCorreoP_G.PasswordChar = '\0';
             this.txtCorreoP_G.Size = new System.Drawing.Size(269, 26);
-            this.txtCorreoP_G.TabIndex = 3;
+            this.txtCorreoP_G.TabIndex = 5;
             // 
             // txtDireccionP_G
             // 
@@ -407,7 +422,7 @@
             this.txtDireccionP_G.Name = "txtDireccionP_G";
             this.txtDireccionP_G.PasswordChar = '\0';
             this.txtDireccionP_G.Size = new System.Drawing.Size(125, 26);
-            this.txtDireccionP_G.TabIndex = 2;
+            this.txtDireccionP_G.TabIndex = 3;
             // 
             // txtNombreP_G
             // 
@@ -431,7 +446,7 @@
             this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblTitlePnl.Name = "lblTitlePnl";
             this.lblTitlePnl.Size = new System.Drawing.Size(139, 21);
-            this.lblTitlePnl.TabIndex = 26;
+            this.lblTitlePnl.TabIndex = 0;
             this.lblTitlePnl.Text = "Nuevo Proveedor";
             // 
             // pctLineSeparator
@@ -453,9 +468,9 @@
             this.lblRazonSocialP.Location = new System.Drawing.Point(4, 43);
             this.lblRazonSocialP.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblRazonSocialP.Name = "lblRazonSocialP";
-            this.lblRazonSocialP.Size = new System.Drawing.Size(75, 15);
-            this.lblRazonSocialP.TabIndex = 1;
-            this.lblRazonSocialP.Text = "Razon Social";
+            this.lblRazonSocialP.Size = new System.Drawing.Size(83, 15);
+            this.lblRazonSocialP.TabIndex = 0;
+            this.lblRazonSocialP.Text = "Razon Social *";
             // 
             // lblDireccionP
             // 
@@ -465,9 +480,9 @@
             this.lblDireccionP.Location = new System.Drawing.Point(4, 97);
             this.lblDireccionP.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblDireccionP.Name = "lblDireccionP";
-            this.lblDireccionP.Size = new System.Drawing.Size(58, 15);
-            this.lblDireccionP.TabIndex = 3;
-            this.lblDireccionP.Text = "Dirección";
+            this.lblDireccionP.Size = new System.Drawing.Size(66, 15);
+            this.lblDireccionP.TabIndex = 0;
+            this.lblDireccionP.Text = "Dirección *";
             // 
             // lblTelefonoP
             // 
@@ -477,9 +492,9 @@
             this.lblTelefonoP.Location = new System.Drawing.Point(4, 154);
             this.lblTelefonoP.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblTelefonoP.Name = "lblTelefonoP";
-            this.lblTelefonoP.Size = new System.Drawing.Size(112, 15);
-            this.lblTelefonoP.TabIndex = 5;
-            this.lblTelefonoP.Text = "Dirección de Correo";
+            this.lblTelefonoP.Size = new System.Drawing.Size(171, 15);
+            this.lblTelefonoP.TabIndex = 0;
+            this.lblTelefonoP.Text = "Dirección de Correo (Opcional)";
             // 
             // pnlButton
             // 
@@ -488,7 +503,7 @@
             this.pnlButton.Location = new System.Drawing.Point(2, 218);
             this.pnlButton.Name = "pnlButton";
             this.pnlButton.Size = new System.Drawing.Size(272, 53);
-            this.pnlButton.TabIndex = 33;
+            this.pnlButton.TabIndex = 6;
             // 
             // btnAgregar
             // 
@@ -504,9 +519,14 @@
             this.btnAgregar.MinimumSize = new System.Drawing.Size(151, 32);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(151, 38);
-            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // proveedoresModelTableAdapter
+            // 
+            this.proveedoresModelTableAdapter.ClearBeforeFill = true;
             // 
             // ProveedoresForm
             // 
@@ -524,7 +544,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSupplier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGestionFarmaceuticaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -544,13 +564,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblTitle;
-        private SistemaGestionFarmaceuticaDataSet sistemaGestionFarmaceuticaDataSet;
-        private System.Windows.Forms.BindingSource bindingSourceSupplier;
-        private SistemaGestionFarmaceuticaDataSetTableAdapters.ProveedoresModelTableAdapter proveedoresModelTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSupplierID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSupplierDirection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSupplierPhoneNumber;
         private System.Windows.Forms.Label lblTotalRow;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
@@ -567,5 +580,14 @@
         private System.Windows.Forms.Label lblTelefonoP;
         private System.Windows.Forms.Panel pnlButton;
         private System.Windows.Forms.Button btnAgregar;
+        private FarmaciaDBData farmaciaDBData;
+        private System.Windows.Forms.BindingSource bindingSourceSupplier;
+        private FarmaciaDBDataTableAdapters.PROVEEDORTableAdapter proveedoresModelTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcRazonSocialP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcDocumentoP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcDireccionP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcTelefonoP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCorreoP;
     }
 }

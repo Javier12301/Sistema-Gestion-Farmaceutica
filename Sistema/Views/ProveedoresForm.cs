@@ -22,7 +22,7 @@ namespace Sistema.Views
         Shortcuts shortcuts = new Shortcuts();
         PaletaColores palette = PaletaColores.GetInstance;
         // Se crea una instancia de la clase proveedor
-        ProveedorLogica supplierLogic = new ProveedorLogica();    
+        ProveedorLogica supplierLogic = new ProveedorLogica();
         ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
         MessageBoxManager messageManager = MessageBoxManager.GetInstance;
 
@@ -38,11 +38,13 @@ namespace Sistema.Views
         {
             loadSupplierData();
             toggleEditMode();
+            dgvSupplierList.RowHeadersWidth = 30;
+            updateTotalRowCount();
         }
 
         private void loadSupplierData()
         {
-            this.proveedoresModelTableAdapter.Fill(this.sistemaGestionFarmaceuticaDataSet.ProveedoresModel);
+            this.proveedoresModelTableAdapter.Fill(this.farmaciaDBData.PROVEEDOR);
         }
 
         // // // // // Funciones de botones // // // // //
@@ -65,7 +67,7 @@ namespace Sistema.Views
                     if (result == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
-                        updateSupplierData();
+                        updateSupplierData(true);
 
                     }
                     else
@@ -91,37 +93,28 @@ namespace Sistema.Views
         {
             try
             {
-                // Model Categoria
-                ProveedoresModel supplier = new ProveedoresModel();
-                bool isSupplierNameValid = controladora.VerifyTextBoxG(txtNombreP);
-                bool isSupplierAddressValid = controladora.VerifyTextBoxG(txtDireccionP);
-                
-                if (isSupplierNameValid && isSupplierAddressValid)
+                if (controladora.IsDatagridViewModified)
                 {
-                    // Se utiliza la instancia de la clase categoria
-                    supplier.Nombre = txtNombreP.Text;
-                    supplier.Direccion = txtDireccionP.Text;
-                    // Se comprueba si se ingreso un número de teléfono o no, si no se ingreso se guarda un guión como valor por defecto.
-                    supplier.Telefono = (string.IsNullOrWhiteSpace(txtTelefonoP.Text)) ? "-" : txtTelefonoP.Text;
-
-                    bool result = supplierLogic.AddSupplier(supplier);
-                    if (result)
+                    // Preungar al usuario si desea guardar los cambios realizados antes de agregar una nueva categoria.
+                    DialogResult userAnswer = MessageBox.Show("Has realizado modificaciones y estás agregando un nuevo proveedor. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (userAnswer == DialogResult.Yes)
                     {
-                        MessageBox.Show("Se agrego correctamente el proveedor.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Se limpian los campos
-                        controladora.ClearTextBoxG(txtNombreP, txtDireccionP, txtTelefonoP);
-                        loadSupplierData();
+                        // Guarda los cambios.                      
+                        updateSupplierData(true);
+                        addSuplier();
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo agregar el proveedor.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Restaura los datos originales.
+                        addSuplier();
+                        loadSupplierData();
                     }
                 }
                 else
-
                 {
-                    MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    addSuplier();
                 }
+               
             }
             catch (DbUpdateException)
             {
@@ -137,11 +130,51 @@ namespace Sistema.Views
             }
         }
 
+        private void addSuplier()
+        {
+            // Model Proveedor
+            PROVEEDOR supplier = new PROVEEDOR();
+            // TXTBOX Obligatorios de completar: Razon social, Nro.Documento y Dirección
+            bool isSupplierNameValid = controladora.VerifyTextBoxG(txtNombreP_G);
+            bool isSupplierDocumentValid = controladora.VerifyTextBoxG(txtDocumentoP_G);
+            bool isSupplierAddressValid = controladora.VerifyTextBoxG(txtDireccionP_G);
+            if (isSupplierNameValid && isSupplierDocumentValid && isSupplierAddressValid)
+            {
+                // Se utiliza la instancia de la clase proveedor
+                supplier.RazonSocial = txtNombreP_G.Text;
+                supplier.Documento = txtDocumentoP_G.Text;
+                supplier.Direccion = txtDireccionP_G.Text;
+                // Se comprueba si se ingreso un número de teléfono o no, si no se ingreso se guarda un guión como valor por defecto.
+                supplier.TelefonoProveedor = (string.IsNullOrWhiteSpace(txtTelefonoP_G.Text)) ? "-" : txtTelefonoP_G.Text;
+                supplier.Correo = (string.IsNullOrEmpty(txtCorreoP_G.Text)) ? "-" : txtCorreoP_G.Text;
+
+                bool result = supplierLogic.AddSupplier(supplier);
+                if (result)
+                {
+                    MessageBox.Show("Se agrego correctamente el proveedor.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se limpian los campos
+                    controladora.ClearTextBoxG(txtNombreP_G, txtDocumentoP_G, txtDireccionP_G, txtTelefonoP_G, txtCorreoP_G);
+                    loadSupplierData();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el proveedor.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+
+            {
+                MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // /// /// // // // AGREGAR PROVEEDOR // // // // // //
+
         // // // // // // MODIFICAR PROVEEDOR // // // // // //
         Dictionary<int, DataGridViewRow> modifiedRows = new Dictionary<int, DataGridViewRow>();
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
-            updateSupplierData();
+            updateSupplierData(true);
         }
 
         private void btnModifyG_Click(object sender, EventArgs e)
@@ -149,18 +182,20 @@ namespace Sistema.Views
             toggleEditMode();
         }
 
-        private void updateSupplierData()
+        private void updateSupplierData(bool refresh)
         {
             try
             {
-                ProveedoresModel supplier = new ProveedoresModel();
+                PROVEEDOR supplier = new PROVEEDOR();
                 int modifiedShelves = 0; // Variable para contar las filas modificadas
                 foreach (KeyValuePair<int, DataGridViewRow> row in modifiedRows)
                 {
                     supplier.ProveedorID = Convert.ToInt32(row.Value.Cells[0].Value);
-                    supplier.Nombre = Convert.ToString(row.Value.Cells[1].Value);
-                    supplier.Direccion = Convert.ToString(row.Value.Cells[2].Value);
-                    supplier.Telefono = Convert.ToString(row.Value.Cells[3].Value);
+                    supplier.RazonSocial = Convert.ToString(row.Value.Cells[1].Value);
+                    supplier.Documento = Convert.ToString(row.Value.Cells[2].Value);
+                    supplier.Direccion = Convert.ToString(row.Value.Cells[3].Value);
+                    supplier.TelefonoProveedor = Convert.ToString(row.Value.Cells[4].Value);
+                    supplier.Correo = Convert.ToString(row.Value.Cells[5].Value);
 
                     bool result = supplierLogic.ModifySupplier(supplier);
                     if (result)
@@ -177,7 +212,10 @@ namespace Sistema.Views
                 // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
                 messageManager.ShowModificationMessage(modifiedShelves, "proveedor");
                 // Recargar los datos después de procesar todas las filas modificadas
-                loadSupplierData();
+                if (refresh)
+                {
+                    loadSupplierData();
+                }
             }
             catch (DbUpdateException)
             {
@@ -212,9 +250,9 @@ namespace Sistema.Views
                 // Se recorren las filas seleccionadas
                 foreach (DataGridViewRow row in dgvSupplierList.SelectedRows)
                 {
-                    int selectedSupplierID = Convert.ToInt32(row.Cells["dgvcSupplierID"].Value);
+                    int selectedSupplierID = Convert.ToInt32(row.Cells["dgvcID"].Value);
                     // Se utiliza el id para obtener el objeto categoria y luego obtenemos el nombre
-                    string supplierName = supplierLogic.GetSupplier(selectedSupplierID).Nombre.ToString();
+                    string supplierName = supplierLogic.GetSupplier(selectedSupplierID).RazonSocial.ToString();
                     selectedSupplier.Add(supplierName);
                 }
                 return selectedSupplier;
@@ -254,32 +292,21 @@ namespace Sistema.Views
         {
             try
             {
-                if (dgvSupplierList.SelectedRows.Count > 0)
+                if (controladora.IsDatagridViewModified)
                 {
-                    int supplierCount = dgvSupplierList.SelectedRows.Count;
-                    string message = getDeleteConfirmationMessage();
-                    DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (userConfirmation == DialogResult.Yes)
+                    // preguntar al usuario si desea guardar los cambios antes de eliminar
+                    DialogResult userAnswer = MessageBox.Show("¿Desea guardar los cambios antes de eliminar?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (userAnswer == DialogResult.Yes)
                     {
-                        foreach (DataGridViewRow row in dgvSupplierList.SelectedRows)
-                        {
-                            // condicional multiples SelectedRows
-                            int selectedSupplierID = Convert.ToInt32(row.Cells[0].Value);
-                            bool deletionResult = supplierLogic.DeleteSupplier(selectedSupplierID);
-                            if (!deletionResult)
-                            {
-                                MessageBox.Show("No se pudo eliminar el proveedor: \"" + supplierLogic.GetSupplier(selectedSupplierID).Nombre + "\"", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
-                        messageManager.ShowDeletionMessage(supplierCount, "proveedor");
+                        updateSupplierData(false);
+                        deleteSelectedSuppliers();
+                    }else{
+                        deleteSelectedSuppliers();
                     }
-                    // Se actualiza el datagridview
-                    loadSupplierData();
                 }
                 else
                 {
-                    MessageBox.Show("Selecciona una fila para eliminar la categoria.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    deleteSelectedSuppliers();
                 }
             }
             catch (DbUpdateException)
@@ -303,6 +330,38 @@ namespace Sistema.Views
             }
         }
 
+        private void deleteSelectedSuppliers()
+        {
+            if (dgvSupplierList.SelectedRows.Count > 0)
+            {
+                int supplierCount = dgvSupplierList.SelectedRows.Count;
+
+                string message = getDeleteConfirmationMessage();
+                DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (userConfirmation == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvSupplierList.SelectedRows)
+                    {
+                        // condicional multiples SelectedRows
+                        int selectedSupplierID = Convert.ToInt32(row.Cells[0].Value);
+                        bool deletionResult = supplierLogic.DeleteSupplier(selectedSupplierID);
+                        if (!deletionResult)
+                        {
+                            MessageBox.Show("No se pudo eliminar el proveedor: \"" + supplierLogic.GetSupplier(selectedSupplierID).RazonSocial + "\"", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
+                    messageManager.ShowDeletionMessage(supplierCount, "proveedor");
+                }
+                // Se actualiza el datagridview
+                loadSupplierData();
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila para eliminar la categoria.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dgvSupplierList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // habilitar boton eliminar
@@ -321,36 +380,29 @@ namespace Sistema.Views
 
         private void txtNombreP_Enter(object sender, EventArgs e)
         {
-            txtNombreP.LineColor = palette.ColorDisabled;
+            //txtNombreP.LineColor = palette.ColorDisabled;
         }
 
         private void txtDireccionP_Enter(object sender, EventArgs e)
         {
-            txtDireccionP.LineColor = palette.ColorDisabled;
+            //txtDireccionP.LineColor = palette.ColorDisabled;
         }
 
         private void txtTelefonoP_Enter(object sender, EventArgs e)
         {
-            txtTelefonoP.LineColor = palette.ColorDisabled;
+            //txtTelefonoP.LineColor = palette.ColorDisabled;
         }
 
-        private void btnEliminarG_MouseEnter(object sender, EventArgs e)
-        {
-            btnEliminarG.Radius = 12;
-        }
 
-        private void btnEliminarG_MouseLeave(object sender, EventArgs e)
-        {
-            btnEliminarG.Radius = 5;
-        }
 
         private void dgvSupplierList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // obtener valor de celda a modificar
             DataGridViewRow row = dgvSupplierList.Rows[e.RowIndex];
             DataGridViewCell cell = row.Cells[e.ColumnIndex];
-            // Verifica si la celda está en la columna de descripción
-            if (cell.OwningColumn.Name == "dgvcSupplierPhoneNumber" && cell.Value == null)
+
+            // Verifica si la celda está en la columna de descripción o correo
+            if ((cell.OwningColumn.Name == "dgvcTelefonoP" || cell.OwningColumn.Name == "dgvcCorreoP") && cell.Value == null)
             {
                 // Si el valor es nulo o está en blanco, establece el valor en "-"
                 if (cell.Value == null || string.IsNullOrWhiteSpace(cell.Value.ToString()))
@@ -387,6 +439,7 @@ namespace Sistema.Views
             }
         }
 
+
         private void dgvSupplierList_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvSupplierList.Rows[e.RowIndex];
@@ -408,9 +461,19 @@ namespace Sistema.Views
 
         }
 
-        private void bindingSourceSupplier_ListChanged(object sender, ListChangedEventArgs e)
+        private void updateTotalRowCount()
         {
             lblTotalRow.Text = "Total de proveedores: " + bindingSourceSupplier.List.Count;
+        }
+
+        private void bindingSourceSupplier_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            updateTotalRowCount();
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+
         }
         // // // // // INTERFAZ // // // // //
     }

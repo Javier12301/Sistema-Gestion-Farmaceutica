@@ -12,47 +12,55 @@ namespace Sistema.Controles.Logica
     {
         MedicamentoLogica medicineLogic = new MedicamentoLogica();
         // Obtener lista de Proveedores
-        public List<ProveedoresModel> GetSuppliers()
+        
+
+        public List<PROVEEDOR> GetSuppliers()
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                var suppliers = db.ProveedoresModel.Where(supplier => supplier.ProveedorID != 0).Select(supplier => new
+                var suppliers = db.PROVEEDOR.Where(supplier => supplier.ProveedorID != 0).Select(supplier => new
                 {
                     ProveedorID = supplier.ProveedorID,
-                    Nombre = supplier.Nombre,
+                    RazonSocial = supplier.RazonSocial, 
+                    Documento = supplier.Documento, 
                     Direccion = supplier.Direccion,
-                    Telefono = supplier.Telefono,
+                    TelefonoProveedor = supplier.TelefonoProveedor, 
+                    Correo = supplier.Correo, // Nuevo campo
                 }).ToList();
-                List<ProveedoresModel> suppliersList = suppliers.Select(supplier => new ProveedoresModel
+
+                List<PROVEEDOR> suppliersList = suppliers.Select(supplier => new PROVEEDOR
                 {
                     ProveedorID = supplier.ProveedorID,
-                    Nombre = supplier.Nombre,
+                    RazonSocial = supplier.RazonSocial, 
+                    Documento = supplier.Documento, 
                     Direccion = supplier.Direccion,
-                    Telefono = supplier.Telefono,
+                    TelefonoProveedor = supplier.TelefonoProveedor, 
+                    Correo = supplier.Correo, 
                 }).ToList();
+
                 return suppliersList;
             }
         }
 
         // Obtener Proveedor por ID
-        public ProveedoresModel GetSupplier(int supplierID)
+        public PROVEEDOR GetSupplier(int supplierID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Obtenemos el proveedor por ID
-                ProveedoresModel supplier = db.ProveedoresModel.Find(supplierID);
+                PROVEEDOR supplier = db.PROVEEDOR.Find(supplierID);
                 return supplier;
             }
         }
 
         // Agregar Proveedor
-        public bool AddSupplier(ProveedoresModel supplier)
+        public bool AddSupplier(PROVEEDOR supplier)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 try
                 {
-                    db.ProveedoresModel.Add(supplier);
+                    db.PROVEEDOR.Add(supplier);
                     db.SaveChanges();
                     return true;
                 }
@@ -64,16 +72,18 @@ namespace Sistema.Controles.Logica
         }
 
         // Modificar Proveedor
-        public bool ModifySupplier(ProveedoresModel supplier)
+        public bool ModifySupplier(PROVEEDOR supplier)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                ProveedoresModel originalSupplier = GetSupplier(supplier.ProveedorID);
+                PROVEEDOR originalSupplier = GetSupplier(supplier.ProveedorID);
                 if (originalSupplier != null)
                 {
-                    originalSupplier.Nombre = supplier.Nombre;
+                    originalSupplier.RazonSocial = supplier.RazonSocial;
+                    originalSupplier.Documento = supplier.Documento;
                     originalSupplier.Direccion = supplier.Direccion;
-                    originalSupplier.Telefono = supplier.Telefono;
+                    originalSupplier.TelefonoProveedor = supplier.TelefonoProveedor;
+                    originalSupplier.Correo = supplier.Correo;
                     db.Entry(originalSupplier).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;
@@ -88,12 +98,12 @@ namespace Sistema.Controles.Logica
         // Eliminar Proveedor
         public bool DeleteSupplier(int supplierID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 try
                 {
-                    ProveedoresModel supplier = db.ProveedoresModel.Find(supplierID);
-                    db.ProveedoresModel.Remove(supplier);
+                    PROVEEDOR supplier = db.PROVEEDOR.Find(supplierID);
+                    db.PROVEEDOR.Remove(supplier);
                     db.Entry(supplier).State = EntityState.Deleted;
                     db.SaveChanges();
                     return true;

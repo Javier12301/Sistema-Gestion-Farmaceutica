@@ -8,12 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema.Database.Modelo;
 using System.Data.SqlClient;
 using Sistema.Models;
 using Sistema.Controles.Logica;
 using System.Windows.Navigation;
-using Sistema.Services;
 
 namespace Sistema.Vista
 {
@@ -25,9 +23,7 @@ namespace Sistema.Vista
 
         private CategoriaLogica categoryLogic = new CategoriaLogica();
         private EstanteLogica shelfLogic = new EstanteLogica();
-        private LoteLogica loteLogica = new LoteLogica();
         private MedicamentoLogica medicamentoLogica = new MedicamentoLogica();
-        private CacheManagerList cacheManagerList = new CacheManagerList();
 
         public NuevoMedicamentoForm()
         {

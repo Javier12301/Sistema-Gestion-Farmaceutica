@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Sistema.Models;
 using System.Data.Entity;
 using System.Windows.Forms;
+using System.Windows.Navigation;
 
 namespace Sistema.Controles.Logica
 {
@@ -16,25 +17,37 @@ namespace Sistema.Controles.Logica
         // Obtener cantidad total de categorias
         public int GetTotalCategoriesCount()
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                int categories = db.CategoriasModel.Count();
+                // No contar ID 0
+                int categories = db.CATEGORIA.Count(c => c.CategoriaID > 0);
                 return categories;
             }
         }
 
-        // Obtener lista de Categorias
-        public List<CategoriasModel> GetCategories()
+
+        public bool IsCategoryExist(int categoryID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                var categories = db.CategoriasModel.Where(category => category.CategoriaID != 0).Select(category => new
+                bool doesCategoryExist = db.CATEGORIA.Any(c => c.CategoriaID == categoryID);
+                return doesCategoryExist;
+            }
+        }
+
+
+        // Obtener lista de Categorias
+        public List<CATEGORIA> GetCategories()
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                var categories = db.CATEGORIA.Where(category => category.CategoriaID != 0).Select(category => new
                 {
                     CategoriaID = category.CategoriaID,
                     Nombre = category.Nombre,
                     Descripcion = category.Descripcion
                 }).ToList();
-                List<CategoriasModel> categoriesList = categories.Select(category => new CategoriasModel
+                List<CATEGORIA> categoriesList = categories.Select(category => new CATEGORIA
                 {
                     CategoriaID = category.CategoriaID,
                     Nombre = category.Nombre,
@@ -46,24 +59,24 @@ namespace Sistema.Controles.Logica
         }
 
         // Obtener Categoria por ID
-        public CategoriasModel GetCategory(int categoryID)
+        public CATEGORIA GetCategory(int categoryID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Obtenemos la categoria por ID
-                CategoriasModel category = db.CategoriasModel.Find(categoryID);
+                CATEGORIA category = db.CATEGORIA.Find(categoryID);
                 return category;
             }
         }
 
         // Agregar Categoria
-        public bool AddCategory(CategoriasModel category)
+        public bool AddCategory(CATEGORIA category)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 try
                 {
-                    db.CategoriasModel.Add(category);
+                    db.CATEGORIA.Add(category);
                     db.Entry(category).State = EntityState.Added;
                     db.SaveChanges();
                     return true;
@@ -78,11 +91,11 @@ namespace Sistema.Controles.Logica
 
 
         // Modificar Categoria
-        public bool ModifyCategory(CategoriasModel category)
+        public bool ModifyCategory(CATEGORIA category)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                CategoriasModel originalCategory = GetCategory(category.CategoriaID);
+                CATEGORIA originalCategory = GetCategory(category.CategoriaID);
                 if (originalCategory != null)
                 {
                     // Modificamos la categoria
@@ -104,10 +117,10 @@ namespace Sistema.Controles.Logica
 
         public bool DeleteCategory(int categoryID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Buscamos la categoría por ID
-                CategoriasModel category = db.CategoriasModel.Find(categoryID);
+                CATEGORIA category = db.CATEGORIA.Find(categoryID);
                 if (category != null)
                 {
                     bool hasAssociatedMedicine = medicineLogic.HasMedicineCategoryAssociated(db, categoryID);
@@ -128,7 +141,7 @@ namespace Sistema.Controles.Logica
                         }
                     }
 
-                    db.CategoriasModel.Remove(category);
+                    db.CATEGORIA.Remove(category);
                     db.Entry(category).State = EntityState.Deleted;
                     db.SaveChanges();
                     return true;
@@ -145,10 +158,10 @@ namespace Sistema.Controles.Logica
 
         //public bool DeleteCategory(int categoryID)
         //{
-        //    using (var db = new SistemaGestionFarmaceuticaEntities())
+        //    using (var db = new FarmaciaDBEntities())
         //    {
         //        // Buscamos la categoría por ID
-        //        CategoriasModel category = db.CategoriasModel.Find(categoryID);
+        //        CATEGORIA category = db.CATEGORIA.Find(categoryID);
         //        if (category != null)
         //        {
         //            bool hasAssociatedMedicine = db.MedicamentosModel.Any(m => m.CategoriaID == categoryID);
@@ -176,7 +189,7 @@ namespace Sistema.Controles.Logica
         //                }
         //            }
 
-        //            db.CategoriasModel.Remove(category);
+        //            db.CATEGORIA.Remove(category);
         //            db.Entry(category).State = EntityState.Deleted;
         //            db.SaveChanges();
         //            return true;

@@ -66,7 +66,7 @@ namespace Sistema.Controles
         }
 
         // Paleta de color para botón modificar
-        Color buttonModifyActive = ColorTranslator.FromHtml("#87b051");
+        Color buttonModifyActive = ColorTranslator.FromHtml("#a6d95b");
         Color buttonModifyDisabled = ColorTranslator.FromHtml("#b0e068");
 
         public Color ButtonModifyActive

@@ -34,12 +34,8 @@
             this.pnlList = new System.Windows.Forms.Panel();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvShelvesList = new Zuby.ADGV.AdvancedDataGridView();
-            this.dgvcShelfID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcShelfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNumShelf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcShelfSector = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceShelves = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaGestionFarmaceuticaDataSet = new Sistema.SistemaGestionFarmaceuticaDataSet();
+            this.farmaciaDBData = new Sistema.FarmaciaDBData();
             this.lblTotalRow = new System.Windows.Forms.Label();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
@@ -56,11 +52,15 @@
             this.lblSectorE = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.estantesModelTableAdapter = new Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters.EstantesModelTableAdapter();
+            this.estantesModelTableAdapter = new Sistema.FarmaciaDBDataTableAdapters.ESTANTETableAdapter();
+            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNumeroE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSectorE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShelvesList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceShelves)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGestionFarmaceuticaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
@@ -136,10 +136,10 @@
             this.dgvShelvesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvShelvesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShelvesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcShelfID,
-            this.dgvcShelfName,
-            this.dgvcNumShelf,
-            this.dgvcShelfSector});
+            this.dgvcID,
+            this.dgvcNombreE,
+            this.dgvcNumeroE,
+            this.dgvcSectorE});
             this.dgvShelvesList.DataSource = this.bindingSourceShelves;
             this.dgvShelvesList.FilterAndSortEnabled = true;
             this.dgvShelvesList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -156,56 +156,15 @@
             this.dgvShelvesList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtaViewEstante_DataError);
             this.dgvShelvesList.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtaViewEstante_EditingControlShowing);
             // 
-            // dgvcShelfID
-            // 
-            this.dgvcShelfID.DataPropertyName = "EstanteID";
-            this.dgvcShelfID.FillWeight = 112.9913F;
-            this.dgvcShelfID.HeaderText = "ID";
-            this.dgvcShelfID.MinimumWidth = 22;
-            this.dgvcShelfID.Name = "dgvcShelfID";
-            this.dgvcShelfID.ReadOnly = true;
-            this.dgvcShelfID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcShelfName
-            // 
-            this.dgvcShelfName.DataPropertyName = "Nombre";
-            this.dgvcShelfName.FillWeight = 112.9913F;
-            this.dgvcShelfName.HeaderText = "Nombre";
-            this.dgvcShelfName.MinimumWidth = 22;
-            this.dgvcShelfName.Name = "dgvcShelfName";
-            this.dgvcShelfName.ReadOnly = true;
-            this.dgvcShelfName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNumShelf
-            // 
-            this.dgvcNumShelf.DataPropertyName = "Numero_de_estante";
-            this.dgvcNumShelf.FillWeight = 112.9913F;
-            this.dgvcNumShelf.HeaderText = "Núm. Estante";
-            this.dgvcNumShelf.MinimumWidth = 22;
-            this.dgvcNumShelf.Name = "dgvcNumShelf";
-            this.dgvcNumShelf.ReadOnly = true;
-            this.dgvcNumShelf.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcShelfSector
-            // 
-            this.dgvcShelfSector.DataPropertyName = "Sector";
-            this.dgvcShelfSector.FillWeight = 112.9913F;
-            this.dgvcShelfSector.HeaderText = "Sector";
-            this.dgvcShelfSector.MinimumWidth = 22;
-            this.dgvcShelfSector.Name = "dgvcShelfSector";
-            this.dgvcShelfSector.ReadOnly = true;
-            this.dgvcShelfSector.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
             // bindingSourceShelves
             // 
-            this.bindingSourceShelves.DataMember = "EstantesModel";
-            this.bindingSourceShelves.DataSource = this.sistemaGestionFarmaceuticaDataSet;
-            this.bindingSourceShelves.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceShelves_ListChanged);
+            this.bindingSourceShelves.DataMember = "ESTANTE";
+            this.bindingSourceShelves.DataSource = this.farmaciaDBData;
             // 
-            // sistemaGestionFarmaceuticaDataSet
+            // farmaciaDBData
             // 
-            this.sistemaGestionFarmaceuticaDataSet.DataSetName = "SistemaGestionFarmaceuticaDataSet";
-            this.sistemaGestionFarmaceuticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.farmaciaDBData.DataSetName = "FarmaciaDBData";
+            this.farmaciaDBData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblTotalRow
             // 
@@ -398,9 +357,9 @@
             this.lblNombreE.Location = new System.Drawing.Point(4, 43);
             this.lblNombreE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblNombreE.Name = "lblNombreE";
-            this.lblNombreE.Size = new System.Drawing.Size(51, 15);
+            this.lblNombreE.Size = new System.Drawing.Size(59, 15);
             this.lblNombreE.TabIndex = 0;
-            this.lblNombreE.Text = "Nombre";
+            this.lblNombreE.Text = "Nombre *";
             // 
             // lblNumE
             // 
@@ -410,9 +369,9 @@
             this.lblNumE.Location = new System.Drawing.Point(4, 97);
             this.lblNumE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblNumE.Name = "lblNumE";
-            this.lblNumE.Size = new System.Drawing.Size(92, 15);
+            this.lblNumE.Size = new System.Drawing.Size(100, 15);
             this.lblNumE.TabIndex = 0;
-            this.lblNumE.Text = "Número Estante";
+            this.lblNumE.Text = "Número Estante *";
             // 
             // lblSectorE
             // 
@@ -422,9 +381,9 @@
             this.lblSectorE.Location = new System.Drawing.Point(4, 154);
             this.lblSectorE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblSectorE.Name = "lblSectorE";
-            this.lblSectorE.Size = new System.Drawing.Size(41, 15);
+            this.lblSectorE.Size = new System.Drawing.Size(49, 15);
             this.lblSectorE.TabIndex = 0;
-            this.lblSectorE.Text = "Sector";
+            this.lblSectorE.Text = "Sector *";
             // 
             // pnlButton
             // 
@@ -458,6 +417,42 @@
             // 
             this.estantesModelTableAdapter.ClearBeforeFill = true;
             // 
+            // dgvcID
+            // 
+            this.dgvcID.DataPropertyName = "EstanteID";
+            this.dgvcID.HeaderText = "EstanteID";
+            this.dgvcID.MinimumWidth = 22;
+            this.dgvcID.Name = "dgvcID";
+            this.dgvcID.ReadOnly = true;
+            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreE
+            // 
+            this.dgvcNombreE.DataPropertyName = "Nombre";
+            this.dgvcNombreE.HeaderText = "Nombre";
+            this.dgvcNombreE.MinimumWidth = 22;
+            this.dgvcNombreE.Name = "dgvcNombreE";
+            this.dgvcNombreE.ReadOnly = true;
+            this.dgvcNombreE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNumeroE
+            // 
+            this.dgvcNumeroE.DataPropertyName = "Numero";
+            this.dgvcNumeroE.HeaderText = "Numero";
+            this.dgvcNumeroE.MinimumWidth = 22;
+            this.dgvcNumeroE.Name = "dgvcNumeroE";
+            this.dgvcNumeroE.ReadOnly = true;
+            this.dgvcNumeroE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcSectorE
+            // 
+            this.dgvcSectorE.DataPropertyName = "Sector";
+            this.dgvcSectorE.HeaderText = "Sector";
+            this.dgvcSectorE.MinimumWidth = 22;
+            this.dgvcSectorE.Name = "dgvcSectorE";
+            this.dgvcSectorE.ReadOnly = true;
+            this.dgvcSectorE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // EstantesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -475,7 +470,7 @@
             this.pnlList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShelvesList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceShelves)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGestionFarmaceuticaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -505,14 +500,14 @@
         private Guna.UI.WinForms.GunaButton btnEliminarG;
         private Guna.UI.WinForms.GunaButton btnGuardarG;
         private System.Windows.Forms.Label lblTotalRow;
-        private SistemaGestionFarmaceuticaDataSet sistemaGestionFarmaceuticaDataSet;
         private Zuby.ADGV.AdvancedDataGridView dgvShelvesList;
-        private System.Windows.Forms.BindingSource bindingSourceShelves;
-        private SistemaGestionFarmaceuticaDataSetTableAdapters.EstantesModelTableAdapter estantesModelTableAdapter;
         private Guna.UI.WinForms.GunaButton btnModifyG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcShelfID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcShelfName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumShelf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcShelfSector;
+        private FarmaciaDBData farmaciaDBData;
+        private System.Windows.Forms.BindingSource bindingSourceShelves;
+        private FarmaciaDBDataTableAdapters.ESTANTETableAdapter estantesModelTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumeroE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSectorE;
     }
 }

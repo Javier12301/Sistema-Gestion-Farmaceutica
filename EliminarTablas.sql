@@ -1,4 +1,4 @@
-use SistemaGestionFarmaceutica;
+use FarmaciaDB;
 
 
 -- Elimina la tabla VentasModel
@@ -9,17 +9,17 @@ DROP TABLE PrecioVentaModel;
 DROP TABLE CostoProductoModel;
 
 
--- Elimina la tabla ProductosModel
-DROP TABLE ProductosModel;
+-- Elimina la tabla DETALLE_VENTA
+DROP TABLE DETALLE_VENTA;
 
--- Elimina la tabla MedicamentosProveedoresModel
-DROP TABLE MedicamentosProveedoresModel;
+-- Elimina la tabla PRODUCTO
+DROP TABLE PRODUCTO;
 
--- Elimina la tabla MedicamentosLotesModel
-DROP TABLE MedicamentosLotesModel;
+-- Elimina la tabla DETALLE_COMPRA
+DROP TABLE DETALLE_COMPRA;
 
--- Elimina la tabla MedicamentosModel
-DROP TABLE MedicamentosModel;
+-- Elimina la tabla MEDICAMENTO
+DROP TABLE MEDICAMENTO;
 
 -- Elimina la tabla CodigosDeBarrasModel
 DROP TABLE CodigosDeBarrasModel;
@@ -27,67 +27,104 @@ DROP TABLE CodigosDeBarrasModel;
 -- Elimina la tabla LotesModel
 DROP TABLE LotesModel;
 
--- Elimina la tabla ProveedoresModel
-DROP TABLE ProveedoresModel;
+-- Elimina la tabla PROVEEDORES
+DROP TABLE PROVEEDORES;
 
 -- Elimina la tabla CategoriasModel
 DROP TABLE CategoriasModel;
 
--- Elimina la tabla EstantesModel
-DROP TABLE EstantesModel;
+-- Elimina la tabla ESTANTES
+DROP TABLE ESTANTES;
 
 -- Deshabilitar la propiedad IDENTITY para todas las tablas
 
--- Tabla EstantesModel
-SET IDENTITY_INSERT EstantesModel ON;
-INSERT INTO EstantesModel (EstanteID, NombreEstante, NumeroEstante, SectorEstante)
-VALUES (0, 'N/A', 0, 'N/A');
+-- Tabla ESTANTES
+SET IDENTITY_INSERT ESTANTES ON;
 -- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT EstantesModel OFF;
+SET IDENTITY_INSERT ESTANTES OFF;
 
 -- Tabla CategoriasModel
-SET IDENTITY_INSERT CategoriasModel ON;
-INSERT INTO CategoriasModel (CategoriaID, NombreCategoria, DescripcionCategoria)
-VALUES (0, 'N/A', 'N/A');
--- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT CategoriasModel OFF;
+SET IDENTITY_INSERT CATEGORIA ON;
 
--- Tabla ProveedoresModel
-SET IDENTITY_INSERT ProveedoresModel ON;
-INSERT INTO ProveedoresModel (ProveedorID, NombreProveedor, DireccionProveedor, TelefonoProveedor)
-VALUES (0, 'N/A', 'N/A', 'N/A');
--- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT ProveedoresModel OFF;
 
--- Tabla CodigosDeBarrasModel
-SET IDENTITY_INSERT CodigosDeBarrasModel ON;
 -- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT CodigosDeBarrasModel OFF;
+SET IDENTITY_INSERT CATEGORIA OFF;
 
--- Tabla LotesModel
-SET IDENTITY_INSERT LotesModel ON;
+-- Tabla PROVEEDORES
+SET IDENTITY_INSERT PROVEEDOR ON;
 -- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT LotesModel OFF;
+SET IDENTITY_INSERT PROVEEDOR OFF;
+EXEC sp_ActivateIdentityInsert_CATEGORIA;
+EXEC sp_DeactivateIdentityInsert_CATEGORIA;
 
--- Tabla MedicamentosModel
-SET IDENTITY_INSERT MedicamentosModel ON;
--- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT MedicamentosModel OFF;
 
--- Tabla MedicamentosLotesModel
-SET IDENTITY_INSERT MedicamentosLotesModel ON;
--- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT MedicamentosLotesModel OFF;
 
--- Tabla MedicamentosProveedoresModel
-SET IDENTITY_INSERT MedicamentosProveedoresModel ON;
--- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT MedicamentosProveedoresModel OFF;
+--- --- --- --- --- --- --- --- ---
+-- PROCEDIMIENTOS
+CREATE PROCEDURE sp_ActivateIdentityInsert_CATEGORIA
+AS
+BEGIN
+    SET IDENTITY_INSERT CATEGORIA ON;
+END
+GO
 
--- Tabla ProductosModel
-SET IDENTITY_INSERT ProductosModel ON;
+CREATE PROCEDURE sp_DeactivateIdentityInsert_CATEGORIA
+AS
+BEGIN
+    SET IDENTITY_INSERT CATEGORIA OFF;
+END
+GO
+
+CREATE PROCEDURE sp_ActivateIdentityInsert_PROVEEDOR
+AS
+BEGIN
+    SET IDENTITY_INSERT PROVEEDOR ON;
+END
+GO
+
+CREATE PROCEDURE sp_DeactivateIdentityInsert_PROVEEDOR
+AS
+BEGIN
+    SET IDENTITY_INSERT PROVEEDOR OFF;
+END
+GO
+
+CREATE PROCEDURE sp_ActivateIdentityInsert_ESTANTE
+AS
+BEGIN
+    SET IDENTITY_INSERT ESTANTE ON;
+END
+GO
+
+CREATE PROCEDURE sp_DeactivateIdentityInsert_ESTANTE
+AS
+BEGIN
+    SET IDENTITY_INSERT ESTANTE OFF;
+END
+GO
+--- --- --- --- --- --- --- --- ---
+
+-- Tabla MEDICAMENTO
+SET IDENTITY_INSERT MEDICAMENTO ON;
 -- Volver a habilitar IDENTITY
-SET IDENTITY_INSERT ProductosModel OFF;
+SET IDENTITY_INSERT MEDICAMENTO OFF;
+
+-- Tabla PRODUCTO
+SET IDENTITY_INSERT PRODUCTO ON;
+-- Volver a habilitar IDENTITY
+SET IDENTITY_INSERT PRODUCTO OFF;
+
+-- Tabla DETALLE_COMPRA
+SET IDENTITY_INSERT DETALLE_COMPRA ON;
+-- Volver a habilitar IDENTITY
+SET IDENTITY_INSERT DETALLE_COMPRA OFF;
+
+
+
+-- Tabla DETALLE_VENTA
+SET IDENTITY_INSERT DETALLE_VENTA ON;
+-- Volver a habilitar IDENTITY
+SET IDENTITY_INSERT DETALLE_VENTA OFF;
 
 -- Volver a habilitar IDENTITY para todas las tablas
 

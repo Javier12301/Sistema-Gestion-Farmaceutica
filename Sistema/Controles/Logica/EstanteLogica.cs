@@ -17,33 +17,33 @@ namespace Sistema.Controles.Logica
         // Obtener cantidad total de estantes
         public int GetTotalShelvesCount()
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Obtenemos la cantidad de estantes e ignoramos el estante 0 que es el estante por defecto.
-                int shelves = db.EstantesModel.Where(x => x.EstanteID != 0).Count();
+                int shelves = db.ESTANTE.Where(e => e.EstanteID > 0).Count();
                 return shelves;
             }
         }
 
         // Obtener lista de Estantes
-        public List<EstantesModel> GetShelves()
+        public List<ESTANTE> GetShelves()
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Obtenemos la lista de estantes pero solo los campos que necesitamos
-                var shelves = db.EstantesModel.Where(shelf => shelf.EstanteID != 0).Select(shelf => new
+                var shelves = db.ESTANTE.Where(shelf => shelf.EstanteID != 0).Select(shelf => new
                 {
                     EstanteID = shelf.EstanteID,
                     Nombre = shelf.Nombre,
-                    Numero_de_estante = shelf.Numero_de_estante,
+                    Numero = shelf.Numero,
                     Sector = shelf.Sector
                 }).ToList();
 
-                List<EstantesModel> shelvesList = shelves.Select(shelf => new EstantesModel
+                List<ESTANTE> shelvesList = shelves.Select(shelf => new ESTANTE
                 {
                     EstanteID = shelf.EstanteID,
                     Nombre = shelf.Nombre,
-                    Numero_de_estante = shelf.Numero_de_estante,
+                    Numero = shelf.Numero,
                     Sector = shelf.Sector
                 }).ToList();
 
@@ -53,12 +53,12 @@ namespace Sistema.Controles.Logica
 
 
         // Obtener estante por ID
-        public EstantesModel GetShelf(int shelfID)
+        public ESTANTE GetShelf(int shelfID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Obtenemos el estante por ID
-                EstantesModel shelf = db.EstantesModel.Find(shelfID);
+                ESTANTE shelf = db.ESTANTE.Find(shelfID);
                 return shelf;
             }
         }
@@ -67,13 +67,13 @@ namespace Sistema.Controles.Logica
 
 
         // Agregar Estantes
-        public bool AddShelf(EstantesModel shelf)
+        public bool AddShelf(ESTANTE shelf)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 try
                 {
-                    db.EstantesModel.Add(shelf);
+                    db.ESTANTE.Add(shelf);
                     db.Entry(shelf).State = EntityState.Added;
                     db.SaveChanges();
                     return true;
@@ -88,17 +88,17 @@ namespace Sistema.Controles.Logica
         }
 
         // Modificar Estante
-        public bool ModifyShelf(EstantesModel shelf)
+        public bool ModifyShelf(ESTANTE shelf)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                EstantesModel originalShelf = GetShelf(shelf.EstanteID);
+                ESTANTE originalShelf = GetShelf(shelf.EstanteID);
 
                 if (originalShelf != null)
                 {
                     // Modificamos los campos
                     originalShelf.Nombre = shelf.Nombre;
-                    originalShelf.Numero_de_estante = shelf.Numero_de_estante;
+                    originalShelf.Numero = shelf.Numero;
                     originalShelf.Sector = shelf.Sector;
 
                     // Establecemos el estado de la entidad como modificada y guardamos los cambios
@@ -116,13 +116,13 @@ namespace Sistema.Controles.Logica
         //// Eliminar Estante
         //public bool DeleteShelf(int shelfID)
         //{
-        //    using (var db = new SistemaGestionFarmaceuticaEntities())
+        //    using (var db = new FarmaciaDBEntities())
         //    {
         //        // Buscamos el estante que queremos eliminar
-        //        EstantesModel shelf = db.EstantesModel.Find(shelfID);
+        //        ESTANTE shelf = db.ESTANTE.Find(shelfID);
         //        if (shelf != null)
         //        {
-        //            db.EstantesModel.Remove(shelf);
+        //            db.ESTANTE.Remove(shelf);
         //            db.Entry(shelf).State = EntityState.Deleted;
         //            db.SaveChanges();
         //            return true;
@@ -136,10 +136,10 @@ namespace Sistema.Controles.Logica
 
         public bool DeleteShelf(int shelfID)
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 // Buscamos la estante por ID
-                EstantesModel shelf = db.EstantesModel.Find(shelfID);
+                ESTANTE shelf = db.ESTANTE.Find(shelfID);
                 if (shelf != null)
                 {
                     bool hasAssociatedMedicine = medicineLogic.HasMedicineShelfAssociated(db, shelfID);
@@ -160,7 +160,7 @@ namespace Sistema.Controles.Logica
                         }
                     }
 
-                    db.EstantesModel.Remove(shelf);
+                    db.ESTANTE.Remove(shelf);
                     db.Entry(shelf).State = EntityState.Deleted;
                     db.SaveChanges();
                     return true;

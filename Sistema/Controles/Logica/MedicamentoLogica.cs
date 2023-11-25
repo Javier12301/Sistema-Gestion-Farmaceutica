@@ -12,25 +12,24 @@ namespace Sistema.Controles.Logica
     public class MedicamentoLogica
     {
         // Instancias de modelos de relaciones de medicamentos
-        MedicamentosProveedoresModel medicineSupplier = new MedicamentosProveedoresModel();
         // Obtener cantidad total de medicamentos
         public int GetTotalMedicinesCount()
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
-                int medicines = db.MedicamentosModel.Count();
+                int medicines = db.MEDICAMENTO.Count(m => m.MedicamentoID > 0);
                 return medicines;
             }
         }
 
         // Agregar un nuevo medicamento
-        public bool AddMedicine(MedicamentosModel medicine)
+        public bool AddMedicine(MEDICAMENTO medicine)
         {
             try
             {
-                using (var db = new SistemaGestionFarmaceuticaEntities())
+                using (var db = new FarmaciaDBEntities())
                 {
-                    db.MedicamentosModel.Add(medicine);
+                    db.MEDICAMENTO.Add(medicine);
                     db.Entry(medicine).State = EntityState.Added;
                     db.SaveChanges();
                     return true;
@@ -45,16 +44,16 @@ namespace Sistema.Controles.Logica
 
         // // // MANEJO DE LÓGICA DE CATEGORÍAS EN MEDICAMENTOS // // //
         // Lógica para obtener medicamentos pertenecientes a una categoría
-        public bool HasMedicineCategoryAssociated(SistemaGestionFarmaceuticaEntities db, int categoryID)
+        public bool HasMedicineCategoryAssociated(FarmaciaDBEntities db, int categoryID)
         {
-            return db.MedicamentosModel.Any(m => m.CategoriaID == categoryID);
+            return db.MEDICAMENTO.Any(m => m.CategoriaID == categoryID);
         }
 
         // Lógica para reasignar medicamentos a una categoría predeterminada
-        public void ReassignDefaultCategoryMedicine(SistemaGestionFarmaceuticaEntities db, int categoryID)
+        public void ReassignDefaultCategoryMedicine(FarmaciaDBEntities db, int categoryID)
         {
             int defaultCategoryID = 0; // ID de la categoría predeterminada
-            var medicineToReassing = db.MedicamentosModel.Where(m => m.CategoriaID == categoryID);
+            var medicineToReassing = db.MEDICAMENTO.Where(m => m.CategoriaID == categoryID);
 
             foreach (var medicine in medicineToReassing)
             {
@@ -66,16 +65,16 @@ namespace Sistema.Controles.Logica
 
         // // // MANEJO DE LÓGICA DE ESTANTES EN MEDICAMENTOS // // //
         // Lógica para obtener medicamentos pertenecientes a una categoría
-        public bool HasMedicineShelfAssociated(SistemaGestionFarmaceuticaEntities db, int shelfID)
+        public bool HasMedicineShelfAssociated(FarmaciaDBEntities db, int shelfID)
         {
-            return db.MedicamentosModel.Any(m => m.EstanteID == shelfID);
+            return db.MEDICAMENTO.Any(m => m.EstanteID == shelfID);
         }
 
         // Lógica para reasignar medicamentos a una categoría predeterminada
-        public void ReassignDefaultShelfMedicine(SistemaGestionFarmaceuticaEntities db, int shelfID)
+        public void ReassignDefaultShelfMedicine(FarmaciaDBEntities db, int shelfID)
         {
             int defaultShelfID = 0; // ID de la categoría predeterminada
-            var medicineToReassing = db.MedicamentosModel.Where(m => m.EstanteID == shelfID);
+            var medicineToReassing = db.MEDICAMENTO.Where(m => m.EstanteID == shelfID);
 
             foreach (var medicine in medicineToReassing)
             {
@@ -87,10 +86,7 @@ namespace Sistema.Controles.Logica
 
         // // // MANEJO DE LÓGICA DE PROVEEDORES DE MEDICAMENTOS // // //
         // Lógica para obtener medicamentos pertenecientes a un proveedor
-        public bool HasMedicineSupplierAssociated(SistemaGestionFarmaceuticaEntities db, int supplierID)
-        {
-            return db.MedicamentosProveedoresModel.Any(m => m.ProveedorID == supplierID);
-        }
+        
 
         // Lógica para reasignar proveedor de medicamento como "Sin Proveedor"
 
@@ -99,7 +95,7 @@ namespace Sistema.Controles.Logica
         // Obtener todos los medicamentos para cargar el DatagridView utilizando view MedicamentoDetalle
         /*public List<MedicamentosDetalle> GetAllMedicineDetails()
         {
-            using (var db = new SistemaGestionFarmaceuticaEntities())
+            using (var db = new FarmaciaDBEntities())
             {
                 var medicines = db.MedicamentosDetalle.ToList();
                 return medicines;
@@ -108,7 +104,7 @@ namespace Sistema.Controles.Logica
 
         // Agregar a estantes por defecto
         /*
-          using (var db = new SistemaGestionFarmaceuticaEntities())
+          using (var db = new FarmaciaDBEntities())
                         {
                             if (hasMedicine)
                             {
@@ -118,7 +114,7 @@ namespace Sistema.Controles.Logica
                                 {
                                     // Reasignar medicamentos al estante predeterminado
                                     int defaultShelfID = 0; // ID del estante predeterminado "Sin Estante"
-                                    db.MedicamentosModel
+                                    db.MEDICAMENTO
                                         .Where(m => m.EstanteID == selectedShelfID)
                                         .ToList()
                                         .ForEach(m => m.EstanteID = defaultShelfID);

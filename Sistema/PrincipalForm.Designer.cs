@@ -37,18 +37,26 @@
             this.SeparatorInventory = new Bunifu.Framework.UI.BunifuSeparator();
             this.sidebarContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.btnPrincipal = new Guna.UI.WinForms.GunaButton();
+            this.flInventarioContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlDescInventario = new System.Windows.Forms.Panel();
-            this.lblDescriptionInventorario = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lblDescInventorario = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnCategorias = new Guna.UI.WinForms.GunaButton();
             this.btnEstantes = new Guna.UI.WinForms.GunaButton();
             this.btnProveedores = new Guna.UI.WinForms.GunaButton();
             this.btnMedicamentos = new Guna.UI.WinForms.GunaButton();
             this.btnProductos = new Guna.UI.WinForms.GunaButton();
             this.btnClientes = new Guna.UI.WinForms.GunaButton();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlDescRegistro = new System.Windows.Forms.Panel();
+            this.lblDescRegistro = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.btnVentas = new Guna.UI.WinForms.GunaButton();
+            this.btnCompras = new Guna.UI.WinForms.GunaButton();
+            this.btnReportes = new Guna.UI.WinForms.GunaButton();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlDescControl = new System.Windows.Forms.Panel();
-            this.lblDescriptionControls = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.btnAjustes = new Guna.UI.WinForms.GunaButton();
+            this.lblDescControles = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnLogOut = new Guna.UI.WinForms.GunaButton();
+            this.btnAjustes = new Guna.UI.WinForms.GunaButton();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSize = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -61,7 +69,11 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.sidebarContainer.SuspendLayout();
+            this.flInventarioContainer.SuspendLayout();
             this.pnlDescInventario.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.pnlDescRegistro.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.pnlDescControl.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -84,7 +96,7 @@
             this.pnlMAIN.Controls.Add(this.pnlHeader);
             this.pnlMAIN.Location = new System.Drawing.Point(0, 0);
             this.pnlMAIN.Name = "pnlMAIN";
-            this.pnlMAIN.Size = new System.Drawing.Size(904, 446);
+            this.pnlMAIN.Size = new System.Drawing.Size(904, 555);
             this.pnlMAIN.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -100,7 +112,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(904, 396);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(904, 505);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // pnlMenu
@@ -116,7 +128,7 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Padding = new System.Windows.Forms.Padding(5);
             this.pnlMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlMenu.Size = new System.Drawing.Size(709, 392);
+            this.pnlMenu.Size = new System.Drawing.Size(709, 501);
             this.pnlMenu.TabIndex = 8;
             this.pnlMenu.Tag = "pnlContainer";
             // 
@@ -138,22 +150,15 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.sidebarContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.sidebarContainer.Controls.Add(this.btnPrincipal);
-            this.sidebarContainer.Controls.Add(this.pnlDescInventario);
-            this.sidebarContainer.Controls.Add(this.btnCategorias);
-            this.sidebarContainer.Controls.Add(this.btnEstantes);
-            this.sidebarContainer.Controls.Add(this.btnProveedores);
-            this.sidebarContainer.Controls.Add(this.btnMedicamentos);
-            this.sidebarContainer.Controls.Add(this.btnProductos);
-            this.sidebarContainer.Controls.Add(this.btnClientes);
-            this.sidebarContainer.Controls.Add(this.pnlDescControl);
-            this.sidebarContainer.Controls.Add(this.btnAjustes);
-            this.sidebarContainer.Controls.Add(this.btnLogOut);
+            this.sidebarContainer.Controls.Add(this.flInventarioContainer);
+            this.sidebarContainer.Controls.Add(this.flowLayoutPanel3);
+            this.sidebarContainer.Controls.Add(this.flowLayoutPanel2);
             this.sidebarContainer.Location = new System.Drawing.Point(3, 3);
             this.sidebarContainer.MaximumSize = new System.Drawing.Size(185, 0);
             this.sidebarContainer.MinimumSize = new System.Drawing.Size(43, 362);
             this.sidebarContainer.Name = "sidebarContainer";
             this.sidebarContainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.sidebarContainer.Size = new System.Drawing.Size(185, 390);
+            this.sidebarContainer.Size = new System.Drawing.Size(185, 499);
             this.sidebarContainer.TabIndex = 7;
             this.sidebarContainer.Tag = "pnlContainer";
             // 
@@ -184,25 +189,39 @@
             this.btnPrincipal.Text = " Principal";
             this.btnPrincipal.Click += new System.EventHandler(this.btnPrincipal_Click);
             // 
+            // flInventarioContainer
+            // 
+            this.flInventarioContainer.Controls.Add(this.pnlDescInventario);
+            this.flInventarioContainer.Controls.Add(this.btnCategorias);
+            this.flInventarioContainer.Controls.Add(this.btnEstantes);
+            this.flInventarioContainer.Controls.Add(this.btnProveedores);
+            this.flInventarioContainer.Controls.Add(this.btnMedicamentos);
+            this.flInventarioContainer.Controls.Add(this.btnProductos);
+            this.flInventarioContainer.Controls.Add(this.btnClientes);
+            this.flInventarioContainer.Location = new System.Drawing.Point(3, 39);
+            this.flInventarioContainer.Name = "flInventarioContainer";
+            this.flInventarioContainer.Size = new System.Drawing.Size(181, 230);
+            this.flInventarioContainer.TabIndex = 2;
+            // 
             // pnlDescInventario
             // 
-            this.pnlDescInventario.Controls.Add(this.lblDescriptionInventorario);
-            this.pnlDescInventario.Location = new System.Drawing.Point(3, 39);
+            this.pnlDescInventario.Controls.Add(this.lblDescInventorario);
+            this.pnlDescInventario.Location = new System.Drawing.Point(3, 3);
             this.pnlDescInventario.Name = "pnlDescInventario";
             this.pnlDescInventario.Size = new System.Drawing.Size(181, 20);
-            this.pnlDescInventario.TabIndex = 26;
+            this.pnlDescInventario.TabIndex = 34;
             // 
-            // lblDescriptionInventorario
+            // lblDescInventorario
             // 
-            this.lblDescriptionInventorario.AutoEllipsis = true;
-            this.lblDescriptionInventorario.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.lblDescriptionInventorario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblDescriptionInventorario.Location = new System.Drawing.Point(1, 2);
-            this.lblDescriptionInventorario.Name = "lblDescriptionInventorario";
-            this.lblDescriptionInventorario.Size = new System.Drawing.Size(81, 17);
-            this.lblDescriptionInventorario.TabIndex = 0;
-            this.lblDescriptionInventorario.Text = "INVENTARIO";
-            this.lblDescriptionInventorario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDescInventorario.AutoEllipsis = true;
+            this.lblDescInventorario.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lblDescInventorario.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblDescInventorario.Location = new System.Drawing.Point(1, 2);
+            this.lblDescInventorario.Name = "lblDescInventorario";
+            this.lblDescInventorario.Size = new System.Drawing.Size(81, 17);
+            this.lblDescInventorario.TabIndex = 0;
+            this.lblDescInventorario.Text = "INVENTARIO";
+            this.lblDescInventorario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnCategorias
             // 
@@ -217,7 +236,7 @@
             this.btnCategorias.ForeColor = System.Drawing.Color.Black;
             this.btnCategorias.Image = global::Sistema.Properties.Resources.tag;
             this.btnCategorias.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnCategorias.Location = new System.Drawing.Point(3, 65);
+            this.btnCategorias.Location = new System.Drawing.Point(3, 29);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnCategorias.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -226,7 +245,7 @@
             this.btnCategorias.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnCategorias.Radius = 15;
             this.btnCategorias.Size = new System.Drawing.Size(181, 28);
-            this.btnCategorias.TabIndex = 21;
+            this.btnCategorias.TabIndex = 29;
             this.btnCategorias.TabStop = false;
             this.btnCategorias.Text = " Categorías";
             this.btnCategorias.Click += new System.EventHandler(this.btnCategoria_Click);
@@ -244,7 +263,7 @@
             this.btnEstantes.ForeColor = System.Drawing.Color.Black;
             this.btnEstantes.Image = global::Sistema.Properties.Resources.rack;
             this.btnEstantes.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnEstantes.Location = new System.Drawing.Point(3, 99);
+            this.btnEstantes.Location = new System.Drawing.Point(3, 63);
             this.btnEstantes.Name = "btnEstantes";
             this.btnEstantes.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnEstantes.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -253,7 +272,7 @@
             this.btnEstantes.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnEstantes.Radius = 15;
             this.btnEstantes.Size = new System.Drawing.Size(181, 28);
-            this.btnEstantes.TabIndex = 22;
+            this.btnEstantes.TabIndex = 30;
             this.btnEstantes.TabStop = false;
             this.btnEstantes.Text = " Estantes";
             this.btnEstantes.Click += new System.EventHandler(this.btnEstantes_Click);
@@ -271,7 +290,7 @@
             this.btnProveedores.ForeColor = System.Drawing.Color.Black;
             this.btnProveedores.Image = global::Sistema.Properties.Resources.supplier;
             this.btnProveedores.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnProveedores.Location = new System.Drawing.Point(3, 133);
+            this.btnProveedores.Location = new System.Drawing.Point(3, 97);
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnProveedores.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -280,7 +299,7 @@
             this.btnProveedores.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnProveedores.Radius = 15;
             this.btnProveedores.Size = new System.Drawing.Size(181, 28);
-            this.btnProveedores.TabIndex = 23;
+            this.btnProveedores.TabIndex = 31;
             this.btnProveedores.TabStop = false;
             this.btnProveedores.Text = " Proveedores";
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
@@ -298,7 +317,7 @@
             this.btnMedicamentos.ForeColor = System.Drawing.Color.Black;
             this.btnMedicamentos.Image = ((System.Drawing.Image)(resources.GetObject("btnMedicamentos.Image")));
             this.btnMedicamentos.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnMedicamentos.Location = new System.Drawing.Point(3, 167);
+            this.btnMedicamentos.Location = new System.Drawing.Point(3, 131);
             this.btnMedicamentos.Name = "btnMedicamentos";
             this.btnMedicamentos.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnMedicamentos.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -307,7 +326,7 @@
             this.btnMedicamentos.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnMedicamentos.Radius = 15;
             this.btnMedicamentos.Size = new System.Drawing.Size(181, 28);
-            this.btnMedicamentos.TabIndex = 24;
+            this.btnMedicamentos.TabIndex = 32;
             this.btnMedicamentos.TabStop = false;
             this.btnMedicamentos.Text = " Medicamentos";
             this.btnMedicamentos.Click += new System.EventHandler(this.btnMedicamento_Click);
@@ -325,7 +344,7 @@
             this.btnProductos.ForeColor = System.Drawing.Color.Black;
             this.btnProductos.Image = global::Sistema.Properties.Resources.product;
             this.btnProductos.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnProductos.Location = new System.Drawing.Point(3, 201);
+            this.btnProductos.Location = new System.Drawing.Point(3, 165);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnProductos.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -334,7 +353,7 @@
             this.btnProductos.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnProductos.Radius = 15;
             this.btnProductos.Size = new System.Drawing.Size(181, 28);
-            this.btnProductos.TabIndex = 25;
+            this.btnProductos.TabIndex = 33;
             this.btnProductos.TabStop = false;
             this.btnProductos.Text = " Productos";
             // 
@@ -351,7 +370,7 @@
             this.btnClientes.ForeColor = System.Drawing.Color.Black;
             this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
             this.btnClientes.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnClientes.Location = new System.Drawing.Point(3, 235);
+            this.btnClientes.Location = new System.Drawing.Point(3, 199);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnClientes.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -360,56 +379,148 @@
             this.btnClientes.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
             this.btnClientes.Radius = 15;
             this.btnClientes.Size = new System.Drawing.Size(181, 28);
-            this.btnClientes.TabIndex = 28;
+            this.btnClientes.TabIndex = 35;
             this.btnClientes.TabStop = false;
             this.btnClientes.Text = " Clientes";
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.pnlDescRegistro);
+            this.flowLayoutPanel3.Controls.Add(this.btnVentas);
+            this.flowLayoutPanel3.Controls.Add(this.btnCompras);
+            this.flowLayoutPanel3.Controls.Add(this.btnReportes);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 275);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(181, 125);
+            this.flowLayoutPanel3.TabIndex = 33;
+            // 
+            // pnlDescRegistro
+            // 
+            this.pnlDescRegistro.Controls.Add(this.lblDescRegistro);
+            this.pnlDescRegistro.Location = new System.Drawing.Point(3, 3);
+            this.pnlDescRegistro.Name = "pnlDescRegistro";
+            this.pnlDescRegistro.Size = new System.Drawing.Size(178, 20);
+            this.pnlDescRegistro.TabIndex = 27;
+            // 
+            // lblDescRegistro
+            // 
+            this.lblDescRegistro.AutoEllipsis = true;
+            this.lblDescRegistro.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lblDescRegistro.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblDescRegistro.Location = new System.Drawing.Point(1, 2);
+            this.lblDescRegistro.Name = "lblDescRegistro";
+            this.lblDescRegistro.Size = new System.Drawing.Size(110, 11);
+            this.lblDescRegistro.TabIndex = 1;
+            this.lblDescRegistro.Text = "REGISTROS";
+            this.lblDescRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnVentas
+            // 
+            this.btnVentas.AnimationHoverSpeed = 0.07F;
+            this.btnVentas.AnimationSpeed = 0.03F;
+            this.btnVentas.BackColor = System.Drawing.Color.Transparent;
+            this.btnVentas.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnVentas.BorderColor = System.Drawing.Color.Black;
+            this.btnVentas.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnVentas.FocusedColor = System.Drawing.Color.Empty;
+            this.btnVentas.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnVentas.ForeColor = System.Drawing.Color.Black;
+            this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
+            this.btnVentas.ImageSize = new System.Drawing.Size(18, 18);
+            this.btnVentas.Location = new System.Drawing.Point(3, 29);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnVentas.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnVentas.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnVentas.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnVentas.OnHoverImage")));
+            this.btnVentas.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnVentas.Radius = 15;
+            this.btnVentas.Size = new System.Drawing.Size(181, 28);
+            this.btnVentas.TabIndex = 30;
+            this.btnVentas.Text = " Ventas";
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.AnimationHoverSpeed = 0.07F;
+            this.btnCompras.AnimationSpeed = 0.03F;
+            this.btnCompras.BackColor = System.Drawing.Color.Transparent;
+            this.btnCompras.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnCompras.BorderColor = System.Drawing.Color.Black;
+            this.btnCompras.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCompras.FocusedColor = System.Drawing.Color.Empty;
+            this.btnCompras.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCompras.ForeColor = System.Drawing.Color.Black;
+            this.btnCompras.Image = ((System.Drawing.Image)(resources.GetObject("btnCompras.Image")));
+            this.btnCompras.ImageSize = new System.Drawing.Size(18, 18);
+            this.btnCompras.Location = new System.Drawing.Point(3, 63);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnCompras.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnCompras.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnCompras.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnCompras.OnHoverImage")));
+            this.btnCompras.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnCompras.Radius = 15;
+            this.btnCompras.Size = new System.Drawing.Size(181, 28);
+            this.btnCompras.TabIndex = 29;
+            this.btnCompras.TabStop = false;
+            this.btnCompras.Text = " Compras";
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.AnimationHoverSpeed = 0.07F;
+            this.btnReportes.AnimationSpeed = 0.03F;
+            this.btnReportes.BackColor = System.Drawing.Color.Transparent;
+            this.btnReportes.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnReportes.BorderColor = System.Drawing.Color.Black;
+            this.btnReportes.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnReportes.FocusedColor = System.Drawing.Color.Empty;
+            this.btnReportes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnReportes.ForeColor = System.Drawing.Color.Black;
+            this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
+            this.btnReportes.ImageSize = new System.Drawing.Size(18, 18);
+            this.btnReportes.Location = new System.Drawing.Point(3, 97);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnReportes.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnReportes.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnReportes.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnReportes.OnHoverImage")));
+            this.btnReportes.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnReportes.Radius = 15;
+            this.btnReportes.Size = new System.Drawing.Size(181, 28);
+            this.btnReportes.TabIndex = 31;
+            this.btnReportes.TabStop = false;
+            this.btnReportes.Text = " Reportes";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.pnlDescControl);
+            this.flowLayoutPanel2.Controls.Add(this.btnLogOut);
+            this.flowLayoutPanel2.Controls.Add(this.btnAjustes);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 406);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(181, 115);
+            this.flowLayoutPanel2.TabIndex = 32;
+            // 
             // pnlDescControl
             // 
-            this.pnlDescControl.Controls.Add(this.lblDescriptionControls);
-            this.pnlDescControl.Location = new System.Drawing.Point(3, 269);
+            this.pnlDescControl.Controls.Add(this.lblDescControles);
+            this.pnlDescControl.Location = new System.Drawing.Point(3, 3);
             this.pnlDescControl.Name = "pnlDescControl";
             this.pnlDescControl.Size = new System.Drawing.Size(181, 20);
             this.pnlDescControl.TabIndex = 27;
             // 
-            // lblDescriptionControls
+            // lblDescControles
             // 
-            this.lblDescriptionControls.AutoSize = true;
-            this.lblDescriptionControls.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescriptionControls.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblDescriptionControls.Location = new System.Drawing.Point(2, 4);
-            this.lblDescriptionControls.Name = "lblDescriptionControls";
-            this.lblDescriptionControls.Size = new System.Drawing.Size(70, 13);
-            this.lblDescriptionControls.TabIndex = 0;
-            this.lblDescriptionControls.Text = "CONTROLES";
-            this.lblDescriptionControls.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnAjustes
-            // 
-            this.btnAjustes.AnimationHoverSpeed = 0.07F;
-            this.btnAjustes.AnimationSpeed = 0.03F;
-            this.btnAjustes.BackColor = System.Drawing.Color.Transparent;
-            this.btnAjustes.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.btnAjustes.BorderColor = System.Drawing.Color.Black;
-            this.btnAjustes.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAjustes.FocusedColor = System.Drawing.Color.Empty;
-            this.btnAjustes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnAjustes.ForeColor = System.Drawing.Color.Black;
-            this.btnAjustes.Image = global::Sistema.Properties.Resources.settings;
-            this.btnAjustes.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnAjustes.Location = new System.Drawing.Point(3, 295);
-            this.btnAjustes.Name = "btnAjustes";
-            this.btnAjustes.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
-            this.btnAjustes.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnAjustes.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnAjustes.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnAjustes.OnHoverImage")));
-            this.btnAjustes.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnAjustes.Radius = 15;
-            this.btnAjustes.Size = new System.Drawing.Size(181, 28);
-            this.btnAjustes.TabIndex = 29;
-            this.btnAjustes.TabStop = false;
-            this.btnAjustes.Text = " Ajustes";
+            this.lblDescControles.AutoSize = true;
+            this.lblDescControles.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescControles.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblDescControles.Location = new System.Drawing.Point(2, 4);
+            this.lblDescControles.Name = "lblDescControles";
+            this.lblDescControles.Size = new System.Drawing.Size(70, 13);
+            this.lblDescControles.TabIndex = 0;
+            this.lblDescControles.Text = "CONTROLES";
+            this.lblDescControles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnLogOut
             // 
@@ -424,7 +535,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.Image = global::Sistema.Properties.Resources.exit;
             this.btnLogOut.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnLogOut.Location = new System.Drawing.Point(3, 329);
+            this.btnLogOut.Location = new System.Drawing.Point(3, 29);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
             this.btnLogOut.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -435,7 +546,32 @@
             this.btnLogOut.Size = new System.Drawing.Size(181, 28);
             this.btnLogOut.TabIndex = 30;
             this.btnLogOut.Text = " Cerrar Sesión";
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
+            // btnAjustes
+            // 
+            this.btnAjustes.AnimationHoverSpeed = 0.07F;
+            this.btnAjustes.AnimationSpeed = 0.03F;
+            this.btnAjustes.BackColor = System.Drawing.Color.Transparent;
+            this.btnAjustes.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnAjustes.BorderColor = System.Drawing.Color.Black;
+            this.btnAjustes.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAjustes.FocusedColor = System.Drawing.Color.Empty;
+            this.btnAjustes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAjustes.ForeColor = System.Drawing.Color.Black;
+            this.btnAjustes.Image = global::Sistema.Properties.Resources.settings;
+            this.btnAjustes.ImageSize = new System.Drawing.Size(18, 18);
+            this.btnAjustes.Location = new System.Drawing.Point(3, 63);
+            this.btnAjustes.Name = "btnAjustes";
+            this.btnAjustes.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnAjustes.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnAjustes.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnAjustes.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnAjustes.OnHoverImage")));
+            this.btnAjustes.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAjustes.Radius = 15;
+            this.btnAjustes.Size = new System.Drawing.Size(181, 28);
+            this.btnAjustes.TabIndex = 29;
+            this.btnAjustes.TabStop = false;
+            this.btnAjustes.Text = " Ajustes";
             // 
             // pnlHeader
             // 
@@ -560,7 +696,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(904, 446);
+            this.ClientSize = new System.Drawing.Size(904, 555);
             this.Controls.Add(this.pnlMAIN);
             this.MinimumSize = new System.Drawing.Size(920, 485);
             this.Name = "PrincipalForm";
@@ -572,7 +708,11 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.sidebarContainer.ResumeLayout(false);
+            this.flInventarioContainer.ResumeLayout(false);
             this.pnlDescInventario.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.pnlDescRegistro.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.pnlDescControl.ResumeLayout(false);
             this.pnlDescControl.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
@@ -600,18 +740,26 @@
         private Bunifu.Framework.UI.BunifuSeparator SeparatorInventory;
         private System.Windows.Forms.FlowLayoutPanel sidebarContainer;
         private Guna.UI.WinForms.GunaButton btnPrincipal;
+        private System.Windows.Forms.Label lblSize;
+        private System.Windows.Forms.FlowLayoutPanel flInventarioContainer;
         private System.Windows.Forms.Panel pnlDescInventario;
-        private Bunifu.Framework.UI.BunifuCustomLabel lblDescriptionInventorario;
+        private Bunifu.Framework.UI.BunifuCustomLabel lblDescInventorario;
         private Guna.UI.WinForms.GunaButton btnCategorias;
         private Guna.UI.WinForms.GunaButton btnEstantes;
         private Guna.UI.WinForms.GunaButton btnProveedores;
         private Guna.UI.WinForms.GunaButton btnMedicamentos;
         private Guna.UI.WinForms.GunaButton btnProductos;
         private Guna.UI.WinForms.GunaButton btnClientes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Panel pnlDescRegistro;
+        private Bunifu.Framework.UI.BunifuCustomLabel lblDescRegistro;
+        private Guna.UI.WinForms.GunaButton btnVentas;
+        private Guna.UI.WinForms.GunaButton btnCompras;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel pnlDescControl;
-        private Bunifu.Framework.UI.BunifuCustomLabel lblDescriptionControls;
-        private Guna.UI.WinForms.GunaButton btnAjustes;
+        private Bunifu.Framework.UI.BunifuCustomLabel lblDescControles;
         private Guna.UI.WinForms.GunaButton btnLogOut;
-        private System.Windows.Forms.Label lblSize;
+        private Guna.UI.WinForms.GunaButton btnAjustes;
+        private Guna.UI.WinForms.GunaButton btnReportes;
     }
 }

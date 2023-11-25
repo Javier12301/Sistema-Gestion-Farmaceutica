@@ -42,7 +42,7 @@ namespace Sistema.Vista
             toggleEditMode();
             // Acomodar tamaño de la celda selectora de filas
             dgvShelvesList.RowHeadersWidth = 30;
-
+            updateTotalRowCount();
         }
 
         private void txtNumE_KeyPress(object sender, KeyPressEventArgs e)
@@ -56,7 +56,7 @@ namespace Sistema.Vista
         {
             try
             {
-            this.estantesModelTableAdapter.Fill(this.sistemaGestionFarmaceuticaDataSet.EstantesModel);
+            this.estantesModelTableAdapter.Fill(this.farmaciaDBData.ESTANTE);
             }
             catch (DbUpdateException)
             {
@@ -87,7 +87,7 @@ namespace Sistema.Vista
                 // Activar el modo edición del datagridview
                 isModifyButtonPressed = false;
                 btnModifyG.Image = Properties.Resources.EditingIcon;
-                btnModifyG.BaseColor = palette.ButtonActive;
+                btnModifyG.BaseColor = palette.ButtonModifyActive;
 
                 dgvShelvesList.ReadOnly = false;
             }
@@ -100,7 +100,7 @@ namespace Sistema.Vista
                     if (result == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
-                        updateShelfData();
+                        updateShelfData(true);
 
                     }
                     else
@@ -128,37 +128,28 @@ namespace Sistema.Vista
         {
             try
             {
-                // Model
-                EstantesModel shelves = new EstantesModel();
-                //Validaciones
-                bool isShelfNameValid = controladora.VerifyTextBoxG(txtNombreE);
-                bool isShelfNumberValid = controladora.VerifyTextBoxG(txtNumE);
-                bool isShelfSectorValid = controladora.VerifyTextBoxG(txtSectorE);
-                if (isShelfNameValid && isShelfNumberValid && isShelfSectorValid)
+                if (controladora.IsDatagridViewModified)
                 {
-                    // Se utiliza la instancia de la clase Estante
-                    shelves.Nombre = txtNombreE.Text;
-                    shelves.Numero_de_estante = Convert.ToInt32(txtNumE.Text);
-                    shelves.Sector = txtSectorE.Text;
-
-                    bool result = shelfLogic.AddShelf(shelves);
-                    if (result)
+                    // Preungar al usuario si desea guardar los cambios realizados antes de agregar una nueva categoria.
+                    DialogResult userAnswer = MessageBox.Show("Has realizado modificaciones y estás agregando un nuevo proveedor. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (userAnswer == DialogResult.Yes)
                     {
-                        MessageBox.Show("Se agrego corectamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Se limpian los campos
-                        controladora.ClearTextBoxG(txtNombreE, txtNumE, txtSectorE);
-                        // Se actualiza el datagridview
-                        loadShelvesData();
+                        // Guarda los cambios.                      
+                        updateShelfData(true);
+                        addShelf();
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Restaura los datos originales.
+                        addShelf();
+                        loadShelvesData();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    addShelf();
                 }
+
             }
             catch (DbUpdateException)
             {
@@ -181,6 +172,41 @@ namespace Sistema.Vista
             }
         }
 
+        private void addShelf()
+        {
+            // Model
+            ESTANTE shelves = new ESTANTE();
+            //Validaciones
+            bool isShelfNameValid = controladora.VerifyTextBoxG(txtNombreE);
+            bool isShelfNumberValid = controladora.VerifyTextBoxG(txtNumE);
+            bool isShelfSectorValid = controladora.VerifyTextBoxG(txtSectorE);
+            if (isShelfNameValid && isShelfNumberValid && isShelfSectorValid)
+            {
+                // Se utiliza la instancia de la clase Estante
+                shelves.Nombre = txtNombreE.Text;
+                shelves.Numero = Convert.ToInt32(txtNumE.Text);
+                shelves.Sector = txtSectorE.Text;
+
+                bool result = shelfLogic.AddShelf(shelves);
+                if (result)
+                {
+                    MessageBox.Show("Se agrego corectamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se limpian los campos
+                    controladora.ClearTextBoxG(txtNombreE, txtNumE, txtSectorE);
+                    // Se actualiza el datagridview
+                    loadShelvesData();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        // // // // // //// /// AGREGAR ESTANTE /// /// //// ///
 
 
         // Variable para almacenar las filas modificadas
@@ -188,11 +214,11 @@ namespace Sistema.Vista
 
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
-            updateShelfData();
+            updateShelfData(true);
         }
-        private void updateShelfData()
+        private void updateShelfData(bool refresh)
         {
-            EstantesModel shelf = new EstantesModel();
+            ESTANTE shelf = new ESTANTE();
             int modifiedShelves = 0; // Variable para contar las filas modificadas
 
             try
@@ -201,7 +227,7 @@ namespace Sistema.Vista
                 {
                     shelf.EstanteID = Convert.ToInt32(row.Value.Cells[0].Value);
                     shelf.Nombre = Convert.ToString(row.Value.Cells[1].Value);
-                    shelf.Numero_de_estante = Convert.ToInt32(row.Value.Cells[2].Value);
+                    shelf.Numero = Convert.ToInt32(row.Value.Cells[2].Value);
                     shelf.Sector = Convert.ToString(row.Value.Cells[3].Value);
 
                     bool result = shelfLogic.ModifyShelf(shelf);
@@ -219,7 +245,10 @@ namespace Sistema.Vista
                 // Mensaje de notificación dinámico
                 showMessageShelfModify(modifiedShelves);
                 // Recargar los datos después de procesar todas las filas modificadas
+                if (refresh)
+                {
                 loadShelvesData();
+                }
             }
             catch (DbUpdateException)
             {
@@ -283,7 +312,7 @@ namespace Sistema.Vista
                 // Iterar sobre las filas seleccionadas
                 foreach (DataGridViewRow row in dgvShelvesList.SelectedRows)
                 {
-                    int selectedShelfID = Convert.ToInt32(row.Cells["dgvcShelfID"].Value);
+                    int selectedShelfID = Convert.ToInt32(row.Cells["dgvcID"].Value);
                     string shelfName = shelfLogic.GetShelf(selectedShelfID).Nombre.ToString();
                     shelfNames.Add(shelfName);
                 }
@@ -324,33 +353,27 @@ namespace Sistema.Vista
         {
             try
             {
-                if (dgvShelvesList.SelectedRows.Count > 0)
+                // Utilizar patron observer
+                if (controladora.IsDatagridViewModified)
                 {
-                    int shelvesCount = dgvShelvesList.SelectedRows.Count;
-                    string message = getDeleteConfirmationMessage();
-                    DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (userConfirmation == DialogResult.Yes)
+                    // preguntar al usuario si desea guardar los cambios
+                    DialogResult userAnswer = MessageBox.Show("¿Desea guardar los cambios antes de eliminar?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (userAnswer == DialogResult.Yes)
                     {
-                        foreach (DataGridViewRow row in dgvShelvesList.SelectedRows)
-                        {
-                            // condicional multiples SelectedRows
-                            int selectedShelfID = Convert.ToInt32(row.Cells["dgvcShelfID"].Value);
-                            bool deletionResult = shelfLogic.DeleteShelf(selectedShelfID); ;
-                            if (!deletionResult)
-                            {
-                                MessageBox.Show("No se pudo eliminar el estante: " + shelfLogic.GetShelf(selectedShelfID).Nombre, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
-                        messageManager.ShowDeletionMessage(shelvesCount, "estante");
+                        updateShelfData(false);
+                        deleteSelectedShelf();
                     }
-                    // Se actualiza el datagridview
-                    loadShelvesData();
+                    else
+                    {
+                        // Eliminar los estantes seleccionados
+                        deleteSelectedShelf();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Selecciona una fila para eliminar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    deleteSelectedShelf();
                 }
+               
             }
             catch (DbUpdateException)
             {
@@ -374,6 +397,36 @@ namespace Sistema.Vista
 
         }
 
+        private void deleteSelectedShelf()
+        {
+            if (dgvShelvesList.SelectedRows.Count > 0)
+            {
+                int shelvesCount = dgvShelvesList.SelectedRows.Count;
+                string message = getDeleteConfirmationMessage();
+                DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (userConfirmation == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvShelvesList.SelectedRows)
+                    {
+                        // condicional multiples SelectedRows
+                        int selectedShelfID = Convert.ToInt32(row.Cells[0].Value);
+                        bool deletionResult = shelfLogic.DeleteShelf(selectedShelfID); ;
+                        if (!deletionResult)
+                        {
+                            MessageBox.Show("No se pudo eliminar el estante: " + shelfLogic.GetShelf(selectedShelfID).Nombre, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
+                    messageManager.ShowDeletionMessage(shelvesCount, "estante");
+                }
+                // Se actualiza el datagridview
+                loadShelvesData();
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila para eliminar el estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
         // // // // // // ELIMINAR ESTANTES // // // // // //
@@ -400,7 +453,7 @@ namespace Sistema.Vista
         private void dtaViewEstante_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(Column_KeyPress);
-            if (dgvShelvesList.CurrentCell.OwningColumn.Name == "dgvcNumShelf") // Columna deseada
+            if (dgvShelvesList.CurrentCell.OwningColumn.Name == "dgvcNumeroE") // Columna deseada
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
@@ -511,10 +564,15 @@ namespace Sistema.Vista
             bindingSourceShelves.Filter = dgvShelvesList.FilterString;
         }
 
+        private void updateTotalRowCount()
+        {
+            lblTotalRow.Text = "Total de Estantes: " + bindingSourceShelves.List.Count;
+        }
+
         private void bindingSourceShelves_ListChanged(object sender, ListChangedEventArgs e)
         {
             // Actualiza el contador de estantes
-            lblTotalRow.Text = "Total de estantes: " + bindingSourceShelves.List.Count.ToString();
+            updateTotalRowCount();
 
         }
         //  // // // //

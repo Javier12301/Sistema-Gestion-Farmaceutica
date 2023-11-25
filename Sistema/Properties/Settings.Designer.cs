@@ -44,5 +44,16 @@ namespace Sistema.Properties {
                 return ((string)(this["SistemaGestionFarmaceuticaConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=FarmaciaDB;User ID=Javier12301;Password=Rel" +
+            "oj12301")]
+        public string FarmaciaDBConnectionStringg {
+            get {
+                return ((string)(this["FarmaciaDBConnectionStringg"]));
+            }
+        }
     }
 }

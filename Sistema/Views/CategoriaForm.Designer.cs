@@ -43,24 +43,24 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvCategoriesList = new Zuby.ADGV.AdvancedDataGridView();
-            this.dgvcCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcCategoryDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDescripcionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceCategories = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaGestionFarmaceuticaDataSet = new Sistema.SistemaGestionFarmaceuticaDataSet();
+            this.farmaciaDBData = new Sistema.FarmaciaDBData();
             this.lblTotalRow = new System.Windows.Forms.Label();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.categoriasModelTableAdapter = new Sistema.SistemaGestionFarmaceuticaDataSetTableAdapters.CategoriasModelTableAdapter();
+            this.categoriasModelTableAdapter = new Sistema.FarmaciaDBDataTableAdapters.CATEGORIATableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.pnlButton.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriesList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategories)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGestionFarmaceuticaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,9 +129,9 @@
             this.lblNombreE.Location = new System.Drawing.Point(4, 43);
             this.lblNombreE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblNombreE.Name = "lblNombreE";
-            this.lblNombreE.Size = new System.Drawing.Size(51, 15);
+            this.lblNombreE.Size = new System.Drawing.Size(59, 15);
             this.lblNombreE.TabIndex = 27;
-            this.lblNombreE.Text = "Nombre";
+            this.lblNombreE.Text = "Nombre *";
             // 
             // lblDescE
             // 
@@ -253,9 +253,9 @@
             this.dgvCategoriesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategoriesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategoriesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcCategoryID,
-            this.dgvcCategoryName,
-            this.dgvcCategoryDescription});
+            this.dgvcID,
+            this.dgvcNombreC,
+            this.dgvcDescripcionC});
             this.dgvCategoriesList.DataSource = this.bindingSourceCategories;
             this.dgvCategoriesList.FilterAndSortEnabled = true;
             this.dgvCategoriesList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -269,47 +269,47 @@
             this.dgvCategoriesList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvCategoriesList_SortStringChanged);
             this.dgvCategoriesList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvCategoriesList_FilterStringChanged);
             this.dgvCategoriesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellClick);
+            this.dgvCategoriesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellContentClick);
             this.dgvCategoriesList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEndEdit);
             this.dgvCategoriesList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEnter);
             this.dgvCategoriesList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCategoriesList_DataError);
             // 
-            // dgvcCategoryID
+            // dgvcID
             // 
-            this.dgvcCategoryID.DataPropertyName = "CategoriaID";
-            this.dgvcCategoryID.HeaderText = "ID";
-            this.dgvcCategoryID.MinimumWidth = 22;
-            this.dgvcCategoryID.Name = "dgvcCategoryID";
-            this.dgvcCategoryID.ReadOnly = true;
-            this.dgvcCategoryID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcID.DataPropertyName = "CategoriaID";
+            this.dgvcID.HeaderText = "ID";
+            this.dgvcID.MinimumWidth = 22;
+            this.dgvcID.Name = "dgvcID";
+            this.dgvcID.ReadOnly = true;
+            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcCategoryName
+            // dgvcNombreC
             // 
-            this.dgvcCategoryName.DataPropertyName = "Nombre";
-            this.dgvcCategoryName.HeaderText = "Nombre";
-            this.dgvcCategoryName.MinimumWidth = 22;
-            this.dgvcCategoryName.Name = "dgvcCategoryName";
-            this.dgvcCategoryName.ReadOnly = true;
-            this.dgvcCategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcNombreC.DataPropertyName = "Nombre";
+            this.dgvcNombreC.HeaderText = "Nombre";
+            this.dgvcNombreC.MinimumWidth = 22;
+            this.dgvcNombreC.Name = "dgvcNombreC";
+            this.dgvcNombreC.ReadOnly = true;
+            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcCategoryDescription
+            // dgvcDescripcionC
             // 
-            this.dgvcCategoryDescription.DataPropertyName = "Descripcion";
-            this.dgvcCategoryDescription.HeaderText = "Descripcion";
-            this.dgvcCategoryDescription.MinimumWidth = 22;
-            this.dgvcCategoryDescription.Name = "dgvcCategoryDescription";
-            this.dgvcCategoryDescription.ReadOnly = true;
-            this.dgvcCategoryDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcDescripcionC.DataPropertyName = "Descripcion";
+            this.dgvcDescripcionC.HeaderText = "Descripcion";
+            this.dgvcDescripcionC.MinimumWidth = 22;
+            this.dgvcDescripcionC.Name = "dgvcDescripcionC";
+            this.dgvcDescripcionC.ReadOnly = true;
+            this.dgvcDescripcionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // bindingSourceCategories
             // 
-            this.bindingSourceCategories.DataMember = "CategoriasModel";
-            this.bindingSourceCategories.DataSource = this.sistemaGestionFarmaceuticaDataSet;
-            this.bindingSourceCategories.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceCategories_ListChanged);
+            this.bindingSourceCategories.DataMember = "CATEGORIA";
+            this.bindingSourceCategories.DataSource = this.farmaciaDBData;
             // 
-            // sistemaGestionFarmaceuticaDataSet
+            // farmaciaDBData
             // 
-            this.sistemaGestionFarmaceuticaDataSet.DataSetName = "SistemaGestionFarmaceuticaDataSet";
-            this.sistemaGestionFarmaceuticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.farmaciaDBData.DataSetName = "FarmaciaDBData";
+            this.farmaciaDBData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblTotalRow
             // 
@@ -317,7 +317,7 @@
             this.lblTotalRow.AutoSize = true;
             this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTotalRow.Location = new System.Drawing.Point(138, 298);
+            this.lblTotalRow.Location = new System.Drawing.Point(129, 298);
             this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblTotalRow.Name = "lblTotalRow";
             this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
@@ -349,7 +349,7 @@
             this.btnGuardarG.Radius = 8;
             this.btnGuardarG.Size = new System.Drawing.Size(35, 25);
             this.btnGuardarG.TabIndex = 23;
-            this.btnGuardarG.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
             // 
             // btnEliminarG
             // 
@@ -429,7 +429,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriesList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategories)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGestionFarmaceuticaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -455,11 +455,11 @@
         private Guna.UI.WinForms.GunaButton btnEliminarG;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private SistemaGestionFarmaceuticaDataSet sistemaGestionFarmaceuticaDataSet;
+        private FarmaciaDBData farmaciaDBData;
         private System.Windows.Forms.BindingSource bindingSourceCategories;
-        private SistemaGestionFarmaceuticaDataSetTableAdapters.CategoriasModelTableAdapter categoriasModelTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCategoryID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCategoryName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCategoryDescription;
+        private FarmaciaDBDataTableAdapters.CATEGORIATableAdapter categoriasModelTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcDescripcionC;
     }
 }

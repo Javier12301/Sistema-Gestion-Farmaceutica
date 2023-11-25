@@ -34,16 +34,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCantidadM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVencimientoM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreE = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMedicineList = new Zuby.ADGV.AdvancedDataGridView();
             this.dgvcCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,13 +44,8 @@
             this.dgvcNombreE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSectorE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNumeroE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceMedicine = new System.Windows.Forms.BindingSource(this.components);
-            this.viewSGF = new Sistema.ViewSGF();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnExcelG = new Guna.UI.WinForms.GunaButton();
-            this.btnPrintG = new Guna.UI.WinForms.GunaButton();
-            this.btnPDFG = new Guna.UI.WinForms.GunaButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -73,13 +58,23 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.medicamentoModelTableAdapter = new Sistema.ViewSGFTableAdapters.VistaInventarioMedicamentoTableAdapter();
             this.asdfasdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCantidadM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVencimientoM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExcelG = new Guna.UI.WinForms.GunaButton();
+            this.btnPrintG = new Guna.UI.WinForms.GunaButton();
+            this.btnPDFG = new Guna.UI.WinForms.GunaButton();
             this.pnlForm.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicineList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMedicine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewSGF)).BeginInit();
+
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -97,7 +92,7 @@
             this.pnlForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlForm.Location = new System.Drawing.Point(0, 0);
             this.pnlForm.Name = "pnlForm";
-            this.pnlForm.Size = new System.Drawing.Size(589, 338);
+            this.pnlForm.Size = new System.Drawing.Size(700, 483);
             this.pnlForm.TabIndex = 10;
             // 
             // toolStrip1
@@ -109,7 +104,7 @@
             this.tsdMostrarCol});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(589, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(700, 28);
             this.toolStrip1.TabIndex = 37;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -125,6 +120,324 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // dgvMedicineList
+            // 
+            this.dgvMedicineList.AllowUserToAddRows = false;
+            this.dgvMedicineList.AllowUserToDeleteRows = false;
+            this.dgvMedicineList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMedicineList.AutoGenerateColumns = false;
+            this.dgvMedicineList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMedicineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMedicineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvcCod,
+            this.dgvcLote,
+            this.dgvcNombreM,
+            this.dgvcCantidadM,
+            this.dgvcVtoM,
+            this.dgvcNombreC,
+            this.dgvcNombreE,
+            this.dgvcSectorE,
+            this.dgvcNumeroE});
+            this.dgvMedicineList.FilterAndSortEnabled = true;
+            this.dgvMedicineList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.dgvMedicineList.Location = new System.Drawing.Point(12, 83);
+            this.dgvMedicineList.Name = "dgvMedicineList";
+            this.dgvMedicineList.ReadOnly = true;
+            this.dgvMedicineList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvMedicineList.Size = new System.Drawing.Size(677, 346);
+            this.dgvMedicineList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.dgvMedicineList.TabIndex = 36;
+            this.dgvMedicineList.TabStop = false;
+            this.dgvMedicineList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvMedicineList_SortStringChanged);
+            this.dgvMedicineList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvMedicineList_FilterStringChanged);
+            // 
+            // dgvcCod
+            // 
+            this.dgvcCod.DataPropertyName = "Codigo";
+            this.dgvcCod.HeaderText = "Codigo";
+            this.dgvcCod.MinimumWidth = 22;
+            this.dgvcCod.Name = "dgvcCod";
+            this.dgvcCod.ReadOnly = true;
+            this.dgvcCod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcLote
+            // 
+            this.dgvcLote.DataPropertyName = "Lote";
+            this.dgvcLote.HeaderText = "Lote";
+            this.dgvcLote.MinimumWidth = 22;
+            this.dgvcLote.Name = "dgvcLote";
+            this.dgvcLote.ReadOnly = true;
+            this.dgvcLote.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreM
+            // 
+            this.dgvcNombreM.DataPropertyName = "Descripcion";
+            this.dgvcNombreM.HeaderText = "Nombre";
+            this.dgvcNombreM.MinimumWidth = 22;
+            this.dgvcNombreM.Name = "dgvcNombreM";
+            this.dgvcNombreM.ReadOnly = true;
+            this.dgvcNombreM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcCantidadM
+            // 
+            this.dgvcCantidadM.DataPropertyName = "Cantidad";
+            this.dgvcCantidadM.HeaderText = "Cantidad";
+            this.dgvcCantidadM.MinimumWidth = 22;
+            this.dgvcCantidadM.Name = "dgvcCantidadM";
+            this.dgvcCantidadM.ReadOnly = true;
+            this.dgvcCantidadM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcVtoM
+            // 
+            this.dgvcVtoM.DataPropertyName = "Vencimiento";
+            this.dgvcVtoM.HeaderText = "Vencimiento";
+            this.dgvcVtoM.MinimumWidth = 22;
+            this.dgvcVtoM.Name = "dgvcVtoM";
+            this.dgvcVtoM.ReadOnly = true;
+            this.dgvcVtoM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreC
+            // 
+            this.dgvcNombreC.DataPropertyName = "Categoria";
+            this.dgvcNombreC.HeaderText = "Categoria";
+            this.dgvcNombreC.MinimumWidth = 22;
+            this.dgvcNombreC.Name = "dgvcNombreC";
+            this.dgvcNombreC.ReadOnly = true;
+            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNombreE
+            // 
+            this.dgvcNombreE.DataPropertyName = "Nombre estante";
+            this.dgvcNombreE.HeaderText = "Nombre estante";
+            this.dgvcNombreE.MinimumWidth = 22;
+            this.dgvcNombreE.Name = "dgvcNombreE";
+            this.dgvcNombreE.ReadOnly = true;
+            this.dgvcNombreE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcSectorE
+            // 
+            this.dgvcSectorE.DataPropertyName = "Sector";
+            this.dgvcSectorE.HeaderText = "Sector";
+            this.dgvcSectorE.MinimumWidth = 22;
+            this.dgvcSectorE.Name = "dgvcSectorE";
+            this.dgvcSectorE.ReadOnly = true;
+            this.dgvcSectorE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcNumeroE
+            // 
+            this.dgvcNumeroE.DataPropertyName = "Numero estante";
+            this.dgvcNumeroE.HeaderText = "Numero estante";
+            this.dgvcNumeroE.MinimumWidth = 22;
+            this.dgvcNumeroE.Name = "dgvcNumeroE";
+            this.dgvcNumeroE.ReadOnly = true;
+            this.dgvcNumeroE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // bindingSourceMedicine
+            // 
+         
+            // 
+            // viewSGF
+            // 
+           
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.cmbFilas);
+            this.panel2.Controls.Add(this.lblTitlePnl);
+            this.panel2.Location = new System.Drawing.Point(12, 35);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(677, 44);
+            this.panel2.TabIndex = 20;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.btnExcelG);
+            this.flowLayoutPanel1.Controls.Add(this.btnPrintG);
+            this.flowLayoutPanel1.Controls.Add(this.btnPDFG);
+            this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(322, 1);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 41);
+            this.flowLayoutPanel1.TabIndex = 53;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.txtBuscar);
+            this.panel3.Location = new System.Drawing.Point(147, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 35);
+            this.panel3.TabIndex = 47;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(5, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Buscar";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBuscar.Location = new System.Drawing.Point(54, 6);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(143, 23);
+            this.txtBuscar.TabIndex = 53;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(135, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 17);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Filas";
+            // 
+            // cmbFilas
+            // 
+            this.cmbFilas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFilas.FormattingEnabled = true;
+            this.cmbFilas.Location = new System.Drawing.Point(61, 10);
+            this.cmbFilas.Name = "cmbFilas";
+            this.cmbFilas.Size = new System.Drawing.Size(74, 23);
+            this.cmbFilas.TabIndex = 27;
+            // 
+            // lblTitlePnl
+            // 
+            this.lblTitlePnl.AutoSize = true;
+            this.lblTitlePnl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlePnl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTitlePnl.Location = new System.Drawing.Point(5, 12);
+            this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblTitlePnl.Name = "lblTitlePnl";
+            this.lblTitlePnl.Size = new System.Drawing.Size(56, 17);
+            this.lblTitlePnl.TabIndex = 26;
+            this.lblTitlePnl.Text = "Mostrar";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnModificar);
+            this.panel1.Controls.Add(this.btnAgregar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 431);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(700, 52);
+            this.panel1.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel4.Controls.Add(this.lblTotalRow);
+            this.panel4.Location = new System.Drawing.Point(556, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(134, 36);
+            this.panel4.TabIndex = 38;
+            // 
+            // lblTotalRow
+            // 
+            this.lblTotalRow.AutoEllipsis = true;
+            this.lblTotalRow.AutoSize = true;
+            this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTotalRow.Location = new System.Drawing.Point(10, 6);
+            this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblTotalRow.Name = "lblTotalRow";
+            this.lblTotalRow.Size = new System.Drawing.Size(122, 19);
+            this.lblTotalRow.TabIndex = 36;
+            this.lblTotalRow.Text = "Filas Totales: 1000";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(11)))), ((int)(((byte)(53)))));
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminar.Location = new System.Drawing.Point(230, 4);
+            this.btnEliminar.MaximumSize = new System.Drawing.Size(97, 46);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(97, 45);
+            this.btnEliminar.TabIndex = 20;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
+            this.btnModificar.FlatAppearance.BorderSize = 0;
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(153)))), ((int)(((byte)(72)))));
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(184)))), ((int)(((byte)(89)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModificar.Location = new System.Drawing.Point(120, 4);
+            this.btnModificar.MaximumSize = new System.Drawing.Size(97, 46);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(97, 45);
+            this.btnModificar.TabIndex = 19;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(11, 4);
+            this.btnAgregar.MaximumSize = new System.Drawing.Size(97, 46);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(97, 45);
+            this.btnAgregar.TabIndex = 18;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
+            // 
+            // medicamentoModelTableAdapter
+            // 
+            // 
+            // asdfasdfToolStripMenuItem
+            // 
+            this.asdfasdfToolStripMenuItem.Name = "asdfasdfToolStripMenuItem";
+            this.asdfasdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asdfasdfToolStripMenuItem.Text = "asdfasdf";
             // 
             // tsdMostrarCol
             // 
@@ -243,161 +556,6 @@
             this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
             this.tsmiNumeroE.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // dgvMedicineList
-            // 
-            this.dgvMedicineList.AllowUserToAddRows = false;
-            this.dgvMedicineList.AllowUserToDeleteRows = false;
-            this.dgvMedicineList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMedicineList.AutoGenerateColumns = false;
-            this.dgvMedicineList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMedicineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMedicineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcCod,
-            this.dgvcLote,
-            this.dgvcNombreM,
-            this.dgvcCantidadM,
-            this.dgvcVtoM,
-            this.dgvcNombreC,
-            this.dgvcNombreE,
-            this.dgvcSectorE,
-            this.dgvcNumeroE});
-            this.dgvMedicineList.DataSource = this.bindingSourceMedicine;
-            this.dgvMedicineList.FilterAndSortEnabled = true;
-            this.dgvMedicineList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.dgvMedicineList.Location = new System.Drawing.Point(12, 83);
-            this.dgvMedicineList.Name = "dgvMedicineList";
-            this.dgvMedicineList.ReadOnly = true;
-            this.dgvMedicineList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvMedicineList.Size = new System.Drawing.Size(566, 201);
-            this.dgvMedicineList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.dgvMedicineList.TabIndex = 36;
-            this.dgvMedicineList.TabStop = false;
-            this.dgvMedicineList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvMedicineList_SortStringChanged);
-            this.dgvMedicineList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvMedicineList_FilterStringChanged);
-            // 
-            // dgvcCod
-            // 
-            this.dgvcCod.DataPropertyName = "Codigo";
-            this.dgvcCod.HeaderText = "Codigo";
-            this.dgvcCod.MinimumWidth = 22;
-            this.dgvcCod.Name = "dgvcCod";
-            this.dgvcCod.ReadOnly = true;
-            this.dgvcCod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcLote
-            // 
-            this.dgvcLote.DataPropertyName = "Lote";
-            this.dgvcLote.HeaderText = "Lote";
-            this.dgvcLote.MinimumWidth = 22;
-            this.dgvcLote.Name = "dgvcLote";
-            this.dgvcLote.ReadOnly = true;
-            this.dgvcLote.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNombreM
-            // 
-            this.dgvcNombreM.DataPropertyName = "Descripcion";
-            this.dgvcNombreM.HeaderText = "Nombre";
-            this.dgvcNombreM.MinimumWidth = 22;
-            this.dgvcNombreM.Name = "dgvcNombreM";
-            this.dgvcNombreM.ReadOnly = true;
-            this.dgvcNombreM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcCantidadM
-            // 
-            this.dgvcCantidadM.DataPropertyName = "Cantidad";
-            this.dgvcCantidadM.HeaderText = "Cantidad";
-            this.dgvcCantidadM.MinimumWidth = 22;
-            this.dgvcCantidadM.Name = "dgvcCantidadM";
-            this.dgvcCantidadM.ReadOnly = true;
-            this.dgvcCantidadM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcVtoM
-            // 
-            this.dgvcVtoM.DataPropertyName = "Vencimiento";
-            this.dgvcVtoM.HeaderText = "Vencimiento";
-            this.dgvcVtoM.MinimumWidth = 22;
-            this.dgvcVtoM.Name = "dgvcVtoM";
-            this.dgvcVtoM.ReadOnly = true;
-            this.dgvcVtoM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNombreC
-            // 
-            this.dgvcNombreC.DataPropertyName = "Categoria";
-            this.dgvcNombreC.HeaderText = "Categoria";
-            this.dgvcNombreC.MinimumWidth = 22;
-            this.dgvcNombreC.Name = "dgvcNombreC";
-            this.dgvcNombreC.ReadOnly = true;
-            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNombreE
-            // 
-            this.dgvcNombreE.DataPropertyName = "Nombre estante";
-            this.dgvcNombreE.HeaderText = "Nombre estante";
-            this.dgvcNombreE.MinimumWidth = 22;
-            this.dgvcNombreE.Name = "dgvcNombreE";
-            this.dgvcNombreE.ReadOnly = true;
-            this.dgvcNombreE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcSectorE
-            // 
-            this.dgvcSectorE.DataPropertyName = "Sector";
-            this.dgvcSectorE.HeaderText = "Sector";
-            this.dgvcSectorE.MinimumWidth = 22;
-            this.dgvcSectorE.Name = "dgvcSectorE";
-            this.dgvcSectorE.ReadOnly = true;
-            this.dgvcSectorE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNumeroE
-            // 
-            this.dgvcNumeroE.DataPropertyName = "Numero estante";
-            this.dgvcNumeroE.HeaderText = "Numero estante";
-            this.dgvcNumeroE.MinimumWidth = 22;
-            this.dgvcNumeroE.Name = "dgvcNumeroE";
-            this.dgvcNumeroE.ReadOnly = true;
-            this.dgvcNumeroE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // bindingSourceMedicine
-            // 
-            this.bindingSourceMedicine.DataMember = "VistaInventarioMedicamento";
-            this.bindingSourceMedicine.DataSource = this.viewSGF;
-            this.bindingSourceMedicine.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceMedicine_ListChanged);
-            // 
-            // viewSGF
-            // 
-            this.viewSGF.DataSetName = "ViewSGF";
-            this.viewSGF.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.flowLayoutPanel1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.cmbFilas);
-            this.panel2.Controls.Add(this.lblTitlePnl);
-            this.panel2.Location = new System.Drawing.Point(12, 35);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(566, 44);
-            this.panel2.TabIndex = 20;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.btnExcelG);
-            this.flowLayoutPanel1.Controls.Add(this.btnPrintG);
-            this.flowLayoutPanel1.Controls.Add(this.btnPDFG);
-            this.flowLayoutPanel1.Controls.Add(this.panel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(211, 1);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 41);
-            this.flowLayoutPanel1.TabIndex = 53;
-            this.flowLayoutPanel1.WrapContents = false;
-            // 
             // btnExcelG
             // 
             this.btnExcelG.AnimationHoverSpeed = 0.07F;
@@ -478,179 +636,11 @@
             this.btnPDFG.TabStop = false;
             this.btnPDFG.Text = "PDF";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.txtBuscar);
-            this.panel3.Location = new System.Drawing.Point(147, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 35);
-            this.panel3.TabIndex = 47;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(5, 8);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Buscar";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBuscar.Location = new System.Drawing.Point(54, 6);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(143, 23);
-            this.txtBuscar.TabIndex = 53;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(135, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 17);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Filas";
-            // 
-            // cmbFilas
-            // 
-            this.cmbFilas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFilas.FormattingEnabled = true;
-            this.cmbFilas.Location = new System.Drawing.Point(61, 10);
-            this.cmbFilas.Name = "cmbFilas";
-            this.cmbFilas.Size = new System.Drawing.Size(74, 23);
-            this.cmbFilas.TabIndex = 27;
-            // 
-            // lblTitlePnl
-            // 
-            this.lblTitlePnl.AutoSize = true;
-            this.lblTitlePnl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitlePnl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitlePnl.Location = new System.Drawing.Point(5, 12);
-            this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.lblTitlePnl.Name = "lblTitlePnl";
-            this.lblTitlePnl.Size = new System.Drawing.Size(56, 17);
-            this.lblTitlePnl.TabIndex = 26;
-            this.lblTitlePnl.Text = "Mostrar";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.btnModificar);
-            this.panel1.Controls.Add(this.btnAgregar);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 286);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(589, 52);
-            this.panel1.TabIndex = 19;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel4.Controls.Add(this.lblTotalRow);
-            this.panel4.Location = new System.Drawing.Point(445, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(134, 36);
-            this.panel4.TabIndex = 38;
-            // 
-            // lblTotalRow
-            // 
-            this.lblTotalRow.AutoEllipsis = true;
-            this.lblTotalRow.AutoSize = true;
-            this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTotalRow.Location = new System.Drawing.Point(10, 6);
-            this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.lblTotalRow.Name = "lblTotalRow";
-            this.lblTotalRow.Size = new System.Drawing.Size(122, 19);
-            this.lblTotalRow.TabIndex = 36;
-            this.lblTotalRow.Text = "Filas Totales: 1000";
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(11)))), ((int)(((byte)(53)))));
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
-            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEliminar.Location = new System.Drawing.Point(230, 4);
-            this.btnEliminar.MaximumSize = new System.Drawing.Size(97, 46);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(97, 45);
-            this.btnEliminar.TabIndex = 20;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
-            this.btnModificar.FlatAppearance.BorderSize = 0;
-            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(153)))), ((int)(((byte)(72)))));
-            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(184)))), ((int)(((byte)(89)))));
-            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnModificar.Location = new System.Drawing.Point(120, 4);
-            this.btnModificar.MaximumSize = new System.Drawing.Size(97, 46);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(97, 45);
-            this.btnModificar.TabIndex = 19;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = false;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(137)))), ((int)(((byte)(180)))));
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregar.Location = new System.Drawing.Point(11, 4);
-            this.btnAgregar.MaximumSize = new System.Drawing.Size(97, 46);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(97, 45);
-            this.btnAgregar.TabIndex = 18;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
-            // 
-            // medicamentoModelTableAdapter
-            // 
-            this.medicamentoModelTableAdapter.ClearBeforeFill = true;
-            // 
-            // asdfasdfToolStripMenuItem
-            // 
-            this.asdfasdfToolStripMenuItem.Name = "asdfasdfToolStripMenuItem";
-            this.asdfasdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.asdfasdfToolStripMenuItem.Text = "asdfasdf";
-            // 
             // MedicamentosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 338);
+            this.ClientSize = new System.Drawing.Size(700, 483);
             this.Controls.Add(this.pnlForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MedicamentosForm";
@@ -661,9 +651,7 @@
             this.pnlForm.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicineList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMedicine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewSGF)).EndInit();
+           
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -687,9 +675,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbFilas;
         private System.Windows.Forms.Label lblTitlePnl;
-        private ViewSGF viewSGF;
-        private System.Windows.Forms.BindingSource bindingSourceMedicine;
-        private ViewSGFTableAdapters.VistaInventarioMedicamentoTableAdapter medicamentoModelTableAdapter;
         private Zuby.ADGV.AdvancedDataGridView dgvMedicineList;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI.WinForms.GunaButton btnExcelG;

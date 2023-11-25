@@ -215,11 +215,14 @@ namespace Sistema
             if(pnlDescInventario.Visible && pnlDescControl.Visible)
             {
                 pnlDescInventario.Visible = false;
+                pnlDescRegistro.Visible = false;
                 pnlDescControl.Visible = false;
+
             }
             else
             {
                 pnlDescInventario.Visible = true;
+                pnlDescRegistro.Visible = true;
                 pnlDescControl.Visible = true;
             }
             
