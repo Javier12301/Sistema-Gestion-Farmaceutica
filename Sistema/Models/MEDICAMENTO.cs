@@ -23,17 +23,16 @@ namespace Sistema.Models
         public int MedicamentoID { get; set; }
         public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public Nullable<int> CategoriaID { get; set; }
+        public string Lote { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
         public Nullable<int> EstanteID { get; set; }
+        public Nullable<int> CategoriaID { get; set; }
         public Nullable<int> ProveedorID { get; set; }
         public int Stock { get; set; }
-        public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<decimal> PrecioVenta { get; set; }
-        public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<bool> Refrigerado { get; set; }
         public Nullable<bool> BajoReceta { get; set; }
-        public Nullable<bool> Estado { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }

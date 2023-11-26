@@ -32,6 +32,7 @@ namespace Sistema.Models
         public virtual DbSet<DETALLE_VENTA> DETALLE_VENTA { get; set; }
         public virtual DbSet<ESTANTE> ESTANTE { get; set; }
         public virtual DbSet<MEDICAMENTO> MEDICAMENTO { get; set; }
+        public virtual DbSet<NEGOCIO> NEGOCIO { get; set; }
         public virtual DbSet<PERMISO> PERMISO { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }

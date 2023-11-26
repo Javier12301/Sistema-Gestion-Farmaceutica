@@ -63,7 +63,6 @@ CREATE TABLE PRODUCTO (
     ProductoID INT IDENTITY PRIMARY KEY,
     Codigo VARCHAR(50),
     Nombre VARCHAR(50),
-    Descripcion VARCHAR(50),
     CategoriaID INT REFERENCES CATEGORIA(CategoriaID),
     EstanteID INT REFERENCES ESTANTE(EstanteID),
     ProveedorID INT REFERENCES PROVEEDOR(ProveedorID),
@@ -79,19 +78,21 @@ CREATE TABLE MEDICAMENTO (
     MedicamentoID INT IDENTITY PRIMARY KEY,
     Codigo VARCHAR(50),
     Nombre VARCHAR(50),
-    Descripcion VARCHAR(50),
-    CategoriaID INT REFERENCES CATEGORIA(CategoriaID),
+    Lote VARCHAR(50),
+    FechaVencimiento DATE,
     EstanteID INT REFERENCES ESTANTE(EstanteID),
+    CategoriaID INT REFERENCES CATEGORIA(CategoriaID),
     ProveedorID INT REFERENCES PROVEEDOR(ProveedorID),
     Stock INT NOT NULL DEFAULT 0,
-    PrecioCompra DECIMAL(10,2) DEFAULT 0,
     PrecioVenta DECIMAL(10,2) DEFAULT 0,
-    FechaVencimiento DATE,
+    PrecioCompra DECIMAL(10,2) DEFAULT 0,
     Refrigerado BIT DEFAULT 0,
     BajoReceta BIT DEFAULT 0,
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
 GO
+
+SELECT * FROM VENTA
 
 CREATE TABLE VENTA (
     VentaID INT IDENTITY PRIMARY KEY,
@@ -106,6 +107,7 @@ CREATE TABLE VENTA (
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
 GO
+
 
 CREATE TABLE COMPRA (
     CompraID INT IDENTITY PRIMARY KEY,
@@ -152,16 +154,16 @@ CREATE TABLE NEGOCIO (
 	Provincia VARCHAR(60),
 	Telefono VARCHAR (60),
 	Logo VARBINARY(MAX) -- Campo para almacenar la imagen del logo (en formato binario)
-)
+);
 
 -- Eliminación de Tablas
+DROP TABLE TipoCliente;
 DROP TABLE DETALLE_VENTA;
 DROP TABLE DETALLE_COMPRA;
 DROP TABLE VENTA;
 DROP TABLE COMPRA;
 DROP TABLE MEDICAMENTO;
 DROP TABLE PRODUCTO;
-DROP TABLE TipoCliente;
 DROP TABLE CLIENTE;
 DROP TABLE PROVEEDOR;
 DROP TABLE CATEGORIA;
@@ -189,7 +191,28 @@ FROM
     INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
 GO
 
-SELECT * FROM ESTANTE;
+
+CREATE VIEW VistaInventario AS
+SELECT
+	M.Codigo AS 'Cod.',
+	M.Lote AS 'Lote',
+	M.Nombre AS 'Nombre',
+	M.Stock AS 'Cantidad',
+	M.FechaVencimiento AS 'VTO',
+	E.Nombre AS 'Estante',
+	E.Sector AS 'Sector',
+	E.Numero AS 'Num. Estante',
+	C.Nombre AS 'Categoría'
+FROM
+	MEDICAMENTO M,
+	ESTANTE E,
+	CATEGORIA C
+GO
+
+
+SELECT * FROM ESTANTE
+WHERE EstanteID > 0;
+
 SELECT * FROM CATEGORIA;
 SELECT * FROM PROVEEDOR;
 GO;

@@ -40,9 +40,6 @@ namespace Sistema.Vista
 
         private void Categorias_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'farmaciaDBData.CATEGORIA' Puede moverla o quitarla según sea necesario.
-            this.categoriasModelTableAdapter.Fill(this.farmaciaDBData.CATEGORIA);
-            // Se cargan los datos en el datagridview
             loadCategoriesData();
             // Desactivar boton guardar hasta que se haga un cambio en el datagridview
             btnGuardarG.Enabled = false;
@@ -56,8 +53,29 @@ namespace Sistema.Vista
         private void loadCategoriesData()
         {
             // Comprobar si existe categoria
+            try
+            {
+                this.cATEGORIATableAdapter.Fill(this.farmaciaDBDataSet.CATEGORIA);
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
 
-            this.categoriasModelTableAdapter.Fill(this.farmaciaDBData.CATEGORIA);
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
         }
 
         // // // // // Funciones de botones // // // // //
@@ -70,13 +88,14 @@ namespace Sistema.Vista
                 btnModifyG.Image = Properties.Resources.EditingIcon;
                 btnModifyG.BaseColor = palette.ButtonModifyActive;
                 dgvCategoriesList.ReadOnly = false;
+                dgvcID.ReadOnly = true;
             }
             else
             {
                 // Si se han realizado cambios, muestra un MessageBox.
                 if (controladora.IsDatagridViewModified)
                 {
-                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
@@ -110,7 +129,7 @@ namespace Sistema.Vista
                 if (controladora.IsDatagridViewModified)
                 {
                     // Preungar al usuario si desea guardar los cambios realizados antes de agregar una nueva categoria.
-                    DialogResult userAnswer = MessageBox.Show("Has realizado modificaciones y estás agregando una nueva categoría. ¿Deseas guardar los cambios realizados?", "Confirmación",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult userAnswer = MessageBox.Show("Has realizado modificaciones y estás agregando una nueva categoría. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (userAnswer == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
@@ -222,7 +241,7 @@ namespace Sistema.Vista
                 // Recargar los datos después de procesar todas las filas modificadas
                 if (refresh)
                 {
-                loadCategoriesData();
+                    loadCategoriesData();
                 }
             }
             catch (DbUpdateException)
@@ -292,7 +311,7 @@ namespace Sistema.Vista
                     categoryNames[i] = $"- {categoryNames[i]}";
                 }
                 message = "¿Está seguro que desea eliminar las siguientes categorías?\n\n" + string.Join("\n", categoryNames);
-                
+
             }
             else if (dgvCategoriesList.SelectedRows.Count == 1)
             {
@@ -310,11 +329,11 @@ namespace Sistema.Vista
         {
             try
             {
-               // Utilizamos el observer para comprobar si el usuario modifico el datagridview
-               if (controladora.IsDatagridViewModified)
+                // Utilizamos el observer para comprobar si el usuario modifico el datagridview
+                if (controladora.IsDatagridViewModified)
                 {
                     // preguntar al usuario si desea guardar los cambios antes de eliminar
-                    DialogResult userAnswer= MessageBox.Show("¿Desea guardar los cambios antes de eliminar?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult userAnswer = MessageBox.Show("¿Desea guardar los cambios antes de eliminar?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (userAnswer == DialogResult.Yes)
                     {
                         updateCategoriesData(false);

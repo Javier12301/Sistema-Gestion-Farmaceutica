@@ -30,25 +30,45 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicamentosForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlForm = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCantidadM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVencimientoM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEstantesList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMedicineList = new Zuby.ADGV.AdvancedDataGridView();
             this.dgvcCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNombreM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcCantidadM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcVtoM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNombreE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSectorE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNumeroE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vistaInventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnExcelG = new Guna.UI.WinForms.GunaButton();
+            this.btnPrintG = new Guna.UI.WinForms.GunaButton();
+            this.btnPDFG = new Guna.UI.WinForms.GunaButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnbuscar = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbFilas = new System.Windows.Forms.ComboBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
@@ -59,22 +79,12 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.asdfasdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCantidadM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVencimientoM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreE = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExcelG = new Guna.UI.WinForms.GunaButton();
-            this.btnPrintG = new Guna.UI.WinForms.GunaButton();
-            this.btnPDFG = new Guna.UI.WinForms.GunaButton();
+            this.vistaInventarioTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter();
             this.pnlForm.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicineList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -84,7 +94,7 @@
             // 
             // pnlForm
             // 
-            this.pnlForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.pnlForm.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlForm.Controls.Add(this.toolStrip1);
             this.pnlForm.Controls.Add(this.dgvMedicineList);
             this.pnlForm.Controls.Add(this.panel2);
@@ -121,6 +131,133 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
+            // tsdMostrarCol
+            // 
+            this.tsdMostrarCol.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCod,
+            this.tsmiNumL,
+            this.tsmiNombreM,
+            this.tsmiCantidadM,
+            this.tsmiVencimientoM,
+            this.tsmiEstantesList,
+            this.tsmiNombreC});
+            this.tsdMostrarCol.Image = ((System.Drawing.Image)(resources.GetObject("tsdMostrarCol.Image")));
+            this.tsdMostrarCol.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdMostrarCol.Name = "tsdMostrarCol";
+            this.tsdMostrarCol.Size = new System.Drawing.Size(134, 25);
+            this.tsdMostrarCol.Text = "Mostrar Columnas";
+            // 
+            // tsmiCod
+            // 
+            this.tsmiCod.Checked = true;
+            this.tsmiCod.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiCod.Name = "tsmiCod";
+            this.tsmiCod.Size = new System.Drawing.Size(140, 22);
+            this.tsmiCod.Tag = "codigoTAG";
+            this.tsmiCod.Text = "Código";
+            this.tsmiCod.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiCod.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiNumL
+            // 
+            this.tsmiNumL.Checked = true;
+            this.tsmiNumL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNumL.Name = "tsmiNumL";
+            this.tsmiNumL.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNumL.Tag = "loteTAG";
+            this.tsmiNumL.Text = "Lote";
+            this.tsmiNumL.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNumL.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiNombreM
+            // 
+            this.tsmiNombreM.Checked = true;
+            this.tsmiNombreM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreM.Name = "tsmiNombreM";
+            this.tsmiNombreM.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNombreM.Tag = "nombreMTAG";
+            this.tsmiNombreM.Text = "Nombre";
+            this.tsmiNombreM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreM.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiCantidadM
+            // 
+            this.tsmiCantidadM.Checked = true;
+            this.tsmiCantidadM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiCantidadM.Name = "tsmiCantidadM";
+            this.tsmiCantidadM.Size = new System.Drawing.Size(140, 22);
+            this.tsmiCantidadM.Tag = "cantidadMTAG";
+            this.tsmiCantidadM.Text = "Cantidad";
+            this.tsmiCantidadM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiCantidadM.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiVencimientoM
+            // 
+            this.tsmiVencimientoM.Checked = true;
+            this.tsmiVencimientoM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiVencimientoM.Name = "tsmiVencimientoM";
+            this.tsmiVencimientoM.Size = new System.Drawing.Size(140, 22);
+            this.tsmiVencimientoM.Tag = "vencimientoMTAG";
+            this.tsmiVencimientoM.Text = "Vencimiento";
+            this.tsmiVencimientoM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiVencimientoM.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiEstantesList
+            // 
+            this.tsmiEstantesList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNombreE,
+            this.tsmiNumeroE,
+            this.tsmiSectorE});
+            this.tsmiEstantesList.Name = "tsmiEstantesList";
+            this.tsmiEstantesList.ShowShortcutKeys = false;
+            this.tsmiEstantesList.Size = new System.Drawing.Size(140, 22);
+            this.tsmiEstantesList.Tag = "nombreETAG";
+            this.tsmiEstantesList.Text = "Estantes";
+            // 
+            // tsmiNombreE
+            // 
+            this.tsmiNombreE.Checked = true;
+            this.tsmiNombreE.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreE.Name = "tsmiNombreE";
+            this.tsmiNombreE.Size = new System.Drawing.Size(175, 22);
+            this.tsmiNombreE.Tag = "nombreETAG";
+            this.tsmiNombreE.Text = "Nombre";
+            this.tsmiNombreE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreE.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiNumeroE
+            // 
+            this.tsmiNumeroE.Checked = true;
+            this.tsmiNumeroE.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNumeroE.Name = "tsmiNumeroE";
+            this.tsmiNumeroE.Size = new System.Drawing.Size(175, 22);
+            this.tsmiNumeroE.Tag = "numeroETAG";
+            this.tsmiNumeroE.Text = "Numero de Estante";
+            this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNumeroE.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiSectorE
+            // 
+            this.tsmiSectorE.Checked = true;
+            this.tsmiSectorE.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiSectorE.Name = "tsmiSectorE";
+            this.tsmiSectorE.Size = new System.Drawing.Size(175, 22);
+            this.tsmiSectorE.Tag = "sectorETAG";
+            this.tsmiSectorE.Text = "Sector";
+            this.tsmiSectorE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiSectorE.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiNombreC
+            // 
+            this.tsmiNombreC.Checked = true;
+            this.tsmiNombreC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreC.Name = "tsmiNombreC";
+            this.tsmiNombreC.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNombreC.Tag = "nombreCTAG";
+            this.tsmiNombreC.Text = "Categoría";
+            this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreC.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
             // dgvMedicineList
             // 
             this.dgvMedicineList.AllowUserToAddRows = false;
@@ -130,23 +267,41 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMedicineList.AutoGenerateColumns = false;
             this.dgvMedicineList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMedicineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMedicineList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMedicineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMedicineList.ColumnHeadersHeight = 42;
             this.dgvMedicineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcCod,
             this.dgvcLote,
             this.dgvcNombreM,
             this.dgvcCantidadM,
             this.dgvcVtoM,
-            this.dgvcNombreC,
             this.dgvcNombreE,
             this.dgvcSectorE,
-            this.dgvcNumeroE});
+            this.dgvcNumeroE,
+            this.dgvcNombreC});
+            this.dgvMedicineList.DataSource = this.vistaInventarioBindingSource;
             this.dgvMedicineList.FilterAndSortEnabled = true;
             this.dgvMedicineList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
             this.dgvMedicineList.Location = new System.Drawing.Point(12, 83);
             this.dgvMedicineList.Name = "dgvMedicineList";
             this.dgvMedicineList.ReadOnly = true;
             this.dgvMedicineList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMedicineList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMedicineList.Size = new System.Drawing.Size(677, 346);
             this.dgvMedicineList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             this.dgvMedicineList.TabIndex = 36;
@@ -156,8 +311,8 @@
             // 
             // dgvcCod
             // 
-            this.dgvcCod.DataPropertyName = "Codigo";
-            this.dgvcCod.HeaderText = "Codigo";
+            this.dgvcCod.DataPropertyName = "Cod_";
+            this.dgvcCod.HeaderText = "Cod";
             this.dgvcCod.MinimumWidth = 22;
             this.dgvcCod.Name = "dgvcCod";
             this.dgvcCod.ReadOnly = true;
@@ -174,7 +329,7 @@
             // 
             // dgvcNombreM
             // 
-            this.dgvcNombreM.DataPropertyName = "Descripcion";
+            this.dgvcNombreM.DataPropertyName = "Nombre";
             this.dgvcNombreM.HeaderText = "Nombre";
             this.dgvcNombreM.MinimumWidth = 22;
             this.dgvcNombreM.Name = "dgvcNombreM";
@@ -192,26 +347,17 @@
             // 
             // dgvcVtoM
             // 
-            this.dgvcVtoM.DataPropertyName = "Vencimiento";
-            this.dgvcVtoM.HeaderText = "Vencimiento";
+            this.dgvcVtoM.DataPropertyName = "VTO";
+            this.dgvcVtoM.HeaderText = "VTO";
             this.dgvcVtoM.MinimumWidth = 22;
             this.dgvcVtoM.Name = "dgvcVtoM";
             this.dgvcVtoM.ReadOnly = true;
             this.dgvcVtoM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcNombreC
-            // 
-            this.dgvcNombreC.DataPropertyName = "Categoria";
-            this.dgvcNombreC.HeaderText = "Categoria";
-            this.dgvcNombreC.MinimumWidth = 22;
-            this.dgvcNombreC.Name = "dgvcNombreC";
-            this.dgvcNombreC.ReadOnly = true;
-            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
             // dgvcNombreE
             // 
-            this.dgvcNombreE.DataPropertyName = "Nombre estante";
-            this.dgvcNombreE.HeaderText = "Nombre estante";
+            this.dgvcNombreE.DataPropertyName = "Estante";
+            this.dgvcNombreE.HeaderText = "Estante";
             this.dgvcNombreE.MinimumWidth = 22;
             this.dgvcNombreE.Name = "dgvcNombreE";
             this.dgvcNombreE.ReadOnly = true;
@@ -228,25 +374,37 @@
             // 
             // dgvcNumeroE
             // 
-            this.dgvcNumeroE.DataPropertyName = "Numero estante";
-            this.dgvcNumeroE.HeaderText = "Numero estante";
+            this.dgvcNumeroE.DataPropertyName = "Num_ Estante";
+            this.dgvcNumeroE.HeaderText = "Nro. Estante";
             this.dgvcNumeroE.MinimumWidth = 22;
             this.dgvcNumeroE.Name = "dgvcNumeroE";
             this.dgvcNumeroE.ReadOnly = true;
             this.dgvcNumeroE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // bindingSourceMedicine
+            // dgvcNombreC
             // 
-         
+            this.dgvcNombreC.DataPropertyName = "Categoría";
+            this.dgvcNombreC.HeaderText = "Categoría";
+            this.dgvcNombreC.MinimumWidth = 22;
+            this.dgvcNombreC.Name = "dgvcNombreC";
+            this.dgvcNombreC.ReadOnly = true;
+            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // viewSGF
+            // vistaInventarioBindingSource
             // 
-           
+            this.vistaInventarioBindingSource.DataMember = "VistaInventario";
+            this.vistaInventarioBindingSource.DataSource = this.farmaciaDBDataSet;
+            // 
+            // farmaciaDBDataSet
+            // 
+            this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
+            this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.label1);
@@ -266,20 +424,111 @@
             this.flowLayoutPanel1.Controls.Add(this.btnPrintG);
             this.flowLayoutPanel1.Controls.Add(this.btnPDFG);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(322, 1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(194, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(478, 41);
             this.flowLayoutPanel1.TabIndex = 53;
             this.flowLayoutPanel1.WrapContents = false;
             // 
+            // btnExcelG
+            // 
+            this.btnExcelG.AnimationHoverSpeed = 0.07F;
+            this.btnExcelG.AnimationSpeed = 0.03F;
+            this.btnExcelG.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcelG.BaseColor = System.Drawing.Color.Green;
+            this.btnExcelG.BorderColor = System.Drawing.Color.Black;
+            this.btnExcelG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExcelG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnExcelG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcelG.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExcelG.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelG.Image")));
+            this.btnExcelG.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExcelG.Location = new System.Drawing.Point(3, 3);
+            this.btnExcelG.Name = "btnExcelG";
+            this.btnExcelG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
+            this.btnExcelG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnExcelG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnExcelG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnExcelG.OnHoverImage")));
+            this.btnExcelG.OnPressedColor = System.Drawing.Color.Green;
+            this.btnExcelG.Radius = 10;
+            this.btnExcelG.Size = new System.Drawing.Size(42, 32);
+            this.btnExcelG.TabIndex = 44;
+            this.btnExcelG.TabStop = false;
+            this.btnExcelG.Text = "Excel";
+            this.btnExcelG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnPrintG
+            // 
+            this.btnPrintG.AnimationHoverSpeed = 0.07F;
+            this.btnPrintG.AnimationSpeed = 0.03F;
+            this.btnPrintG.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrintG.BaseColor = System.Drawing.Color.DarkOrange;
+            this.btnPrintG.BorderColor = System.Drawing.Color.Black;
+            this.btnPrintG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPrintG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnPrintG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintG.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrintG.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintG.Image")));
+            this.btnPrintG.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnPrintG.Location = new System.Drawing.Point(51, 3);
+            this.btnPrintG.Name = "btnPrintG";
+            this.btnPrintG.OnHoverBaseColor = System.Drawing.Color.Orange;
+            this.btnPrintG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnPrintG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnPrintG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrintG.OnHoverImage")));
+            this.btnPrintG.OnPressedColor = System.Drawing.Color.DarkOrange;
+            this.btnPrintG.Radius = 10;
+            this.btnPrintG.Size = new System.Drawing.Size(42, 32);
+            this.btnPrintG.TabIndex = 46;
+            this.btnPrintG.TabStop = false;
+            this.btnPrintG.Text = "Imprimir";
+            this.btnPrintG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnPDFG
+            // 
+            this.btnPDFG.AnimationHoverSpeed = 0.07F;
+            this.btnPDFG.AnimationSpeed = 0.03F;
+            this.btnPDFG.BackColor = System.Drawing.Color.Transparent;
+            this.btnPDFG.BaseColor = System.Drawing.Color.Firebrick;
+            this.btnPDFG.BorderColor = System.Drawing.Color.Black;
+            this.btnPDFG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPDFG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnPDFG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDFG.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPDFG.Image = ((System.Drawing.Image)(resources.GetObject("btnPDFG.Image")));
+            this.btnPDFG.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnPDFG.Location = new System.Drawing.Point(99, 3);
+            this.btnPDFG.Name = "btnPDFG";
+            this.btnPDFG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnPDFG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnPDFG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnPDFG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPDFG.OnHoverImage")));
+            this.btnPDFG.OnPressedColor = System.Drawing.Color.DarkRed;
+            this.btnPDFG.Radius = 10;
+            this.btnPDFG.Size = new System.Drawing.Size(42, 32);
+            this.btnPDFG.TabIndex = 45;
+            this.btnPDFG.TabStop = false;
+            this.btnPDFG.Text = "PDF";
+            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cmbFiltro);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.txtBuscar);
+            this.panel3.Controls.Add(this.btnbuscar);
             this.panel3.Location = new System.Drawing.Point(147, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 35);
+            this.panel3.Size = new System.Drawing.Size(328, 35);
             this.panel3.TabIndex = 47;
+            // 
+            // cmbFiltro
+            // 
+            this.cmbFiltro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFiltro.FormattingEnabled = true;
+            this.cmbFiltro.Location = new System.Drawing.Point(80, 6);
+            this.cmbFiltro.Name = "cmbFiltro";
+            this.cmbFiltro.Size = new System.Drawing.Size(72, 23);
+            this.cmbFiltro.TabIndex = 38;
             // 
             // label2
             // 
@@ -288,22 +537,39 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(5, 8);
+            this.label2.Location = new System.Drawing.Point(3, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.Size = new System.Drawing.Size(77, 17);
             this.label2.TabIndex = 54;
-            this.label2.Text = "Buscar";
+            this.label2.Text = "Buscar por:";
             // 
             // txtBuscar
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBuscar.Location = new System.Drawing.Point(54, 6);
+            this.txtBuscar.Location = new System.Drawing.Point(158, 6);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(143, 23);
+            this.txtBuscar.Size = new System.Drawing.Size(129, 23);
             this.txtBuscar.TabIndex = 53;
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.BackColor = System.Drawing.Color.White;
+            this.btnbuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnbuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbuscar.ForeColor = System.Drawing.Color.Black;
+            this.btnbuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnbuscar.IconColor = System.Drawing.Color.Black;
+            this.btnbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnbuscar.IconSize = 16;
+            this.btnbuscar.Location = new System.Drawing.Point(293, 5);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(32, 23);
+            this.btnbuscar.TabIndex = 54;
+            this.btnbuscar.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -387,7 +653,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(230, 4);
             this.btnEliminar.MaximumSize = new System.Drawing.Size(97, 46);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(97, 45);
+            this.btnEliminar.Size = new System.Drawing.Size(97, 36);
             this.btnEliminar.TabIndex = 20;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -406,7 +672,7 @@
             this.btnModificar.Location = new System.Drawing.Point(120, 4);
             this.btnModificar.MaximumSize = new System.Drawing.Size(97, 46);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(97, 45);
+            this.btnModificar.Size = new System.Drawing.Size(97, 36);
             this.btnModificar.TabIndex = 19;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
@@ -424,14 +690,11 @@
             this.btnAgregar.Location = new System.Drawing.Point(11, 4);
             this.btnAgregar.MaximumSize = new System.Drawing.Size(97, 46);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(97, 45);
+            this.btnAgregar.Size = new System.Drawing.Size(97, 36);
             this.btnAgregar.TabIndex = 18;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
-            // 
-            // medicamentoModelTableAdapter
-            // 
             // 
             // asdfasdfToolStripMenuItem
             // 
@@ -439,202 +702,9 @@
             this.asdfasdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.asdfasdfToolStripMenuItem.Text = "asdfasdf";
             // 
-            // tsdMostrarCol
+            // vistaInventarioTableAdapter
             // 
-            this.tsdMostrarCol.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCod,
-            this.tsmiNumL,
-            this.tsmiNombreM,
-            this.tsmiCantidadM,
-            this.tsmiVencimientoM,
-            this.tsmiNombreE,
-            this.tsmiNombreC,
-            this.tsmiSectorE,
-            this.tsmiNumeroE});
-            this.tsdMostrarCol.Image = ((System.Drawing.Image)(resources.GetObject("tsdMostrarCol.Image")));
-            this.tsdMostrarCol.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsdMostrarCol.Name = "tsdMostrarCol";
-            this.tsdMostrarCol.Size = new System.Drawing.Size(134, 25);
-            this.tsdMostrarCol.Text = "Mostrar Columnas";
-            // 
-            // tsmiCod
-            // 
-            this.tsmiCod.Checked = true;
-            this.tsmiCod.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiCod.Name = "tsmiCod";
-            this.tsmiCod.Size = new System.Drawing.Size(175, 22);
-            this.tsmiCod.Tag = "codigoTAG";
-            this.tsmiCod.Text = "Código";
-            this.tsmiCod.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiCod.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiNumL
-            // 
-            this.tsmiNumL.Checked = true;
-            this.tsmiNumL.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiNumL.Name = "tsmiNumL";
-            this.tsmiNumL.Size = new System.Drawing.Size(175, 22);
-            this.tsmiNumL.Tag = "loteTAG";
-            this.tsmiNumL.Text = "Lote";
-            this.tsmiNumL.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiNumL.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiNombreM
-            // 
-            this.tsmiNombreM.Checked = true;
-            this.tsmiNombreM.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiNombreM.Name = "tsmiNombreM";
-            this.tsmiNombreM.Size = new System.Drawing.Size(175, 22);
-            this.tsmiNombreM.Tag = "nombreMTAG";
-            this.tsmiNombreM.Text = "Nombre";
-            this.tsmiNombreM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiNombreM.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiCantidadM
-            // 
-            this.tsmiCantidadM.Checked = true;
-            this.tsmiCantidadM.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiCantidadM.Name = "tsmiCantidadM";
-            this.tsmiCantidadM.Size = new System.Drawing.Size(175, 22);
-            this.tsmiCantidadM.Tag = "cantidadMTAG";
-            this.tsmiCantidadM.Text = "Cantidad";
-            this.tsmiCantidadM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiCantidadM.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiVencimientoM
-            // 
-            this.tsmiVencimientoM.Checked = true;
-            this.tsmiVencimientoM.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiVencimientoM.Name = "tsmiVencimientoM";
-            this.tsmiVencimientoM.Size = new System.Drawing.Size(175, 22);
-            this.tsmiVencimientoM.Tag = "vencimientoMTAG";
-            this.tsmiVencimientoM.Text = "Vencimiento";
-            this.tsmiVencimientoM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiVencimientoM.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiNombreE
-            // 
-            this.tsmiNombreE.Checked = true;
-            this.tsmiNombreE.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiNombreE.Name = "tsmiNombreE";
-            this.tsmiNombreE.Size = new System.Drawing.Size(175, 22);
-            this.tsmiNombreE.Tag = "nombreETAG";
-            this.tsmiNombreE.Text = "Nombre de Estante";
-            this.tsmiNombreE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiNombreE.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiNombreC
-            // 
-            this.tsmiNombreC.Checked = true;
-            this.tsmiNombreC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiNombreC.Name = "tsmiNombreC";
-            this.tsmiNombreC.Size = new System.Drawing.Size(175, 22);
-            this.tsmiNombreC.Tag = "nombreCTAG";
-            this.tsmiNombreC.Text = "Categoría";
-            this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiNombreC.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiSectorE
-            // 
-            this.tsmiSectorE.Checked = true;
-            this.tsmiSectorE.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiSectorE.Name = "tsmiSectorE";
-            this.tsmiSectorE.Size = new System.Drawing.Size(175, 22);
-            this.tsmiSectorE.Tag = "sectorETAG";
-            this.tsmiSectorE.Text = "Sector";
-            this.tsmiSectorE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiSectorE.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiNumeroE
-            // 
-            this.tsmiNumeroE.Checked = true;
-            this.tsmiNumeroE.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiNumeroE.Name = "tsmiNumeroE";
-            this.tsmiNumeroE.Size = new System.Drawing.Size(175, 22);
-            this.tsmiNumeroE.Tag = "numeroETAG";
-            this.tsmiNumeroE.Text = "Numero de Estante";
-            this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiNumeroE.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // btnExcelG
-            // 
-            this.btnExcelG.AnimationHoverSpeed = 0.07F;
-            this.btnExcelG.AnimationSpeed = 0.03F;
-            this.btnExcelG.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcelG.BaseColor = System.Drawing.Color.Green;
-            this.btnExcelG.BorderColor = System.Drawing.Color.Black;
-            this.btnExcelG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnExcelG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnExcelG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcelG.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnExcelG.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelG.Image")));
-            this.btnExcelG.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnExcelG.Location = new System.Drawing.Point(3, 3);
-            this.btnExcelG.Name = "btnExcelG";
-            this.btnExcelG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(163)))), ((int)(((byte)(80)))));
-            this.btnExcelG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnExcelG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnExcelG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnExcelG.OnHoverImage")));
-            this.btnExcelG.OnPressedColor = System.Drawing.Color.Green;
-            this.btnExcelG.Radius = 10;
-            this.btnExcelG.Size = new System.Drawing.Size(42, 32);
-            this.btnExcelG.TabIndex = 44;
-            this.btnExcelG.TabStop = false;
-            this.btnExcelG.Text = "Excel";
-            this.btnExcelG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnPrintG
-            // 
-            this.btnPrintG.AnimationHoverSpeed = 0.07F;
-            this.btnPrintG.AnimationSpeed = 0.03F;
-            this.btnPrintG.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrintG.BaseColor = System.Drawing.Color.DarkOrange;
-            this.btnPrintG.BorderColor = System.Drawing.Color.Black;
-            this.btnPrintG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPrintG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnPrintG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintG.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPrintG.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintG.Image")));
-            this.btnPrintG.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnPrintG.Location = new System.Drawing.Point(51, 3);
-            this.btnPrintG.Name = "btnPrintG";
-            this.btnPrintG.OnHoverBaseColor = System.Drawing.Color.Orange;
-            this.btnPrintG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnPrintG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnPrintG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrintG.OnHoverImage")));
-            this.btnPrintG.OnPressedColor = System.Drawing.Color.DarkOrange;
-            this.btnPrintG.Radius = 10;
-            this.btnPrintG.Size = new System.Drawing.Size(42, 32);
-            this.btnPrintG.TabIndex = 46;
-            this.btnPrintG.TabStop = false;
-            this.btnPrintG.Text = "Imprimir";
-            this.btnPrintG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnPDFG
-            // 
-            this.btnPDFG.AnimationHoverSpeed = 0.07F;
-            this.btnPDFG.AnimationSpeed = 0.03F;
-            this.btnPDFG.BackColor = System.Drawing.Color.Transparent;
-            this.btnPDFG.BaseColor = System.Drawing.Color.Firebrick;
-            this.btnPDFG.BorderColor = System.Drawing.Color.Black;
-            this.btnPDFG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPDFG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnPDFG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDFG.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPDFG.Image = ((System.Drawing.Image)(resources.GetObject("btnPDFG.Image")));
-            this.btnPDFG.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnPDFG.Location = new System.Drawing.Point(99, 3);
-            this.btnPDFG.Name = "btnPDFG";
-            this.btnPDFG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnPDFG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnPDFG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnPDFG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPDFG.OnHoverImage")));
-            this.btnPDFG.OnPressedColor = System.Drawing.Color.DarkRed;
-            this.btnPDFG.Radius = 10;
-            this.btnPDFG.Size = new System.Drawing.Size(42, 32);
-            this.btnPDFG.TabIndex = 45;
-            this.btnPDFG.TabStop = false;
-            this.btnPDFG.Text = "PDF";
+            this.vistaInventarioTableAdapter.ClearBeforeFill = true;
             // 
             // MedicamentosForm
             // 
@@ -651,7 +721,9 @@
             this.pnlForm.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-           
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicineList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -693,20 +765,26 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCantidadM;
         private System.Windows.Forms.ToolStripMenuItem tsmiVencimientoM;
         private System.Windows.Forms.ToolStripMenuItem tsmiNombreC;
-        private System.Windows.Forms.ToolStripMenuItem tsmiNombreE;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSectorE;
-        private System.Windows.Forms.ToolStripMenuItem tsmiNumeroE;
         private System.Windows.Forms.ToolStripMenuItem asdfasdfToolStripMenuItem;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblTotalRow;
+        private FontAwesome.Sharp.IconButton btnbuscar;
+        private System.Windows.Forms.ComboBox cmbFiltro;
+        private FarmaciaDBDataSet farmaciaDBDataSet;
+        private System.Windows.Forms.BindingSource vistaInventarioBindingSource;
+        private FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter vistaInventarioTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCod;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLote;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreM;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCantidadM;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcVtoM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSectorE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumeroE;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblTotalRow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreC;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEstantesList;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNombreE;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNumeroE;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSectorE;
     }
 }

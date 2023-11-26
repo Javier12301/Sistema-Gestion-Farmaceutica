@@ -161,6 +161,11 @@ namespace Sistema
             OpenchildForm(new ClientesForm(), btnClientes);
         }
 
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            OpenchildForm(new ComprasForm(), btnCompras);
+        }
+
         private void btnAjustes_Click(object sender, EventArgs e)
         {
 

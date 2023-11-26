@@ -132,11 +132,11 @@
         j5pdLUDNAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="bindingSourceMedicine.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>114, 17</value>
+  <metadata name="vistaInventarioBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 58</value>
   </metadata>
-  <metadata name="viewSGF.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="farmaciaDBDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>643, 19</value>
   </metadata>
   <data name="btnExcelG.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -242,7 +242,7 @@
   <data name="btnPrintG.OnHoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAABBZJREFUeF7t3LtuFUsQhWFHEAECMnghTIRkwUOYy2NyCbiERCBhvwCCHKqZX0tI
+        DAAACwwBP0AiyAAABBZJREFUeF7t3LtuFUsQhWFHEAECMnghTIRkwUOYy2NyCbiERCBhvwCCHKqZX0tI
         rdozltttr1F9Uiera5qqHvkYA2cflVJKKTfNn51jTB/0vVuM6YO+d4sxfdD3bjGmD/oWYluMIcQ+6FuI
         bTGGEPugbyG2xRhC7IO+hdgWYwixD/oWYluMIcQ+6FuIbTGGEPugbyG2xRhC7IO+hdgWYwixD/oWYluM
         IcQ+6FuIbTGGEPugbyG2xRhC7IO+hdgWYwixD/oWYluMIcQ+6FuIbTGGEPugbyG2xRhC7IO+hdgWYwix
@@ -285,7 +285,7 @@
   <data name="btnPDFG.OnHoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAA0JJREFUaEPtmr1rFFEUxdOIhaAg6VSEiBHUQhAjSkpBO0URBQWNhSEaCyuDpTY2
+        DAAACwwBP0AiyAAAA0JJREFUaEPtmr1rFFEUxdOIhaAg6VSEiBHUQhAjSkpBO0URBQWNhSEaCyuDpTY2
         FmIl2FlFFDv/DBvBVtRK/CCKit/rOe+dtzv7dmdY9b6dt8v84LDJfY9z78nOTmZnd6KhoaGhYVxotVqb
         oAfQRygFr6AjalcvGIRh33GqxPyATqhtfWAIPrPDov7QGCDVYRz4rsdAvaH9DEk5CsWhf0KnNcJw8f3T
         oR75hPa906E2+YT2fdOhNg78Wn9o3zMdatMGpXpD+37pUJsuUK4vtO+VDrXpAUv1hPZ90qE2fcHy8EP7
@@ -302,7 +302,7 @@
         bWhoyJCJiT+w52lskKTSTgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="medicamentoModelTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>303, 19</value>
+  <metadata name="vistaInventarioTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>227, 58</value>
   </metadata>
 </root>

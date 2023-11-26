@@ -25,7 +25,6 @@ namespace Sistema.Vista
 
         private void Medicamentos_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'viewSGF.VistaInventarioMedicamento' Puede moverla o quitarla según sea necesario.
             // Cargar datos en el datagridview
             loadMedicine();
             // Establecer nuevo tamaño al formulario
@@ -34,8 +33,10 @@ namespace Sistema.Vista
             btnExcelG.Size = new Size(73, 32);
             btnPrintG.Size = new Size(90, 32);
             btnPDFG.Size = new Size(71, 32);
-            // MENSAJE PARA FUTURO, CREAR UN FILTRO QUE PERMITA AGRANDAR EL DATAGRIDVIEW CON DATOS DE LOS MEDICAMENTOS
-            // CON ESTO SE LOGRARÁ OPTIMIZAR EL TAMAÑO DEL FORMULARIO
+            // Deshabilitar por default las columnas de estantes
+            tsmiSectorE.Checked = false;
+            tsmiNumeroE.Checked = false;
+
         }
 
         // Cargar datos en el datagridview
@@ -46,7 +47,7 @@ namespace Sistema.Vista
         {
             try
             {
-                //this.medicamentoModelTableAdapter.Fill(this.viewSGF.);
+                this.vistaInventarioTableAdapter.Fill(this.farmaciaDBDataSet.VistaInventario);
             }
             catch (DbUpdateException)
             {
@@ -130,13 +131,13 @@ namespace Sistema.Vista
                 case "nombreETAG":
                     dgvMedicineList.Columns[5].Visible = item.Checked;
                     break;
-                case "nombreCTAG":
+                case "sectorETAG":
                     dgvMedicineList.Columns[6].Visible = item.Checked;
                     break;
-                case "sectorETAG":
+                case "numeroETAG":
                     dgvMedicineList.Columns[7].Visible = item.Checked;
                     break;
-                case "numeroETAG":
+                case "nombreCTAG":
                     dgvMedicineList.Columns[8].Visible = item.Checked;
                     break;
                 default:

@@ -121,29 +121,9 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>36</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAQRJREFUOE+1lNsNwjAUQ/sNFLYo/DEMIBahQi1jMQeFL3bgMQPFTh1EovQpOJJV
-        cuNrNUlD1EZZlhNoIY1V7gcaZ9ABOkM+rOXQVPZmYNxCT6iNB7RRWxgY9tCL7o7Qm6rdBRN8sz5hFvas
-        FVOBAvesyzLr4PJnijOBPACfI3StfjqwxjmfXHEm8FLVHNi41NMSqlkKGxZX4yDfAU1hhHs5ZmBihvXY
-        oKYwS/KXwN8uWfsYumKhgKbQkwkjGPBu+vT9bDLFfU76ZsrDuEPunwUKG2jo1VspxgUTqQxdoXen9jAw
-        rCEuoQ16wm/mA+MU4kEVkM8JyqBY9n6gcQTNpZHKNUTRG7ZheQzpweVbAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnAgregar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAN5JREFUOE/tlC0OwkAQRnsIEs6AwSAxKDxXgMAd8NyEM3AHRINEg8TyoxDt9zEz
-        m/7sbtgGULzkmdnpSwrNZl+jKIoBXMJVgkN9vA0OL9DYQF+gKneucKyJOjioMtJxDcz5Foz1uAOJPypn
-        jlCQMcKYBckdTnRNkLkjNUj2uibo0AgFZzCHfPVmMNc1QYfGQsdBuCOrjmiwC78N3iB/q5gH+IRGNDjV
-        cRTsrWX9RTTo/ZebYM8+I/IPCrxBSErwDLewFeT1dYTkneuLMvSAJ7jTlIBBlwvWnMO+pj5JlpUVyiYt
-        imJhAQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="errorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAG8AAABvAAAAAAAAAAAA
@@ -170,11 +150,5 @@
   </data>
   <metadata name="helpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>140, 17</value>
-  </metadata>
-  <metadata name="toolTipAyuda.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>261, 17</value>
-  </metadata>
-  <metadata name="toolTipAyuda.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>261, 17</value>
   </metadata>
 </root>

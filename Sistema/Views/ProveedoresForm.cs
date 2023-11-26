@@ -44,7 +44,29 @@ namespace Sistema.Views
 
         private void loadSupplierData()
         {
-            this.proveedoresModelTableAdapter.Fill(this.farmaciaDBData.PROVEEDOR);
+            try
+            {
+                this.pROVEEDORTableAdapter.Fill(this.farmaciaDBDataSet.PROVEEDOR);
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
         }
 
         // // // // // Funciones de botones // // // // //
@@ -57,13 +79,14 @@ namespace Sistema.Views
                 btnModifyG.Image = Properties.Resources.EditingIcon;
                 btnModifyG.BaseColor = palette.ButtonModifyActive;
                 dgvSupplierList.ReadOnly = false;
+                dgvcID.ReadOnly = true;
             }
             else
             {
                 // Si se han realizado cambios, muestra un MessageBox.
                 if (controladora.IsDatagridViewModified)
                 {
-                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
@@ -114,7 +137,7 @@ namespace Sistema.Views
                 {
                     addSuplier();
                 }
-               
+
             }
             catch (DbUpdateException)
             {
@@ -300,7 +323,9 @@ namespace Sistema.Views
                     {
                         updateSupplierData(false);
                         deleteSelectedSuppliers();
-                    }else{
+                    }
+                    else
+                    {
                         deleteSelectedSuppliers();
                     }
                 }

@@ -37,6 +37,7 @@ namespace Sistema.Vista
 
         private void Estantes_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'farmaciaDBDataSet.ESTANTE' Puede moverla o quitarla según sea necesario.
             loadShelvesData();
             btnGuardarG.Enabled = false;
             toggleEditMode();
@@ -56,7 +57,7 @@ namespace Sistema.Vista
         {
             try
             {
-            this.estantesModelTableAdapter.Fill(this.farmaciaDBData.ESTANTE);
+                this.eSTANTETableAdapter.Fill(this.farmaciaDBDataSet.ESTANTE);
             }
             catch (DbUpdateException)
             {
@@ -88,15 +89,15 @@ namespace Sistema.Vista
                 isModifyButtonPressed = false;
                 btnModifyG.Image = Properties.Resources.EditingIcon;
                 btnModifyG.BaseColor = palette.ButtonModifyActive;
-
                 dgvShelvesList.ReadOnly = false;
+                dgvcID.ReadOnly = true;
             }
             else
             {
                 // Si se han realizado cambios, muestra un MessageBox.
                 if (controladora.IsDatagridViewModified)
                 {
-                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Has realizado modificaciones y estás cambiando al modo de lectura. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
@@ -247,7 +248,7 @@ namespace Sistema.Vista
                 // Recargar los datos después de procesar todas las filas modificadas
                 if (refresh)
                 {
-                loadShelvesData();
+                    loadShelvesData();
                 }
             }
             catch (DbUpdateException)
@@ -289,7 +290,7 @@ namespace Sistema.Vista
                 MessageBox.Show(mensaje, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        
+
 
         private void btnModifyG_Click(object sender, EventArgs e)
         {
@@ -346,7 +347,7 @@ namespace Sistema.Vista
             return message;
         }
 
-     
+
 
         // Evento para eliminar un estante
         private void btnEliminarG_Click(object sender, EventArgs e)
@@ -373,7 +374,7 @@ namespace Sistema.Vista
                 {
                     deleteSelectedShelf();
                 }
-               
+
             }
             catch (DbUpdateException)
             {
