@@ -92,7 +92,13 @@ CREATE TABLE MEDICAMENTO (
 );
 GO
 
-SELECT * FROM VENTA
+SELECT * FROM VistaInventario
+
+INSERT INTO MEDICAMENTO (Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Refrigerado, BajoReceta)
+VALUES ('ABC123', 'Paracetamol', 'L12345', '2023-12-31', 1, 2, 1, 1, 0);
+
+
+
 
 CREATE TABLE VENTA (
     VentaID INT IDENTITY PRIMARY KEY,
@@ -191,28 +197,51 @@ FROM
     INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
 GO
 
-
-CREATE VIEW VistaInventario AS
+SELECT * FROM MEDICAMENTO;
+ALTER VIEW VistaInventario AS
 SELECT
-	M.Codigo AS 'Cod.',
-	M.Lote AS 'Lote',
-	M.Nombre AS 'Nombre',
-	M.Stock AS 'Cantidad',
-	M.FechaVencimiento AS 'VTO',
-	E.Nombre AS 'Estante',
-	E.Sector AS 'Sector',
-	E.Numero AS 'Num. Estante',
-	C.Nombre AS 'Categoría'
+    M.MedicamentoID AS 'ID',
+    M.Codigo AS 'Cod.',
+    M.Lote AS 'Lote',
+    M.Nombre AS 'Nombre',
+    M.Stock AS 'Cantidad',
+    M.FechaVencimiento AS 'VTO',
+    E.Nombre AS 'Estante',
+    E.Sector AS 'Sector',
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría',
+	P.RazonSocial AS 'Proveedor'
 FROM
-	MEDICAMENTO M,
-	ESTANTE E,
-	CATEGORIA C
+    MEDICAMENTO M
+    INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
+	INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
 GO
+
+SELECT TOP 10
+    M.MedicamentoID AS 'ID',
+    M.Codigo AS 'Cod.',
+    M.Lote,
+    M.Nombre,
+    M.Stock AS 'Cantidad',
+    M.FechaVencimiento AS 'VTO',
+    E.Nombre AS 'Estante',
+    E.Sector,
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría', 
+    P.RazonSocial AS 'Proveedor'
+FROM
+    MEDICAMENTO AS M
+    INNER JOIN ESTANTE AS E ON M.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA AS C ON M.CategoriaID = C.CategoriaID
+    INNER JOIN PROVEEDOR AS P ON M.ProveedorID = P.ProveedorID;
 
 
 SELECT * FROM ESTANTE
 WHERE EstanteID > 0;
+SELECT * FROM MEDICAMENTO;
 
 SELECT * FROM CATEGORIA;
 SELECT * FROM PROVEEDOR;
+SELECT * FROM VistaInventario;
 GO;

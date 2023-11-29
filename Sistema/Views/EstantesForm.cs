@@ -191,7 +191,7 @@ namespace Sistema.Vista
                 bool result = shelfLogic.AddShelf(shelves);
                 if (result)
                 {
-                    MessageBox.Show("Se agrego corectamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se agrego correctamente un nuevo estante.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Se limpian los campos
                     controladora.ClearTextBoxG(txtNombreE, txtNumE, txtSectorE);
                     // Se actualiza el datagridview
@@ -204,7 +204,7 @@ namespace Sistema.Vista
             }
             else
             {
-                MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("¡Por favor, complete los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         // // // // // //// /// AGREGAR ESTANTE /// /// //// ///
@@ -311,7 +311,7 @@ namespace Sistema.Vista
                 // Lista para almacenar los nombres de los estantes seleccionados
                 List<string> shelfNames = new List<string>();
                 // Iterar sobre las filas seleccionadas
-                foreach (DataGridViewRow row in dgvShelvesList.SelectedRows)
+                foreach (DataGridViewRow row in dgvShelvesList.SelectedRows.Cast<DataGridViewRow>().Reverse())
                 {
                     int selectedShelfID = Convert.ToInt32(row.Cells["dgvcID"].Value);
                     string shelfName = shelfLogic.GetShelf(selectedShelfID).Nombre.ToString();
@@ -414,11 +414,17 @@ namespace Sistema.Vista
                         bool deletionResult = shelfLogic.DeleteShelf(selectedShelfID); ;
                         if (!deletionResult)
                         {
-                            MessageBox.Show("No se pudo eliminar el estante: " + shelfLogic.GetShelf(selectedShelfID).Nombre, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }                     
                     }
-                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
                     messageManager.ShowDeletionMessage(shelvesCount, "estante");
+                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
+                }
+                else
+                {
+                    MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
                 // Se actualiza el datagridview
                 loadShelvesData();

@@ -187,7 +187,7 @@ namespace Sistema.Views
             else
 
             {
-                MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("¡Por favor, complete los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -271,7 +271,7 @@ namespace Sistema.Views
                 // Lista para almacenar los nombres de las proveedor seleccionadas
                 List<string> selectedSupplier = new List<string>();
                 // Se recorren las filas seleccionadas
-                foreach (DataGridViewRow row in dgvSupplierList.SelectedRows)
+                foreach (DataGridViewRow row in dgvSupplierList.SelectedRows.Cast<DataGridViewRow>().Reverse())
                 {
                     int selectedSupplierID = Convert.ToInt32(row.Cells["dgvcID"].Value);
                     // Se utiliza el id para obtener el objeto categoria y luego obtenemos el nombre
@@ -372,11 +372,17 @@ namespace Sistema.Views
                         bool deletionResult = supplierLogic.DeleteSupplier(selectedSupplierID);
                         if (!deletionResult)
                         {
-                            MessageBox.Show("No se pudo eliminar el proveedor: \"" + supplierLogic.GetSupplier(selectedSupplierID).RazonSocial + "\"", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
                         }
                     }
-                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
                     messageManager.ShowDeletionMessage(supplierCount, "proveedor");
+
+                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
+                }
+                else
+                {
+                    MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 // Se actualiza el datagridview
                 loadSupplierData();

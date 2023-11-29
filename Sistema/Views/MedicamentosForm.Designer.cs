@@ -37,6 +37,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiID = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,16 +48,19 @@
             this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreP = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMedicineList = new Zuby.ADGV.AdvancedDataGridView();
-            this.dgvcCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNombreM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcCantidadM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcVtoM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNombreE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSectorE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNumeroE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numEstanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoríaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proveedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vistaInventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -134,18 +138,31 @@
             // tsdMostrarCol
             // 
             this.tsdMostrarCol.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiID,
             this.tsmiCod,
             this.tsmiNumL,
             this.tsmiNombreM,
             this.tsmiCantidadM,
             this.tsmiVencimientoM,
             this.tsmiEstantesList,
-            this.tsmiNombreC});
+            this.tsmiNombreC,
+            this.tsmiNombreP});
             this.tsdMostrarCol.Image = ((System.Drawing.Image)(resources.GetObject("tsdMostrarCol.Image")));
             this.tsdMostrarCol.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsdMostrarCol.Name = "tsdMostrarCol";
             this.tsdMostrarCol.Size = new System.Drawing.Size(134, 25);
             this.tsdMostrarCol.Text = "Mostrar Columnas";
+            // 
+            // tsmiID
+            // 
+            this.tsmiID.Checked = true;
+            this.tsmiID.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiID.Name = "tsmiID";
+            this.tsmiID.Size = new System.Drawing.Size(140, 22);
+            this.tsmiID.Tag = "idTAG";
+            this.tsmiID.Text = "ID";
+            this.tsmiID.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiID.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiCod
             // 
@@ -258,6 +275,17 @@
             this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
             this.tsmiNombreC.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
+            // tsmiNombreP
+            // 
+            this.tsmiNombreP.Checked = true;
+            this.tsmiNombreP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreP.Name = "tsmiNombreP";
+            this.tsmiNombreP.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNombreP.Tag = "nombrePTAG";
+            this.tsmiNombreP.Text = "Proveedor";
+            this.tsmiNombreP.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreP.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
             // dgvMedicineList
             // 
             this.dgvMedicineList.AllowUserToAddRows = false;
@@ -278,15 +306,17 @@
             this.dgvMedicineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMedicineList.ColumnHeadersHeight = 42;
             this.dgvMedicineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcCod,
-            this.dgvcLote,
-            this.dgvcNombreM,
-            this.dgvcCantidadM,
-            this.dgvcVtoM,
-            this.dgvcNombreE,
-            this.dgvcSectorE,
-            this.dgvcNumeroE,
-            this.dgvcNombreC});
+            this.iDDataGridViewTextBoxColumn,
+            this.codDataGridViewTextBoxColumn,
+            this.loteDataGridViewTextBoxColumn,
+            this.nombreDataGridViewTextBoxColumn,
+            this.cantidadDataGridViewTextBoxColumn,
+            this.vTODataGridViewTextBoxColumn,
+            this.estanteDataGridViewTextBoxColumn,
+            this.sectorDataGridViewTextBoxColumn,
+            this.numEstanteDataGridViewTextBoxColumn,
+            this.categoríaDataGridViewTextBoxColumn,
+            this.proveedorDataGridViewTextBoxColumn});
             this.dgvMedicineList.DataSource = this.vistaInventarioBindingSource;
             this.dgvMedicineList.FilterAndSortEnabled = true;
             this.dgvMedicineList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -302,6 +332,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMedicineList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvMedicineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicineList.Size = new System.Drawing.Size(677, 346);
             this.dgvMedicineList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             this.dgvMedicineList.TabIndex = 36;
@@ -309,86 +340,104 @@
             this.dgvMedicineList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvMedicineList_SortStringChanged);
             this.dgvMedicineList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvMedicineList_FilterStringChanged);
             // 
-            // dgvcCod
+            // iDDataGridViewTextBoxColumn
             // 
-            this.dgvcCod.DataPropertyName = "Cod_";
-            this.dgvcCod.HeaderText = "Cod";
-            this.dgvcCod.MinimumWidth = 22;
-            this.dgvcCod.Name = "dgvcCod";
-            this.dgvcCod.ReadOnly = true;
-            this.dgvcCod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcLote
+            // codDataGridViewTextBoxColumn
             // 
-            this.dgvcLote.DataPropertyName = "Lote";
-            this.dgvcLote.HeaderText = "Lote";
-            this.dgvcLote.MinimumWidth = 22;
-            this.dgvcLote.Name = "dgvcLote";
-            this.dgvcLote.ReadOnly = true;
-            this.dgvcLote.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.codDataGridViewTextBoxColumn.DataPropertyName = "Cod_";
+            this.codDataGridViewTextBoxColumn.HeaderText = "Cod";
+            this.codDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.codDataGridViewTextBoxColumn.Name = "codDataGridViewTextBoxColumn";
+            this.codDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcNombreM
+            // loteDataGridViewTextBoxColumn
             // 
-            this.dgvcNombreM.DataPropertyName = "Nombre";
-            this.dgvcNombreM.HeaderText = "Nombre";
-            this.dgvcNombreM.MinimumWidth = 22;
-            this.dgvcNombreM.Name = "dgvcNombreM";
-            this.dgvcNombreM.ReadOnly = true;
-            this.dgvcNombreM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.loteDataGridViewTextBoxColumn.DataPropertyName = "Lote";
+            this.loteDataGridViewTextBoxColumn.HeaderText = "Lote";
+            this.loteDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.loteDataGridViewTextBoxColumn.Name = "loteDataGridViewTextBoxColumn";
+            this.loteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.loteDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcCantidadM
+            // nombreDataGridViewTextBoxColumn
             // 
-            this.dgvcCantidadM.DataPropertyName = "Cantidad";
-            this.dgvcCantidadM.HeaderText = "Cantidad";
-            this.dgvcCantidadM.MinimumWidth = 22;
-            this.dgvcCantidadM.Name = "dgvcCantidadM";
-            this.dgvcCantidadM.ReadOnly = true;
-            this.dgvcCantidadM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nombreDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcVtoM
+            // cantidadDataGridViewTextBoxColumn
             // 
-            this.dgvcVtoM.DataPropertyName = "VTO";
-            this.dgvcVtoM.HeaderText = "VTO";
-            this.dgvcVtoM.MinimumWidth = 22;
-            this.dgvcVtoM.Name = "dgvcVtoM";
-            this.dgvcVtoM.ReadOnly = true;
-            this.dgvcVtoM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cantidadDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcNombreE
+            // vTODataGridViewTextBoxColumn
             // 
-            this.dgvcNombreE.DataPropertyName = "Estante";
-            this.dgvcNombreE.HeaderText = "Estante";
-            this.dgvcNombreE.MinimumWidth = 22;
-            this.dgvcNombreE.Name = "dgvcNombreE";
-            this.dgvcNombreE.ReadOnly = true;
-            this.dgvcNombreE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.vTODataGridViewTextBoxColumn.DataPropertyName = "VTO";
+            this.vTODataGridViewTextBoxColumn.HeaderText = "VTO";
+            this.vTODataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.vTODataGridViewTextBoxColumn.Name = "vTODataGridViewTextBoxColumn";
+            this.vTODataGridViewTextBoxColumn.ReadOnly = true;
+            this.vTODataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcSectorE
+            // estanteDataGridViewTextBoxColumn
             // 
-            this.dgvcSectorE.DataPropertyName = "Sector";
-            this.dgvcSectorE.HeaderText = "Sector";
-            this.dgvcSectorE.MinimumWidth = 22;
-            this.dgvcSectorE.Name = "dgvcSectorE";
-            this.dgvcSectorE.ReadOnly = true;
-            this.dgvcSectorE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.estanteDataGridViewTextBoxColumn.DataPropertyName = "Estante";
+            this.estanteDataGridViewTextBoxColumn.HeaderText = "Estante";
+            this.estanteDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.estanteDataGridViewTextBoxColumn.Name = "estanteDataGridViewTextBoxColumn";
+            this.estanteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.estanteDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcNumeroE
+            // sectorDataGridViewTextBoxColumn
             // 
-            this.dgvcNumeroE.DataPropertyName = "Num_ Estante";
-            this.dgvcNumeroE.HeaderText = "Nro. Estante";
-            this.dgvcNumeroE.MinimumWidth = 22;
-            this.dgvcNumeroE.Name = "dgvcNumeroE";
-            this.dgvcNumeroE.ReadOnly = true;
-            this.dgvcNumeroE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.sectorDataGridViewTextBoxColumn.DataPropertyName = "Sector";
+            this.sectorDataGridViewTextBoxColumn.HeaderText = "Sector";
+            this.sectorDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.sectorDataGridViewTextBoxColumn.Name = "sectorDataGridViewTextBoxColumn";
+            this.sectorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sectorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcNombreC
+            // numEstanteDataGridViewTextBoxColumn
             // 
-            this.dgvcNombreC.DataPropertyName = "Categoría";
-            this.dgvcNombreC.HeaderText = "Categoría";
-            this.dgvcNombreC.MinimumWidth = 22;
-            this.dgvcNombreC.Name = "dgvcNombreC";
-            this.dgvcNombreC.ReadOnly = true;
-            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.numEstanteDataGridViewTextBoxColumn.DataPropertyName = "Num_ Estante";
+            this.numEstanteDataGridViewTextBoxColumn.HeaderText = "Nro. Estante";
+            this.numEstanteDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.numEstanteDataGridViewTextBoxColumn.Name = "numEstanteDataGridViewTextBoxColumn";
+            this.numEstanteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numEstanteDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // categoríaDataGridViewTextBoxColumn
+            // 
+            this.categoríaDataGridViewTextBoxColumn.DataPropertyName = "Categoría";
+            this.categoríaDataGridViewTextBoxColumn.HeaderText = "Categoría";
+            this.categoríaDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.categoríaDataGridViewTextBoxColumn.Name = "categoríaDataGridViewTextBoxColumn";
+            this.categoríaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categoríaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // proveedorDataGridViewTextBoxColumn
+            // 
+            this.proveedorDataGridViewTextBoxColumn.DataPropertyName = "Proveedor";
+            this.proveedorDataGridViewTextBoxColumn.HeaderText = "Proveedor";
+            this.proveedorDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.proveedorDataGridViewTextBoxColumn.Name = "proveedorDataGridViewTextBoxColumn";
+            this.proveedorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.proveedorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // vistaInventarioBindingSource
             // 
@@ -591,6 +640,8 @@
             this.cmbFilas.Name = "cmbFilas";
             this.cmbFilas.Size = new System.Drawing.Size(74, 23);
             this.cmbFilas.TabIndex = 27;
+            this.cmbFilas.TextChanged += new System.EventHandler(this.cmbFilas_TextChanged);
+            this.cmbFilas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFilas_KeyPress);
             // 
             // lblTitlePnl
             // 
@@ -657,6 +708,7 @@
             this.btnEliminar.TabIndex = 20;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -676,6 +728,7 @@
             this.btnModificar.TabIndex = 19;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -770,21 +823,25 @@
         private System.Windows.Forms.Label lblTotalRow;
         private FontAwesome.Sharp.IconButton btnbuscar;
         private System.Windows.Forms.ComboBox cmbFiltro;
-        private FarmaciaDBDataSet farmaciaDBDataSet;
-        private System.Windows.Forms.BindingSource vistaInventarioBindingSource;
-        private FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter vistaInventarioTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCantidadM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcVtoM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSectorE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumeroE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreC;
         private System.Windows.Forms.ToolStripMenuItem tsmiEstantesList;
         private System.Windows.Forms.ToolStripMenuItem tsmiNombreE;
         private System.Windows.Forms.ToolStripMenuItem tsmiNumeroE;
         private System.Windows.Forms.ToolStripMenuItem tsmiSectorE;
+        private System.Windows.Forms.ToolStripMenuItem tsmiID;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNombreP;
+        private FarmaciaDBDataSet farmaciaDBDataSet;
+        private System.Windows.Forms.BindingSource vistaInventarioBindingSource;
+        private FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter vistaInventarioTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vTODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estanteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sectorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numEstanteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoríaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proveedorDataGridViewTextBoxColumn;
     }
 }

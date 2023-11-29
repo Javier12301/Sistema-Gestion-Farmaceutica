@@ -2724,6 +2724,10 @@ namespace Sistema {
             
             private global::System.Data.DataColumn columnCategoría;
             
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnProveedor;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public VistaInventarioDataTable() {
@@ -2831,6 +2835,22 @@ namespace Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ProveedorColumn {
+                get {
+                    return this.columnProveedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2866,7 +2886,7 @@ namespace Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VistaInventarioRow AddVistaInventarioRow(string Cod_, string Lote, string Nombre, int Cantidad, System.DateTime VTO, string Estante, string Sector, int Num__Estante, string Categoría) {
+            public VistaInventarioRow AddVistaInventarioRow(string Cod_, string Lote, string Nombre, int Cantidad, System.DateTime VTO, string Estante, string Sector, int Num__Estante, string Categoría, string Proveedor) {
                 VistaInventarioRow rowVistaInventarioRow = ((VistaInventarioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Cod_,
@@ -2877,10 +2897,19 @@ namespace Sistema {
                         Estante,
                         Sector,
                         Num__Estante,
-                        Categoría};
+                        Categoría,
+                        null,
+                        Proveedor};
                 rowVistaInventarioRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVistaInventarioRow);
                 return rowVistaInventarioRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VistaInventarioRow FindByID(int ID) {
+                return ((VistaInventarioRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2909,6 +2938,8 @@ namespace Sistema {
                 this.columnSector = base.Columns["Sector"];
                 this.columnNum__Estante = base.Columns["Num_ Estante"];
                 this.columnCategoría = base.Columns["Categoría"];
+                this.columnID = base.Columns["ID"];
+                this.columnProveedor = base.Columns["Proveedor"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2932,6 +2963,12 @@ namespace Sistema {
                 base.Columns.Add(this.columnNum__Estante);
                 this.columnCategoría = new global::System.Data.DataColumn("Categoría", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategoría);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnProveedor = new global::System.Data.DataColumn("Proveedor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProveedor);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnCod_.MaxLength = 50;
                 this.columnLote.MaxLength = 50;
                 this.columnNombre.MaxLength = 50;
@@ -2943,6 +2980,13 @@ namespace Sistema {
                 this.columnNum__Estante.AllowDBNull = false;
                 this.columnCategoría.AllowDBNull = false;
                 this.columnCategoría.MaxLength = 255;
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
+                this.columnProveedor.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4493,6 +4537,33 @@ namespace Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableVistaInventario.IDColumn]));
+                }
+                set {
+                    this[this.tableVistaInventario.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Proveedor {
+                get {
+                    try {
+                        return ((string)(this[this.tableVistaInventario.ProveedorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Proveedor\' de la tabla \'VistaInventario\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVistaInventario.ProveedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCod_Null() {
                 return this.IsNull(this.tableVistaInventario.Cod_Column);
             }
@@ -4537,6 +4608,18 @@ namespace Sistema {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetVTONull() {
                 this[this.tableVistaInventario.VTOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsProveedorNull() {
+                return this.IsNull(this.tableVistaInventario.ProveedorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetProveedorNull() {
+                this[this.tableVistaInventario.ProveedorColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8080,6 +8163,8 @@ SELECT ProveedorID, RazonSocial, Documento, Direccion, TelefonoProveedor, Correo
             tableMapping.ColumnMappings.Add("Sector", "Sector");
             tableMapping.ColumnMappings.Add("Num. Estante", "Num_ Estante");
             tableMapping.ColumnMappings.Add("Categoría", "Categoría");
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("Proveedor", "Proveedor");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8093,12 +8178,49 @@ SELECT ProveedorID, RazonSocial, Documento, Direccion, TelefonoProveedor, Correo
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [Cod.], Lote, Nombre, Cantidad, VTO, Estante, Sector, [Num. Estante], Cate" +
-                "goría FROM dbo.VistaInventario";
+            this._commandCollection[0].CommandText = @"SELECT
+    M.MedicamentoID AS 'ID',
+    M.Codigo AS 'Cod.',
+    M.Lote AS 'Lote',
+    M.Nombre AS 'Nombre',
+    M.Stock AS 'Cantidad',
+    M.FechaVencimiento AS 'VTO',
+    E.Nombre AS 'Estante',
+    E.Sector AS 'Sector',
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría',
+    P.RazonSocial AS 'Proveedor'
+FROM
+    MEDICAMENTO M
+    INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
+    INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
+";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT TOP (@NumeroFilas)
+    M.MedicamentoID AS 'ID',
+    M.Codigo AS 'Cod.',
+    M.Lote,
+    M.Nombre,
+    M.Stock AS 'Cantidad',
+    M.FechaVencimiento AS 'VTO',
+    E.Nombre AS 'Estante',
+    E.Sector,
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría', 
+    P.RazonSocial AS 'Proveedor'
+FROM
+    MEDICAMENTO AS M
+    INNER JOIN ESTANTE AS E ON M.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA AS C ON M.CategoriaID = C.CategoriaID
+    INNER JOIN PROVEEDOR AS P ON M.ProveedorID = P.ProveedorID;";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumeroFilas", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8120,6 +8242,32 @@ SELECT ProveedorID, RazonSocial, Documento, Direccion, TelefonoProveedor, Correo
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual FarmaciaDBDataSet.VistaInventarioDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            FarmaciaDBDataSet.VistaInventarioDataTable dataTable = new FarmaciaDBDataSet.VistaInventarioDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Top(FarmaciaDBDataSet.VistaInventarioDataTable dataTable, int NumeroFilas) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(NumeroFilas));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual FarmaciaDBDataSet.VistaInventarioDataTable GetDataBy(int NumeroFilas) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(NumeroFilas));
             FarmaciaDBDataSet.VistaInventarioDataTable dataTable = new FarmaciaDBDataSet.VistaInventarioDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

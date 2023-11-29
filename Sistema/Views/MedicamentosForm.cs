@@ -1,10 +1,13 @@
 ﻿using Sistema.Controles.Interfaz;
 using Sistema.Controles.Logica;
+using Sistema.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Sistema.Vista
@@ -17,6 +20,7 @@ namespace Sistema.Vista
         private MedicamentoLogica medicineLogic = new MedicamentoLogica();
         Controladora controladora = Controladora.GetInstance;
         private MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        private int originalRowCount { get; set; }
 
         public MedicamentosForm()
         {
@@ -27,16 +31,18 @@ namespace Sistema.Vista
         {
             // Cargar datos en el datagridview
             loadMedicine();
+            // Cargar combobox de filtros
+            loadCMBData();
+
             // Establecer nuevo tamaño al formulario
             this.Size = new Size(573, 299);
             // Establecer tamaño de botones de imprimir, pdf y excel
             btnExcelG.Size = new Size(73, 32);
             btnPrintG.Size = new Size(90, 32);
             btnPDFG.Size = new Size(71, 32);
-            // Deshabilitar por default las columnas de estantes
-            tsmiSectorE.Checked = false;
-            tsmiNumeroE.Checked = false;
-
+            updateTotalRowCount();
+            // Desactivar datagridview ID
+            tsmiID.Checked = false;
         }
 
         // Cargar datos en el datagridview
@@ -48,6 +54,7 @@ namespace Sistema.Vista
             try
             {
                 this.vistaInventarioTableAdapter.Fill(this.farmaciaDBDataSet.VistaInventario);
+                originalRowCount = dgvMedicineList.RowCount;
             }
             catch (DbUpdateException)
             {
@@ -71,27 +78,161 @@ namespace Sistema.Vista
 
         }
 
-        private void loadCMBData()
-        {
-            // Obtener lista de nombres de estantes y categorías para cargar los combobox
 
 
-            // Insertar en la primera posición de la lista
-            //categoryList.Insert(0, "Seleccionar Categoría.");
-            //shelvesList.Insert(0, "Seleccionar Estante.");
-            // Cargar combobox
-            //cmbFilteCat.DataSource = categoryList;
-            //cmbFilterEst.DataSource = shelvesList;
-        }
-
+        // // // /// AGREGAR, MODIFICAR, ELIMINAR // // // //
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
         {
-            Vista.NuevoMedicamentoForm formAgregarMedicamento = new Vista.NuevoMedicamentoForm();
-            formAgregarMedicamento.FormClosed += formAgregarMedicamento_FormClosed;
-            formAgregarMedicamento.ShowDialog();
+            openMedicineForm(null);
         }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            openMedicineFormForModification();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                deleteSelectedMedicine();
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
+        }
+
+        ////ELIMINAR ////
+        // Obtener mensaje confirmación para eliminar medicamento
+        private string getDeleteConfirmationMessage()
+        {
+            string message = "";
+            if (dgvMedicineList.SelectedRows.Count > 1)
+            {
+                List<string> medicineNames = getSelectedMedicinesNames();
+                for (int i = 0; i < medicineNames.Count; i++)
+                {
+                    medicineNames[i] = $"- {medicineNames[i]}";
+                }
+                message = "¿Está seguro que desea eliminar los siguientes medicamentos?\n\n" + string.Join("\n", medicineNames);
+
+            }
+            else if (dgvMedicineList.SelectedRows.Count == 1)
+            {
+                string medicineName = getSelectedMedicinesNames()[0];
+                message = "¿Está seguro que desea eliminar el medicamento " + medicineName + "?";
+            }
+            return message;
+            // Lista para almacenar los nombres de los medicamentos seleccionados
+        }
+
+
+        private void deleteSelectedMedicine()
+        {
+            if (dgvMedicineList.SelectedRows.Count > 0)
+            {
+                int medicineCount = dgvMedicineList.SelectedRows.Count;
+                string message = getDeleteConfirmationMessage();
+                DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (userConfirmation == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvMedicineList.SelectedRows)
+                    {
+                        int selectedMedicineID = Convert.ToInt32(row.Cells[0].Value);
+                        bool medicineDeleted = medicineLogic.DeleteMedicine(selectedMedicineID);
+                        if (!medicineDeleted)
+                        {
+                            MessageBox.Show("La operación ha sido cancelada debido a un error inesperado.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                messageManager.ShowDeletionMessage(medicineCount, "medicamento");
+                loadMedicine();
+            }
+        }
+        // // // ///  AGREGAR, MODIFICAR, ELIMINAR // // // //
+
         // // // // INTERFAZ // // // //
+
+        // Cargar ComboBox //
+        private void loadCMBData()
+        {
+            // Primero, se carga el combobox de filtros de filas, se cargarán con valores: 10, 20, 50, 100, 200
+            cmbFilas.Items.Add("10");
+            cmbFilas.Items.Add("20");
+            cmbFilas.Items.Add("50");
+            cmbFilas.Items.Add("100");
+            cmbFilas.Items.Add("200");
+            // Se inicializa con 100 para evitar sobrecargas de datos
+            cmbFilas.SelectedItem = "100";
+
+        }
+        private List<string> getSelectedMedicinesNames()
+        {
+            if (dgvMedicineList.SelectedRows.Count > 0)
+            {
+                // Lista para almacenar los nombres de los medicamentos seleccionados
+                List<string> medicineNames = new List<string>();
+                // iterar sobre las filas seleccionadas
+                foreach (DataGridViewRow row in dgvMedicineList.SelectedRows.Cast<DataGridViewRow>().Reverse())
+                {
+                    int selectedMedicineId = Convert.ToInt32(row.Cells[0].Value);
+                    string shelfName = medicineLogic.GetMedicine(selectedMedicineId).Nombre.ToString();
+                    medicineNames.Add(shelfName);
+                }
+                return medicineNames;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void openMedicineFormForModification()
+        {
+            if (dgvMedicineList.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dgvMedicineList.SelectedRows[0].Cells[0].Value);
+                MEDICAMENTO medicine = medicineLogic.GetMedicine(id);
+                openMedicineForm(medicine);
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila/columna para modificar el medicamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void openMedicineForm(MEDICAMENTO medicine)
+        {
+            Vista.NuevoMedicamentoForm medicineForm = new Vista.NuevoMedicamentoForm(medicine);
+            medicineForm.FormClosed += formAgregarMedicamento_FormClosed;
+            medicineForm.ShowDialog();
+            loadMedicine();
+        }
+
         private void formAgregarMedicamento_FormClosed(object sender, FormClosedEventArgs e)
         {
 
@@ -113,32 +254,38 @@ namespace Sistema.Vista
             // en los case pon estos tag de item: codigoTAG loteTAG nombreMTAG cantidadMTAG vencimientoMTAG nombreETAG nombreCTAG sectorETAG numeroETAG
             switch (item.Tag)
             {
-                case "codigoTAG":
+                case "idTAG":
                     dgvMedicineList.Columns[0].Visible = item.Checked;
                     break;
-                case "loteTAG":
+                case "codigoTAG":
                     dgvMedicineList.Columns[1].Visible = item.Checked;
                     break;
-                case "nombreMTAG":
+                case "loteTAG":
                     dgvMedicineList.Columns[2].Visible = item.Checked;
                     break;
-                case "cantidadMTAG":
+                case "nombreMTAG":
                     dgvMedicineList.Columns[3].Visible = item.Checked;
                     break;
-                case "vencimientoMTAG":
+                case "cantidadMTAG":
                     dgvMedicineList.Columns[4].Visible = item.Checked;
                     break;
-                case "nombreETAG":
+                case "vencimientoMTAG":
                     dgvMedicineList.Columns[5].Visible = item.Checked;
                     break;
-                case "sectorETAG":
+                case "nombreETAG":
                     dgvMedicineList.Columns[6].Visible = item.Checked;
                     break;
-                case "numeroETAG":
+                case "sectorETAG":
                     dgvMedicineList.Columns[7].Visible = item.Checked;
                     break;
-                case "nombreCTAG":
+                case "numeroETAG":
                     dgvMedicineList.Columns[8].Visible = item.Checked;
+                    break;
+                case "nombreCTAG":
+                    dgvMedicineList.Columns[9].Visible = item.Checked;
+                    break;
+                case "nombrePTAG":
+                    dgvMedicineList.Columns[10].Visible = item.Checked;
                     break;
                 default:
                     break;
@@ -151,18 +298,102 @@ namespace Sistema.Vista
 
         private void dgvMedicineList_SortStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.SortEventArgs e)
         {
-            //bindingSourceMedicine.Sort = dgvMedicineList.SortString;
+            vistaInventarioBindingSource.Sort = dgvMedicineList.SortString;
         }
 
         private void dgvMedicineList_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
         {
-            //bindingSourceMedicine.Filter = dgvMedicineList.FilterString;
+            vistaInventarioBindingSource.Filter = dgvMedicineList.FilterString;
+        }
+
+        private void updateTotalRowCount()
+        {
+            lblTotalRow.Text = "Filas Totales: " + vistaInventarioBindingSource.List.Count;
         }
 
         private void bindingSourceMedicine_ListChanged(object sender, ListChangedEventArgs e)
         {
-            //lblTotalRow.Text = "Filas Totales: " + bindingSourceMedicine.List.Count;
+            updateTotalRowCount();
         }
+
+        private void cmbFilas_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbFilas.Text == string.Empty)
+                {
+                    cmbFilas.Text = originalRowCount.ToString();
+                }
+                else
+                {
+                    int numberOfRows = Convert.ToInt32(cmbFilas.Text);
+                    filterRow(numberOfRows);
+                }
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
+        }
+
+        private void cmbFilas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            controladora.OnlyNumbers(e);
+        }
+
+        private void filterRow(int numberOfRows)
+        {
+            if (numberOfRows > 0)
+            {
+                this.vistaInventarioTableAdapter.Top(this.farmaciaDBDataSet.VistaInventario, numberOfRows);
+            }
+            else if (numberOfRows < 0)
+            {
+                MessageBox.Show("El número de filas no puede ser negativo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                // Si el usuario tiene más de 1000 filas, le advertirá que la operación puede tardar
+                if (originalRowCount > 5000)
+                {
+                    DialogResult result = MessageBox.Show("La operación que está a punto de realizar involucra un gran volumen de datos y podría llevar varios minutos.\\n\" +\r\n    \"¿Desea continuar?\"", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.vistaInventarioTableAdapter.Fill(this.farmaciaDBDataSet.VistaInventario);
+                        cmbFilas.Text = originalRowCount.ToString();
+                    }
+                    else
+                    {
+                        cmbFilas.Text = "100";
+                    }
+                }
+                else
+                {
+                    this.vistaInventarioTableAdapter.Top(this.farmaciaDBDataSet.VistaInventario, numberOfRows);
+                }
+            }
+
+        }
+
+
+
+
+
 
 
 

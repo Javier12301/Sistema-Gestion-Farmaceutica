@@ -34,6 +34,12 @@
             this.lblTotalRow = new System.Windows.Forms.Label();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvSupplierList = new Zuby.ADGV.AdvancedDataGridView();
+            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcRazonSocialP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDocumentoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDireccionP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcTelefonoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcCorreoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceSupplier = new System.Windows.Forms.BindingSource(this.components);
             this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
@@ -57,12 +63,6 @@
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pROVEEDORTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.PROVEEDORTableAdapter();
-            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcRazonSocialP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcDocumentoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcDireccionP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcTelefonoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcCorreoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSupplier)).BeginInit();
@@ -157,6 +157,7 @@
             this.dgvSupplierList.Name = "dgvSupplierList";
             this.dgvSupplierList.ReadOnly = true;
             this.dgvSupplierList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvSupplierList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSupplierList.Size = new System.Drawing.Size(272, 256);
             this.dgvSupplierList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             this.dgvSupplierList.TabIndex = 0;
@@ -166,6 +167,66 @@
             this.dgvSupplierList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellClick);
             this.dgvSupplierList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellEndEdit);
             this.dgvSupplierList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellEnter);
+            // 
+            // dgvcID
+            // 
+            this.dgvcID.DataPropertyName = "ProveedorID";
+            this.dgvcID.FillWeight = 63.9594F;
+            this.dgvcID.HeaderText = "ID";
+            this.dgvcID.MinimumWidth = 22;
+            this.dgvcID.Name = "dgvcID";
+            this.dgvcID.ReadOnly = true;
+            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcRazonSocialP
+            // 
+            this.dgvcRazonSocialP.DataPropertyName = "RazonSocial";
+            this.dgvcRazonSocialP.FillWeight = 107.2082F;
+            this.dgvcRazonSocialP.HeaderText = "Razon Social";
+            this.dgvcRazonSocialP.MinimumWidth = 22;
+            this.dgvcRazonSocialP.Name = "dgvcRazonSocialP";
+            this.dgvcRazonSocialP.ReadOnly = true;
+            this.dgvcRazonSocialP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcDocumentoP
+            // 
+            this.dgvcDocumentoP.DataPropertyName = "Documento";
+            this.dgvcDocumentoP.FillWeight = 107.2082F;
+            this.dgvcDocumentoP.HeaderText = "Documento";
+            this.dgvcDocumentoP.MinimumWidth = 22;
+            this.dgvcDocumentoP.Name = "dgvcDocumentoP";
+            this.dgvcDocumentoP.ReadOnly = true;
+            this.dgvcDocumentoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcDireccionP
+            // 
+            this.dgvcDireccionP.DataPropertyName = "Direccion";
+            this.dgvcDireccionP.FillWeight = 107.2082F;
+            this.dgvcDireccionP.HeaderText = "Direccion";
+            this.dgvcDireccionP.MinimumWidth = 22;
+            this.dgvcDireccionP.Name = "dgvcDireccionP";
+            this.dgvcDireccionP.ReadOnly = true;
+            this.dgvcDireccionP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcTelefonoP
+            // 
+            this.dgvcTelefonoP.DataPropertyName = "TelefonoProveedor";
+            this.dgvcTelefonoP.FillWeight = 107.2082F;
+            this.dgvcTelefonoP.HeaderText = "Telefono";
+            this.dgvcTelefonoP.MinimumWidth = 22;
+            this.dgvcTelefonoP.Name = "dgvcTelefonoP";
+            this.dgvcTelefonoP.ReadOnly = true;
+            this.dgvcTelefonoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcCorreoP
+            // 
+            this.dgvcCorreoP.DataPropertyName = "Correo";
+            this.dgvcCorreoP.FillWeight = 107.2082F;
+            this.dgvcCorreoP.HeaderText = "Correo";
+            this.dgvcCorreoP.MinimumWidth = 22;
+            this.dgvcCorreoP.Name = "dgvcCorreoP";
+            this.dgvcCorreoP.ReadOnly = true;
+            this.dgvcCorreoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // bindingSourceSupplier
             // 
@@ -474,66 +535,6 @@
             // pROVEEDORTableAdapter
             // 
             this.pROVEEDORTableAdapter.ClearBeforeFill = true;
-            // 
-            // dgvcID
-            // 
-            this.dgvcID.DataPropertyName = "ProveedorID";
-            this.dgvcID.FillWeight = 63.9594F;
-            this.dgvcID.HeaderText = "ID";
-            this.dgvcID.MinimumWidth = 22;
-            this.dgvcID.Name = "dgvcID";
-            this.dgvcID.ReadOnly = true;
-            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcRazonSocialP
-            // 
-            this.dgvcRazonSocialP.DataPropertyName = "RazonSocial";
-            this.dgvcRazonSocialP.FillWeight = 107.2082F;
-            this.dgvcRazonSocialP.HeaderText = "Razon Social";
-            this.dgvcRazonSocialP.MinimumWidth = 22;
-            this.dgvcRazonSocialP.Name = "dgvcRazonSocialP";
-            this.dgvcRazonSocialP.ReadOnly = true;
-            this.dgvcRazonSocialP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcDocumentoP
-            // 
-            this.dgvcDocumentoP.DataPropertyName = "Documento";
-            this.dgvcDocumentoP.FillWeight = 107.2082F;
-            this.dgvcDocumentoP.HeaderText = "Documento";
-            this.dgvcDocumentoP.MinimumWidth = 22;
-            this.dgvcDocumentoP.Name = "dgvcDocumentoP";
-            this.dgvcDocumentoP.ReadOnly = true;
-            this.dgvcDocumentoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcDireccionP
-            // 
-            this.dgvcDireccionP.DataPropertyName = "Direccion";
-            this.dgvcDireccionP.FillWeight = 107.2082F;
-            this.dgvcDireccionP.HeaderText = "Direccion";
-            this.dgvcDireccionP.MinimumWidth = 22;
-            this.dgvcDireccionP.Name = "dgvcDireccionP";
-            this.dgvcDireccionP.ReadOnly = true;
-            this.dgvcDireccionP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcTelefonoP
-            // 
-            this.dgvcTelefonoP.DataPropertyName = "TelefonoProveedor";
-            this.dgvcTelefonoP.FillWeight = 107.2082F;
-            this.dgvcTelefonoP.HeaderText = "Telefono";
-            this.dgvcTelefonoP.MinimumWidth = 22;
-            this.dgvcTelefonoP.Name = "dgvcTelefonoP";
-            this.dgvcTelefonoP.ReadOnly = true;
-            this.dgvcTelefonoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcCorreoP
-            // 
-            this.dgvcCorreoP.DataPropertyName = "Correo";
-            this.dgvcCorreoP.FillWeight = 107.2082F;
-            this.dgvcCorreoP.HeaderText = "Correo";
-            this.dgvcCorreoP.MinimumWidth = 22;
-            this.dgvcCorreoP.Name = "dgvcCorreoP";
-            this.dgvcCorreoP.ReadOnly = true;
-            this.dgvcCorreoP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // ProveedoresForm
             // 

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sistema.Controles.Logica
 {
@@ -12,33 +13,22 @@ namespace Sistema.Controles.Logica
     {
         MedicamentoLogica medicineLogic = new MedicamentoLogica();
         // Obtener lista de Proveedores
-        
 
-        public List<PROVEEDOR> GetSuppliers()
+
+        public List<PROVEEDOR> GetSuppliers(bool includeDefaultShelf)
         {
             using (var db = new FarmaciaDBEntities())
             {
-                var suppliers = db.PROVEEDOR.Where(supplier => supplier.ProveedorID != 0).Select(supplier => new
+                if (includeDefaultShelf)
                 {
-                    ProveedorID = supplier.ProveedorID,
-                    RazonSocial = supplier.RazonSocial, 
-                    Documento = supplier.Documento, 
-                    Direccion = supplier.Direccion,
-                    TelefonoProveedor = supplier.TelefonoProveedor, 
-                    Correo = supplier.Correo, // Nuevo campo
-                }).ToList();
-
-                List<PROVEEDOR> suppliersList = suppliers.Select(supplier => new PROVEEDOR
+                    List<PROVEEDOR> suppliers = db.PROVEEDOR.ToList();
+                    return suppliers;
+                }
+                else
                 {
-                    ProveedorID = supplier.ProveedorID,
-                    RazonSocial = supplier.RazonSocial, 
-                    Documento = supplier.Documento, 
-                    Direccion = supplier.Direccion,
-                    TelefonoProveedor = supplier.TelefonoProveedor, 
-                    Correo = supplier.Correo, 
-                }).ToList();
-
-                return suppliersList;
+                    List<PROVEEDOR> suppliers = db.PROVEEDOR.Where(supplier => supplier.ProveedorID != 0).ToList();
+                    return suppliers;
+                }
             }
         }
 
@@ -103,14 +93,39 @@ namespace Sistema.Controles.Logica
                 try
                 {
                     PROVEEDOR supplier = db.PROVEEDOR.Find(supplierID);
-                    db.PROVEEDOR.Remove(supplier);
-                    db.Entry(supplier).State = EntityState.Deleted;
-                    db.SaveChanges();
-                    return true;
+
+                    if (supplier != null)
+                    {
+                        bool hasAssociatedMedicine = medicineLogic.HasMedicineSupplierAssociated(db, supplierID);
+
+                        if (hasAssociatedMedicine)
+                        {
+                            string supplierName = GetSupplier(supplierID).RazonSocial;
+                            string confirmationMessage = $"Existen medicamentos asociados al proveedor: \"{supplierName}\". ¿Desea reasignar los medicamentos a otro proveedor o cancelar la operación?";
+                            DialogResult userConfirmation = MessageBox.Show(confirmationMessage, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (userConfirmation == DialogResult.Yes)
+                            {
+                                medicineLogic.ReassignDefaultSupplierMedicine(db, supplierID);
+                            }
+                            else
+                            {
+                                return false; // Se cancela la eliminación
+                            }
+                        }
+
+                        db.PROVEEDOR.Remove(supplier);
+                        db.Entry(supplier).State = EntityState.Deleted;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false; // El proveedor no existe
+                    }
                 }
                 catch (Exception)
                 {
-
                     return false;
                 }
             }

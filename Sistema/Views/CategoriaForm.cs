@@ -192,7 +192,7 @@ namespace Sistema.Vista
             else
 
             {
-                MessageBox.Show("¡Por favor, complete los campos!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("¡Por favor, complete los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         // // // // // // AGREGAR CATEGORIA // // // // // //
@@ -282,7 +282,7 @@ namespace Sistema.Vista
                 // Lista para almacenar los nombres de las categorias seleccionadas
                 List<string> selectedCategories = new List<string>();
                 // Se recorren las filas seleccionadas
-                foreach (DataGridViewRow row in dgvCategoriesList.SelectedRows)
+                foreach (DataGridViewRow row in dgvCategoriesList.SelectedRows.Cast<DataGridViewRow>().Reverse())
                 {
                     int selectedCategoryID = Convert.ToInt32(row.Cells["dgvcID"].Value);
                     // Se utiliza el id para obtener el objeto categoria y luego obtenemos el nombre
@@ -388,11 +388,18 @@ namespace Sistema.Vista
                         bool deletionResult = categoryLogic.DeleteCategory(selectedCategoryID);
                         if (!deletionResult)
                         {
-                            MessageBox.Show("No se pudo eliminar la categoría: \"" + categoryLogic.GetCategory(selectedCategoryID).Nombre + "\"", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }                  
                     }
-                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
                     messageManager.ShowDeletionMessage(categoriesCount, "categoria");
+                    // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
+                }
+                else
+                {
+                    MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    return;
                 }
                 // Se actualiza el datagridview
                 loadCategoriesData();

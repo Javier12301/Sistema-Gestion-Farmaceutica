@@ -37,23 +37,20 @@ namespace Sistema.Controles.Logica
 
 
         // Obtener lista de Categorias
-        public List<CATEGORIA> GetCategories()
+        public List<CATEGORIA> GetCategories(bool includeDefaultCategory)
         {
             using (var db = new FarmaciaDBEntities())
             {
-                var categories = db.CATEGORIA.Where(category => category.CategoriaID != 0).Select(category => new
+                if (includeDefaultCategory)
                 {
-                    CategoriaID = category.CategoriaID,
-                    Nombre = category.Nombre,
-                    Descripcion = category.Descripcion
-                }).ToList();
-                List<CATEGORIA> categoriesList = categories.Select(category => new CATEGORIA
+                    List<CATEGORIA> categories = db.CATEGORIA.ToList();
+                    return categories;
+                }
+                else
                 {
-                    CategoriaID = category.CategoriaID,
-                    Nombre = category.Nombre,
-                    Descripcion = category.Descripcion
-                }).ToList();
-                return categoriesList;
+                    List<CATEGORIA> categories = db.CATEGORIA.Where(category => category.CategoriaID != 0).ToList();
+                    return categories;
+                }
             }
 
         }
@@ -117,6 +114,7 @@ namespace Sistema.Controles.Logica
 
         public bool DeleteCategory(int categoryID)
         {
+            
             using (var db = new FarmaciaDBEntities())
             {
                 // Buscamos la categoría por ID
@@ -128,7 +126,7 @@ namespace Sistema.Controles.Logica
                     if (hasAssociatedMedicine)
                     {
                         string categoryName = GetCategory(categoryID).Nombre;
-                        string confirmationMessage = "Existen medicamentos asociados a la categoría: \"" + categoryName + "\". ¿Está seguro de que desea eliminar la categoría y reasignar los medicamentos como: \"sin categoría\"?";
+                        string confirmationMessage = $"Existen medicamentos asociados a la categoría: \"{categoryName}\". ¿Desea reasignar los medicamentos como \"sin categoría\" o cancelar la operación?";
                         DialogResult userConfirmation = MessageBox.Show(confirmationMessage, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (userConfirmation == DialogResult.Yes)
@@ -137,6 +135,7 @@ namespace Sistema.Controles.Logica
                         }
                         else
                         {
+
                             return false; // Se cancela la eliminación
                         }
                     }

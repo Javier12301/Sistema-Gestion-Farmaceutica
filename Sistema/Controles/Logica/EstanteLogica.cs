@@ -26,28 +26,21 @@ namespace Sistema.Controles.Logica
         }
 
         // Obtener lista de Estantes
-        public List<ESTANTE> GetShelves()
+        public List<ESTANTE> GetShelves(bool includeDefaultShelf)
         {
             using (var db = new FarmaciaDBEntities())
             {
-                // Obtenemos la lista de estantes pero solo los campos que necesitamos
-                var shelves = db.ESTANTE.Where(shelf => shelf.EstanteID != 0).Select(shelf => new
+               if(includeDefaultShelf)
                 {
-                    EstanteID = shelf.EstanteID,
-                    Nombre = shelf.Nombre,
-                    Numero = shelf.Numero,
-                    Sector = shelf.Sector
-                }).ToList();
-
-                List<ESTANTE> shelvesList = shelves.Select(shelf => new ESTANTE
+                    // Obtendremos todo los estantes incluido el estante por defecto
+                    List<ESTANTE> shelves = db.ESTANTE.ToList();
+                    return shelves;
+                }
+                else
                 {
-                    EstanteID = shelf.EstanteID,
-                    Nombre = shelf.Nombre,
-                    Numero = shelf.Numero,
-                    Sector = shelf.Sector
-                }).ToList();
-
-                return shelvesList;
+                    List<ESTANTE> shelves = db.ESTANTE.Where(shelf => shelf.EstanteID != 0).ToList();
+                    return shelves;
+                }
             }
         }
 
@@ -113,26 +106,7 @@ namespace Sistema.Controles.Logica
             }
         }
 
-        //// Eliminar Estante
-        //public bool DeleteShelf(int shelfID)
-        //{
-        //    using (var db = new FarmaciaDBEntities())
-        //    {
-        //        // Buscamos el estante que queremos eliminar
-        //        ESTANTE shelf = db.ESTANTE.Find(shelfID);
-        //        if (shelf != null)
-        //        {
-        //            db.ESTANTE.Remove(shelf);
-        //            db.Entry(shelf).State = EntityState.Deleted;
-        //            db.SaveChanges();
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //}
+        
 
         public bool DeleteShelf(int shelfID)
         {
@@ -147,7 +121,7 @@ namespace Sistema.Controles.Logica
                     if (hasAssociatedMedicine)
                     {
                         string shelfName = GetShelf(shelfID).Nombre;
-                        string confirmationMessage = "Existen medicamentos asociados al estante: \"" + shelfName + "\". ¿Está seguro de que desea eliminar el estante y reasignar los medicamentos como \"sin estante\"?";
+                        string confirmationMessage = $"Existen medicamentos asociados al estante: \"{shelfName}\". ¿Desea reasignar los medicamentos como \"sin estante\" o cancelar la operación?";
                         DialogResult userConfirmation = MessageBox.Show(confirmationMessage, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (userConfirmation == DialogResult.Yes)

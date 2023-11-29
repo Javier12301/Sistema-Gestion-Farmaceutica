@@ -22,6 +22,34 @@ namespace Sistema.Controles.Logica
             }
         }
 
+        // Obtener Lista de Medicamentos
+        public List<MEDICAMENTO> GetMedicines(bool includeDefaultMedicine)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                if (includeDefaultMedicine)
+                {
+                    List<MEDICAMENTO> medicines = db.MEDICAMENTO.ToList();
+                    return medicines;
+                }
+                else
+                {
+                    List<MEDICAMENTO> medicines = db.MEDICAMENTO.Where(medicine => medicine.MedicamentoID != 0).ToList();
+                    return medicines;
+                }
+            }
+        }
+
+        // Obtener Medicamento por ID
+        public MEDICAMENTO GetMedicine(int medicineID)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                MEDICAMENTO medicine = db.MEDICAMENTO.Find(medicineID);
+                return medicine;
+            }
+        }
+
         // Agregar un nuevo medicamento
         public bool AddMedicine(MEDICAMENTO medicine)
         {
@@ -38,10 +66,49 @@ namespace Sistema.Controles.Logica
             }
             catch (SqlException)
             {
-                return false;            
+                return false;
             }
         }
 
+        public bool ModifyMedicine(MEDICAMENTO medicine)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                MEDICAMENTO originalMedicine = GetMedicine(medicine.MedicamentoID);
+                if (originalMedicine != null)
+                {
+                    // Modificamos el medicamento
+                    originalMedicine = medicine;
+                    db.Entry(originalMedicine).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        // Eliminar un medicamento
+        public bool DeleteMedicine(int medicineID)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                MEDICAMENTO medicine = db.MEDICAMENTO.Find(medicineID);
+                if (medicine != null)
+                {
+                    db.MEDICAMENTO.Remove(medicine);
+                    db.Entry(medicine).State = EntityState.Deleted;
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         // // // MANEJO DE LÓGICA DE CATEGORÍAS EN MEDICAMENTOS // // //
         // Lógica para obtener medicamentos pertenecientes a una categoría
         public bool HasMedicineCategoryAssociated(FarmaciaDBEntities db, int categoryID)
@@ -86,9 +153,23 @@ namespace Sistema.Controles.Logica
 
         // // // MANEJO DE LÓGICA DE PROVEEDORES DE MEDICAMENTOS // // //
         // Lógica para obtener medicamentos pertenecientes a un proveedor
-        
+        public bool HasMedicineSupplierAssociated(FarmaciaDBEntities db, int providerID)
+        {
+            return db.MEDICAMENTO.Any(m => m.ProveedorID == providerID);
+        }
+
 
         // Lógica para reasignar proveedor de medicamento como "Sin Proveedor"
+        public void ReassignDefaultSupplierMedicine(FarmaciaDBEntities db, int providerID)
+        {
+            int defaultProviderID = 0; // ID de la categoría predeterminada
+            var medicineToReassing = db.MEDICAMENTO.Where(m => m.ProveedorID == providerID);
+            foreach (var medicine in medicineToReassing)
+            {
+                medicine.ProveedorID = defaultProviderID;
+                db.Entry(medicine).State = EntityState.Modified;
+            }
+        }
 
 
 
