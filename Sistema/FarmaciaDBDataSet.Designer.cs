@@ -8178,7 +8178,7 @@ SELECT ProveedorID, RazonSocial, Documento, Direccion, TelefonoProveedor, Correo
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT
@@ -8202,7 +8202,39 @@ FROM
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT TOP (@NumeroFilas)
+            this._commandCollection[1].CommandText = @"SELECT
+    M.MedicamentoID AS 'ID',
+    M.Codigo AS 'Cod.',
+    M.Lote AS 'Lote',
+    M.Nombre AS 'Nombre',
+    M.Stock AS 'Cantidad',
+    M.FechaVencimiento AS 'VTO',
+    E.Nombre AS 'Estante',
+    E.Sector AS 'Sector',
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría',
+    P.RazonSocial AS 'Proveedor'
+FROM
+    MEDICAMENTO M
+    INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
+    INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID
+WHERE
+    (@filtro = 'Código' AND M.Codigo LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Nombre' AND M.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Lote' AND M.Lote LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Estante' AND E.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Categoría' AND C.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Proveedor' AND P.RazonSocial LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Vencimiento' AND M.FechaVencimiento >= @desde AND M.FechaVencimiento <= @hasta);";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@filtro", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@buscar", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cod.", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desde", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "VTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hasta", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "VTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT TOP (@NumeroFilas)
     M.MedicamentoID AS 'ID',
     M.Codigo AS 'Cod.',
     M.Lote,
@@ -8219,8 +8251,8 @@ FROM
     INNER JOIN ESTANTE AS E ON M.EstanteID = E.EstanteID
     INNER JOIN CATEGORIA AS C ON M.CategoriaID = C.CategoriaID
     INNER JOIN PROVEEDOR AS P ON M.ProveedorID = P.ProveedorID;";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumeroFilas", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumeroFilas", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8251,8 +8283,80 @@ FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int Top(FarmaciaDBDataSet.VistaInventarioDataTable dataTable, int NumeroFilas) {
+        public virtual int Filter(FarmaciaDBDataSet.VistaInventarioDataTable dataTable, string filtro, string buscar, string desde, string hasta) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((filtro == null)) {
+                throw new global::System.ArgumentNullException("filtro");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(filtro));
+            }
+            if ((buscar == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(buscar));
+            }
+            if ((desde == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(desde));
+            }
+            if ((hasta == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(hasta));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual FarmaciaDBDataSet.VistaInventarioDataTable GetDataFilter(string filtro, string buscar, string desde, string hasta) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((filtro == null)) {
+                throw new global::System.ArgumentNullException("filtro");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(filtro));
+            }
+            if ((buscar == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(buscar));
+            }
+            if ((desde == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(desde));
+            }
+            if ((hasta == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(hasta));
+            }
+            FarmaciaDBDataSet.VistaInventarioDataTable dataTable = new FarmaciaDBDataSet.VistaInventarioDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Top(FarmaciaDBDataSet.VistaInventarioDataTable dataTable, int NumeroFilas) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(NumeroFilas));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8266,7 +8370,7 @@ FROM
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual FarmaciaDBDataSet.VistaInventarioDataTable GetDataBy(int NumeroFilas) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(NumeroFilas));
             FarmaciaDBDataSet.VistaInventarioDataTable dataTable = new FarmaciaDBDataSet.VistaInventarioDataTable();
             this.Adapter.Fill(dataTable);

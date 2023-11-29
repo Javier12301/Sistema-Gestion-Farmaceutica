@@ -280,9 +280,12 @@ namespace Sistema.Vista
         // Cargar combobox según el modo de operación del formulario o sea agregar o modificar
         private void setComboBox()
         {
-            SetComboBoxItem(cmbEstanteM, Convert.ToInt32(medicineToEdit.EstanteID), shelvesList, shelf => shelf.EstanteID, shelf => shelf.Nombre);
-            SetComboBoxItem(cmbCategoriaM, Convert.ToInt32(medicineToEdit.CategoriaID), categoryList, category => category.CategoriaID, category => category.Nombre);
-            SetComboBoxItem(cmbProveedorM, Convert.ToInt32(medicineToEdit.ProveedorID), supplierList, supplier => supplier.ProveedorID, supplier => supplier.RazonSocial);
+            if (medicineToEdit != null)
+            {
+                SetComboBoxItem(cmbEstanteM, Convert.ToInt32(medicineToEdit.EstanteID), shelvesList, shelf => shelf.EstanteID, shelf => shelf.Nombre);
+                SetComboBoxItem(cmbCategoriaM, Convert.ToInt32(medicineToEdit.CategoriaID), categoryList, category => category.CategoriaID, category => category.Nombre);
+                SetComboBoxItem(cmbProveedorM, Convert.ToInt32(medicineToEdit.ProveedorID), supplierList, supplier => supplier.ProveedorID, supplier => supplier.RazonSocial);
+            }
         }
 
         private void SetComboBoxItem<T>(ComboBox comboBox, int itemId, IEnumerable<T> itemList, Func<T, int> idSelector, Func<T, string> nameSelector)

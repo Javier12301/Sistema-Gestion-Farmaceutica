@@ -96,7 +96,7 @@
             this.pnlMAIN.Controls.Add(this.pnlHeader);
             this.pnlMAIN.Location = new System.Drawing.Point(0, 0);
             this.pnlMAIN.Name = "pnlMAIN";
-            this.pnlMAIN.Size = new System.Drawing.Size(986, 555);
+            this.pnlMAIN.Size = new System.Drawing.Size(1018, 555);
             this.pnlMAIN.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -112,7 +112,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(986, 505);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1018, 505);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // pnlMenu
@@ -128,7 +128,7 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Padding = new System.Windows.Forms.Padding(5);
             this.pnlMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlMenu.Size = new System.Drawing.Size(791, 501);
+            this.pnlMenu.Size = new System.Drawing.Size(823, 501);
             this.pnlMenu.TabIndex = 8;
             this.pnlMenu.Tag = "pnlContainer";
             // 
@@ -583,7 +583,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(986, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(1018, 50);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.Tag = "pnlContainer";
             // 
@@ -653,7 +653,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74F));
             this.tableLayoutPanel1.Controls.Add(this.pcbUser, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblMailUser, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(764, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(796, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tableLayoutPanel1.RowCount = 1;
@@ -697,9 +697,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(986, 555);
+            this.ClientSize = new System.Drawing.Size(1018, 555);
             this.Controls.Add(this.pnlMAIN);
-            this.MinimumSize = new System.Drawing.Size(1002, 594);
+            this.MinimumSize = new System.Drawing.Size(1034, 594);
             this.Name = "PrincipalForm";
             this.Text = "LoginForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PrincipalForm_FormClosing);

@@ -66,12 +66,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExcelG = new Guna.UI.WinForms.GunaButton();
-            this.btnPrintG = new Guna.UI.WinForms.GunaButton();
-            this.btnPDFG = new Guna.UI.WinForms.GunaButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.dtaHastaVTO = new System.Windows.Forms.DateTimePicker();
+            this.lblHasta = new System.Windows.Forms.Label();
+            this.dtaDesdeVTO = new System.Windows.Forms.DateTimePicker();
+            this.lblDesde = new System.Windows.Forms.Label();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnbuscar = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbFilas = new System.Windows.Forms.ComboBox();
@@ -470,12 +472,10 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.btnExcelG);
-            this.flowLayoutPanel1.Controls.Add(this.btnPrintG);
-            this.flowLayoutPanel1.Controls.Add(this.btnPDFG);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(194, 1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(178, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(478, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(494, 41);
             this.flowLayoutPanel1.TabIndex = 53;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -506,78 +506,101 @@
             this.btnExcelG.Text = "Excel";
             this.btnExcelG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnPrintG
-            // 
-            this.btnPrintG.AnimationHoverSpeed = 0.07F;
-            this.btnPrintG.AnimationSpeed = 0.03F;
-            this.btnPrintG.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrintG.BaseColor = System.Drawing.Color.DarkOrange;
-            this.btnPrintG.BorderColor = System.Drawing.Color.Black;
-            this.btnPrintG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPrintG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnPrintG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintG.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPrintG.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintG.Image")));
-            this.btnPrintG.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnPrintG.Location = new System.Drawing.Point(51, 3);
-            this.btnPrintG.Name = "btnPrintG";
-            this.btnPrintG.OnHoverBaseColor = System.Drawing.Color.Orange;
-            this.btnPrintG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnPrintG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnPrintG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrintG.OnHoverImage")));
-            this.btnPrintG.OnPressedColor = System.Drawing.Color.DarkOrange;
-            this.btnPrintG.Radius = 10;
-            this.btnPrintG.Size = new System.Drawing.Size(42, 32);
-            this.btnPrintG.TabIndex = 46;
-            this.btnPrintG.TabStop = false;
-            this.btnPrintG.Text = "Imprimir";
-            this.btnPrintG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnPDFG
-            // 
-            this.btnPDFG.AnimationHoverSpeed = 0.07F;
-            this.btnPDFG.AnimationSpeed = 0.03F;
-            this.btnPDFG.BackColor = System.Drawing.Color.Transparent;
-            this.btnPDFG.BaseColor = System.Drawing.Color.Firebrick;
-            this.btnPDFG.BorderColor = System.Drawing.Color.Black;
-            this.btnPDFG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPDFG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnPDFG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDFG.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPDFG.Image = ((System.Drawing.Image)(resources.GetObject("btnPDFG.Image")));
-            this.btnPDFG.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnPDFG.Location = new System.Drawing.Point(99, 3);
-            this.btnPDFG.Name = "btnPDFG";
-            this.btnPDFG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnPDFG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnPDFG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnPDFG.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnPDFG.OnHoverImage")));
-            this.btnPDFG.OnPressedColor = System.Drawing.Color.DarkRed;
-            this.btnPDFG.Radius = 10;
-            this.btnPDFG.Size = new System.Drawing.Size(42, 32);
-            this.btnPDFG.TabIndex = 45;
-            this.btnPDFG.TabStop = false;
-            this.btnPDFG.Text = "PDF";
-            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.txtBuscar);
+            this.panel3.Controls.Add(this.dtaHastaVTO);
+            this.panel3.Controls.Add(this.lblHasta);
+            this.panel3.Controls.Add(this.dtaDesdeVTO);
+            this.panel3.Controls.Add(this.lblDesde);
             this.panel3.Controls.Add(this.cmbFiltro);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.txtBuscar);
             this.panel3.Controls.Add(this.btnbuscar);
-            this.panel3.Location = new System.Drawing.Point(147, 3);
+            this.panel3.Location = new System.Drawing.Point(51, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(328, 35);
+            this.panel3.Size = new System.Drawing.Size(440, 35);
             this.panel3.TabIndex = 47;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.Enabled = false;
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBuscar.Location = new System.Drawing.Point(152, 6);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(253, 23);
+            this.txtBuscar.TabIndex = 53;
+            this.txtBuscar.Visible = false;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // dtaHastaVTO
+            // 
+            this.dtaHastaVTO.Enabled = false;
+            this.dtaHastaVTO.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtaHastaVTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtaHastaVTO.Location = new System.Drawing.Point(326, 6);
+            this.dtaHastaVTO.Name = "dtaHastaVTO";
+            this.dtaHastaVTO.Size = new System.Drawing.Size(79, 22);
+            this.dtaHastaVTO.TabIndex = 58;
+            this.dtaHastaVTO.Visible = false;
+            this.dtaHastaVTO.ValueChanged += new System.EventHandler(this.dtaDesdeVTO_ValueChanged);
+            // 
+            // lblHasta
+            // 
+            this.lblHasta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHasta.AutoSize = true;
+            this.lblHasta.Enabled = false;
+            this.lblHasta.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHasta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblHasta.Location = new System.Drawing.Point(278, 8);
+            this.lblHasta.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblHasta.Name = "lblHasta";
+            this.lblHasta.Size = new System.Drawing.Size(46, 17);
+            this.lblHasta.TabIndex = 57;
+            this.lblHasta.Text = "Hasta:";
+            this.lblHasta.Visible = false;
+            // 
+            // dtaDesdeVTO
+            // 
+            this.dtaDesdeVTO.Enabled = false;
+            this.dtaDesdeVTO.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtaDesdeVTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtaDesdeVTO.Location = new System.Drawing.Point(198, 6);
+            this.dtaDesdeVTO.Name = "dtaDesdeVTO";
+            this.dtaDesdeVTO.Size = new System.Drawing.Size(79, 22);
+            this.dtaDesdeVTO.TabIndex = 56;
+            this.dtaDesdeVTO.Visible = false;
+            this.dtaDesdeVTO.ValueChanged += new System.EventHandler(this.dtaDesdeVTO_ValueChanged);
+            // 
+            // lblDesde
+            // 
+            this.lblDesde.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDesde.AutoSize = true;
+            this.lblDesde.Enabled = false;
+            this.lblDesde.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesde.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblDesde.Location = new System.Drawing.Point(150, 8);
+            this.lblDesde.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblDesde.Name = "lblDesde";
+            this.lblDesde.Size = new System.Drawing.Size(48, 17);
+            this.lblDesde.TabIndex = 55;
+            this.lblDesde.Text = "Desde:";
+            this.lblDesde.Visible = false;
             // 
             // cmbFiltro
             // 
+            this.cmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltro.DropDownWidth = 100;
             this.cmbFiltro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltro.FormattingEnabled = true;
-            this.cmbFiltro.Location = new System.Drawing.Point(80, 6);
+            this.cmbFiltro.Location = new System.Drawing.Point(76, 6);
             this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(72, 23);
+            this.cmbFiltro.Size = new System.Drawing.Size(73, 23);
             this.cmbFiltro.TabIndex = 38;
+            this.cmbFiltro.TextChanged += new System.EventHandler(this.cmbFiltro_TextChanged);
             // 
             // label2
             // 
@@ -586,22 +609,12 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(3, 8);
+            this.label2.Location = new System.Drawing.Point(1, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 17);
             this.label2.TabIndex = 54;
             this.label2.Text = "Buscar por:";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBuscar.Location = new System.Drawing.Point(158, 6);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(129, 23);
-            this.txtBuscar.TabIndex = 53;
             // 
             // btnbuscar
             // 
@@ -614,9 +627,9 @@
             this.btnbuscar.IconColor = System.Drawing.Color.Black;
             this.btnbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnbuscar.IconSize = 16;
-            this.btnbuscar.Location = new System.Drawing.Point(293, 5);
+            this.btnbuscar.Location = new System.Drawing.Point(411, 6);
             this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(32, 23);
+            this.btnbuscar.Size = new System.Drawing.Size(26, 23);
             this.btnbuscar.TabIndex = 54;
             this.btnbuscar.UseVisualStyleBackColor = false;
             // 
@@ -803,8 +816,6 @@
         private Zuby.ADGV.AdvancedDataGridView dgvMedicineList;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI.WinForms.GunaButton btnExcelG;
-        private Guna.UI.WinForms.GunaButton btnPrintG;
-        private Guna.UI.WinForms.GunaButton btnPDFG;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBuscar;
@@ -843,5 +854,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numEstanteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoríaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DateTimePicker dtaHastaVTO;
+        private System.Windows.Forms.Label lblHasta;
+        private System.Windows.Forms.DateTimePicker dtaDesdeVTO;
+        private System.Windows.Forms.Label lblDesde;
     }
 }

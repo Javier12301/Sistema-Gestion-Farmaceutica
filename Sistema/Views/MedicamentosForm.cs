@@ -38,8 +38,6 @@ namespace Sistema.Vista
             this.Size = new Size(573, 299);
             // Establecer tamaño de botones de imprimir, pdf y excel
             btnExcelG.Size = new Size(73, 32);
-            btnPrintG.Size = new Size(90, 32);
-            btnPDFG.Size = new Size(71, 32);
             updateTotalRowCount();
             // Desactivar datagridview ID
             tsmiID.Checked = false;
@@ -187,7 +185,15 @@ namespace Sistema.Vista
             cmbFilas.Items.Add("200");
             // Se inicializa con 100 para evitar sobrecargas de datos
             cmbFilas.SelectedItem = "100";
-
+            // Segundo, se carga el combobox de filtros de columnas, se cargarán con los nombres de las columnas
+            cmbFiltro.Items.Add("Código");
+            cmbFiltro.Items.Add("Nombre");
+            cmbFiltro.Items.Add("Lote");
+            cmbFiltro.Items.Add("Estante");
+            cmbFiltro.Items.Add("Categoría");
+            cmbFiltro.Items.Add("Proveedor");
+            cmbFiltro.Items.Add("Vencimiento");
+            cmbFiltro.SelectedItem = "Código";
         }
         private List<string> getSelectedMedicinesNames()
         {
@@ -351,6 +357,117 @@ namespace Sistema.Vista
             }
         }
 
+        private void cmbFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedFilter = cmbFiltro.Text;
+                resetAllControls();
+
+                if(selectedFilter == string.Empty)
+                {
+                    cmbFiltro.SelectedIndex = 0;
+                }
+                else if (selectedFilter == "Vencimiento")
+                {
+                    enableDateVTOControls();
+                }
+               
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            // Si no escribe nada deverá devolver la tabla que está establecida
+            try
+            {
+                if (txtBuscar.Enabled)
+                {
+                    if (txtBuscar.Text == string.Empty)
+                    {
+                        filterRow(Convert.ToInt32(cmbFilas.Text));
+                    }
+                    else if(cmbFiltro.Text != "Vencimiento")
+                    {
+                        this.vistaInventarioTableAdapter.Filter(this.farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBuscar.Text, "","");
+                    }
+                }
+                
+            }
+            catch (DbUpdateException)
+            {
+                // Excepción relacionada con problemas de actualización en la base de datos
+                messageManager.ShowDatabaseUpdateError();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                messageManager.ShowSqlError();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+                // Loguear ex si es necesario para fines de depuración
+            }
+        }
+
+
+        private void enableDateVTOControls()
+        {
+            lblDesde.Enabled = true;
+            lblDesde.Visible = true;
+            lblHasta.Enabled = true;
+            lblHasta.Visible = true;
+            dtaDesdeVTO.Enabled = true;
+            dtaDesdeVTO.Visible = true;
+            dtaHastaVTO.Enabled = true;
+            dtaHastaVTO.Visible = true;
+
+            // Desactivar el txtBuscar
+            txtBuscar.Enabled = false;
+            txtBuscar.Text = "";
+            txtBuscar.Visible = false;
+        }
+
+        private void resetAllControls()
+        {
+            lblDesde.Enabled = false;
+            lblDesde.Visible = false;
+            lblHasta.Enabled = false;
+            lblHasta.Visible = false;
+            dtaDesdeVTO.Enabled = false;
+            dtaDesdeVTO.Visible = false;
+            dtaHastaVTO.Enabled = false;
+            dtaHastaVTO.Visible = false;
+
+            // Activar y mostrar el cuadro de texto de búsqueda
+            txtBuscar.Enabled = true;
+            txtBuscar.Visible = true;
+        }
+
         private void cmbFilas_KeyPress(object sender, KeyPressEventArgs e)
         {
             controladora.OnlyNumbers(e);
@@ -389,6 +506,19 @@ namespace Sistema.Vista
             }
 
         }
+
+        private void dtaDesdeVTO_ValueChanged(object sender, EventArgs e)
+        {
+            string desde = dtaDesdeVTO.Value.ToString("yyyy-MM-dd");
+            string hasta = dtaHastaVTO.Value.ToString("yyyy-MM-dd");
+            if(desde != string.Empty && hasta != string.Empty && !txtBuscar.Enabled)
+            {
+                this.vistaInventarioTableAdapter.Filter(this.farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBuscar.Text, desde, hasta);
+            }
+        }
+
+
+
 
 
 

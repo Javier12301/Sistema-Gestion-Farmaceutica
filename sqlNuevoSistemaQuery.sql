@@ -237,6 +237,33 @@ FROM
     INNER JOIN PROVEEDOR AS P ON M.ProveedorID = P.ProveedorID;
 
 
+SELECT
+    M.MedicamentoID AS 'ID',
+    M.Codigo AS 'Cod.',
+    M.Lote AS 'Lote',
+    M.Nombre AS 'Nombre',
+    M.Stock AS 'Cantidad',
+    M.FechaVencimiento AS 'VTO',
+    E.Nombre AS 'Estante',
+    E.Sector AS 'Sector',
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría',
+    P.RazonSocial AS 'Proveedor'
+FROM
+    MEDICAMENTO M
+    INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
+    INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID
+WHERE
+    (@filtro = 'Código' AND M.Codigo LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Nombre' AND M.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Lote' AND M.Lote LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Estante' AND E.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Categoría' AND C.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Proveedor' AND P.RazonSocial LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Vencimiento' AND M.FechaVencimiento >= @desde AND M.FechaVencimiento <= @hasta);
+
+
 SELECT * FROM ESTANTE
 WHERE EstanteID > 0;
 SELECT * FROM MEDICAMENTO;
