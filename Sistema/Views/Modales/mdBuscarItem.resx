@@ -117,35 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="vistaInventarioBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>173, 17</value>
+  </metadata>
+  <metadata name="farmaciaDBDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>36</value>
+  <metadata name="pRODUCTOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>587, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="errorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAG8AAABvAAAAAAAAAAAA
-        AAD///8A////AP///wD///8AXlHdJmBQ34BfTuCzX0/g5l9P4OZfTuCzYFDfgF5R3Sb///8A////AP//
-        /wD///8A////AP///wAAAP8BYFDfcF9P4PZfT+D/X0/g/19P4P9fT+D/X0/g/19P4P9fT+D2YFDfcAAA
-        /wH///8A////AP///wAAAP8BXk/gtV9P4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P
-        4P9eT+C1AAD/Af///wD///8AYFDfcF9P4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P
-        4P9fT+D/X0/g/2BQ33D///8AXlHdJl9P4PZfT+D/X0/g/2dX4f+0rPD/ZFXh/19P4P9fT+D/ZFXh/7Ss
-        8P9nV+H/X0/g/19P4P9fT+D2XlHdJmBQ34BfT+D/X0/g/19P4P+0rPD//////9LO9v9kVeH/ZFXh/9LO
-        9v//////tKzw/19P4P9fT+D/X0/g/15O4X9fTuCzX0/g/19P4P9fT+D/ZFXh/9LO9v//////1ND3/9PQ
-        9v//////0s72/2RV4f9fT+D/X0/g/19P4P9fTuCzX0/g5l9P4P9fT+D/X0/g/19P4P9kVeH/1ND3////
-        ////////09D2/2RV4f9fT+D/X0/g/19P4P9fT+D/X0/g5l9P4OZfT+D/X0/g/19P4P9fT+D/ZFXh/9PQ
-        9v///////////9TQ9/9kVeH/X0/g/19P4P9fT+D/X0/g/19P4OZfTuCzX0/g/19P4P9fT+D/ZFXh/9LO
-        9v//////09D2/9TQ9///////0s72/2RV4f9fT+D/X0/g/19P4P9fTuCzYFDfgF9P4P9fT+D/X0/g/7Ss
-        8P//////0s72/2RV4f9kVeH/0s72//////+0rPD/X0/g/19P4P9fT+D/Xk7hf15R3SZfT+D2X0/g/19P
-        4P9nV+H/tKzw/2RV4f9fT+D/X0/g/2RV4f+0rPD/Z1fh/19P4P9fT+D/X0/g9l5R3Sb///8AYFDfcF9P
-        4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g/2BQ33D///8A////AAAA
-        /wFeT+C1X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g/15P4LUAAP8B////AP//
-        /wD///8AAAD/AWBQ33BfT+D2X0/g/19P4P9fT+D/X0/g/19P4P9fT+D/X0/g9mBQ33AAAP8B////AP//
-        /wD///8A////AP///wD///8AXlHdJmBQ34BfTuCzX0/g5l9P4OZfTuCzYFDfgF5R3Sb///8A////AP//
-        /wD///8A8A8AAMADAACAAQAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIAB
-        AADAAwAA8A8AAA==
-</value>
-  </data>
+  <metadata name="vistaInventarioTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>383, 17</value>
+  </metadata>
+  <metadata name="pRODUCTOTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
 </root>

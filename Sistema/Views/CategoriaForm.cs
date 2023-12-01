@@ -56,6 +56,7 @@ namespace Sistema.Vista
             try
             {
                 this.cATEGORIATableAdapter.Fill(this.farmaciaDBDataSet.CATEGORIA);
+                updateTotalRowCount();
             }
             catch (DbUpdateException)
             {

@@ -17,5 +17,30 @@ namespace Sistema.Controles.Logica
                 return product;
             }
         }
+
+        public PRODUCTO GetProduct(int productID)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                PRODUCTO product = db.PRODUCTO.Find(productID);
+                return product;
+            }
+        }
+
+        public PRODUCTO GetProductByCode(string code)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                // Buscar producto por codigo, si no existe , retornar null
+                try
+                {
+                    PRODUCTO product = db.PRODUCTO.Where(p => p.Codigo == code).FirstOrDefault();
+                    return product;
+                }catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

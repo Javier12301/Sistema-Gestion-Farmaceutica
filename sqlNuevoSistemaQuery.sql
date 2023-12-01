@@ -69,10 +69,13 @@ CREATE TABLE PRODUCTO (
     Stock INT NOT NULL DEFAULT 0,
     PrecioCompra DECIMAL(10,2) DEFAULT 0,
     PrecioVenta DECIMAL(10,2) DEFAULT 0,
-    Estado BIT,
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
 GO
+
+
+
+SELECT * FROM PRODUCTO;
 
 CREATE TABLE MEDICAMENTO (
     MedicamentoID INT IDENTITY PRIMARY KEY,
@@ -198,6 +201,16 @@ FROM
 GO
 
 SELECT * FROM MEDICAMENTO;
+GO
+
+SELECT * FROM ESTANTE;
+GO
+
+SELECT * FROM CATEGORIA;
+GO
+
+SELECT * FROM PROVEEDOR;
+GO
 ALTER VIEW VistaInventario AS
 SELECT
     M.MedicamentoID AS 'ID',
@@ -205,17 +218,19 @@ SELECT
     M.Lote AS 'Lote',
     M.Nombre AS 'Nombre',
     M.Stock AS 'Cantidad',
+    M.PrecioCompra AS 'PrecioCompra',
+    M.PrecioVenta AS 'PrecioVenta',
     M.FechaVencimiento AS 'VTO',
     E.Nombre AS 'Estante',
     E.Sector AS 'Sector',
     E.Numero AS 'Num. Estante',
     C.Nombre AS 'Categoría',
-	P.RazonSocial AS 'Proveedor'
+    P.RazonSocial AS 'Proveedor'
 FROM
     MEDICAMENTO M
     INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
     INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
-	INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
+    INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
 GO
 
 SELECT TOP 10
@@ -224,6 +239,8 @@ SELECT TOP 10
     M.Lote,
     M.Nombre,
     M.Stock AS 'Cantidad',
+	M.PrecioCompra AS 'PrecioCompra',
+    M.PrecioVenta AS 'PrecioVenta',
     M.FechaVencimiento AS 'VTO',
     E.Nombre AS 'Estante',
     E.Sector,
@@ -236,6 +253,12 @@ FROM
     INNER JOIN CATEGORIA AS C ON M.CategoriaID = C.CategoriaID
     INNER JOIN PROVEEDOR AS P ON M.ProveedorID = P.ProveedorID;
 
+ 
+
+DECLARE @desde DATE = '2024-01-01';
+DECLARE @hasta DATE = '2025-12-31';
+DECLARE @filtro VARCHAR(50) = 'Nombre';
+DECLARE @buscar VARCHAR(50) = 'Ni';
 
 SELECT
     M.MedicamentoID AS 'ID',
@@ -243,6 +266,8 @@ SELECT
     M.Lote AS 'Lote',
     M.Nombre AS 'Nombre',
     M.Stock AS 'Cantidad',
+	M.PrecioCompra AS 'PrecioCompra',
+    M.PrecioVenta AS 'PrecioVenta',
     M.FechaVencimiento AS 'VTO',
     E.Nombre AS 'Estante',
     E.Sector AS 'Sector',
@@ -263,6 +288,24 @@ WHERE
     OR (@filtro = 'Proveedor' AND P.RazonSocial LIKE '%' + @buscar + '%')
     OR (@filtro = 'Vencimiento' AND M.FechaVencimiento >= @desde AND M.FechaVencimiento <= @hasta);
 
+DECLARE @filtro VARCHAR(50) = 'Documento';
+DECLARE @buscar VARCHAR(50) = '44';
+SELECT
+    P.ProveedorID AS 'ID',
+    P.RazonSocial AS 'Razón Social',
+    P.Documento AS 'Documento',
+    P.Direccion AS 'Dirección',
+    P.TelefonoProveedor AS 'Teléfono',
+    P.Correo AS 'Correo'
+FROM
+    PROVEEDOR P
+WHERE
+    (@filtro = 'Razón Social' AND P.RazonSocial LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Documento' AND P.Documento LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Dirección' AND P.Direccion LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Teléfono' AND P.TelefonoProveedor LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Correo' AND P.Correo LIKE '%' + @buscar + '%');
+GO;
 
 SELECT * FROM ESTANTE
 WHERE EstanteID > 0;
@@ -272,3 +315,52 @@ SELECT * FROM CATEGORIA;
 SELECT * FROM PROVEEDOR;
 SELECT * FROM VistaInventario;
 GO;
+
+
+DECLARE @filtro VARCHAR(50) = 'Nombre';
+DECLARE @buscar VARCHAR(50) = '';
+SELECT
+    P.ProductoID AS 'ID',
+    P.Codigo AS 'Cod.',
+    P.Nombre AS 'Nombre',
+    P.Stock AS 'Cantidad',
+    P.PrecioCompra AS 'PrecioCompra',
+    P.PrecioVenta AS 'PrecioVenta',
+    P.FechaRegistro AS 'FechaRegistro',
+    E.Nombre AS 'Estante',
+    E.Sector AS 'Sector',
+    E.Numero AS 'Num. Estante',
+    C.Nombre AS 'Categoría',
+    PR.RazonSocial AS 'Proveedor'
+FROM
+    PRODUCTO P
+    INNER JOIN ESTANTE E ON P.EstanteID = E.EstanteID
+    INNER JOIN CATEGORIA C ON P.CategoriaID = C.CategoriaID
+    INNER JOIN PROVEEDOR PR ON P.ProveedorID = PR.ProveedorID
+WHERE
+    (@filtro = 'Código' AND P.Codigo LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Nombre' AND P.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Estante' AND E.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Categoría' AND C.Nombre LIKE '%' + @buscar + '%')
+    OR (@filtro = 'Proveedor' AND PR.RazonSocial LIKE '%' + @buscar + '%');
+GO
+
+-- CARGAR BASE DE DATOS
+INSERT INTO MEDICAMENTO (Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Stock, PrecioVenta, PrecioCompra)
+VALUES
+    ('COD001', 'Losartán', 'Lote001', '2023-12-01', 1, 1, 2, 0, 0, 0),
+    ('COD002', 'Amoxicilina', 'Lote002', '2023-12-02', 2, 2, 3, 0, 0, 0),
+    ('COD003', 'Omeprazol', 'Lote003', '2023-12-03', 3, 3, 4, 0, 0, 0),
+    ('COD004', 'Metformina', 'Lote004', '2023-12-04', 4, 1, 5, 0, 0, 0),
+    ('COD005', 'Morfina', 'Lote005', '2023-12-05', 5, 2, 2, 0, 0, 0),
+    ('COD006', 'Paracetamol', 'Lote006', '2023-12-06', 6, 3, 3, 0, 0, 0),
+    ('COD007', 'Ibuprofeno', 'Lote007', '2023-12-07', 1, 1, 4, 0, 0, 0),
+    ('COD008', 'Aspirina', 'Lote008', '2023-12-08', 2, 2, 5, 0, 0, 0),
+    ('COD009', 'Atorvastatina', 'Lote009', '2023-12-09', 3, 3, 2, 0, 0, 0),
+    ('COD010', 'Enalapril', 'Lote010', '2023-12-10', 4, 1, 3, 0, 0, 0),
+    ('COD011', 'Simvastatina', 'Lote011', '2023-12-11', 5, 2, 4, 0, 0, 0),
+    ('COD012', 'Clonazepam', 'Lote012', '2023-12-12', 6, 3, 5, 0, 0, 0),
+    ('COD013', 'Warfarina', 'Lote013', '2023-12-13', 1, 1, 2, 0, 0, 0),
+    ('COD014', 'Gabapentina', 'Lote014', '2023-12-14', 2, 2, 3, 0, 0, 0),
+    ('COD015', 'Hidroclorotiazida', 'Lote015', '2023-12-15', 3, 3, 4, 0, 0, 0);
+GO

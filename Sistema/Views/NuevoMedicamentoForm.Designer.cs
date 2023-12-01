@@ -35,10 +35,10 @@
             this.lblNombreForm = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.helpProvider = new System.Windows.Forms.HelpProvider();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnbuscar = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodBarrasM = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -186,12 +186,33 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel3.Controls.Add(this.btnbuscar);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.txtCodBarrasM);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(219, 60);
             this.panel3.TabIndex = 1;
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.BackColor = System.Drawing.Color.White;
+            this.btnbuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnbuscar.Enabled = false;
+            this.btnbuscar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbuscar.ForeColor = System.Drawing.Color.Black;
+            this.btnbuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnbuscar.IconColor = System.Drawing.Color.Black;
+            this.btnbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnbuscar.IconSize = 16;
+            this.btnbuscar.Location = new System.Drawing.Point(116, 6);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(25, 20);
+            this.btnbuscar.TabIndex = 88;
+            this.btnbuscar.UseVisualStyleBackColor = false;
+            this.btnbuscar.Visible = false;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // label2
             // 
@@ -487,7 +508,7 @@
             this.txtGanancia.Name = "txtGanancia";
             this.txtGanancia.Size = new System.Drawing.Size(94, 25);
             this.txtGanancia.TabIndex = 21;
-            this.txtGanancia.Text = "0.00";
+            this.txtGanancia.Text = "0";
             // 
             // label8
             // 
@@ -511,7 +532,8 @@
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(143, 25);
             this.txtCosto.TabIndex = 19;
-            this.txtCosto.Text = "0.00";
+            this.txtCosto.Text = "0";
+            this.txtCosto.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
             // 
             // label5
             // 
@@ -535,7 +557,8 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(143, 25);
             this.txtStock.TabIndex = 18;
-            this.txtStock.Text = "0.00";
+            this.txtStock.Text = "0";
+            this.txtStock.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
             // 
             // label34
             // 
@@ -559,7 +582,8 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(143, 25);
             this.txtPrecio.TabIndex = 20;
-            this.txtPrecio.Text = "0.00";
+            this.txtPrecio.Text = "0";
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
             // 
             // label1
             // 
@@ -588,6 +612,7 @@
             this.btnCancelar.TabIndex = 24;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnLimpiar
             // 
@@ -622,6 +647,7 @@
             this.Name = "NuevoMedicamentoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Medicamento";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NuevoMedicamentoForm_FormClosed);
             this.Load += new System.EventHandler(this.nuevoMedicamento_Load);
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
@@ -656,7 +682,6 @@
         private System.Windows.Forms.Label lblNombreForm;
         private Guna.UI.WinForms.GunaControlBox gunaControlCerrar;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.HelpProvider helpProvider;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
@@ -696,5 +721,6 @@
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLimpiar;
+        private FontAwesome.Sharp.IconButton btnbuscar;
     }
 }

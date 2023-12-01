@@ -43,9 +43,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvCategoriesList = new Zuby.ADGV.AdvancedDataGridView();
-            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcDescripcionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceCategories = new System.Windows.Forms.BindingSource(this.components);
             this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.lblTotalRow = new System.Windows.Forms.Label();
@@ -54,6 +51,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cATEGORIATableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.CATEGORIATableAdapter();
+            this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDescripcionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.pnlButton.SuspendLayout();
@@ -276,36 +276,6 @@
             this.dgvCategoriesList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEnter);
             this.dgvCategoriesList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCategoriesList_DataError);
             // 
-            // dgvcID
-            // 
-            this.dgvcID.DataPropertyName = "CategoriaID";
-            this.dgvcID.FillWeight = 31.9797F;
-            this.dgvcID.HeaderText = "ID";
-            this.dgvcID.MinimumWidth = 22;
-            this.dgvcID.Name = "dgvcID";
-            this.dgvcID.ReadOnly = true;
-            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcNombreC
-            // 
-            this.dgvcNombreC.DataPropertyName = "Nombre";
-            this.dgvcNombreC.FillWeight = 134.0101F;
-            this.dgvcNombreC.HeaderText = "Nombre";
-            this.dgvcNombreC.MinimumWidth = 22;
-            this.dgvcNombreC.Name = "dgvcNombreC";
-            this.dgvcNombreC.ReadOnly = true;
-            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcDescripcionC
-            // 
-            this.dgvcDescripcionC.DataPropertyName = "Descripcion";
-            this.dgvcDescripcionC.FillWeight = 134.0101F;
-            this.dgvcDescripcionC.HeaderText = "Descripcion";
-            this.dgvcDescripcionC.MinimumWidth = 22;
-            this.dgvcDescripcionC.Name = "dgvcDescripcionC";
-            this.dgvcDescripcionC.ReadOnly = true;
-            this.dgvcDescripcionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
             // bindingSourceCategories
             // 
             this.bindingSourceCategories.DataMember = "CATEGORIA";
@@ -412,6 +382,37 @@
             // cATEGORIATableAdapter
             // 
             this.cATEGORIATableAdapter.ClearBeforeFill = true;
+            // 
+            // dgvcID
+            // 
+            this.dgvcID.DataPropertyName = "CategoriaID";
+            this.dgvcID.FillWeight = 31.9797F;
+            this.dgvcID.HeaderText = "ID";
+            this.dgvcID.MinimumWidth = 22;
+            this.dgvcID.Name = "dgvcID";
+            this.dgvcID.ReadOnly = true;
+            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcID.Visible = false;
+            // 
+            // dgvcNombreC
+            // 
+            this.dgvcNombreC.DataPropertyName = "Nombre";
+            this.dgvcNombreC.FillWeight = 134.0101F;
+            this.dgvcNombreC.HeaderText = "Nombre";
+            this.dgvcNombreC.MinimumWidth = 22;
+            this.dgvcNombreC.Name = "dgvcNombreC";
+            this.dgvcNombreC.ReadOnly = true;
+            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcDescripcionC
+            // 
+            this.dgvcDescripcionC.DataPropertyName = "Descripcion";
+            this.dgvcDescripcionC.FillWeight = 134.0101F;
+            this.dgvcDescripcionC.HeaderText = "Descripcion";
+            this.dgvcDescripcionC.MinimumWidth = 22;
+            this.dgvcDescripcionC.Name = "dgvcDescripcionC";
+            this.dgvcDescripcionC.ReadOnly = true;
+            this.dgvcDescripcionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // CategoriaForm
             // 

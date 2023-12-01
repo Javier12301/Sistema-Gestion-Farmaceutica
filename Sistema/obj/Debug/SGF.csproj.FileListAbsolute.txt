@@ -112,3 +112,6 @@ C:\Users\Navegador\Downloads\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\SGF.
 C:\Users\Navegador\Downloads\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.exe
 C:\Users\Navegador\Downloads\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.pdb
 C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.ComprasForm.resources
+C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.Modales.mdMedicamento.resources
+C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.Modales.mdBuscarItem.resources
+C:\Sistema-Gestion-Farmaceutica\Sistema\obj\Debug\Sistema.Views.Modales.mdProveedor.resources

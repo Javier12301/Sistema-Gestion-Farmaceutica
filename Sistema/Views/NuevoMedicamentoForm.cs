@@ -14,6 +14,7 @@ using Sistema.Controles.Logica;
 using System.Windows.Navigation;
 using System.Data.Entity.Infrastructure;
 using Sistema.Controles.Interfaz;
+using Sistema.Views.Modales;
 
 namespace Sistema.Vista
 {
@@ -23,6 +24,7 @@ namespace Sistema.Vista
         Shortcuts shortcuts = new Shortcuts();
         Controladora controladora = Controladora.GetInstance;
 
+        private bool medicineSave { get; set; }
         private CategoriaLogica categoryLogic = new CategoriaLogica();
         private EstanteLogica shelfLogic = new EstanteLogica();
         private ProveedorLogica supplierLogic = new ProveedorLogica();
@@ -32,28 +34,29 @@ namespace Sistema.Vista
         private List<ESTANTE> shelvesList { get; set; }
         private List<CATEGORIA> categoryList { get; set; }
         private List<PROVEEDOR> supplierList { get; set; }
-        private List<string> shelvesNames { get; set; }
-        private List<string> categoryNames { get; set; }
-        private List<string> supplierNames { get; set; }
         // Lista para almacenar datos de la base de datos, MEDICAMENTO
         private MEDICAMENTO medicineToEdit { get; set; }
+
 
 
         public NuevoMedicamentoForm(MEDICAMENTO medicine)
         {
             InitializeComponent();
             medicineToEdit = medicine;
+            medicineSave = false;
         }
 
         private void nuevoMedicamento_Load(object sender, EventArgs e)
         {
+            cmbProveedorM.Enabled = false;
             loadCMBData();
             if (medicineToEdit != null)
             {
-                loadMedicineData();
+                setMedicineToEdit();
+                btnbuscar.Enabled = true;
+                btnbuscar.Visible = true;
             }
         }
-
 
 
         private void loadCMBData()
@@ -110,15 +113,14 @@ namespace Sistema.Vista
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Validar que los campos no estén vacíos
-            if (medicineToEdit == null)
+            if (medicineToEdit != null)
             {
-                addMedicine();
+                updateMedicineData();
             }
             else
             {
-
+                addMedicine();
             }
-
         }
 
         // Agregar Medicamento Nuevo
@@ -148,11 +150,17 @@ namespace Sistema.Vista
                     // Ahora comprobamos los checkbox refrigerado y bajo receta, en la base de dato están establecidos como bit
                     medicine.Refrigerado = chkRefrigeado.Checked;
                     medicine.BajoReceta = chkBajoReceta.Checked;
+                    medicine.Stock = txtStock.Text == "" ? 0 : Convert.ToInt32(txtStock.Text);
+                    medicine.PrecioCompra = txtCosto.Text == "" ? 0 : Convert.ToDecimal(txtCosto.Text);
+                    medicine.PrecioVenta = txtPrecio.Text == "" ? 0 : Convert.ToDecimal(txtPrecio.Text);
+                    // Establecemos la fecha de creación del medicamento 
+                    medicine.FechaRegistro = DateTime.Now;
                     // Comprobar si los datos fueron cargados y las id de cada combobox seleccionada son validas, crear un string con todo los datos cargados y que tengan salto de linea                              
                     bool result = medicineLogic.AddMedicine(medicine);
                     if (result)
                     {
                         MessageBox.Show("Se agrego correctamente un medicamento.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        medicineSave = true;
                         // Preguntar si desea agregar otro medicamento
                         DialogResult dialogResult = MessageBox.Show("¿Desea agregar otro medicamento?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
@@ -212,6 +220,7 @@ namespace Sistema.Vista
                 if (isCodValid && isMedicineNamedValid && isLoteValid)
                 {
                     // Utilizamos la instancia de MEDICAMENTO para asignar los valores
+                    medicine.MedicamentoID = medicineToEdit.MedicamentoID;
                     medicine.Codigo = txtCodBarrasM.Text;
                     medicine.Nombre = txtNombreM.Text;
                     medicine.Lote = txtLoteM.Text;
@@ -227,17 +236,22 @@ namespace Sistema.Vista
                     // Ahora comprobamos los checkbox refrigerado y bajo receta, en la base de dato están establecidos como bit
                     medicine.Refrigerado = chkRefrigeado.Checked;
                     medicine.BajoReceta = chkBajoReceta.Checked;
+                    medicine.Stock = txtStock.Text == "" ? 0 : Convert.ToInt32(txtStock.Text);
+                    medicine.PrecioCompra = txtCosto.Text == "" ? 0 : Convert.ToDecimal(txtCosto.Text);
+                    medicine.PrecioVenta = txtPrecio.Text == "" ? 0 : Convert.ToDecimal(txtPrecio.Text);
                     // Comprobar si los datos fueron cargados y las id de cada combobox seleccionada son validas, crear un string con todo los datos cargados y que tengan salto de linea                              
                     bool result = medicineLogic.ModifyMedicine(medicine);
                     if (result)
                     {
                         MessageBox.Show("Se modifico correctamente el medicamento.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        medicineSave = true;
                         // Preguntar si desea agregar otro medicamento
                         DialogResult dialogResult = MessageBox.Show("¿Desea modificar otro medicamento?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            // Se limpian los campos
-                            clearFields();
+                            // Abrir formulario para buscar medicamentos
+                            openModalForm();
+
                         }
                         else
                         {
@@ -277,48 +291,35 @@ namespace Sistema.Vista
 
 
         // // // // /// /// INTERFAZ /// /// / // // // // /// ///
-        // Cargar combobox según el modo de operación del formulario o sea agregar o modificar
-        private void setComboBox()
-        {
-            if (medicineToEdit != null)
-            {
-                SetComboBoxItem(cmbEstanteM, Convert.ToInt32(medicineToEdit.EstanteID), shelvesList, shelf => shelf.EstanteID, shelf => shelf.Nombre);
-                SetComboBoxItem(cmbCategoriaM, Convert.ToInt32(medicineToEdit.CategoriaID), categoryList, category => category.CategoriaID, category => category.Nombre);
-                SetComboBoxItem(cmbProveedorM, Convert.ToInt32(medicineToEdit.ProveedorID), supplierList, supplier => supplier.ProveedorID, supplier => supplier.RazonSocial);
-            }
-        }
-
-        private void SetComboBoxItem<T>(ComboBox comboBox, int itemId, IEnumerable<T> itemList, Func<T, int> idSelector, Func<T, string> nameSelector)
-        {
-            if (itemId == 0)
-            {
-                comboBox.SelectedIndex = 1;
-            }
-            else
-            {
-                var selectedItem = itemList.Where(item => idSelector(item) == itemId).Select(nameSelector).FirstOrDefault();
-                comboBox.SelectedItem = selectedItem;
-            }
-        }
-
-
 
         // Comprobar si ID es 0, si es así seleccionar el primer elemento del combobox
 
-
-        private void loadMedicineData()
+        private void setMedicineToEdit()
         {
             try
             {
-                // Cargar los datos del medicamento seleccionado
-                txtCodBarrasM.Text = medicineToEdit.Codigo;
-                txtNombreM.Text = medicineToEdit.Nombre;
-                txtLoteM.Text = medicineToEdit.Lote;
-                dtaVencimiento.Value = medicineToEdit.FechaVencimiento.Value;
-                // Cargar los checkbox
-                chkRefrigeado.Checked = medicineToEdit.Refrigerado.Value;
-                chkBajoReceta.Checked = medicineToEdit.BajoReceta.Value;
-                setComboBox();
+                if (medicineToEdit != null)
+                {
+                    // Cargar los datos del medicamento seleccionado
+                    txtCodBarrasM.Text = medicineToEdit.Codigo;
+                    txtNombreM.Text = medicineToEdit.Nombre;
+                    txtLoteM.Text = medicineToEdit.Lote;
+                    dtaVencimiento.Value = medicineToEdit.FechaVencimiento.Value;
+                    // Cargar los checkbox
+                    chkRefrigeado.Checked = medicineToEdit.Refrigerado.Value;
+                    chkBajoReceta.Checked = medicineToEdit.BajoReceta.Value;
+                    txtStock.Text = medicineToEdit.Stock.ToString();
+                    txtCosto.Text = medicineToEdit.PrecioCompra.ToString();
+                    txtPrecio.Text = medicineToEdit.PrecioVenta.ToString();
+                    setComboBox();
+                    // Comprobar a traves de condiciones ternarias si los valores de Precio compra y Precio venta son mayores a 0
+                    // Si son mayores a 0 activarlas si son 0 desactivarlas
+                    txtCosto.Enabled = medicineToEdit.PrecioCompra > 0 ? true : false;
+                    txtPrecio.Enabled = medicineToEdit.PrecioVenta > 0 ? true : false;
+                    // Verificar si el medicamento tiene un proveedor, si no tiene deshabilitar el cmbProveedor
+                    // Para cargar un proveedor, el usuario debe registrar la compra del medicamento
+                    cmbProveedorM.Enabled = medicineToEdit.ProveedorID.Value != 0 ? true : false;
+                }
             }
             catch (DbUpdateException)
             {
@@ -339,15 +340,62 @@ namespace Sistema.Vista
                 messageManager.ShowUnexpectedError();
                 // Loguear ex si es necesario para fines de depuración
             }
-
-
         }
 
-        // Obtenemos el combobox index según el nombre de la categoría, proveedor o estante del medicamento, utilizamos
-        // LINQ para obtener el index
+        // Obtener ganancia totales
+        // Utilizar función textChanged
+        private void txtGanancias_TextChanged(object sender, EventArgs e)
+        {
+            getTotalProfits();
+        }
 
+        private void getTotalProfits()
+        {
+            try
+            {
+                // Utilizando la ecuación de -> Ganancia total = (Precio Venta - Precio Compra) * Stock
+                // Obtenemos el valor de ganancia total
+                decimal precioCompra = txtCosto.Text == "" ? 0 : Convert.ToDecimal(txtCosto.Text);
+                decimal precioVenta = txtPrecio.Text == "" ? 0 : Convert.ToDecimal(txtPrecio.Text);
+                int stock = txtStock.Text == "" ? 0 : Convert.ToInt32(txtStock.Text);
+                // Calcular la ganancia total
+                decimal totalProfits = (precioVenta - precioCompra) * stock;
+                txtGanancia.Text = totalProfits.ToString();
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                messageManager.ShowUnexpectedError();
+            }
+        }
 
+        // Cargar combobox según el modo de operación del formulario o sea agregar o modificar
+        private void setComboBox()
+        {
+            if (medicineToEdit != null)
+            {
+                // Con este método se cargan los combobox con los datos de la base de datos utilizando la ID de cada elemento
+                SetComboBoxItem(cmbEstanteM, Convert.ToInt32(medicineToEdit.EstanteID), shelvesList, shelf => shelf.EstanteID, shelf => shelf.Nombre);
+                SetComboBoxItem(cmbCategoriaM, Convert.ToInt32(medicineToEdit.CategoriaID), categoryList, category => category.CategoriaID, category => category.Nombre);
+                SetComboBoxItem(cmbProveedorM, Convert.ToInt32(medicineToEdit.ProveedorID), supplierList, supplier => supplier.ProveedorID, supplier => supplier.RazonSocial);
+            }
+        }
 
+        private void SetComboBoxItem<T>(ComboBox comboBox, int itemId, IEnumerable<T> itemList, Func<T, int> idSelector, Func<T, string> nameSelector)
+        {
+            // Si la ID del estante, cateogíra o proveedor es 0, seleccionar el primer elemento del combobox 
+            // el primer combobox es el por defecto
+            if (itemId == 0)
+            {
+                comboBox.SelectedIndex = 1;
+            }
+            else
+            {
+                // Caso contrario seleccionar el elemento que corresponde a la ID
+                var selectedItem = itemList.Where(item => idSelector(item) == itemId).Select(nameSelector).FirstOrDefault();
+                comboBox.SelectedItem = selectedItem;
+            }
+        }
 
         private void pnlControl_MouseMove(object sender, MouseEventArgs e)
         {
@@ -372,7 +420,7 @@ namespace Sistema.Vista
         private void clearFields()
         {
             // Messagebox preguntando si está seguro de limpiar los campos
-            DialogResult userAnswer = MessageBox.Show("¿Está seguro de limpiar los campos?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult userAnswer = MessageBox.Show("¿Desea limpiar los campos?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (userAnswer == DialogResult.Yes)
             {
                 controladora.ClearTextBoxT(txtCodBarrasM, txtNombreM, txtLoteM);
@@ -425,6 +473,51 @@ namespace Sistema.Vista
             clearFields();
         }
 
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            openModalForm();
+        }
 
+        private void openModalForm()
+        {
+            using (var modal = new mdMedicamento())
+            {
+                var result = modal.ShowDialog();
+                // Obtenemos instancia MEDICAMENTO de la ventana modal
+                if (result == DialogResult.OK)
+                {
+                    int medicineID = modal.medicine.MedicamentoID;
+                    // Crear string con todo los valores de medicineToEdit para un messagebox
+                    MEDICAMENTO selectedMedicine = medicineLogic.GetMedicine(medicineID);
+                    medicineToEdit = selectedMedicine;
+                    setMedicineToEdit();
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (medicineSave)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+            this.Close();
+        }
+
+        private void NuevoMedicamentoForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(medicineSave)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }

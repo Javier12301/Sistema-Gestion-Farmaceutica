@@ -50,6 +50,22 @@ namespace Sistema.Controles.Logica
             }
         }
 
+        // Obtener Medicamento por Codigo
+        public MEDICAMENTO GetMedicineByCode(string code)
+        {
+            using (var db = new FarmaciaDBEntities())
+            {
+                try
+                {
+                    MEDICAMENTO medicine = db.MEDICAMENTO.Where(m => m.Codigo == code).FirstOrDefault();
+                    return medicine;
+                }catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         // Agregar un nuevo medicamento
         public bool AddMedicine(MEDICAMENTO medicine)
         {
@@ -78,7 +94,17 @@ namespace Sistema.Controles.Logica
                 if (originalMedicine != null)
                 {
                     // Modificamos el medicamento
-                    originalMedicine = medicine;
+                    originalMedicine.Codigo = medicine.Codigo;
+                    originalMedicine.Nombre = medicine.Nombre;
+                    originalMedicine.FechaVencimiento = medicine.FechaVencimiento;
+                    originalMedicine.EstanteID = medicine.EstanteID;
+                    originalMedicine.CategoriaID = medicine.CategoriaID;
+                    originalMedicine.ProveedorID = medicine.ProveedorID;
+                    originalMedicine.Refrigerado = medicine.Refrigerado;
+                    originalMedicine.BajoReceta = medicine.BajoReceta;
+                    originalMedicine.Stock = medicine.Stock;
+                    originalMedicine.PrecioCompra = medicine.PrecioCompra;
+                    originalMedicine.PrecioVenta = medicine.PrecioVenta;
                     db.Entry(originalMedicine).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;

@@ -21,6 +21,7 @@ namespace Sistema.Vista
         Controladora controladora = Controladora.GetInstance;
         private MessageBoxManager messageManager = MessageBoxManager.GetInstance;
         private int originalRowCount { get; set; }
+        private int cmbTextRow { get; set; }
 
         public MedicamentosForm()
         {
@@ -29,11 +30,15 @@ namespace Sistema.Vista
 
         private void Medicamentos_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'farmaciaDBDataSet.VistaInventario' Puede moverla o quitarla según sea necesario.
+            this.vistaInventarioTableAdapter.Fill(this.farmaciaDBDataSet.VistaInventario);
+            // TODO: esta línea de código carga datos en la tabla 'farmaciaDBDataSet.MEDICAMENTO' Puede moverla o quitarla según sea necesario.
             // Cargar datos en el datagridview
-            loadMedicine();
+            this.vistaInventarioTableAdapter.Fill(this.farmaciaDBDataSet.VistaInventario);
+            originalRowCount = dgvMedicineList.RowCount;
             // Cargar combobox de filtros
             loadCMBData();
-
+            loadMedicine();
             // Establecer nuevo tamaño al formulario
             this.Size = new Size(573, 299);
             // Establecer tamaño de botones de imprimir, pdf y excel
@@ -41,6 +46,7 @@ namespace Sistema.Vista
             updateTotalRowCount();
             // Desactivar datagridview ID
             tsmiID.Checked = false;
+
         }
 
         // Cargar datos en el datagridview
@@ -51,8 +57,12 @@ namespace Sistema.Vista
         {
             try
             {
-                this.vistaInventarioTableAdapter.Fill(this.farmaciaDBDataSet.VistaInventario);
-                originalRowCount = dgvMedicineList.RowCount;
+                this.vistaInventarioTableAdapter.Top(this.farmaciaDBDataSet.VistaInventario, Convert.ToInt32(cmbFilas.Text));
+                // Comprobar si se dejaron filtros activados
+                if (txtBuscar.Text != string.Empty)
+                {
+                    this.vistaInventarioTableAdapter.Filter(this.farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBuscar.Text, null, null);
+                }
             }
             catch (DbUpdateException)
             {
@@ -87,6 +97,15 @@ namespace Sistema.Vista
         private void btnModificar_Click(object sender, EventArgs e)
         {
             openMedicineFormForModification();
+        }
+
+        private void dgvMedicineList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                openMedicineFormForModification();
+            }
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -233,10 +252,14 @@ namespace Sistema.Vista
 
         private void openMedicineForm(MEDICAMENTO medicine)
         {
-            Vista.NuevoMedicamentoForm medicineForm = new Vista.NuevoMedicamentoForm(medicine);
-            medicineForm.FormClosed += formAgregarMedicamento_FormClosed;
-            medicineForm.ShowDialog();
-            loadMedicine();
+            using (var modal = new NuevoMedicamentoForm(medicine))
+            {
+                var result = modal.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    loadMedicine();
+                }
+            }       
         }
 
         private void formAgregarMedicamento_FormClosed(object sender, FormClosedEventArgs e)
@@ -246,61 +269,72 @@ namespace Sistema.Vista
 
         private void tsmiButtons_Click(object sender, EventArgs e)
         {
-            // variable del toolstripmenuitem que fue clickeado
+            // Variable del ToolStripMenuItem que fue clickeado
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            // poner el item en checked o unchecked si ya está seleccionado
+            // Al clickear, cambiaremos el estado de la propiedad Checked del ToolStripMenuItem
             item.Checked = !item.Checked;
 
         }
 
-        private void tsmiButtons_CheckedChanged(object sender, EventArgs e)
+        private void tsmiMenuCheckChanged(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            // se hará un switch para saber que item fue seleccionado y dependiendo si está checked o no, se desactivará su datagridview
-            // en los case pon estos tag de item: codigoTAG loteTAG nombreMTAG cantidadMTAG vencimientoMTAG nombreETAG nombreCTAG sectorETAG numeroETAG
-            switch (item.Tag)
+            foreach (ToolStripMenuItem subItem in item.DropDownItems)
+            {
+                subItem.Checked = item.Checked;
+            }
+        }
+
+        private void tsmiSubmenuCheckChanged(object sender, EventArgs e)
+        {
+            ToolStripMenuItem subMenu = (ToolStripMenuItem)sender;
+            switch (subMenu.Tag)
             {
                 case "idTAG":
-                    dgvMedicineList.Columns[0].Visible = item.Checked;
+                    dgvMedicineList.Columns[0].Visible = subMenu.Checked;
                     break;
                 case "codigoTAG":
-                    dgvMedicineList.Columns[1].Visible = item.Checked;
+                    dgvMedicineList.Columns[1].Visible = subMenu.Checked;
                     break;
                 case "loteTAG":
-                    dgvMedicineList.Columns[2].Visible = item.Checked;
+                    dgvMedicineList.Columns[2].Visible = subMenu.Checked;
                     break;
                 case "nombreMTAG":
-                    dgvMedicineList.Columns[3].Visible = item.Checked;
+                    dgvMedicineList.Columns[3].Visible = subMenu.Checked;
                     break;
                 case "cantidadMTAG":
-                    dgvMedicineList.Columns[4].Visible = item.Checked;
+                    dgvMedicineList.Columns[4].Visible = subMenu.Checked;
                     break;
                 case "vencimientoMTAG":
-                    dgvMedicineList.Columns[5].Visible = item.Checked;
+                    dgvMedicineList.Columns[5].Visible = subMenu.Checked;
+                    break;
+                case "precioVentaMTAG":
+                    dgvMedicineList.Columns[6].Visible = subMenu.Checked;
+                    break;
+                case "precioCompraMTAG":
+                    dgvMedicineList.Columns[7].Visible = subMenu.Checked;
                     break;
                 case "nombreETAG":
-                    dgvMedicineList.Columns[6].Visible = item.Checked;
+                    dgvMedicineList.Columns[8].Visible = subMenu.Checked;
                     break;
                 case "sectorETAG":
-                    dgvMedicineList.Columns[7].Visible = item.Checked;
+                    dgvMedicineList.Columns[9].Visible = subMenu.Checked;
                     break;
                 case "numeroETAG":
-                    dgvMedicineList.Columns[8].Visible = item.Checked;
+                    dgvMedicineList.Columns[10].Visible = subMenu.Checked;
                     break;
                 case "nombreCTAG":
-                    dgvMedicineList.Columns[9].Visible = item.Checked;
+                    dgvMedicineList.Columns[11].Visible = subMenu.Checked;
                     break;
                 case "nombrePTAG":
-                    dgvMedicineList.Columns[10].Visible = item.Checked;
+                    dgvMedicineList.Columns[12].Visible = subMenu.Checked;
                     break;
                 default:
                     break;
             }
-
         }
 
-
-
+        
 
         private void dgvMedicineList_SortStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.SortEventArgs e)
         {
@@ -326,14 +360,15 @@ namespace Sistema.Vista
         {
             try
             {
-                if (cmbFilas.Text == string.Empty)
+                if (cmbFilas.Text != string.Empty)
                 {
-                    cmbFilas.Text = originalRowCount.ToString();
+                    int numberOfRows = Convert.ToInt32(cmbFilas.Text);
+                    cmbTextRow = Convert.ToInt32(cmbFilas.Text);
+                    filterRow(numberOfRows);
                 }
                 else
                 {
-                    int numberOfRows = Convert.ToInt32(cmbFilas.Text);
-                    filterRow(numberOfRows);
+                    filterRow(cmbTextRow);
                 }
             }
             catch (DbUpdateException)
@@ -364,7 +399,7 @@ namespace Sistema.Vista
                 string selectedFilter = cmbFiltro.Text;
                 resetAllControls();
 
-                if(selectedFilter == string.Empty)
+                if (selectedFilter == string.Empty)
                 {
                     cmbFiltro.SelectedIndex = 0;
                 }
@@ -372,7 +407,7 @@ namespace Sistema.Vista
                 {
                     enableDateVTOControls();
                 }
-               
+
             }
             catch (DbUpdateException)
             {
@@ -406,17 +441,19 @@ namespace Sistema.Vista
                     {
                         filterRow(Convert.ToInt32(cmbFilas.Text));
                     }
-                    else if(cmbFiltro.Text != "Vencimiento")
+                    else if (cmbFiltro.Text != "Vencimiento")
                     {
-                        this.vistaInventarioTableAdapter.Filter(this.farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBuscar.Text, "","");
+                        this.vistaInventarioTableAdapter.Filter(this.farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBuscar.Text, null, null);
                     }
                 }
-                
+
             }
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
                 messageManager.ShowDatabaseUpdateError();
+                // mostrar excepción
+
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
@@ -433,6 +470,17 @@ namespace Sistema.Vista
                 // Loguear ex si es necesario para fines de depuración
             }
         }
+
+        private void cmbFilas_Leave(object sender, EventArgs e)
+        {
+            if(cmbFilas.Text == string.Empty)
+            {
+                cmbFilas.Text = cmbTextRow.ToString();
+            }
+        }
+
+        
+
 
 
         private void enableDateVTOControls()
@@ -511,11 +559,14 @@ namespace Sistema.Vista
         {
             string desde = dtaDesdeVTO.Value.ToString("yyyy-MM-dd");
             string hasta = dtaHastaVTO.Value.ToString("yyyy-MM-dd");
-            if(desde != string.Empty && hasta != string.Empty && !txtBuscar.Enabled)
+            if (desde != string.Empty && hasta != string.Empty && !txtBuscar.Enabled)
             {
                 this.vistaInventarioTableAdapter.Filter(this.farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBuscar.Text, desde, hasta);
             }
         }
+     
+
+        
 
 
 

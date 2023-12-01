@@ -58,6 +58,7 @@ namespace Sistema.Vista
             try
             {
                 this.eSTANTETableAdapter.Fill(this.farmaciaDBDataSet.ESTANTE);
+                updateTotalRowCount();
             }
             catch (DbUpdateException)
             {

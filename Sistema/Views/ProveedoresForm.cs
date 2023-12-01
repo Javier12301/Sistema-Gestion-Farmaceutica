@@ -47,6 +47,8 @@ namespace Sistema.Views
             try
             {
                 this.pROVEEDORTableAdapter.Fill(this.farmaciaDBDataSet.PROVEEDOR);
+                updateTotalRowCount();
+
             }
             catch (DbUpdateException)
             {

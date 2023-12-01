@@ -37,18 +37,21 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdMostrarCol = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmenuMedicamento = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiID = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCod = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNumL = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNombreM = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCantidadM = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVencimientoM = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEstantesList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVentaM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCompraM = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmenuEstante = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNombreE = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNumeroE = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSectorE = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNombreP = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNombreC = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMedicineList = new Zuby.ADGV.AdvancedDataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +59,8 @@
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numEstanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +79,6 @@
             this.lblDesde = new System.Windows.Forms.Label();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnbuscar = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbFilas = new System.Windows.Forms.ComboBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
@@ -140,30 +144,45 @@
             // tsdMostrarCol
             // 
             this.tsdMostrarCol.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiID,
-            this.tsmiCod,
-            this.tsmiNumL,
-            this.tsmiNombreM,
-            this.tsmiCantidadM,
-            this.tsmiVencimientoM,
-            this.tsmiEstantesList,
-            this.tsmiNombreC,
-            this.tsmiNombreP});
+            this.tsmenuMedicamento,
+            this.tsmenuEstante,
+            this.tsmiNombreP,
+            this.tsmiNombreC});
             this.tsdMostrarCol.Image = ((System.Drawing.Image)(resources.GetObject("tsdMostrarCol.Image")));
             this.tsdMostrarCol.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsdMostrarCol.Name = "tsdMostrarCol";
             this.tsdMostrarCol.Size = new System.Drawing.Size(134, 25);
             this.tsdMostrarCol.Text = "Mostrar Columnas";
             // 
+            // tsmenuMedicamento
+            // 
+            this.tsmenuMedicamento.Checked = true;
+            this.tsmenuMedicamento.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmenuMedicamento.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiID,
+            this.tsmiCod,
+            this.tsmiNumL,
+            this.tsmiNombreM,
+            this.tsmiCantidadM,
+            this.tsmiVencimientoM,
+            this.tsmiVentaM,
+            this.tsmiCompraM});
+            this.tsmenuMedicamento.Name = "tsmenuMedicamento";
+            this.tsmenuMedicamento.Size = new System.Drawing.Size(148, 22);
+            this.tsmenuMedicamento.Tag = "medicamentoMenuTAG";
+            this.tsmenuMedicamento.Text = "Medicamento";
+            this.tsmenuMedicamento.CheckedChanged += new System.EventHandler(this.tsmiMenuCheckChanged);
+            this.tsmenuMedicamento.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
             // tsmiID
             // 
             this.tsmiID.Checked = true;
             this.tsmiID.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiID.Name = "tsmiID";
-            this.tsmiID.Size = new System.Drawing.Size(140, 22);
+            this.tsmiID.Size = new System.Drawing.Size(153, 22);
             this.tsmiID.Tag = "idTAG";
             this.tsmiID.Text = "ID";
-            this.tsmiID.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiID.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiID.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiCod
@@ -171,10 +190,10 @@
             this.tsmiCod.Checked = true;
             this.tsmiCod.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiCod.Name = "tsmiCod";
-            this.tsmiCod.Size = new System.Drawing.Size(140, 22);
+            this.tsmiCod.Size = new System.Drawing.Size(153, 22);
             this.tsmiCod.Tag = "codigoTAG";
             this.tsmiCod.Text = "Código";
-            this.tsmiCod.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiCod.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiCod.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiNumL
@@ -182,10 +201,10 @@
             this.tsmiNumL.Checked = true;
             this.tsmiNumL.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNumL.Name = "tsmiNumL";
-            this.tsmiNumL.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNumL.Size = new System.Drawing.Size(153, 22);
             this.tsmiNumL.Tag = "loteTAG";
             this.tsmiNumL.Text = "Lote";
-            this.tsmiNumL.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNumL.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiNumL.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiNombreM
@@ -193,10 +212,10 @@
             this.tsmiNombreM.Checked = true;
             this.tsmiNombreM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNombreM.Name = "tsmiNombreM";
-            this.tsmiNombreM.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNombreM.Size = new System.Drawing.Size(153, 22);
             this.tsmiNombreM.Tag = "nombreMTAG";
             this.tsmiNombreM.Text = "Nombre";
-            this.tsmiNombreM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreM.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiNombreM.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiCantidadM
@@ -204,10 +223,10 @@
             this.tsmiCantidadM.Checked = true;
             this.tsmiCantidadM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiCantidadM.Name = "tsmiCantidadM";
-            this.tsmiCantidadM.Size = new System.Drawing.Size(140, 22);
+            this.tsmiCantidadM.Size = new System.Drawing.Size(153, 22);
             this.tsmiCantidadM.Tag = "cantidadMTAG";
             this.tsmiCantidadM.Text = "Cantidad";
-            this.tsmiCantidadM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiCantidadM.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiCantidadM.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiVencimientoM
@@ -215,23 +234,49 @@
             this.tsmiVencimientoM.Checked = true;
             this.tsmiVencimientoM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiVencimientoM.Name = "tsmiVencimientoM";
-            this.tsmiVencimientoM.Size = new System.Drawing.Size(140, 22);
+            this.tsmiVencimientoM.Size = new System.Drawing.Size(153, 22);
             this.tsmiVencimientoM.Tag = "vencimientoMTAG";
             this.tsmiVencimientoM.Text = "Vencimiento";
-            this.tsmiVencimientoM.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiVencimientoM.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiVencimientoM.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
-            // tsmiEstantesList
+            // tsmiVentaM
             // 
-            this.tsmiEstantesList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiVentaM.Checked = true;
+            this.tsmiVentaM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiVentaM.Name = "tsmiVentaM";
+            this.tsmiVentaM.Size = new System.Drawing.Size(153, 22);
+            this.tsmiVentaM.Tag = "precioVentaMTAG";
+            this.tsmiVentaM.Text = "Precio Venta";
+            this.tsmiVentaM.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
+            this.tsmiVentaM.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiCompraM
+            // 
+            this.tsmiCompraM.Checked = true;
+            this.tsmiCompraM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiCompraM.Name = "tsmiCompraM";
+            this.tsmiCompraM.Size = new System.Drawing.Size(153, 22);
+            this.tsmiCompraM.Tag = "precioCompraMTAG";
+            this.tsmiCompraM.Text = "Precio Compra";
+            this.tsmiCompraM.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
+            this.tsmiCompraM.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmenuEstante
+            // 
+            this.tsmenuEstante.Checked = true;
+            this.tsmenuEstante.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmenuEstante.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiNombreE,
             this.tsmiNumeroE,
             this.tsmiSectorE});
-            this.tsmiEstantesList.Name = "tsmiEstantesList";
-            this.tsmiEstantesList.ShowShortcutKeys = false;
-            this.tsmiEstantesList.Size = new System.Drawing.Size(140, 22);
-            this.tsmiEstantesList.Tag = "nombreETAG";
-            this.tsmiEstantesList.Text = "Estantes";
+            this.tsmenuEstante.Name = "tsmenuEstante";
+            this.tsmenuEstante.ShowShortcutKeys = false;
+            this.tsmenuEstante.Size = new System.Drawing.Size(148, 22);
+            this.tsmenuEstante.Tag = "estanteMenuTAG";
+            this.tsmenuEstante.Text = "Estante";
+            this.tsmenuEstante.CheckedChanged += new System.EventHandler(this.tsmiMenuCheckChanged);
+            this.tsmenuEstante.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiNombreE
             // 
@@ -241,7 +286,7 @@
             this.tsmiNombreE.Size = new System.Drawing.Size(175, 22);
             this.tsmiNombreE.Tag = "nombreETAG";
             this.tsmiNombreE.Text = "Nombre";
-            this.tsmiNombreE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreE.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiNombreE.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiNumeroE
@@ -252,7 +297,7 @@
             this.tsmiNumeroE.Size = new System.Drawing.Size(175, 22);
             this.tsmiNumeroE.Tag = "numeroETAG";
             this.tsmiNumeroE.Text = "Numero de Estante";
-            this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNumeroE.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiNumeroE.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiSectorE
@@ -263,30 +308,30 @@
             this.tsmiSectorE.Size = new System.Drawing.Size(175, 22);
             this.tsmiSectorE.Tag = "sectorETAG";
             this.tsmiSectorE.Text = "Sector";
-            this.tsmiSectorE.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiSectorE.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiSectorE.Click += new System.EventHandler(this.tsmiButtons_Click);
-            // 
-            // tsmiNombreC
-            // 
-            this.tsmiNombreC.Checked = true;
-            this.tsmiNombreC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiNombreC.Name = "tsmiNombreC";
-            this.tsmiNombreC.Size = new System.Drawing.Size(140, 22);
-            this.tsmiNombreC.Tag = "nombreCTAG";
-            this.tsmiNombreC.Text = "Categoría";
-            this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
-            this.tsmiNombreC.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // tsmiNombreP
             // 
             this.tsmiNombreP.Checked = true;
             this.tsmiNombreP.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNombreP.Name = "tsmiNombreP";
-            this.tsmiNombreP.Size = new System.Drawing.Size(140, 22);
+            this.tsmiNombreP.Size = new System.Drawing.Size(148, 22);
             this.tsmiNombreP.Tag = "nombrePTAG";
             this.tsmiNombreP.Text = "Proveedor";
-            this.tsmiNombreP.CheckedChanged += new System.EventHandler(this.tsmiButtons_CheckedChanged);
+            this.tsmiNombreP.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
             this.tsmiNombreP.Click += new System.EventHandler(this.tsmiButtons_Click);
+            // 
+            // tsmiNombreC
+            // 
+            this.tsmiNombreC.Checked = true;
+            this.tsmiNombreC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiNombreC.Name = "tsmiNombreC";
+            this.tsmiNombreC.Size = new System.Drawing.Size(148, 22);
+            this.tsmiNombreC.Tag = "nombreCTAG";
+            this.tsmiNombreC.Text = "Categoría";
+            this.tsmiNombreC.CheckedChanged += new System.EventHandler(this.tsmiSubmenuCheckChanged);
+            this.tsmiNombreC.Click += new System.EventHandler(this.tsmiButtons_Click);
             // 
             // dgvMedicineList
             // 
@@ -314,6 +359,8 @@
             this.nombreDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn,
             this.vTODataGridViewTextBoxColumn,
+            this.precioVentaDataGridViewTextBoxColumn,
+            this.precioCompraDataGridViewTextBoxColumn,
             this.estanteDataGridViewTextBoxColumn,
             this.sectorDataGridViewTextBoxColumn,
             this.numEstanteDataGridViewTextBoxColumn,
@@ -341,6 +388,7 @@
             this.dgvMedicineList.TabStop = false;
             this.dgvMedicineList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvMedicineList_SortStringChanged);
             this.dgvMedicineList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvMedicineList_FilterStringChanged);
+            this.dgvMedicineList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMedicineList_CellDoubleClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -396,6 +444,24 @@
             this.vTODataGridViewTextBoxColumn.ReadOnly = true;
             this.vTODataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
+            // precioVentaDataGridViewTextBoxColumn
+            // 
+            this.precioVentaDataGridViewTextBoxColumn.DataPropertyName = "PrecioVenta";
+            this.precioVentaDataGridViewTextBoxColumn.HeaderText = "PrecioVenta";
+            this.precioVentaDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.precioVentaDataGridViewTextBoxColumn.Name = "precioVentaDataGridViewTextBoxColumn";
+            this.precioVentaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precioVentaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // precioCompraDataGridViewTextBoxColumn
+            // 
+            this.precioCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioCompra";
+            this.precioCompraDataGridViewTextBoxColumn.HeaderText = "PrecioCompra";
+            this.precioCompraDataGridViewTextBoxColumn.MinimumWidth = 22;
+            this.precioCompraDataGridViewTextBoxColumn.Name = "precioCompraDataGridViewTextBoxColumn";
+            this.precioCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precioCompraDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // estanteDataGridViewTextBoxColumn
             // 
             this.estanteDataGridViewTextBoxColumn.DataPropertyName = "Estante";
@@ -445,6 +511,7 @@
             // 
             this.vistaInventarioBindingSource.DataMember = "VistaInventario";
             this.vistaInventarioBindingSource.DataSource = this.farmaciaDBDataSet;
+            this.vistaInventarioBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceMedicine_ListChanged);
             // 
             // farmaciaDBDataSet
             // 
@@ -515,7 +582,6 @@
             this.panel3.Controls.Add(this.lblDesde);
             this.panel3.Controls.Add(this.cmbFiltro);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.btnbuscar);
             this.panel3.Location = new System.Drawing.Point(51, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(440, 35);
@@ -527,9 +593,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.Enabled = false;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBuscar.Location = new System.Drawing.Point(152, 6);
+            this.txtBuscar.Location = new System.Drawing.Point(155, 6);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(253, 23);
+            this.txtBuscar.Size = new System.Drawing.Size(282, 23);
             this.txtBuscar.TabIndex = 53;
             this.txtBuscar.Visible = false;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
@@ -539,9 +605,9 @@
             this.dtaHastaVTO.Enabled = false;
             this.dtaHastaVTO.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtaHastaVTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtaHastaVTO.Location = new System.Drawing.Point(326, 6);
+            this.dtaHastaVTO.Location = new System.Drawing.Point(348, 6);
             this.dtaHastaVTO.Name = "dtaHastaVTO";
-            this.dtaHastaVTO.Size = new System.Drawing.Size(79, 22);
+            this.dtaHastaVTO.Size = new System.Drawing.Size(89, 22);
             this.dtaHastaVTO.TabIndex = 58;
             this.dtaHastaVTO.Visible = false;
             this.dtaHastaVTO.ValueChanged += new System.EventHandler(this.dtaDesdeVTO_ValueChanged);
@@ -554,7 +620,7 @@
             this.lblHasta.Enabled = false;
             this.lblHasta.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblHasta.Location = new System.Drawing.Point(278, 8);
+            this.lblHasta.Location = new System.Drawing.Point(301, 8);
             this.lblHasta.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblHasta.Name = "lblHasta";
             this.lblHasta.Size = new System.Drawing.Size(46, 17);
@@ -567,9 +633,9 @@
             this.dtaDesdeVTO.Enabled = false;
             this.dtaDesdeVTO.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtaDesdeVTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtaDesdeVTO.Location = new System.Drawing.Point(198, 6);
+            this.dtaDesdeVTO.Location = new System.Drawing.Point(204, 6);
             this.dtaDesdeVTO.Name = "dtaDesdeVTO";
-            this.dtaDesdeVTO.Size = new System.Drawing.Size(79, 22);
+            this.dtaDesdeVTO.Size = new System.Drawing.Size(89, 22);
             this.dtaDesdeVTO.TabIndex = 56;
             this.dtaDesdeVTO.Visible = false;
             this.dtaDesdeVTO.ValueChanged += new System.EventHandler(this.dtaDesdeVTO_ValueChanged);
@@ -582,7 +648,7 @@
             this.lblDesde.Enabled = false;
             this.lblDesde.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesde.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblDesde.Location = new System.Drawing.Point(150, 8);
+            this.lblDesde.Location = new System.Drawing.Point(157, 8);
             this.lblDesde.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblDesde.Name = "lblDesde";
             this.lblDesde.Size = new System.Drawing.Size(48, 17);
@@ -616,23 +682,6 @@
             this.label2.TabIndex = 54;
             this.label2.Text = "Buscar por:";
             // 
-            // btnbuscar
-            // 
-            this.btnbuscar.BackColor = System.Drawing.Color.White;
-            this.btnbuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnbuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnbuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnbuscar.IconColor = System.Drawing.Color.Black;
-            this.btnbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnbuscar.IconSize = 16;
-            this.btnbuscar.Location = new System.Drawing.Point(411, 6);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(26, 23);
-            this.btnbuscar.TabIndex = 54;
-            this.btnbuscar.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -655,6 +704,7 @@
             this.cmbFilas.TabIndex = 27;
             this.cmbFilas.TextChanged += new System.EventHandler(this.cmbFilas_TextChanged);
             this.cmbFilas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFilas_KeyPress);
+            this.cmbFilas.Leave += new System.EventHandler(this.cmbFilas_Leave);
             // 
             // lblTitlePnl
             // 
@@ -823,23 +873,29 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripDropDownButton tsdMostrarCol;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCod;
-        private System.Windows.Forms.ToolStripMenuItem tsmiNumL;
-        private System.Windows.Forms.ToolStripMenuItem tsmiNombreM;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCantidadM;
-        private System.Windows.Forms.ToolStripMenuItem tsmiVencimientoM;
         private System.Windows.Forms.ToolStripMenuItem tsmiNombreC;
         private System.Windows.Forms.ToolStripMenuItem asdfasdfToolStripMenuItem;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblTotalRow;
-        private FontAwesome.Sharp.IconButton btnbuscar;
         private System.Windows.Forms.ComboBox cmbFiltro;
-        private System.Windows.Forms.ToolStripMenuItem tsmiEstantesList;
+        private System.Windows.Forms.ToolStripMenuItem tsmenuEstante;
         private System.Windows.Forms.ToolStripMenuItem tsmiNombreE;
         private System.Windows.Forms.ToolStripMenuItem tsmiNumeroE;
         private System.Windows.Forms.ToolStripMenuItem tsmiSectorE;
-        private System.Windows.Forms.ToolStripMenuItem tsmiID;
         private System.Windows.Forms.ToolStripMenuItem tsmiNombreP;
+        private System.Windows.Forms.DateTimePicker dtaHastaVTO;
+        private System.Windows.Forms.Label lblHasta;
+        private System.Windows.Forms.DateTimePicker dtaDesdeVTO;
+        private System.Windows.Forms.Label lblDesde;
+        private System.Windows.Forms.ToolStripMenuItem tsmenuMedicamento;
+        private System.Windows.Forms.ToolStripMenuItem tsmiID;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCod;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNumL;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCantidadM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVencimientoM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVentaM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCompraM;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNombreM;
         private FarmaciaDBDataSet farmaciaDBDataSet;
         private System.Windows.Forms.BindingSource vistaInventarioBindingSource;
         private FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter vistaInventarioTableAdapter;
@@ -849,14 +905,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vTODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioCompraDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estanteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sectorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numEstanteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoríaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DateTimePicker dtaHastaVTO;
-        private System.Windows.Forms.Label lblHasta;
-        private System.Windows.Forms.DateTimePicker dtaDesdeVTO;
-        private System.Windows.Forms.Label lblDesde;
     }
 }
