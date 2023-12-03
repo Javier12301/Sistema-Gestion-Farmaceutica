@@ -133,6 +133,16 @@ namespace Sistema.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DeleteRed {
+            get {
+                object obj = ResourceManager.GetObject("DeleteRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EditingIcon {
             get {
                 object obj = ResourceManager.GetObject("EditingIcon", resourceCulture);

@@ -69,13 +69,23 @@ CREATE TABLE PRODUCTO (
     Stock INT NOT NULL DEFAULT 0,
     PrecioCompra DECIMAL(10,2) DEFAULT 0,
     PrecioVenta DECIMAL(10,2) DEFAULT 0,
+	Estado BIT,
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
+SET IDENTITY_INSERT PRODUCTO ON;
+INSERT INTO PRODUCTO (ProductoID, Codigo, Nombre, CategoriaID, EstanteID, ProveedorID, Stock, PrecioCompra, PrecioVenta, Estado)
+VALUES (0, 'N/A', 'N/A', 0, 0, 0, 0, 0, 0, 1);
+SET IDENTITY_INSERT PRODUCTO OFF;
 GO
 
 
 
-SELECT * FROM PRODUCTO;
+
+SELECT * FROM MEDICAMENTO;
+
+DELETE FROM PRODUCTO
+
+
 
 CREATE TABLE MEDICAMENTO (
     MedicamentoID INT IDENTITY PRIMARY KEY,
@@ -91,8 +101,13 @@ CREATE TABLE MEDICAMENTO (
     PrecioCompra DECIMAL(10,2) DEFAULT 0,
     Refrigerado BIT DEFAULT 0,
     BajoReceta BIT DEFAULT 0,
+	Estado BIT,
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
+SET IDENTITY_INSERT MEDICAMENTO ON;
+INSERT INTO MEDICAMENTO (MedicamentoID, Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Stock, PrecioVenta, PrecioCompra, Refrigerado, BajoReceta, Estado)
+VALUES (0, 'N/A', 'N/A', 'N/A', null, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+SET IDENTITY_INSERT MEDICAMENTO OFF;
 GO
 
 SELECT * FROM VistaInventario
@@ -133,6 +148,7 @@ CREATE TABLE DETALLE_COMPRA (
     DetalleCompraID INT IDENTITY PRIMARY KEY,
     CompraID INT REFERENCES COMPRA(CompraID),
     ProductoID INT REFERENCES PRODUCTO(ProductoID),
+	MedicamentoID INT REFERENCES MEDICAMENTO(MedicamentoID),
     PrecioCompra DECIMAL(10,2) DEFAULT 0,
     PrecioVenta DECIMAL(10,2) DEFAULT 0,
     Cantidad INT,
@@ -140,6 +156,8 @@ CREATE TABLE DETALLE_COMPRA (
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
 GO
+
+
 
 CREATE TABLE DETALLE_VENTA (
     DetalleVentaID INT IDENTITY PRIMARY KEY,

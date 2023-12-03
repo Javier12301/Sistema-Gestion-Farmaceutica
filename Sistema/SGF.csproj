@@ -98,10 +98,12 @@
     <Compile Include="Controles\Interfaz\PaletaColores.cs" />
     <Compile Include="Controles\Interfaz\Shortcuts.cs" />
     <Compile Include="Controles\Logica\CategoriaLogica.cs" />
+    <Compile Include="Controles\Logica\CompraLogica.cs" />
     <Compile Include="Controles\Logica\EstanteLogica.cs" />
     <Compile Include="Controles\Logica\MedicamentoLogica.cs" />
     <Compile Include="Controles\Logica\ProductoLogica.cs" />
     <Compile Include="Controles\Logica\ProveedorLogica.cs" />
+    <Compile Include="Controles\Logica\VentaLogica.cs" />
     <Compile Include="FarmaciaDBDataSet.cs">
       <DependentUpon>FarmaciaDBDataSet.xsd</DependentUpon>
     </Compile>
@@ -380,7 +382,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\system-icon-default\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -407,6 +408,7 @@
       <DependentUpon>FarmaciaDBContext.edmx</DependentUpon>
       <LastGenOutput>FarmaciaDBContext.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\system-icon-default\DeleteRed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

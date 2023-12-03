@@ -23,5 +23,9 @@ namespace Sistema.Models
         public string Sector { get; set; }
         public int Num__Estante { get; set; }
         public string Categoría { get; set; }
+        public int ID { get; set; }
+        public Nullable<decimal> PrecioCompra { get; set; }
+        public Nullable<decimal> PrecioVenta { get; set; }
+        public string Proveedor { get; set; }
     }
 }

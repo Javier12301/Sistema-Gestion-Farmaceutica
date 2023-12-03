@@ -38,6 +38,7 @@
         <AssociationConnector Association="FarmaciaDBModel.FK__PRODUCTO__Provee__245D67DE" ManuallyRouted="false" />
         <AssociationConnector Association="FarmaciaDBModel.FK__USUARIO__RolID__4E53A1AA" ManuallyRouted="false" />
         <AssociationConnector Association="FarmaciaDBModel.FK__VENTA__UsuarioID__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_C__Medic__0697FACD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

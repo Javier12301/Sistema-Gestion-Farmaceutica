@@ -22,8 +22,10 @@ namespace Sistema.Models
         public Nullable<int> Cantidad { get; set; }
         public Nullable<decimal> MontoTotal { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public Nullable<int> MedicamentoID { get; set; }
     
         public virtual COMPRA COMPRA { get; set; }
         public virtual PRODUCTO PRODUCTO { get; set; }
+        public virtual MEDICAMENTO MEDICAMENTO { get; set; }
     }
 }

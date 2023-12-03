@@ -31,7 +31,7 @@ namespace Sistema
                 return instance;
             }
         }
-        
+
         PaletaColores palette = PaletaColores.GetInstance;
 
         public void OpenMailLink()
@@ -213,6 +213,53 @@ namespace Sistema
             foreach (TextBoxBase txtbox in textBoxes)
             {
                 txtbox.Text = "";
+            }
+        }
+
+        public bool CheckDecimalFormatPrice(TextBox textbox, ErrorProvider errorActivator)
+        {
+            // Intentamos convertir el texto a decimal
+            if (!decimal.TryParse(textbox.Text, out decimal result))
+            {
+                // Si la conversión falla, establecemos el error
+                errorActivator.SetError(textbox, "Formato de moneda incorrecto");
+                textbox.Focus();
+                return false;
+            }
+            else
+            {
+                if(textbox.Text == string.Empty)
+                {
+                    textbox.Text = "0";
+                }
+                errorActivator.SetError(textbox, "");
+                return true;
+            }
+        }
+
+        public void OnlyNumberAndDecimalPoint(TextBox textbox, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (textbox.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
+                    {
+                        e.Handled = false;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
+                }
             }
         }
 

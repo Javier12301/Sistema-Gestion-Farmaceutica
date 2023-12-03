@@ -124,20 +124,20 @@
   <data name="216242_home_icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\216242_home_icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ModifyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ModifyIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home-page" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\black-icon\home-page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\black-icon\rack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="home-page" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\black-icon\home-page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ModifyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifyIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2931181_lines_list_menu_checklist_navigation_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2931181_lines_list_menu_checklist_navigation_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="216242_home_icon (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\216242_home_icon (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\black-icon\tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="216242_home_icon (3)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\216242_home_icon (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,13 +166,16 @@
   <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\black-icon\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2931181_lines_list_menu_checklist_navigation_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2931181_lines_list_menu_checklist_navigation_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\black-icon\tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="216242_home_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\216242_home_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="supplier" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\black-icon\supplier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DeleteRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\system-icon-default\DeleteRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

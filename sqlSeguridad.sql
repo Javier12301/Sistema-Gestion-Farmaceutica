@@ -32,4 +32,22 @@ CREATE TABLE USUARIO (
 );
 GO
 
+SELECT * FROM ROL
+
+ insert into rol (Descripcion)
+ values('ADMINISTRADOR')
+
+ GO
+
+ insert into rol (Descripcion)
+ values('EMPLEADO')
+
+ GO
+
+ insert into USUARIO(Documento,NombreCompleto,Correo,Clave,RolID,Estado)
+ values 
+ ('44608055','ADMIN','javi@gmail.com','123',1,1)
+
+ GO
+
 DBCC CHECKIDENT ('CATEGORIA', RESEED, 0);

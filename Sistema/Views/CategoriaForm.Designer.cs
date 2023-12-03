@@ -33,7 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtNombreCat = new Guna.UI.WinForms.GunaLineTextBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
-            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
             this.lblNombreE = new System.Windows.Forms.Label();
             this.lblDescE = new System.Windows.Forms.Label();
             this.txtDescripcionCat = new System.Windows.Forms.TextBox();
@@ -41,27 +40,28 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvCategoriesList = new Zuby.ADGV.AdvancedDataGridView();
-            this.bindingSourceCategories = new System.Windows.Forms.BindingSource(this.components);
-            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
-            this.lblTotalRow = new System.Windows.Forms.Label();
-            this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
-            this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cATEGORIATableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.CATEGORIATableAdapter();
             this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcDescripcionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCategories = new System.Windows.Forms.BindingSource(this.components);
+            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
+            this.lblTotalRow = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cATEGORIATableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.CATEGORIATableAdapter();
+            this.btnModifyG = new Guna.UI.WinForms.GunaButton();
+            this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
+            this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.pnlButton.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriesList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -109,17 +109,6 @@
             this.lblTitlePnl.Size = new System.Drawing.Size(131, 21);
             this.lblTitlePnl.TabIndex = 26;
             this.lblTitlePnl.Text = "Nueva Categoría";
-            // 
-            // pctLineSeparator
-            // 
-            this.pctLineSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pctLineSeparator.Location = new System.Drawing.Point(1, 28);
-            this.pctLineSeparator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
-            this.pctLineSeparator.Name = "pctLineSeparator";
-            this.pctLineSeparator.Size = new System.Drawing.Size(276, 2);
-            this.pctLineSeparator.TabIndex = 25;
-            this.pctLineSeparator.TabStop = false;
-            this.pctLineSeparator.Tag = "txtUser";
             // 
             // lblNombreE
             // 
@@ -215,33 +204,6 @@
             this.panel2.Size = new System.Drawing.Size(286, 325);
             this.panel2.TabIndex = 21;
             // 
-            // btnModifyG
-            // 
-            this.btnModifyG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModifyG.Animated = true;
-            this.btnModifyG.AnimationHoverSpeed = 0.07F;
-            this.btnModifyG.AnimationSpeed = 0.03F;
-            this.btnModifyG.BackColor = System.Drawing.Color.Transparent;
-            this.btnModifyG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
-            this.btnModifyG.BorderColor = System.Drawing.Color.Black;
-            this.btnModifyG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnModifyG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnModifyG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnModifyG.ForeColor = System.Drawing.Color.White;
-            this.btnModifyG.Image = global::Sistema.Properties.Resources.PencilIcon;
-            this.btnModifyG.ImageSize = new System.Drawing.Size(15, 15);
-            this.btnModifyG.Location = new System.Drawing.Point(206, 2);
-            this.btnModifyG.Name = "btnModifyG";
-            this.btnModifyG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
-            this.btnModifyG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnModifyG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnModifyG.OnHoverImage = null;
-            this.btnModifyG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(176)))), ((int)(((byte)(81)))));
-            this.btnModifyG.Radius = 8;
-            this.btnModifyG.Size = new System.Drawing.Size(35, 25);
-            this.btnModifyG.TabIndex = 36;
-            this.btnModifyG.Click += new System.EventHandler(this.btnModifyG_Click);
-            // 
             // dgvCategoriesList
             // 
             this.dgvCategoriesList.AllowUserToAddRows = false;
@@ -276,6 +238,37 @@
             this.dgvCategoriesList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEnter);
             this.dgvCategoriesList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCategoriesList_DataError);
             // 
+            // dgvcID
+            // 
+            this.dgvcID.DataPropertyName = "CategoriaID";
+            this.dgvcID.FillWeight = 31.9797F;
+            this.dgvcID.HeaderText = "ID";
+            this.dgvcID.MinimumWidth = 22;
+            this.dgvcID.Name = "dgvcID";
+            this.dgvcID.ReadOnly = true;
+            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcID.Visible = false;
+            // 
+            // dgvcNombreC
+            // 
+            this.dgvcNombreC.DataPropertyName = "Nombre";
+            this.dgvcNombreC.FillWeight = 134.0101F;
+            this.dgvcNombreC.HeaderText = "Nombre";
+            this.dgvcNombreC.MinimumWidth = 22;
+            this.dgvcNombreC.Name = "dgvcNombreC";
+            this.dgvcNombreC.ReadOnly = true;
+            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcDescripcionC
+            // 
+            this.dgvcDescripcionC.DataPropertyName = "Descripcion";
+            this.dgvcDescripcionC.FillWeight = 134.0101F;
+            this.dgvcDescripcionC.HeaderText = "Descripcion";
+            this.dgvcDescripcionC.MinimumWidth = 22;
+            this.dgvcDescripcionC.Name = "dgvcDescripcionC";
+            this.dgvcDescripcionC.ReadOnly = true;
+            this.dgvcDescripcionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // bindingSourceCategories
             // 
             this.bindingSourceCategories.DataMember = "CATEGORIA";
@@ -298,6 +291,49 @@
             this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
             this.lblTotalRow.TabIndex = 34;
             this.lblTotalRow.Text = "Filas Totales: n";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(-2, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 21);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Lista de Categorías";
+            // 
+            // cATEGORIATableAdapter
+            // 
+            this.cATEGORIATableAdapter.ClearBeforeFill = true;
+            // 
+            // btnModifyG
+            // 
+            this.btnModifyG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModifyG.Animated = true;
+            this.btnModifyG.AnimationHoverSpeed = 0.07F;
+            this.btnModifyG.AnimationSpeed = 0.03F;
+            this.btnModifyG.BackColor = System.Drawing.Color.Transparent;
+            this.btnModifyG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
+            this.btnModifyG.BorderColor = System.Drawing.Color.Black;
+            this.btnModifyG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnModifyG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnModifyG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnModifyG.ForeColor = System.Drawing.Color.White;
+            this.btnModifyG.Image = global::Sistema.Properties.Resources.PencilIcon;
+            this.btnModifyG.ImageSize = new System.Drawing.Size(15, 15);
+            this.btnModifyG.Location = new System.Drawing.Point(206, 2);
+            this.btnModifyG.Name = "btnModifyG";
+            this.btnModifyG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
+            this.btnModifyG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnModifyG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnModifyG.OnHoverImage = null;
+            this.btnModifyG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(176)))), ((int)(((byte)(81)))));
+            this.btnModifyG.Radius = 8;
+            this.btnModifyG.Size = new System.Drawing.Size(35, 25);
+            this.btnModifyG.TabIndex = 36;
+            this.btnModifyG.Click += new System.EventHandler(this.btnModifyG_Click);
             // 
             // btnGuardarG
             // 
@@ -354,18 +390,6 @@
             this.btnEliminarG.TabIndex = 22;
             this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(-2, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 21);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Lista de Categorías";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -379,40 +403,16 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "txtUser";
             // 
-            // cATEGORIATableAdapter
+            // pctLineSeparator
             // 
-            this.cATEGORIATableAdapter.ClearBeforeFill = true;
-            // 
-            // dgvcID
-            // 
-            this.dgvcID.DataPropertyName = "CategoriaID";
-            this.dgvcID.FillWeight = 31.9797F;
-            this.dgvcID.HeaderText = "ID";
-            this.dgvcID.MinimumWidth = 22;
-            this.dgvcID.Name = "dgvcID";
-            this.dgvcID.ReadOnly = true;
-            this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dgvcID.Visible = false;
-            // 
-            // dgvcNombreC
-            // 
-            this.dgvcNombreC.DataPropertyName = "Nombre";
-            this.dgvcNombreC.FillWeight = 134.0101F;
-            this.dgvcNombreC.HeaderText = "Nombre";
-            this.dgvcNombreC.MinimumWidth = 22;
-            this.dgvcNombreC.Name = "dgvcNombreC";
-            this.dgvcNombreC.ReadOnly = true;
-            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgvcDescripcionC
-            // 
-            this.dgvcDescripcionC.DataPropertyName = "Descripcion";
-            this.dgvcDescripcionC.FillWeight = 134.0101F;
-            this.dgvcDescripcionC.HeaderText = "Descripcion";
-            this.dgvcDescripcionC.MinimumWidth = 22;
-            this.dgvcDescripcionC.Name = "dgvcDescripcionC";
-            this.dgvcDescripcionC.ReadOnly = true;
-            this.dgvcDescripcionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.pctLineSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pctLineSeparator.Location = new System.Drawing.Point(1, 28);
+            this.pctLineSeparator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
+            this.pctLineSeparator.Name = "pctLineSeparator";
+            this.pctLineSeparator.Size = new System.Drawing.Size(276, 2);
+            this.pctLineSeparator.TabIndex = 25;
+            this.pctLineSeparator.TabStop = false;
+            this.pctLineSeparator.Tag = "txtUser";
             // 
             // CategoriaForm
             // 
@@ -429,7 +429,6 @@
             this.Load += new System.EventHandler(this.Categorias_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).EndInit();
             this.pnlButton.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -437,6 +436,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).EndInit();
             this.ResumeLayout(false);
 
         }

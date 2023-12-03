@@ -28,35 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprasForm));
             this.pnlForm = new System.Windows.Forms.Panel();
-            this.btnregistrar = new FontAwesome.Sharp.IconButton();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.txttotalpagar = new System.Windows.Forms.TextBox();
-            this.dgvdata = new System.Windows.Forms.DataGridView();
-            this.IdProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btneliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnagregarproducto = new FontAwesome.Sharp.IconButton();
+            this.txtTotalPagar = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnBuscarItem = new FontAwesome.Sharp.IconButton();
             this.txtcodproducto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtproducto = new System.Windows.Forms.TextBox();
-            this.txtcantidad = new System.Windows.Forms.NumericUpDown();
+            this.txtCantidad = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtprecioventa = new System.Windows.Forms.TextBox();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtpreciocompra = new System.Windows.Forms.TextBox();
+            this.txtPrecioCompra = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnbuscarProveedor = new FontAwesome.Sharp.IconButton();
+            this.btnBuscarProveedor = new FontAwesome.Sharp.IconButton();
             this.label14 = new System.Windows.Forms.Label();
             this.txtdocproveedor = new System.Windows.Forms.TextBox();
             this.txtnombreproveedor = new System.Windows.Forms.TextBox();
@@ -68,12 +63,25 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblCategorias = new System.Windows.Forms.Label();
             this.helpProvider = new System.Windows.Forms.HelpProvider();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dgvcMedicamentoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProductoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcPrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProveedorRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcEsMedicamento = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlForm
@@ -82,11 +90,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlForm.BackColor = System.Drawing.Color.White;
-            this.pnlForm.Controls.Add(this.btnregistrar);
+            this.pnlForm.Controls.Add(this.dgvData);
+            this.pnlForm.Controls.Add(this.btnRegistrar);
             this.pnlForm.Controls.Add(this.label1);
-            this.pnlForm.Controls.Add(this.txttotalpagar);
-            this.pnlForm.Controls.Add(this.dgvdata);
-            this.pnlForm.Controls.Add(this.btnagregarproducto);
+            this.pnlForm.Controls.Add(this.txtTotalPagar);
+            this.pnlForm.Controls.Add(this.btnAgregar);
             this.pnlForm.Controls.Add(this.groupBox3);
             this.pnlForm.Controls.Add(this.groupBox2);
             this.pnlForm.Controls.Add(this.groupBox1);
@@ -96,23 +104,71 @@
             this.pnlForm.Size = new System.Drawing.Size(639, 391);
             this.pnlForm.TabIndex = 11;
             // 
-            // btnregistrar
+            // dgvData
             // 
-            this.btnregistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnregistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnregistrar.IconChar = FontAwesome.Sharp.IconChar.Tag;
-            this.btnregistrar.IconColor = System.Drawing.Color.DodgerBlue;
-            this.btnregistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnregistrar.IconSize = 25;
-            this.btnregistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnregistrar.Location = new System.Drawing.Point(510, 254);
-            this.btnregistrar.Name = "btnregistrar";
-            this.btnregistrar.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnregistrar.Size = new System.Drawing.Size(122, 36);
-            this.btnregistrar.TabIndex = 205;
-            this.btnregistrar.Text = "Registrar";
-            this.btnregistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnregistrar.UseVisualStyleBackColor = true;
+            this.dgvData.AllowUserToAddRows = false;
+            this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvcMedicamentoID,
+            this.dgvcProductoID,
+            this.dgvcProveedorID,
+            this.dgvcProductoNombre,
+            this.dgvcPrecioCompra,
+            this.dgvcPrecioVenta,
+            this.dgvcCantidad,
+            this.dgvcSubTotal,
+            this.dgvcProveedorRazonSocial,
+            this.dgvcEsMedicamento,
+            this.btnEliminar});
+            this.dgvData.Location = new System.Drawing.Point(12, 209);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvData.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgvData.RowTemplate.Height = 40;
+            this.dgvData.Size = new System.Drawing.Size(489, 170);
+            this.dgvData.TabIndex = 206;
+            this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
+            this.dgvData.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvData_CellPainting);
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.Tag;
+            this.btnRegistrar.IconColor = System.Drawing.Color.DodgerBlue;
+            this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegistrar.IconSize = 25;
+            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRegistrar.Location = new System.Drawing.Point(510, 254);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnRegistrar.Size = new System.Drawing.Size(122, 36);
+            this.btnRegistrar.TabIndex = 205;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // label1
             // 
@@ -126,118 +182,36 @@
             this.label1.TabIndex = 203;
             this.label1.Text = "Total a Pagar:";
             // 
-            // txttotalpagar
+            // txtTotalPagar
             // 
-            this.txttotalpagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttotalpagar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txttotalpagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalpagar.Location = new System.Drawing.Point(510, 227);
-            this.txttotalpagar.Name = "txttotalpagar";
-            this.txttotalpagar.ReadOnly = true;
-            this.txttotalpagar.Size = new System.Drawing.Size(122, 21);
-            this.txttotalpagar.TabIndex = 204;
-            this.txttotalpagar.Text = "0";
+            this.txtTotalPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalPagar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTotalPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPagar.Location = new System.Drawing.Point(510, 227);
+            this.txtTotalPagar.Name = "txtTotalPagar";
+            this.txtTotalPagar.ReadOnly = true;
+            this.txtTotalPagar.Size = new System.Drawing.Size(122, 21);
+            this.txtTotalPagar.TabIndex = 204;
+            this.txtTotalPagar.Text = "0";
             // 
-            // dgvdata
+            // btnAgregar
             // 
-            this.dgvdata.AllowUserToAddRows = false;
-            this.dgvdata.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvdata.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdProducto,
-            this.Producto,
-            this.PrecioCompra,
-            this.PrecioVenta,
-            this.Cantidad,
-            this.SubTotal,
-            this.btneliminar});
-            this.dgvdata.Location = new System.Drawing.Point(12, 209);
-            this.dgvdata.MultiSelect = false;
-            this.dgvdata.Name = "dgvdata";
-            this.dgvdata.ReadOnly = true;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvdata.RowTemplate.Height = 28;
-            this.dgvdata.Size = new System.Drawing.Size(489, 170);
-            this.dgvdata.TabIndex = 202;
-            // 
-            // IdProducto
-            // 
-            this.IdProducto.HeaderText = "IdProducto";
-            this.IdProducto.Name = "IdProducto";
-            this.IdProducto.ReadOnly = true;
-            this.IdProducto.Visible = false;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            // 
-            // PrecioCompra
-            // 
-            this.PrecioCompra.HeaderText = "Precio Compra";
-            this.PrecioCompra.Name = "PrecioCompra";
-            this.PrecioCompra.ReadOnly = true;
-            // 
-            // PrecioVenta
-            // 
-            this.PrecioVenta.HeaderText = "PrecioVenta";
-            this.PrecioVenta.Name = "PrecioVenta";
-            this.PrecioVenta.ReadOnly = true;
-            this.PrecioVenta.Visible = false;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // SubTotal
-            // 
-            this.SubTotal.HeaderText = "Sub Total";
-            this.SubTotal.Name = "SubTotal";
-            this.SubTotal.ReadOnly = true;
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.HeaderText = "";
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.ReadOnly = true;
-            this.btneliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btneliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // btnagregarproducto
-            // 
-            this.btnagregarproducto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnagregarproducto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnagregarproducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnagregarproducto.IconChar = FontAwesome.Sharp.IconChar.Add;
-            this.btnagregarproducto.IconColor = System.Drawing.Color.ForestGreen;
-            this.btnagregarproducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnagregarproducto.IconSize = 30;
-            this.btnagregarproducto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnagregarproducto.Location = new System.Drawing.Point(573, 142);
-            this.btnagregarproducto.Name = "btnagregarproducto";
-            this.btnagregarproducto.Size = new System.Drawing.Size(60, 55);
-            this.btnagregarproducto.TabIndex = 201;
-            this.btnagregarproducto.Text = "Agregar";
-            this.btnagregarproducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnagregarproducto.UseVisualStyleBackColor = true;
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.IconChar = FontAwesome.Sharp.IconChar.Add;
+            this.btnAgregar.IconColor = System.Drawing.Color.ForestGreen;
+            this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAgregar.IconSize = 30;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAgregar.Location = new System.Drawing.Point(573, 142);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(60, 55);
+            this.btnAgregar.TabIndex = 201;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // groupBox3
             // 
@@ -248,12 +222,12 @@
             this.groupBox3.Controls.Add(this.txtcodproducto);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtproducto);
-            this.groupBox3.Controls.Add(this.txtcantidad);
+            this.groupBox3.Controls.Add(this.txtCantidad);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.txtprecioventa);
+            this.groupBox3.Controls.Add(this.txtPrecioVenta);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.txtpreciocompra);
+            this.groupBox3.Controls.Add(this.txtPrecioCompra);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Location = new System.Drawing.Point(12, 132);
             this.groupBox3.Name = "groupBox3";
@@ -317,25 +291,25 @@
             this.txtproducto.Size = new System.Drawing.Size(152, 23);
             this.txtproducto.TabIndex = 3;
             // 
-            // txtcantidad
+            // txtCantidad
             // 
-            this.txtcantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtcantidad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcantidad.Location = new System.Drawing.Point(498, 41);
-            this.txtcantidad.Maximum = new decimal(new int[] {
+            this.txtCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(498, 41);
+            this.txtCantidad.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.txtcantidad.Minimum = new decimal(new int[] {
+            this.txtCantidad.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.txtcantidad.Name = "txtcantidad";
-            this.txtcantidad.Size = new System.Drawing.Size(49, 23);
-            this.txtcantidad.TabIndex = 6;
-            this.txtcantidad.Value = new decimal(new int[] {
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(49, 23);
+            this.txtCantidad.TabIndex = 6;
+            this.txtCantidad.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -353,14 +327,15 @@
             this.label5.TabIndex = 98;
             this.label5.Text = "Cantidad:";
             // 
-            // txtprecioventa
+            // txtPrecioVenta
             // 
-            this.txtprecioventa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtprecioventa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtprecioventa.Location = new System.Drawing.Point(414, 41);
-            this.txtprecioventa.Name = "txtprecioventa";
-            this.txtprecioventa.Size = new System.Drawing.Size(78, 23);
-            this.txtprecioventa.TabIndex = 5;
+            this.txtPrecioVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPrecioVenta.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioVenta.Location = new System.Drawing.Point(417, 42);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(62, 23);
+            this.txtPrecioVenta.TabIndex = 5;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // label8
             // 
@@ -386,14 +361,15 @@
             this.label7.TabIndex = 100;
             this.label7.Text = "Precio Venta:";
             // 
-            // txtpreciocompra
+            // txtPrecioCompra
             // 
-            this.txtpreciocompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtpreciocompra.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpreciocompra.Location = new System.Drawing.Point(330, 41);
-            this.txtpreciocompra.Name = "txtpreciocompra";
-            this.txtpreciocompra.Size = new System.Drawing.Size(78, 23);
-            this.txtpreciocompra.TabIndex = 4;
+            this.txtPrecioCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPrecioCompra.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioCompra.Location = new System.Drawing.Point(332, 41);
+            this.txtPrecioCompra.Name = "txtPrecioCompra";
+            this.txtPrecioCompra.Size = new System.Drawing.Size(66, 23);
+            this.txtPrecioCompra.TabIndex = 4;
+            this.txtPrecioCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompra_KeyPress);
             // 
             // label6
             // 
@@ -411,7 +387,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.btnbuscarProveedor);
+            this.groupBox2.Controls.Add(this.btnBuscarProveedor);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtdocproveedor);
             this.groupBox2.Controls.Add(this.txtnombreproveedor);
@@ -424,23 +400,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacion Proveedor";
             // 
-            // btnbuscarProveedor
+            // btnBuscarProveedor
             // 
-            this.btnbuscarProveedor.BackColor = System.Drawing.Color.White;
-            this.btnbuscarProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnbuscarProveedor.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnbuscarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbuscarProveedor.ForeColor = System.Drawing.Color.Black;
-            this.btnbuscarProveedor.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnbuscarProveedor.IconColor = System.Drawing.Color.Black;
-            this.btnbuscarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnbuscarProveedor.IconSize = 16;
-            this.btnbuscarProveedor.Location = new System.Drawing.Point(149, 37);
-            this.btnbuscarProveedor.Name = "btnbuscarProveedor";
-            this.btnbuscarProveedor.Size = new System.Drawing.Size(32, 23);
-            this.btnbuscarProveedor.TabIndex = 87;
-            this.btnbuscarProveedor.UseVisualStyleBackColor = false;
-            this.btnbuscarProveedor.Click += new System.EventHandler(this.btnbuscarProveedor_Click);
+            this.btnBuscarProveedor.BackColor = System.Drawing.Color.White;
+            this.btnBuscarProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarProveedor.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnBuscarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarProveedor.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarProveedor.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnBuscarProveedor.IconColor = System.Drawing.Color.Black;
+            this.btnBuscarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBuscarProveedor.IconSize = 16;
+            this.btnBuscarProveedor.Location = new System.Drawing.Point(149, 37);
+            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
+            this.btnBuscarProveedor.Size = new System.Drawing.Size(32, 23);
+            this.btnBuscarProveedor.TabIndex = 87;
+            this.btnBuscarProveedor.UseVisualStyleBackColor = false;
+            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnbuscarProveedor_Click);
             // 
             // label14
             // 
@@ -557,6 +533,88 @@
             this.lblCategorias.Text = "Registrar Compra";
             this.lblCategorias.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkRate = 400;
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
+            // 
+            // dgvcMedicamentoID
+            // 
+            this.dgvcMedicamentoID.HeaderText = "MedicamentoID";
+            this.dgvcMedicamentoID.Name = "dgvcMedicamentoID";
+            this.dgvcMedicamentoID.ReadOnly = true;
+            this.dgvcMedicamentoID.Visible = false;
+            // 
+            // dgvcProductoID
+            // 
+            this.dgvcProductoID.HeaderText = "ProductoID";
+            this.dgvcProductoID.Name = "dgvcProductoID";
+            this.dgvcProductoID.ReadOnly = true;
+            this.dgvcProductoID.Visible = false;
+            // 
+            // dgvcProveedorID
+            // 
+            this.dgvcProveedorID.HeaderText = "ProveedorID";
+            this.dgvcProveedorID.Name = "dgvcProveedorID";
+            this.dgvcProveedorID.ReadOnly = true;
+            this.dgvcProveedorID.Visible = false;
+            // 
+            // dgvcProductoNombre
+            // 
+            this.dgvcProductoNombre.FillWeight = 92.44585F;
+            this.dgvcProductoNombre.HeaderText = "Producto";
+            this.dgvcProductoNombre.Name = "dgvcProductoNombre";
+            this.dgvcProductoNombre.ReadOnly = true;
+            // 
+            // dgvcPrecioCompra
+            // 
+            this.dgvcPrecioCompra.FillWeight = 92.44585F;
+            this.dgvcPrecioCompra.HeaderText = "Precio Compra";
+            this.dgvcPrecioCompra.Name = "dgvcPrecioCompra";
+            this.dgvcPrecioCompra.ReadOnly = true;
+            // 
+            // dgvcPrecioVenta
+            // 
+            this.dgvcPrecioVenta.FillWeight = 92.44585F;
+            this.dgvcPrecioVenta.HeaderText = "Precio Venta";
+            this.dgvcPrecioVenta.Name = "dgvcPrecioVenta";
+            this.dgvcPrecioVenta.ReadOnly = true;
+            // 
+            // dgvcCantidad
+            // 
+            this.dgvcCantidad.FillWeight = 92.44585F;
+            this.dgvcCantidad.HeaderText = "Cantidad";
+            this.dgvcCantidad.Name = "dgvcCantidad";
+            this.dgvcCantidad.ReadOnly = true;
+            // 
+            // dgvcSubTotal
+            // 
+            this.dgvcSubTotal.FillWeight = 92.44585F;
+            this.dgvcSubTotal.HeaderText = "Sub Total";
+            this.dgvcSubTotal.Name = "dgvcSubTotal";
+            this.dgvcSubTotal.ReadOnly = true;
+            // 
+            // dgvcProveedorRazonSocial
+            // 
+            this.dgvcProveedorRazonSocial.HeaderText = "Proveedor";
+            this.dgvcProveedorRazonSocial.Name = "dgvcProveedorRazonSocial";
+            this.dgvcProveedorRazonSocial.ReadOnly = true;
+            // 
+            // dgvcEsMedicamento
+            // 
+            this.dgvcEsMedicamento.FillWeight = 113.4053F;
+            this.dgvcEsMedicamento.HeaderText = "Medicamento";
+            this.dgvcEsMedicamento.Name = "dgvcEsMedicamento";
+            this.dgvcEsMedicamento.ReadOnly = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.FillWeight = 124.3655F;
+            this.btnEliminar.HeaderText = "";
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
+            // 
             // ComprasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,14 +627,15 @@
             this.Load += new System.EventHandler(this.ComprasForm_Load);
             this.pnlForm.ResumeLayout(false);
             this.pnlForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -595,31 +654,36 @@
         private System.Windows.Forms.ComboBox cbotipodocumento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblCategorias;
-        private FontAwesome.Sharp.IconButton btnbuscarProveedor;
+        private FontAwesome.Sharp.IconButton btnBuscarProveedor;
         private System.Windows.Forms.GroupBox groupBox3;
         private FontAwesome.Sharp.IconButton btnBuscarItem;
         private System.Windows.Forms.TextBox txtcodproducto;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtproducto;
-        private System.Windows.Forms.NumericUpDown txtcantidad;
+        private System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtprecioventa;
+        private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtpreciocompra;
+        private System.Windows.Forms.TextBox txtPrecioCompra;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dgvdata;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
-        private System.Windows.Forms.DataGridViewButtonColumn btneliminar;
-        private FontAwesome.Sharp.IconButton btnagregarproducto;
-        private FontAwesome.Sharp.IconButton btnregistrar;
+        private FontAwesome.Sharp.IconButton btnAgregar;
+        private FontAwesome.Sharp.IconButton btnRegistrar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txttotalpagar;
+        private System.Windows.Forms.TextBox txtTotalPagar;
         private System.Windows.Forms.HelpProvider helpProvider;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcMedicamentoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcProductoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcProveedorID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcProductoNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcPrecioCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcPrecioVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSubTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcProveedorRazonSocial;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcEsMedicamento;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
     }
 }
