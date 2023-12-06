@@ -8,25 +8,38 @@ using Sistema.Models;
 using System.Data.Entity;
 using System.Windows.Forms;
 using System.Windows.Navigation;
+using System.Data;
 
 namespace Sistema.Controles.Logica
 {
     public class CategoriaLogica
     {
-        MedicamentoLogica medicineLogic = new MedicamentoLogica();
-        // Obtener cantidad total de categorias
-        public int GetTotalCategoriesCount()
+        // Manejo de instancias usando contexto 
+        
+
+        
+        // Devolver toList al datagridview para su datasource
+        public List<CATEGORIA> CargarDataGridView()
         {
             using (var db = new FarmaciaDBEntities())
             {
-                // No contar ID 0
+                List<CATEGORIA> categories = db.CATEGORIA.ToList();
+                return categories;
+            }
+        }
+
+        // Obtener cantidad total de categorias
+        public int CategoriaTotal()
+        {
+            using(var db = new FarmaciaDBEntities())
+            {
                 int categories = db.CATEGORIA.Count(c => c.CategoriaID > 0);
                 return categories;
             }
         }
 
 
-        public bool IsCategoryExist(int categoryID)
+        public bool ExisteCategoria(int categoryID)
         {
             using (var db = new FarmaciaDBEntities())
             {
@@ -37,7 +50,7 @@ namespace Sistema.Controles.Logica
 
 
         // Obtener lista de Categorias
-        public List<CATEGORIA> GetCategories(bool includeDefaultCategory)
+        public List<CATEGORIA> ObtenerCategorias(bool includeDefaultCategory)
         {
             using (var db = new FarmaciaDBEntities())
             {
@@ -56,7 +69,7 @@ namespace Sistema.Controles.Logica
         }
 
         // Obtener Categoria por ID
-        public CATEGORIA GetCategory(int categoryID)
+        public CATEGORIA ObtenerCategoria(int categoryID)
         {
             using (var db = new FarmaciaDBEntities())
             {
@@ -67,7 +80,7 @@ namespace Sistema.Controles.Logica
         }
 
         // Agregar Categoria
-        public bool AddCategory(CATEGORIA category)
+        public bool AgregarCategoria(CATEGORIA category)
         {
             using (var db = new FarmaciaDBEntities())
             {
@@ -88,11 +101,11 @@ namespace Sistema.Controles.Logica
 
 
         // Modificar Categoria
-        public bool ModifyCategory(CATEGORIA category)
+        public bool ModificarCategoria(CATEGORIA category)
         {
             using (var db = new FarmaciaDBEntities())
             {
-                CATEGORIA originalCategory = GetCategory(category.CategoriaID);
+                CATEGORIA originalCategory = ObtenerCategoria(category.CategoriaID);
                 if (originalCategory != null)
                 {
                     // Modificamos la categoria
@@ -112,26 +125,27 @@ namespace Sistema.Controles.Logica
         }
 
 
-        public bool DeleteCategory(int categoryID)
+        public bool EliminarCategoria(int categoryID)
         {
-            
+
             using (var db = new FarmaciaDBEntities())
             {
                 // Buscamos la categoría por ID
                 CATEGORIA category = db.CATEGORIA.Find(categoryID);
+                MedicamentoLogica _medicinaLogica = new MedicamentoLogica();
                 if (category != null)
                 {
-                    bool hasAssociatedMedicine = medicineLogic.HasMedicineCategoryAssociated(db, categoryID);
+                    bool hasAssociatedMedicine = _medicinaLogica.HasMedicineCategoryAssociated(db, categoryID);
 
                     if (hasAssociatedMedicine)
                     {
-                        string categoryName = GetCategory(categoryID).Nombre;
+                        string categoryName = ObtenerCategoria(categoryID).Nombre;
                         string confirmationMessage = $"Existen medicamentos asociados a la categoría: \"{categoryName}\". ¿Desea reasignar los medicamentos como \"sin categoría\" o cancelar la operación?";
                         DialogResult userConfirmation = MessageBox.Show(confirmationMessage, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (userConfirmation == DialogResult.Yes)
                         {
-                            medicineLogic.ReassignDefaultCategoryMedicine(db, categoryID);
+                            _medicinaLogica.ReassignDefaultCategoryMedicine(db, categoryID);
                         }
                         else
                         {
@@ -151,11 +165,7 @@ namespace Sistema.Controles.Logica
                 }
             }
         }
-
-
-
-
-        //public bool DeleteCategory(int categoryID)
+        //public bool EliminarCategoria(int categoryID)
         //{
         //    using (var db = new FarmaciaDBEntities())
         //    {
@@ -167,7 +177,7 @@ namespace Sistema.Controles.Logica
 
         //            if (hasAssociatedMedicine)
         //            {
-        //                string categoryName = GetCategory(categoryID).Nombre;
+        //                string categoryName = ObtenerCategoria(categoryID).Nombre;
         //                string confirmationMessage = "Existen medicamentos asociados a la categoría \"" + categoryName + "\". ¿Está seguro de que desea eliminar la categoría y reasignar los medicamentos a la categoría predeterminada?";
         //                DialogResult userConfirmation = MessageBox.Show(confirmationMessage, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

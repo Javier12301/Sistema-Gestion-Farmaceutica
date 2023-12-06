@@ -20,11 +20,11 @@ namespace Sistema
         public LoginForm()
         {
             InitializeComponent();
-            
+
         }
 
         //Global
-        Controladora controladora = Controladora.GetInstance;
+        Controladora controladora = Controladora.ObtenerInstancia;
         Shortcuts shortcuts = new Shortcuts();
         //Variable booleana para controlar el estado del ojo, por defecto lo mejor es false
         private bool passwordVisible = false;
@@ -35,14 +35,14 @@ namespace Sistema
         private void LoginForm_Load(object sender, EventArgs e)
         {
             showPasswordIcon();
-            
+
         }
 
         private void lnkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                controladora.OpenMailLink();
+                controladora.AbrirEnlaceCorreo();
             }
             catch
             {
@@ -75,20 +75,20 @@ namespace Sistema
             if (passwordVisible)
             {
                 passwordVisible = false;
-                controladora.ShowPassword(txtPassword);
+                controladora.MostrarContraseña(txtPassword);
                 btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Solid;
             }
             else
             {
                 passwordVisible = true;
-                controladora.HidePassword(txtPassword);
+                controladora.OcultarContraseña(txtPassword);
                 btnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Regular;
             }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            bool verificar = controladora.VerifyCredentials(txtUser, txtPassword);
+            bool verificar = controladora.VerificarCredenciales(txtUser, txtPassword);
             if (verificar)
             {
                 PrincipalForm principalForm = new PrincipalForm();
@@ -109,10 +109,10 @@ namespace Sistema
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                bool verificar = controladora.VerifyCredentials(txtUser, txtPassword);
+                bool verificar = controladora.VerificarCredenciales(txtUser, txtPassword);
                 if (verificar)
                 {
-                    
+
                     PrincipalForm prinicpalForm = new PrincipalForm();
                     this.Hide();
                     if (prinicpalForm.ShowDialog() == DialogResult.Cancel)
@@ -127,7 +127,7 @@ namespace Sistema
             }
         }
 
-        
+
 
         private void btnForgotPassword_MouseHover(object sender, EventArgs e)
         {
@@ -138,6 +138,10 @@ namespace Sistema
         {
             btnForgotPassword.ForeColor = btnForgotPasswordLeave;
         }
-  
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

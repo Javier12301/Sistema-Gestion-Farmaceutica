@@ -63,15 +63,19 @@
             this.chkBajoReceta = new System.Windows.Forms.CheckBox();
             this.chkRefrigeado = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.cmbEstadoM = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCosto = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtGanancia = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtCosto = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.pnlControl.SuspendLayout();
@@ -86,6 +90,8 @@
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,7 +153,7 @@
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.errorProvider.SetIconAlignment(this.btnGuardar, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGuardar.Location = new System.Drawing.Point(358, 382);
+            this.btnGuardar.Location = new System.Drawing.Point(358, 422);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(103, 31);
             this.btnGuardar.TabIndex = 22;
@@ -162,7 +168,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(463, 347);
+            this.panel1.Size = new System.Drawing.Size(463, 387);
             this.panel1.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -177,11 +183,13 @@
             this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Controls.Add(this.panel9);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.panel10);
+            this.flowLayoutPanel1.Controls.Add(this.panel12);
             this.flowLayoutPanel1.Controls.Add(this.panel11);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(460, 341);
-            this.flowLayoutPanel1.TabIndex = 38;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(460, 384);
+            this.flowLayoutPanel1.TabIndex = 39;
             // 
             // panel3
             // 
@@ -482,21 +490,112 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Propiedades";
             // 
+            // panel10
+            // 
+            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel10.Controls.Add(this.cmbEstadoM);
+            this.panel10.Controls.Add(this.lblEstado);
+            this.panel10.Location = new System.Drawing.Point(3, 267);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(219, 60);
+            this.panel10.TabIndex = 43;
+            // 
+            // cmbEstadoM
+            // 
+            this.cmbEstadoM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbEstadoM.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmbEstadoM.FormattingEnabled = true;
+            this.cmbEstadoM.Location = new System.Drawing.Point(7, 30);
+            this.cmbEstadoM.Name = "cmbEstadoM";
+            this.cmbEstadoM.Size = new System.Drawing.Size(205, 25);
+            this.cmbEstadoM.TabIndex = 14;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblEstado.Location = new System.Drawing.Point(5, 7);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(128, 17);
+            this.lblEstado.TabIndex = 0;
+            this.lblEstado.Text = "Estado de producto";
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel12.Controls.Add(this.label5);
+            this.panel12.Controls.Add(this.txtCosto);
+            this.panel12.Controls.Add(this.label1);
+            this.panel12.Controls.Add(this.txtPrecio);
+            this.panel12.Location = new System.Drawing.Point(228, 267);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(219, 60);
+            this.panel12.TabIndex = 44;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(4, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Costo:";
+            // 
+            // txtCosto
+            // 
+            this.txtCosto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCosto.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCosto.Enabled = false;
+            this.txtCosto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtCosto.Location = new System.Drawing.Point(57, 4);
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(147, 25);
+            this.txtCosto.TabIndex = 19;
+            this.txtCosto.Text = "0";
+            this.txtCosto.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(5, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Precio:";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPrecio.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPrecio.Enabled = false;
+            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtPrecio.Location = new System.Drawing.Point(57, 32);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(147, 25);
+            this.txtPrecio.TabIndex = 20;
+            this.txtPrecio.Text = "0";
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
+            // 
             // panel11
             // 
             this.panel11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel11.Controls.Add(this.txtGanancia);
             this.panel11.Controls.Add(this.label8);
-            this.panel11.Controls.Add(this.txtCosto);
-            this.panel11.Controls.Add(this.label5);
             this.panel11.Controls.Add(this.txtStock);
             this.panel11.Controls.Add(this.label34);
-            this.panel11.Controls.Add(this.txtPrecio);
-            this.panel11.Controls.Add(this.label1);
-            this.panel11.Location = new System.Drawing.Point(3, 267);
+            this.panel11.Location = new System.Drawing.Point(3, 333);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(444, 67);
-            this.panel11.TabIndex = 18;
+            this.panel11.Size = new System.Drawing.Size(444, 42);
+            this.panel11.TabIndex = 42;
             // 
             // txtGanancia
             // 
@@ -504,10 +603,10 @@
             this.txtGanancia.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtGanancia.Enabled = false;
             this.txtGanancia.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtGanancia.Location = new System.Drawing.Point(335, 36);
+            this.txtGanancia.Location = new System.Drawing.Point(334, 9);
             this.txtGanancia.Name = "txtGanancia";
             this.txtGanancia.Size = new System.Drawing.Size(94, 25);
-            this.txtGanancia.TabIndex = 21;
+            this.txtGanancia.TabIndex = 25;
             this.txtGanancia.Text = "0";
             // 
             // label8
@@ -516,36 +615,11 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(230, 39);
+            this.label8.Location = new System.Drawing.Point(229, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 17);
-            this.label8.TabIndex = 0;
+            this.label8.TabIndex = 22;
             this.label8.Text = "Ganancia Total:";
-            // 
-            // txtCosto
-            // 
-            this.txtCosto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCosto.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCosto.Enabled = false;
-            this.txtCosto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtCosto.Location = new System.Drawing.Point(286, 5);
-            this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(143, 25);
-            this.txtCosto.TabIndex = 19;
-            this.txtCosto.Text = "0";
-            this.txtCosto.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(230, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Costo:";
             // 
             // txtStock
             // 
@@ -553,10 +627,10 @@
             this.txtStock.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtStock.Enabled = false;
             this.txtStock.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtStock.Location = new System.Drawing.Point(69, 5);
+            this.txtStock.Location = new System.Drawing.Point(68, 9);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(143, 25);
-            this.txtStock.TabIndex = 18;
+            this.txtStock.TabIndex = 24;
             this.txtStock.Text = "0";
             this.txtStock.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
             // 
@@ -566,36 +640,11 @@
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label34.Location = new System.Drawing.Point(17, 8);
+            this.label34.Location = new System.Drawing.Point(16, 12);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(46, 17);
-            this.label34.TabIndex = 0;
+            this.label34.TabIndex = 23;
             this.label34.Text = "Stock:";
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPrecio.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPrecio.Enabled = false;
-            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtPrecio.Location = new System.Drawing.Point(69, 36);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(143, 25);
-            this.txtPrecio.TabIndex = 20;
-            this.txtPrecio.Text = "0";
-            this.txtPrecio.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(16, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Precio:";
             // 
             // btnCancelar
             // 
@@ -606,7 +655,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(140, 382);
+            this.btnCancelar.Location = new System.Drawing.Point(140, 422);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 31);
             this.btnCancelar.TabIndex = 24;
@@ -623,7 +672,7 @@
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLimpiar.Location = new System.Drawing.Point(250, 382);
+            this.btnLimpiar.Location = new System.Drawing.Point(250, 422);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(104, 31);
             this.btnLimpiar.TabIndex = 23;
@@ -636,7 +685,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(463, 416);
+            this.ClientSize = new System.Drawing.Size(463, 456);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
@@ -670,6 +719,10 @@
             this.panel9.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.ResumeLayout(false);
@@ -685,8 +738,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
+        private FontAwesome.Sharp.IconButton btnbuscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodBarrasM;
         private System.Windows.Forms.Panel panel6;
@@ -711,16 +766,18 @@
         private System.Windows.Forms.CheckBox chkBajoReceta;
         private System.Windows.Forms.CheckBox chkRefrigeado;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.ComboBox cmbEstadoM;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCosto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox txtGanancia;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtCosto;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLimpiar;
-        private FontAwesome.Sharp.IconButton btnbuscar;
     }
 }

@@ -35,7 +35,6 @@
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvShelvesList = new Zuby.ADGV.AdvancedDataGridView();
             this.bindingSourceShelves = new System.Windows.Forms.BindingSource(this.components);
-            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.lblTotalRow = new System.Windows.Forms.Label();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
@@ -52,7 +51,6 @@
             this.lblSectorE = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.eSTANTETableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.ESTANTETableAdapter();
             this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNombreE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNumeroE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +58,6 @@
             this.pnlList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShelvesList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceShelves)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
@@ -160,13 +157,11 @@
             // 
             // bindingSourceShelves
             // 
-            this.bindingSourceShelves.DataMember = "ESTANTE";
-            this.bindingSourceShelves.DataSource = this.farmaciaDBDataSet;
+
             // 
             // farmaciaDBDataSet
             // 
-            this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
-            this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // lblTotalRow
             // 
@@ -417,7 +412,7 @@
             // 
             // eSTANTETableAdapter
             // 
-            this.eSTANTETableAdapter.ClearBeforeFill = true;
+
             // 
             // dgvcID
             // 
@@ -477,7 +472,6 @@
             this.pnlList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShelvesList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceShelves)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -509,9 +503,7 @@
         private System.Windows.Forms.Label lblTotalRow;
         private Zuby.ADGV.AdvancedDataGridView dgvShelvesList;
         private Guna.UI.WinForms.GunaButton btnModifyG;
-        private FarmaciaDBDataSet farmaciaDBDataSet;
         private System.Windows.Forms.BindingSource bindingSourceShelves;
-        private FarmaciaDBDataSetTableAdapters.ESTANTETableAdapter eSTANTETableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNumeroE;

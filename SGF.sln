@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGF", "Sistema\SGF.csproj",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{CB2C88C2-E548-4B6D-BFF4-F4E9968FA0B9}"
 	ProjectSection(SolutionItems) = preProject
+		EliminarTablas.sql = EliminarTablas.sql
 		sqlNuevoSistemaQuery.sql = sqlNuevoSistemaQuery.sql
+		sqlSeguridad.sql = sqlSeguridad.sql
 	EndProjectSection
 EndProject
 Global

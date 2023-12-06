@@ -103,6 +103,7 @@ namespace Sistema.Controles.Logica
                     originalMedicine.Refrigerado = medicine.Refrigerado;
                     originalMedicine.BajoReceta = medicine.BajoReceta;
                     originalMedicine.Stock = medicine.Stock;
+                    originalMedicine.Estado = medicine.Estado;
                     originalMedicine.PrecioCompra = medicine.PrecioCompra;
                     originalMedicine.PrecioVenta = medicine.PrecioVenta;
                     db.Entry(originalMedicine).State = EntityState.Modified;

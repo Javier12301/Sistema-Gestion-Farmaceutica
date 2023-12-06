@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrincipalForm));
-            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
+            this.timerBararLateral = new System.Windows.Forms.Timer(this.components);
             this.pnlMAIN = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.SeparatorInventory = new Bunifu.Framework.UI.BunifuSeparator();
-            this.sidebarContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlBarraLateral = new System.Windows.Forms.FlowLayoutPanel();
             this.btnPrincipal = new Guna.UI.WinForms.GunaButton();
             this.flInventarioContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlDescInventario = new System.Windows.Forms.Panel();
@@ -68,7 +68,7 @@
             this.pnlMAIN.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlMenu.SuspendLayout();
-            this.sidebarContainer.SuspendLayout();
+            this.pnlBarraLateral.SuspendLayout();
             this.flInventarioContainer.SuspendLayout();
             this.pnlDescInventario.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -81,10 +81,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbUser)).BeginInit();
             this.SuspendLayout();
             // 
-            // sidebarTimer
+            // timerBararLateral
             // 
-            this.sidebarTimer.Interval = 2;
-            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
+            this.timerBararLateral.Interval = 2;
+            this.timerBararLateral.Tick += new System.EventHandler(this.sidebarTimer_Tick);
             // 
             // pnlMAIN
             // 
@@ -106,7 +106,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.pnlMenu, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.sidebarContainer, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pnlBarraLateral, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 50);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -126,7 +126,7 @@
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMenu.MinimumSize = new System.Drawing.Size(600, 362);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Padding = new System.Windows.Forms.Padding(5);
+            this.pnlMenu.Padding = new System.Windows.Forms.Padding(5, 5, 8, 5);
             this.pnlMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlMenu.Size = new System.Drawing.Size(823, 501);
             this.pnlMenu.TabIndex = 8;
@@ -144,23 +144,23 @@
             this.SeparatorInventory.Transparency = 255;
             this.SeparatorInventory.Vertical = false;
             // 
-            // sidebarContainer
+            // pnlBarraLateral
             // 
-            this.sidebarContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnlBarraLateral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.sidebarContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.sidebarContainer.Controls.Add(this.btnPrincipal);
-            this.sidebarContainer.Controls.Add(this.flInventarioContainer);
-            this.sidebarContainer.Controls.Add(this.flowLayoutPanel3);
-            this.sidebarContainer.Controls.Add(this.flowLayoutPanel2);
-            this.sidebarContainer.Location = new System.Drawing.Point(3, 3);
-            this.sidebarContainer.MaximumSize = new System.Drawing.Size(185, 0);
-            this.sidebarContainer.MinimumSize = new System.Drawing.Size(43, 362);
-            this.sidebarContainer.Name = "sidebarContainer";
-            this.sidebarContainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.sidebarContainer.Size = new System.Drawing.Size(185, 499);
-            this.sidebarContainer.TabIndex = 7;
-            this.sidebarContainer.Tag = "pnlContainer";
+            this.pnlBarraLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.pnlBarraLateral.Controls.Add(this.btnPrincipal);
+            this.pnlBarraLateral.Controls.Add(this.flInventarioContainer);
+            this.pnlBarraLateral.Controls.Add(this.flowLayoutPanel3);
+            this.pnlBarraLateral.Controls.Add(this.flowLayoutPanel2);
+            this.pnlBarraLateral.Location = new System.Drawing.Point(3, 3);
+            this.pnlBarraLateral.MaximumSize = new System.Drawing.Size(185, 0);
+            this.pnlBarraLateral.MinimumSize = new System.Drawing.Size(43, 362);
+            this.pnlBarraLateral.Name = "pnlBarraLateral";
+            this.pnlBarraLateral.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pnlBarraLateral.Size = new System.Drawing.Size(185, 499);
+            this.pnlBarraLateral.TabIndex = 7;
+            this.pnlBarraLateral.Tag = "pnlContainer";
             // 
             // btnPrincipal
             // 
@@ -708,7 +708,7 @@
             this.pnlMAIN.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
-            this.sidebarContainer.ResumeLayout(false);
+            this.pnlBarraLateral.ResumeLayout(false);
             this.flInventarioContainer.ResumeLayout(false);
             this.pnlDescInventario.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
@@ -727,7 +727,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer sidebarTimer;
+        private System.Windows.Forms.Timer timerBararLateral;
         private System.Windows.Forms.Panel pnlMAIN;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblNameEmpresa;
@@ -739,7 +739,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel pnlMenu;
         private Bunifu.Framework.UI.BunifuSeparator SeparatorInventory;
-        private System.Windows.Forms.FlowLayoutPanel sidebarContainer;
+        private System.Windows.Forms.FlowLayoutPanel pnlBarraLateral;
         private Guna.UI.WinForms.GunaButton btnPrincipal;
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.FlowLayoutPanel flInventarioContainer;

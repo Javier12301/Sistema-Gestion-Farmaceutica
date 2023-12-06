@@ -16,7 +16,7 @@ namespace Sistema.Views.Modales
 {
     public partial class mdMedicamento : Form
     {
-        MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
         private Point mouseDownLocation;
         public MEDICAMENTO medicine { get; set; }
         public mdMedicamento()
@@ -26,7 +26,7 @@ namespace Sistema.Views.Modales
 
         private void mdProducto_Load(object sender, EventArgs e)
         {
-            this.vistaInventarioTableAdapter.Fill(farmaciaDBDataSet.VistaInventario);
+            //this.vistaInventarioTableAdapter.Fill(farmaciaDBDataSet.VistaInventario);
             loadCMBData();
         }
 
@@ -55,20 +55,20 @@ namespace Sistema.Views.Modales
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
 
@@ -83,20 +83,20 @@ namespace Sistema.Views.Modales
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -108,11 +108,12 @@ namespace Sistema.Views.Modales
         {
             if (txtBusqueda.Text != string.Empty)
             {
-                this.vistaInventarioTableAdapter.Filter(farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBusqueda.Text, null, null);
+                // Solo se buscarán los medicamentos que estén activos
+                //this.vistaInventarioTableAdapter.Filter(farmaciaDBDataSet.VistaInventario, cmbFiltro.Text, txtBusqueda.Text, null, null, true);
             }
             else
             {
-                this.vistaInventarioTableAdapter.Fill(farmaciaDBDataSet.VistaInventario);
+                //this.vistaInventarioTableAdapter.Fill(farmaciaDBDataSet.VistaInventario);
             }
         }
 
@@ -130,7 +131,7 @@ namespace Sistema.Views.Modales
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
         }
 
@@ -151,7 +152,7 @@ namespace Sistema.Views.Modales
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
         }
 

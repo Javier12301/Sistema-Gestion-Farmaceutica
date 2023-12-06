@@ -13,7 +13,7 @@ namespace Sistema.Controles.Logica
 {
     public class EstanteLogica
     {
-        MedicamentoLogica medicineLogic = new MedicamentoLogica();
+        MedicamentoLogica lMedicina = new MedicamentoLogica();
         // Obtener cantidad total de estantes
         public int GetTotalShelvesCount()
         {
@@ -91,7 +91,6 @@ namespace Sistema.Controles.Logica
                 {
                     // Modificamos los campos
                     originalShelf.Nombre = shelf.Nombre;
-                    originalShelf.Numero = shelf.Numero;
                     originalShelf.Sector = shelf.Sector;
 
                     // Establecemos el estado de la entidad como modificada y guardamos los cambios
@@ -116,7 +115,7 @@ namespace Sistema.Controles.Logica
                 ESTANTE shelf = db.ESTANTE.Find(shelfID);
                 if (shelf != null)
                 {
-                    bool hasAssociatedMedicine = medicineLogic.HasMedicineShelfAssociated(db, shelfID);
+                    bool hasAssociatedMedicine = lMedicina.HasMedicineShelfAssociated(db, shelfID);
 
                     if (hasAssociatedMedicine)
                     {
@@ -126,7 +125,7 @@ namespace Sistema.Controles.Logica
 
                         if (userConfirmation == DialogResult.Yes)
                         {
-                            medicineLogic.ReassignDefaultShelfMedicine(db, shelfID);
+                            lMedicina.ReassignDefaultShelfMedicine(db, shelfID);
                         }
                         else
                         {

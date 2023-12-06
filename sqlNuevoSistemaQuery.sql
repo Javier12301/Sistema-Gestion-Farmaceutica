@@ -1,31 +1,51 @@
 use FarmaciaDB;
+-- Se actualizará toda la base de datos, Estantes, Categoría, Proveedores, Productos y Medicamentos deberán tener
+-- Estados estos deben ser activos o inactivos, los estados se deben poder cambiar desde la interfaz de usuario
+-- SE UTILIZARÁ LA PROPIEDAD BIT PARA LOS ESTADOS
+
 -- Tabla para almacenar información sobre estantes en el inventario
 CREATE TABLE ESTANTE (
     EstanteID INT IDENTITY PRIMARY KEY,
     Nombre NVARCHAR(255) NOT NULL,
-    Numero INT NOT NULL,
-    Sector NVARCHAR(255) NOT NULL
+    Sector NVARCHAR(255) NOT NULL,
+    Estado BIT DEFAULT 1,
+    FechaRegistro DATETIME DEFAULT GETDATE()
 );
+
 SET IDENTITY_INSERT ESTANTE ON;
-INSERT INTO ESTANTE (EstanteID, Nombre, Numero, Sector)
-VALUES (0, 'N/A', 0, 'N/A');
+-- Estante default
+INSERT INTO ESTANTE (EstanteID, Nombre, Sector, Estado)
+VALUES (0, 'N/A', 'N/A', 1);
 SET IDENTITY_INSERT ESTANTE OFF;
+
 GO
 
+SELECT * FROM CATEGORIA
 
 
 CREATE TABLE CATEGORIA (
     CategoriaID INT IDENTITY PRIMARY KEY,
     Nombre NVARCHAR(255) NOT NULL,
-    Descripcion NVARCHAR(255) NOT NULL
+    Descripcion NVARCHAR(255) NOT NULL,
+    Estado BIT DEFAULT 1,
+    FechaRegistro DATETIME DEFAULT GETDATE()
 );
+
 SET IDENTITY_INSERT CATEGORIA ON;
-INSERT INTO CATEGORIA (CategoriaID, Nombre, Descripcion)
-VALUES (0, 'N/A', 'N/A');
+INSERT INTO CATEGORIA (CategoriaID, Nombre, Descripcion, Estado)
+VALUES (0, 'N/A', 'N/A', 1);
 SET IDENTITY_INSERT CATEGORIA OFF;
+
 GO
 
--- Volver a habilitar IDENTITY
+-- Crear 5 categorias -> genericos, bajo receta, perfumes, vitaminas, perfumes
+INSERT INTO CATEGORIA (Nombre, Descripcion)
+VALUES ('Genericos', 'Medicamentos genericos'),
+('Bajo Receta', 'Medicamentos bajo receta'),
+('Perfumes', 'Perfumes'),
+('Vitaminas', 'Vitaminas'),
+('Suplementos', 'Suplementos');
+
 
 CREATE TABLE PROVEEDOR (
     ProveedorID INT IDENTITY PRIMARY KEY,
@@ -33,12 +53,16 @@ CREATE TABLE PROVEEDOR (
     Documento VARCHAR(50),
     Direccion VARCHAR(50),
     TelefonoProveedor VARCHAR(20),
-    Correo VARCHAR(50)
+    Correo VARCHAR(50),
+    Estado BIT DEFAULT 1,
+    FechaRegistro DATETIME DEFAULT GETDATE()
 );
+
 SET IDENTITY_INSERT PROVEEDOR ON;
-INSERT INTO PROVEEDOR (ProveedorID, RazonSocial, Documento, Direccion, TelefonoProveedor, Correo)
-VALUES (0, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A');
+INSERT INTO PROVEEDOR (ProveedorID, RazonSocial, Documento, Direccion, TelefonoProveedor, Correo, Estado)
+VALUES (0, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 1);
 SET IDENTITY_INSERT PROVEEDOR OFF;
+
 GO
 
 CREATE TABLE CLIENTE (
@@ -48,9 +72,13 @@ CREATE TABLE CLIENTE (
     TipoClienteID INT REFERENCES TipoCliente(TipoClienteID),
     Correo VARCHAR(50),
     Telefono VARCHAR(50),
-    Estado BIT,
+    Estado BIT DEFAULT 1,
     FechaRegistro DATETIME DEFAULT GETDATE()
 );
+SET IDENTITY_INSERT CLIENTE ON;
+INSERT INTO CLIENTE (ClienteID, Documento, NombreCompleto, TipoClienteID, Correo, Telefono, Estado)
+VALUES (0, 'N/A', 'N/A', 0, 'N/A', 'N/A', 1);
+SET IDENTITY_INSERT CLIENTE OFF;
 GO
 
 CREATE TABLE TipoCliente (
@@ -58,6 +86,8 @@ CREATE TABLE TipoCliente (
     Descripcion VARCHAR(50)
 );
 GO
+
+
 
 CREATE TABLE PRODUCTO (
     ProductoID INT IDENTITY PRIMARY KEY,
@@ -78,12 +108,6 @@ VALUES (0, 'N/A', 'N/A', 0, 0, 0, 0, 0, 0, 1);
 SET IDENTITY_INSERT PRODUCTO OFF;
 GO
 
-
-
-
-SELECT * FROM MEDICAMENTO;
-
-DELETE FROM PRODUCTO
 
 
 
@@ -109,14 +133,6 @@ INSERT INTO MEDICAMENTO (MedicamentoID, Codigo, Nombre, Lote, FechaVencimiento, 
 VALUES (0, 'N/A', 'N/A', 'N/A', null, 0, 0, 0, 0, 0, 0, 0, 0, 1);
 SET IDENTITY_INSERT MEDICAMENTO OFF;
 GO
-
-SELECT * FROM VistaInventario
-
-INSERT INTO MEDICAMENTO (Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Refrigerado, BajoReceta)
-VALUES ('ABC123', 'Paracetamol', 'L12345', '2023-12-31', 1, 2, 1, 1, 0);
-
-
-
 
 CREATE TABLE VENTA (
     VentaID INT IDENTITY PRIMARY KEY,
@@ -183,53 +199,7 @@ CREATE TABLE NEGOCIO (
 	Logo VARBINARY(MAX) -- Campo para almacenar la imagen del logo (en formato binario)
 );
 
--- Eliminación de Tablas
-DROP TABLE TipoCliente;
-DROP TABLE DETALLE_VENTA;
-DROP TABLE DETALLE_COMPRA;
-DROP TABLE VENTA;
-DROP TABLE COMPRA;
-DROP TABLE MEDICAMENTO;
-DROP TABLE PRODUCTO;
-DROP TABLE CLIENTE;
-DROP TABLE PROVEEDOR;
-DROP TABLE CATEGORIA;
-DROP TABLE ESTANTE;
-DROP TABLE USUARIO;
-DROP TABLE PERMISO;
-DROP TABLE ROL;
-
-CREATE VIEW VistaInventario AS
-SELECT
-    M.Codigo AS 'Codigo de Barras',
-    M.Nombre AS 'Nombre Medicamento',
-    M.Descripcion AS 'Descripcion Medicamento',
-    M.Stock AS 'Stock',
-    M.FechaVencimiento AS 'Fecha de Vencimiento',
-    C.Nombre AS 'Nombre Categoria',
-    E.Nombre AS 'Nombre de Estante',
-    E.Sector AS 'Sector de Estante',
-    E.Numero AS 'Numero de Estante',
-    P.RazonSocial AS 'Nombre Proveedor'
-FROM
-    MEDICAMENTO M
-    INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
-    INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
-    INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
-GO
-
-SELECT * FROM MEDICAMENTO;
-GO
-
-SELECT * FROM ESTANTE;
-GO
-
-SELECT * FROM CATEGORIA;
-GO
-
-SELECT * FROM PROVEEDOR;
-GO
-ALTER VIEW VistaInventario AS
+CREATE VIEW InventarioMedicamento AS
 SELECT
     M.MedicamentoID AS 'ID',
     M.Codigo AS 'Cod.',
@@ -241,102 +211,17 @@ SELECT
     M.FechaVencimiento AS 'VTO',
     E.Nombre AS 'Estante',
     E.Sector AS 'Sector',
-    E.Numero AS 'Num. Estante',
     C.Nombre AS 'Categoría',
-    P.RazonSocial AS 'Proveedor'
-FROM
-    MEDICAMENTO M
-    INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
-    INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
-    INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID;
-GO
-
-SELECT TOP 10
-    M.MedicamentoID AS 'ID',
-    M.Codigo AS 'Cod.',
-    M.Lote,
-    M.Nombre,
-    M.Stock AS 'Cantidad',
-	M.PrecioCompra AS 'PrecioCompra',
-    M.PrecioVenta AS 'PrecioVenta',
-    M.FechaVencimiento AS 'VTO',
-    E.Nombre AS 'Estante',
-    E.Sector,
-    E.Numero AS 'Num. Estante',
-    C.Nombre AS 'Categoría', 
-    P.RazonSocial AS 'Proveedor'
-FROM
-    MEDICAMENTO AS M
-    INNER JOIN ESTANTE AS E ON M.EstanteID = E.EstanteID
-    INNER JOIN CATEGORIA AS C ON M.CategoriaID = C.CategoriaID
-    INNER JOIN PROVEEDOR AS P ON M.ProveedorID = P.ProveedorID;
-
- 
-
-DECLARE @desde DATE = '2024-01-01';
-DECLARE @hasta DATE = '2025-12-31';
-DECLARE @filtro VARCHAR(50) = 'Nombre';
-DECLARE @buscar VARCHAR(50) = 'Ni';
-
-SELECT
-    M.MedicamentoID AS 'ID',
-    M.Codigo AS 'Cod.',
-    M.Lote AS 'Lote',
-    M.Nombre AS 'Nombre',
-    M.Stock AS 'Cantidad',
-	M.PrecioCompra AS 'PrecioCompra',
-    M.PrecioVenta AS 'PrecioVenta',
-    M.FechaVencimiento AS 'VTO',
-    E.Nombre AS 'Estante',
-    E.Sector AS 'Sector',
-    E.Numero AS 'Num. Estante',
-    C.Nombre AS 'Categoría',
-    P.RazonSocial AS 'Proveedor'
+    P.RazonSocial AS 'Proveedor',
+    M.Estado AS 'Estado'
 FROM
     MEDICAMENTO M
     INNER JOIN ESTANTE E ON M.EstanteID = E.EstanteID
     INNER JOIN CATEGORIA C ON M.CategoriaID = C.CategoriaID
     INNER JOIN PROVEEDOR P ON M.ProveedorID = P.ProveedorID
-WHERE
-    (@filtro = 'Código' AND M.Codigo LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Nombre' AND M.Nombre LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Lote' AND M.Lote LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Estante' AND E.Nombre LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Categoría' AND C.Nombre LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Proveedor' AND P.RazonSocial LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Vencimiento' AND M.FechaVencimiento >= @desde AND M.FechaVencimiento <= @hasta);
+GO
 
-DECLARE @filtro VARCHAR(50) = 'Documento';
-DECLARE @buscar VARCHAR(50) = '44';
-SELECT
-    P.ProveedorID AS 'ID',
-    P.RazonSocial AS 'Razón Social',
-    P.Documento AS 'Documento',
-    P.Direccion AS 'Dirección',
-    P.TelefonoProveedor AS 'Teléfono',
-    P.Correo AS 'Correo'
-FROM
-    PROVEEDOR P
-WHERE
-    (@filtro = 'Razón Social' AND P.RazonSocial LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Documento' AND P.Documento LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Dirección' AND P.Direccion LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Teléfono' AND P.TelefonoProveedor LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Correo' AND P.Correo LIKE '%' + @buscar + '%');
-GO;
-
-SELECT * FROM ESTANTE
-WHERE EstanteID > 0;
-SELECT * FROM MEDICAMENTO;
-
-SELECT * FROM CATEGORIA;
-SELECT * FROM PROVEEDOR;
-SELECT * FROM VistaInventario;
-GO;
-
-
-DECLARE @filtro VARCHAR(50) = 'Nombre';
-DECLARE @buscar VARCHAR(50) = '';
+CREATE VIEW InventarioProducto AS
 SELECT
     P.ProductoID AS 'ID',
     P.Codigo AS 'Cod.',
@@ -344,26 +229,35 @@ SELECT
     P.Stock AS 'Cantidad',
     P.PrecioCompra AS 'PrecioCompra',
     P.PrecioVenta AS 'PrecioVenta',
-    P.FechaRegistro AS 'FechaRegistro',
     E.Nombre AS 'Estante',
     E.Sector AS 'Sector',
-    E.Numero AS 'Num. Estante',
     C.Nombre AS 'Categoría',
-    PR.RazonSocial AS 'Proveedor'
+    PR.RazonSocial AS 'Proveedor',
+    P.Estado AS 'Estado',
+    P.FechaRegistro AS 'FechaRegistro'
 FROM
     PRODUCTO P
     INNER JOIN ESTANTE E ON P.EstanteID = E.EstanteID
     INNER JOIN CATEGORIA C ON P.CategoriaID = C.CategoriaID
-    INNER JOIN PROVEEDOR PR ON P.ProveedorID = PR.ProveedorID
-WHERE
-    (@filtro = 'Código' AND P.Codigo LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Nombre' AND P.Nombre LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Estante' AND E.Nombre LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Categoría' AND C.Nombre LIKE '%' + @buscar + '%')
-    OR (@filtro = 'Proveedor' AND PR.RazonSocial LIKE '%' + @buscar + '%');
+    INNER JOIN PROVEEDOR PR ON P.ProveedorID = PR.ProveedorID;
 GO
 
+
 -- CARGAR BASE DE DATOS
+-- Medicamentos con Estado true
+INSERT INTO MEDICAMENTO (Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Stock, PrecioVenta, PrecioCompra, Refrigerado, BajoReceta, Estado, FechaRegistro)
+VALUES 
+    ('COD001', 'Medicamento1', 'Lote001', '2024-12-01', 1, 1, 2, 100, 15.00, 10.00, 0, 0, 1, GETDATE()),
+    ('COD002', 'Medicamento2', 'Lote002', '2023-11-01', 2, 2, 2, 50, 25.00, 20.00, 1, 0, 1, GETDATE()),
+    ('COD003', 'Medicamento3', 'Lote003', '2025-05-01', 3, 3, 3, 80, 30.00, 25.00, 0, 1, 1, GETDATE());
+GO
+-- Medicamentos con Estado false
+INSERT INTO MEDICAMENTO (Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Stock, PrecioVenta, PrecioCompra, Refrigerado, BajoReceta, Estado, FechaRegistro)
+VALUES 
+    ('COD004', 'Medicamento4', 'Lote004', '2023-08-01', 4, 4, 4, 120, 40.00, 35.00, 1, 0, 0, GETDATE()),
+    ('COD005', 'Medicamento5', 'Lote005', '2022-10-01', 5, 3, 5, 90, 18.00, 15.00, 0, 1, 0, GETDATE());
+GO
+
 INSERT INTO MEDICAMENTO (Codigo, Nombre, Lote, FechaVencimiento, EstanteID, CategoriaID, ProveedorID, Stock, PrecioVenta, PrecioCompra)
 VALUES
     ('COD001', 'Losartán', 'Lote001', '2023-12-01', 1, 1, 2, 0, 0, 0),
@@ -382,3 +276,4 @@ VALUES
     ('COD014', 'Gabapentina', 'Lote014', '2023-12-14', 2, 2, 3, 0, 0, 0),
     ('COD015', 'Hidroclorotiazida', 'Lote015', '2023-12-15', 3, 3, 4, 0, 0, 0);
 GO
+

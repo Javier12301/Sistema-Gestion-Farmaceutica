@@ -12,20 +12,20 @@ namespace Sistema.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLE_COMPRA
+    public partial class InventarioMedicamento
     {
-        public int DetalleCompraID { get; set; }
-        public Nullable<int> CompraID { get; set; }
-        public Nullable<int> ProductoID { get; set; }
-        public Nullable<int> MedicamentoID { get; set; }
+        public int ID { get; set; }
+        public string Cod_ { get; set; }
+        public string Lote { get; set; }
+        public string Nombre { get; set; }
+        public int Cantidad { get; set; }
         public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<decimal> PrecioVenta { get; set; }
-        public Nullable<int> Cantidad { get; set; }
-        public Nullable<decimal> MontoTotal { get; set; }
-        public Nullable<System.DateTime> FechaRegistro { get; set; }
-    
-        public virtual COMPRA COMPRA { get; set; }
-        public virtual MEDICAMENTO MEDICAMENTO { get; set; }
-        public virtual PRODUCTO PRODUCTO { get; set; }
+        public Nullable<System.DateTime> VTO { get; set; }
+        public string Estante { get; set; }
+        public string Sector { get; set; }
+        public string Categoría { get; set; }
+        public string Proveedor { get; set; }
+        public Nullable<bool> Estado { get; set; }
     }
 }

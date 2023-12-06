@@ -34,6 +34,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprasForm));
             this.pnlForm = new System.Windows.Forms.Panel();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.dgvcMedicamentoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProductoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcPrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcProveedorRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcEsMedicamento = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTotalPagar = new System.Windows.Forms.TextBox();
@@ -64,17 +75,6 @@
             this.lblCategorias = new System.Windows.Forms.Label();
             this.helpProvider = new System.Windows.Forms.HelpProvider();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dgvcMedicamentoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcProductoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcPrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcProveedorRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcEsMedicamento = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -150,6 +150,82 @@
             this.dgvData.TabIndex = 206;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             this.dgvData.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvData_CellPainting);
+            // 
+            // dgvcMedicamentoID
+            // 
+            this.dgvcMedicamentoID.HeaderText = "MedicamentoID";
+            this.dgvcMedicamentoID.Name = "dgvcMedicamentoID";
+            this.dgvcMedicamentoID.ReadOnly = true;
+            this.dgvcMedicamentoID.Visible = false;
+            // 
+            // dgvcProductoID
+            // 
+            this.dgvcProductoID.HeaderText = "ProductoID";
+            this.dgvcProductoID.Name = "dgvcProductoID";
+            this.dgvcProductoID.ReadOnly = true;
+            this.dgvcProductoID.Visible = false;
+            // 
+            // dgvcProveedorID
+            // 
+            this.dgvcProveedorID.HeaderText = "ProveedorID";
+            this.dgvcProveedorID.Name = "dgvcProveedorID";
+            this.dgvcProveedorID.ReadOnly = true;
+            this.dgvcProveedorID.Visible = false;
+            // 
+            // dgvcProductoNombre
+            // 
+            this.dgvcProductoNombre.FillWeight = 92.44585F;
+            this.dgvcProductoNombre.HeaderText = "Producto";
+            this.dgvcProductoNombre.Name = "dgvcProductoNombre";
+            this.dgvcProductoNombre.ReadOnly = true;
+            // 
+            // dgvcPrecioCompra
+            // 
+            this.dgvcPrecioCompra.FillWeight = 92.44585F;
+            this.dgvcPrecioCompra.HeaderText = "Precio Compra";
+            this.dgvcPrecioCompra.Name = "dgvcPrecioCompra";
+            this.dgvcPrecioCompra.ReadOnly = true;
+            // 
+            // dgvcPrecioVenta
+            // 
+            this.dgvcPrecioVenta.FillWeight = 92.44585F;
+            this.dgvcPrecioVenta.HeaderText = "Precio Venta";
+            this.dgvcPrecioVenta.Name = "dgvcPrecioVenta";
+            this.dgvcPrecioVenta.ReadOnly = true;
+            // 
+            // dgvcCantidad
+            // 
+            this.dgvcCantidad.FillWeight = 92.44585F;
+            this.dgvcCantidad.HeaderText = "Cantidad";
+            this.dgvcCantidad.Name = "dgvcCantidad";
+            this.dgvcCantidad.ReadOnly = true;
+            // 
+            // dgvcSubTotal
+            // 
+            this.dgvcSubTotal.FillWeight = 92.44585F;
+            this.dgvcSubTotal.HeaderText = "Sub Total";
+            this.dgvcSubTotal.Name = "dgvcSubTotal";
+            this.dgvcSubTotal.ReadOnly = true;
+            // 
+            // dgvcProveedorRazonSocial
+            // 
+            this.dgvcProveedorRazonSocial.HeaderText = "Proveedor";
+            this.dgvcProveedorRazonSocial.Name = "dgvcProveedorRazonSocial";
+            this.dgvcProveedorRazonSocial.ReadOnly = true;
+            // 
+            // dgvcEsMedicamento
+            // 
+            this.dgvcEsMedicamento.FillWeight = 113.4053F;
+            this.dgvcEsMedicamento.HeaderText = "Medicamento";
+            this.dgvcEsMedicamento.Name = "dgvcEsMedicamento";
+            this.dgvcEsMedicamento.ReadOnly = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.FillWeight = 124.3655F;
+            this.btnEliminar.HeaderText = "";
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
             // 
             // btnRegistrar
             // 
@@ -268,6 +344,7 @@
             this.txtcodproducto.Size = new System.Drawing.Size(119, 23);
             this.txtcodproducto.TabIndex = 1;
             this.txtcodproducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcodproducto_KeyDown);
+            this.txtcodproducto.Leave += new System.EventHandler(this.txtcodproducto_Leave);
             // 
             // label9
             // 
@@ -538,82 +615,6 @@
             this.errorProvider.BlinkRate = 400;
             this.errorProvider.ContainerControl = this;
             this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
-            // 
-            // dgvcMedicamentoID
-            // 
-            this.dgvcMedicamentoID.HeaderText = "MedicamentoID";
-            this.dgvcMedicamentoID.Name = "dgvcMedicamentoID";
-            this.dgvcMedicamentoID.ReadOnly = true;
-            this.dgvcMedicamentoID.Visible = false;
-            // 
-            // dgvcProductoID
-            // 
-            this.dgvcProductoID.HeaderText = "ProductoID";
-            this.dgvcProductoID.Name = "dgvcProductoID";
-            this.dgvcProductoID.ReadOnly = true;
-            this.dgvcProductoID.Visible = false;
-            // 
-            // dgvcProveedorID
-            // 
-            this.dgvcProveedorID.HeaderText = "ProveedorID";
-            this.dgvcProveedorID.Name = "dgvcProveedorID";
-            this.dgvcProveedorID.ReadOnly = true;
-            this.dgvcProveedorID.Visible = false;
-            // 
-            // dgvcProductoNombre
-            // 
-            this.dgvcProductoNombre.FillWeight = 92.44585F;
-            this.dgvcProductoNombre.HeaderText = "Producto";
-            this.dgvcProductoNombre.Name = "dgvcProductoNombre";
-            this.dgvcProductoNombre.ReadOnly = true;
-            // 
-            // dgvcPrecioCompra
-            // 
-            this.dgvcPrecioCompra.FillWeight = 92.44585F;
-            this.dgvcPrecioCompra.HeaderText = "Precio Compra";
-            this.dgvcPrecioCompra.Name = "dgvcPrecioCompra";
-            this.dgvcPrecioCompra.ReadOnly = true;
-            // 
-            // dgvcPrecioVenta
-            // 
-            this.dgvcPrecioVenta.FillWeight = 92.44585F;
-            this.dgvcPrecioVenta.HeaderText = "Precio Venta";
-            this.dgvcPrecioVenta.Name = "dgvcPrecioVenta";
-            this.dgvcPrecioVenta.ReadOnly = true;
-            // 
-            // dgvcCantidad
-            // 
-            this.dgvcCantidad.FillWeight = 92.44585F;
-            this.dgvcCantidad.HeaderText = "Cantidad";
-            this.dgvcCantidad.Name = "dgvcCantidad";
-            this.dgvcCantidad.ReadOnly = true;
-            // 
-            // dgvcSubTotal
-            // 
-            this.dgvcSubTotal.FillWeight = 92.44585F;
-            this.dgvcSubTotal.HeaderText = "Sub Total";
-            this.dgvcSubTotal.Name = "dgvcSubTotal";
-            this.dgvcSubTotal.ReadOnly = true;
-            // 
-            // dgvcProveedorRazonSocial
-            // 
-            this.dgvcProveedorRazonSocial.HeaderText = "Proveedor";
-            this.dgvcProveedorRazonSocial.Name = "dgvcProveedorRazonSocial";
-            this.dgvcProveedorRazonSocial.ReadOnly = true;
-            // 
-            // dgvcEsMedicamento
-            // 
-            this.dgvcEsMedicamento.FillWeight = 113.4053F;
-            this.dgvcEsMedicamento.HeaderText = "Medicamento";
-            this.dgvcEsMedicamento.Name = "dgvcEsMedicamento";
-            this.dgvcEsMedicamento.ReadOnly = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.FillWeight = 124.3655F;
-            this.btnEliminar.HeaderText = "";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
             // 
             // ComprasForm
             // 

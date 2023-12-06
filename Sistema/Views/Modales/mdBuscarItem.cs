@@ -17,7 +17,7 @@ namespace Sistema.Views.Modales
         private Point mouseDownLocation;
         public PRODUCTO product { get; set; }
         public MEDICAMENTO medicine { get; set; }
-        private MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        private MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
         public int itemID { get; set; }
         // MANEJO DE PROPIEDADES //
         // Tipo de propiedad que será devuelta
@@ -31,8 +31,6 @@ namespace Sistema.Views.Modales
 
         private void mdBuscarItem_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'farmaciaDBDataSet.PRODUCTO' Puede moverla o quitarla según sea necesario.
-            this.pRODUCTOTableAdapter.Fill(this.farmaciaDBDataSet.PRODUCTO);
             // Seleccionar tab page por default la primera
             tbPage_Selected();
         }
@@ -40,6 +38,16 @@ namespace Sistema.Views.Modales
         private void tbControl_Selected(object sender, TabControlEventArgs e)
         {
             tbPage_Selected();
+        }
+
+        private void loadMedicineData()
+        {
+            //this.vistaInventarioTableAdapter.Fill(farmaciaDBDataSet.VistaInventario);
+        }
+
+        private void loadProductData()
+        {
+            //this.pRODUCTOTableAdapter.Fill(farmaciaDBDataSet.PRODUCTO);
         }
 
         private void tbPage_Selected()
@@ -55,9 +63,8 @@ namespace Sistema.Views.Modales
                         cmbFiltroMedicamento.Items.Add("Estante");
                         cmbFiltroMedicamento.Items.Add("Categoría");
                         cmbFiltroMedicamento.SelectedIndex = 0;
-
+                        loadMedicineData();
                         // Cargar tabla de medicamentos
-                        this.vistaInventarioTableAdapter.Fill(farmaciaDBDataSet.VistaInventario);
                     }
 
                     break;
@@ -69,9 +76,8 @@ namespace Sistema.Views.Modales
                         cmbFiltroProducto.Items.Add("Estante");
                         cmbFiltroProducto.Items.Add("Categoría");
                         cmbFiltroProducto.SelectedIndex = 0;
-
+                        loadProductData();
                         // Cargar tabla de productos
-                        this.pRODUCTOTableAdapter.Fill(farmaciaDBDataSet.PRODUCTO);
                     }
                     break;
             }
@@ -87,15 +93,34 @@ namespace Sistema.Views.Modales
             filterData();
         }
 
+        private void cmbFiltroMedicamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filterData();
+        }
+
         private void filterData()
         {
             switch (tbControl.SelectedIndex)
             {
                 case 0:
-                    this.vistaInventarioTableAdapter.Filter(farmaciaDBDataSet.VistaInventario, cmbFiltroMedicamento.Text, txtBusquedaMedicamento.Text, null, null);
+                    if (txtBusquedaMedicamento.Text != string.Empty)
+                    {
+                        //vistaInventarioTableAdapter.Filter(farmaciaDBDataSet.VistaInventario, cmbFiltroMedicamento.Text, txtBusquedaMedicamento.Text, null, null, true);
+                    }
+                    else
+                    {
+                        loadMedicineData();
+                    }
                     break;
                 case 1:
-                    this.pRODUCTOTableAdapter.Filter(farmaciaDBDataSet.PRODUCTO, cmbFiltroProducto.Text, txtBuscarProducto.Text);
+                    if (txtBuscarProducto.Text != string.Empty)
+                    {
+                        //pRODUCTOTableAdapter.Filter(farmaciaDBDataSet.PRODUCTO, cmbFiltroProducto.Text, txtBuscarProducto.Text, null, null, null);
+                    }
+                    else
+                    {
+                        loadProductData();
+                    }
                     break;
             }
         }
@@ -130,7 +155,7 @@ namespace Sistema.Views.Modales
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
 
         }
@@ -167,7 +192,7 @@ namespace Sistema.Views.Modales
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
 
         }
@@ -225,6 +250,8 @@ namespace Sistema.Views.Modales
                 mouseDownLocation = e.Location;
             }
         }
+
+
 
         // // /// /// INTERFAZ /// /// /// //
 

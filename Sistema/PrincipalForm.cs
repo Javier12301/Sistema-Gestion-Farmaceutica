@@ -20,14 +20,14 @@ namespace Sistema
     public partial class PrincipalForm : Form
     {
         //Fields
-        private Form activeForm;
-        private GunaButton currentButton;
+        private Form formularioActivo;
+        private GunaButton botonActual;
         Shortcuts shortcuts = new Shortcuts();
         // Obtener Controladora Que tiene Singleton
-        Controladora controladora = Controladora.GetInstance;
+        Controladora controladora = Controladora.ObtenerInstancia;
         ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
-        private bool sidebarExpand { get; set; } = true;
-        private Image originalButtonImage { get; set; }
+        private bool expandirBarraLateral { get; set; } = true;
+        private Image originalBotonImagen { get; set; }
 
         public PrincipalForm()
         {
@@ -37,8 +37,8 @@ namespace Sistema
         private void PrincipalForm_Load(object sender, EventArgs e)
         {
             //Al iniciar el sistema, se abrirá el formulario principal.
-            OpenchildForm(new Vista.PrincipalForm(), btnPrincipal);
-            activateButton(btnPrincipal);
+            abrirFormularioHijo(new Vista.PrincipalForm(), btnPrincipal);
+            activarBoton(btnPrincipal);
         }
 
 
@@ -48,37 +48,37 @@ namespace Sistema
         }
 
         //Controlar colores de los botones de la barra de navegación
-        private void activateButton(GunaButton btnSender)
+        private void activarBoton(GunaButton btnSender)
         {
             if (btnSender != null)
             {
-                if (currentButton != (GunaButton)btnSender)
+                if (botonActual != (GunaButton)btnSender)
                 {
                     // Desactiva el botón previamente activado
-                    if (currentButton != null)
+                    if (botonActual != null)
                     {
-                        disableButton(currentButton);
+                        desactivarBoton(botonActual);
                     }
 
-                    currentButton = (GunaButton)btnSender;
-                    currentButton.BaseColor = Color.FromArgb(38, 125, 166);
-                    currentButton.ForeColor = Color.White;
+                    botonActual = (GunaButton)btnSender;
+                    botonActual.BaseColor = Color.FromArgb(38, 125, 166);
+                    botonActual.ForeColor = Color.White;
                     // Almacena la imagen original del botón
-                    originalButtonImage = currentButton.Image;
+                    originalBotonImagen = botonActual.Image;
                     // Almacena la imagen de Hover del botón, que es blanca por defecto
-                    currentButton.Image = currentButton.OnHoverImage;
+                    botonActual.Image = botonActual.OnHoverImage;
                     // Cambia la fuente del botón activo
-                    currentButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+                    botonActual.Font = new System.Drawing.Font("Segoe UI", 10F);
                 }
             }
         }
 
-        private void disableButton(GunaButton button)
+        private void desactivarBoton(GunaButton boton)
         {
-            button.BaseColor = Color.FromArgb(252, 252, 252);
-            button.ForeColor = Color.Black;
-            button.Image = originalButtonImage;
-            button.Font = new System.Drawing.Font("Segoe UI", 10F);
+            boton.BaseColor = Color.FromArgb(252, 252, 252);
+            boton.ForeColor = Color.Black;
+            boton.Image = originalBotonImagen;
+            boton.Font = new System.Drawing.Font("Segoe UI", 10F);
         }
 
 
@@ -90,14 +90,14 @@ namespace Sistema
 
 
         //Abrir formularios en el panel Main utilizando el formulario principal
-        private void OpenchildForm(Form childForm, GunaButton btnSender)
+        private void abrirFormularioHijo(Form formularioHijo, GunaButton btnSender)
         {
             // Si el DataGridView ha sido modificado, preguntar al usuario si desea guardar los cambios
             if (controladora.IsDatagridViewModified)
             {
-                DialogResult result = MessageBox.Show("Has realizado algunos cambios que no se han guardado.\n¿Estás seguro de que deseas salir?", "Cambios no guardados", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult resultado = MessageBox.Show("Has realizado algunos cambios que no se han guardado.\n¿Estás seguro de que deseas salir?", "Cambios no guardados", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.No)
+                if (resultado == DialogResult.No)
                 {
                     // Si el usuario elige "No", no cierra el formulario activo ni abre uno nuevo.
                     return;
@@ -105,26 +105,26 @@ namespace Sistema
             }
 
             // Si el DataGridView no ha sido modificado o si el usuario eligió "Sí" en el cuadro de diálogo, proceder a cerrar el formulario activo y abrir uno nuevo
-            if (activeForm != null)
+            if (formularioActivo != null)
             {
-                activeForm.Close();
+                formularioActivo.Close();
             }
 
             // Resaltar botón 
-            activateButton(btnSender);
+            activarBoton(btnSender);
 
             // Configuración de los botones de la barra de navegación
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill; // Rellenar el panel Main
-            this.pnlMenu.Controls.Add(childForm); // Agregar formulario al panel Main
-            this.pnlMenu.Tag = childForm;
-            childForm.BringToFront(); // Traer formulario al frente
+            formularioActivo = formularioHijo;
+            formularioHijo.TopLevel = false;
+            formularioHijo.FormBorderStyle = FormBorderStyle.None;
+            formularioHijo.Dock = DockStyle.Fill; // Rellenar el panel Main
+            this.pnlMenu.Controls.Add(formularioHijo); // Agregar formulario al panel Main
+            this.pnlMenu.Tag = formularioHijo;
+            formularioHijo.BringToFront(); // Traer formulario al frente
 
             // Se ha abierto un nuevo formulario
             controladora.IsDatagridViewModified = false;
-            childForm.Show(); // Mostrar formulario    
+            formularioHijo.Show(); // Mostrar formulario    
         }
 
 
@@ -132,38 +132,38 @@ namespace Sistema
         //Botones de la barra de navegacion
         private void btnPrincipal_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new Vista.PrincipalForm(), btnPrincipal);
+            abrirFormularioHijo(new Vista.PrincipalForm(), btnPrincipal);
         }
 
         private void btnEstantes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new EstantesForm(), btnEstantes);
+            abrirFormularioHijo(new EstantesForm(), btnEstantes);
 
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new CategoriaForm(), btnCategorias);
+            abrirFormularioHijo(new CategoriaForm(), btnCategorias);
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new ProveedoresForm(), btnProveedores);
+            abrirFormularioHijo(new ProveedoresForm(), btnProveedores);
         }
 
         private void btnMedicamento_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new MedicamentosForm(), btnMedicamentos);
+            abrirFormularioHijo(new MedicamentosForm(), btnMedicamentos);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new ClientesForm(), btnClientes);
+            abrirFormularioHijo(new ClientesForm(), btnClientes);
         }
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new ComprasForm(), btnCompras);
+            abrirFormularioHijo(new ComprasForm(), btnCompras);
         }
 
         private void btnAjustes_Click(object sender, EventArgs e)
@@ -191,32 +191,32 @@ namespace Sistema
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
             
-            if (sidebarExpand)
+            if (expandirBarraLateral)
             {
                 // Si se toca el botón de menu se minimiza el sidebar
-                sidebarContainer.Width -= 10;
+                pnlBarraLateral.Width -= 10;
                 pnlMenu.Width += 10;
-                if (sidebarContainer.Width == sidebarContainer.MinimumSize.Width)
+                if (pnlBarraLateral.Width == pnlBarraLateral.MinimumSize.Width)
                 {
-                    sidebarExpand = false;
-                    sidebarTimer.Stop();
+                    expandirBarraLateral = false;
+                    timerBararLateral.Stop();
                 }
             }
             else
             {
-                sidebarContainer.Width += 10;
+                pnlBarraLateral.Width += 10;
                 pnlMenu.Width -= 10;
-                if (sidebarContainer.Width == sidebarContainer.MaximumSize.Width)
+                if (pnlBarraLateral.Width == pnlBarraLateral.MaximumSize.Width)
                 {
-                    sidebarExpand = true;
-                    sidebarTimer.Stop();
+                    expandirBarraLateral = true;
+                    timerBararLateral.Stop();
                 }
             }
         }
 
         private void btnResizingMenu_Click(object sender, EventArgs e)
         {
-            sidebarTimer.Start();
+            timerBararLateral.Start();
             if(pnlDescInventario.Visible && pnlDescControl.Visible)
             {
                 pnlDescInventario.Visible = false;

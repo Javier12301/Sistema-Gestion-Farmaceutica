@@ -18,16 +18,16 @@ namespace Sistema.Views
 {
     public partial class ProveedoresForm : Form
     {
-        Controladora controladora = Controladora.GetInstance;
+        Controladora controladora = Controladora.ObtenerInstancia;
         Shortcuts shortcuts = new Shortcuts();
-        PaletaColores palette = PaletaColores.GetInstance;
+        PaletaColores paleta = PaletaColores.ObtenerInstancia;
         // Se crea una instancia de la clase proveedor
         ProveedorLogica supplierLogic = new ProveedorLogica();
         ObservadorDataGridView dgvObserver = new ObservadorDataGridView();
-        MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
 
-        private bool isModifyButtonPressed { get; set; } = false;
-        private object originalValue { get; set; }
+        private bool botonModificarPresionado { get; set; } = false;
+        private object valorOriginal { get; set; }
 
         public ProveedoresForm()
         {
@@ -37,49 +37,49 @@ namespace Sistema.Views
         private void ProveedoresForm_Load(object sender, EventArgs e)
         {
             loadSupplierData();
-            toggleEditMode();
+            alternarModoEdicion();
             dgvSupplierList.RowHeadersWidth = 30;
-            updateTotalRowCount();
+            actualizarFilasTotales();
         }
 
         private void loadSupplierData()
         {
             try
             {
-                this.pROVEEDORTableAdapter.Fill(this.farmaciaDBDataSet.PROVEEDOR);
-                updateTotalRowCount();
+                //this.pROVEEDORTableAdapter.Fill(this.farmaciaDBDataSet.PROVEEDOR);
+                actualizarFilasTotales();
 
             }
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
 
         // // // // // Funciones de botones // // // // //
-        private void toggleEditMode()
+        private void alternarModoEdicion()
         {
-            if (isModifyButtonPressed)
+            if (botonModificarPresionado)
             {
                 // Activar el modo edición del datagridview
-                isModifyButtonPressed = false;
+                botonModificarPresionado = false;
                 btnModifyG.Image = Properties.Resources.EditingIcon;
-                btnModifyG.BaseColor = palette.ButtonModifyActive;
+                btnModifyG.BaseColor = paleta.ColorBotonModificarActivo;
                 dgvSupplierList.ReadOnly = false;
                 dgvcID.ReadOnly = true;
             }
@@ -104,9 +104,9 @@ namespace Sistema.Views
                 }
 
                 // Desactivar el modo edición del datagridview
-                isModifyButtonPressed = true;
+                botonModificarPresionado = true;
                 btnModifyG.Image = Properties.Resources.PencilIcon;
-                btnModifyG.BaseColor = palette.ButtonModifyDisabled;
+                btnModifyG.BaseColor = paleta.ColorBotonModificarDeshabilitado;
 
                 dgvSupplierList.ReadOnly = true;
             }
@@ -121,37 +121,40 @@ namespace Sistema.Views
                 if (controladora.IsDatagridViewModified)
                 {
                     // Preungar al usuario si desea guardar los cambios realizados antes de agregar una nueva categoria.
-                    DialogResult userAnswer = MessageBox.Show("Has realizado modificaciones y estás agregando un nuevo proveedor. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (userAnswer == DialogResult.Yes)
+                    DialogResult respuestaUsuario = MessageBox.Show("Has realizado modificaciones y estás agregando un nuevo proveedor. ¿Deseas guardar los cambios realizados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (respuestaUsuario == DialogResult.Yes)
                     {
                         // Guarda los cambios.                      
                         updateSupplierData(true);
                         addSuplier();
+                        txtNombreP_G.Focus();
                     }
                     else
                     {
                         // Restaura los datos originales.
                         addSuplier();
                         loadSupplierData();
+                        txtNombreP_G.Focus();
                     }
                 }
                 else
                 {
                     addSuplier();
+                    txtNombreP_G.Focus();
                 }
 
             }
             catch (DbUpdateException)
             {
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
             }
             catch (SqlException)
             {
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
         }
 
@@ -160,9 +163,9 @@ namespace Sistema.Views
             // Model Proveedor
             PROVEEDOR supplier = new PROVEEDOR();
             // TXTBOX Obligatorios de completar: Razon social, Nro.Documento y Dirección
-            bool isSupplierNameValid = controladora.VerifyTextBoxG(txtNombreP_G);
-            bool isSupplierDocumentValid = controladora.VerifyTextBoxG(txtDocumentoP_G);
-            bool isSupplierAddressValid = controladora.VerifyTextBoxG(txtDireccionP_G);
+            bool isSupplierNameValid = controladora.VerificarTextBoxG(txtNombreP_G);
+            bool isSupplierDocumentValid = controladora.VerificarTextBoxG(txtDocumentoP_G);
+            bool isSupplierAddressValid = controladora.VerificarTextBoxG(txtDireccionP_G);
             if (isSupplierNameValid && isSupplierDocumentValid && isSupplierAddressValid)
             {
                 // Se utiliza la instancia de la clase proveedor
@@ -178,7 +181,7 @@ namespace Sistema.Views
                 {
                     MessageBox.Show("Se agrego correctamente el proveedor.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Se limpian los campos
-                    controladora.ClearTextBoxG(txtNombreP_G, txtDocumentoP_G, txtDireccionP_G, txtTelefonoP_G, txtCorreoP_G);
+                    controladora.LimpiarTextBoxG(txtNombreP_G, txtDocumentoP_G, txtDireccionP_G, txtTelefonoP_G, txtCorreoP_G);
                     loadSupplierData();
                 }
                 else
@@ -196,7 +199,7 @@ namespace Sistema.Views
         // /// /// // // // AGREGAR PROVEEDOR // // // // // //
 
         // // // // // // MODIFICAR PROVEEDOR // // // // // //
-        Dictionary<int, DataGridViewRow> modifiedRows = new Dictionary<int, DataGridViewRow>();
+        Dictionary<int, DataGridViewRow> filasModificadas = new Dictionary<int, DataGridViewRow>();
         private void btnGuardarG_Click(object sender, EventArgs e)
         {
             updateSupplierData(true);
@@ -204,40 +207,40 @@ namespace Sistema.Views
 
         private void btnModifyG_Click(object sender, EventArgs e)
         {
-            toggleEditMode();
+            alternarModoEdicion();
         }
 
-        private void updateSupplierData(bool refresh)
+        private void updateSupplierData(bool actualizarDGV)
         {
             try
             {
                 PROVEEDOR supplier = new PROVEEDOR();
-                int modifiedShelves = 0; // Variable para contar las filas modificadas
-                foreach (KeyValuePair<int, DataGridViewRow> row in modifiedRows)
+                int celdasModificadas = 0; // Variable para contar las filas modificadas
+                foreach (KeyValuePair<int, DataGridViewRow> fila in filasModificadas)
                 {
-                    supplier.ProveedorID = Convert.ToInt32(row.Value.Cells[0].Value);
-                    supplier.RazonSocial = Convert.ToString(row.Value.Cells[1].Value);
-                    supplier.Documento = Convert.ToString(row.Value.Cells[2].Value);
-                    supplier.Direccion = Convert.ToString(row.Value.Cells[3].Value);
-                    supplier.TelefonoProveedor = Convert.ToString(row.Value.Cells[4].Value);
-                    supplier.Correo = Convert.ToString(row.Value.Cells[5].Value);
+                    supplier.ProveedorID = Convert.ToInt32(fila.Value.Cells[0].Value);
+                    supplier.RazonSocial = Convert.ToString(fila.Value.Cells[1].Value);
+                    supplier.Documento = Convert.ToString(fila.Value.Cells[2].Value);
+                    supplier.Direccion = Convert.ToString(fila.Value.Cells[3].Value);
+                    supplier.TelefonoProveedor = Convert.ToString(fila.Value.Cells[4].Value);
+                    supplier.Correo = Convert.ToString(fila.Value.Cells[5].Value);
 
                     bool result = supplierLogic.ModifySupplier(supplier);
                     if (result)
                     {
-                        modifiedShelves++; // Incrementa el contador de proveedor modificados
+                        celdasModificadas++; // Incrementa el contador de proveedor modificados
                     }
                 }
 
                 // Limpia el diccionario y deshabilita el botón
-                modifiedRows.Clear();
+                filasModificadas.Clear();
                 controladora.IsDatagridViewModified = false;
                 btnGuardarG.Enabled = false;
 
                 // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
-                messageManager.ShowModificationMessage(modifiedShelves, "proveedor");
+                sGestorMensajes.Informacion.MostrarMensajeModificacion(celdasModificadas, "proveedor");
                 // Recargar los datos después de procesar todas las filas modificadas
-                if (refresh)
+                if (actualizarDGV)
                 {
                     loadSupplierData();
                 }
@@ -245,20 +248,20 @@ namespace Sistema.Views
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -273,9 +276,9 @@ namespace Sistema.Views
                 // Lista para almacenar los nombres de las proveedor seleccionadas
                 List<string> selectedSupplier = new List<string>();
                 // Se recorren las filas seleccionadas
-                foreach (DataGridViewRow row in dgvSupplierList.SelectedRows.Cast<DataGridViewRow>().Reverse())
+                foreach (DataGridViewRow fila in dgvSupplierList.SelectedRows.Cast<DataGridViewRow>().Reverse())
                 {
-                    int selectedSupplierID = Convert.ToInt32(row.Cells["dgvcID"].Value);
+                    int selectedSupplierID = Convert.ToInt32(fila.Cells["dgvcID"].Value);
                     // Se utiliza el id para obtener el objeto categoria y luego obtenemos el nombre
                     string supplierName = supplierLogic.GetSupplier(selectedSupplierID).RazonSocial.ToString();
                     selectedSupplier.Add(supplierName);
@@ -289,9 +292,9 @@ namespace Sistema.Views
         }
 
         // Obtener mensaje confirmación para eliminar proveedor
-        private string getDeleteConfirmationMessage()
+        private string mensajeConfirmacionEliminar()
         {
-            string message = "";
+            string mensaje = "";
             // Significa que se selecciono más de una categoria
             if (dgvSupplierList.SelectedRows.Count > 1)
             {
@@ -301,15 +304,15 @@ namespace Sistema.Views
                 {
                     supplierNames[i] = $"- {supplierNames[i]}";
                 }
-                message = "¿Está seguro que desea eliminar los siguientes proveedores?\n\n" + string.Join("\n", supplierNames);
+                mensaje = "¿Está seguro que desea eliminar los siguientes proveedores?\n\n" + string.Join("\n", supplierNames);
             }
             else if (dgvSupplierList.SelectedRows.Count == 1)
             {
                 // Significa que se selecciono una categoria
                 string supplierName = getSelectedSupplier()[0];
-                message = "¿Está seguro que desea eliminar el proveedor: \"" + supplierName + "\"?";
+                mensaje = "¿Está seguro que desea eliminar el proveedor: \"" + supplierName + "\"?";
             }
-            return message;
+            return mensaje;
         }
 
 
@@ -320,8 +323,8 @@ namespace Sistema.Views
                 if (controladora.IsDatagridViewModified)
                 {
                     // preguntar al usuario si desea guardar los cambios antes de eliminar
-                    DialogResult userAnswer = MessageBox.Show("¿Desea guardar los cambios antes de eliminar?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (userAnswer == DialogResult.Yes)
+                    DialogResult respuestaUsuario = MessageBox.Show("¿Desea guardar los cambios antes de eliminar?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (respuestaUsuario == DialogResult.Yes)
                     {
                         updateSupplierData(false);
                         deleteSelectedSuppliers();
@@ -339,20 +342,20 @@ namespace Sistema.Views
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -363,22 +366,22 @@ namespace Sistema.Views
             {
                 int supplierCount = dgvSupplierList.SelectedRows.Count;
 
-                string message = getDeleteConfirmationMessage();
-                DialogResult userConfirmation = MessageBox.Show(message, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                string mensaje = mensajeConfirmacionEliminar();
+                DialogResult userConfirmation = MessageBox.Show(mensaje, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (userConfirmation == DialogResult.Yes)
                 {
-                    foreach (DataGridViewRow row in dgvSupplierList.SelectedRows)
+                    foreach (DataGridViewRow fila in dgvSupplierList.SelectedRows)
                     {
                         // condicional multiples SelectedRows
-                        int selectedSupplierID = Convert.ToInt32(row.Cells[0].Value);
-                        bool deletionResult = supplierLogic.DeleteSupplier(selectedSupplierID);
-                        if (!deletionResult)
+                        int selectedSupplierID = Convert.ToInt32(fila.Cells[0].Value);
+                        bool eliminacionResultado = supplierLogic.DeleteSupplier(selectedSupplierID);
+                        if (!eliminacionResultado)
                         {
                             MessageBox.Show("La operación ha sido cancelada.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
                     }
-                    messageManager.ShowDeletionMessage(supplierCount, "proveedor");
+                    sGestorMensajes.Informacion.MostrarMensajeEliminacion(supplierCount, "proveedor");
 
                     // Mensaje de notificación dinámico // Poner siempre en singular el nombre del elemento
                 }
@@ -413,17 +416,17 @@ namespace Sistema.Views
 
         private void txtNombreP_Enter(object sender, EventArgs e)
         {
-            //txtNombreP.LineColor = palette.ColorDisabled;
+            //txtNombreP.LineColor = paleta.ColorDeshabilitado;
         }
 
         private void txtDireccionP_Enter(object sender, EventArgs e)
         {
-            //txtDireccionP.LineColor = palette.ColorDisabled;
+            //txtDireccionP.LineColor = paleta.ColorDeshabilitado;
         }
 
         private void txtTelefonoP_Enter(object sender, EventArgs e)
         {
-            //txtTelefonoP.LineColor = palette.ColorDisabled;
+            //txtTelefonoP.LineColor = paleta.ColorDeshabilitado;
         }
 
 
@@ -431,38 +434,38 @@ namespace Sistema.Views
         private void dgvSupplierList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // obtener valor de celda a modificar
-            DataGridViewRow row = dgvSupplierList.Rows[e.RowIndex];
-            DataGridViewCell cell = row.Cells[e.ColumnIndex];
+            DataGridViewRow fila = dgvSupplierList.Rows[e.RowIndex];
+            DataGridViewCell celda = fila.Cells[e.ColumnIndex];
 
             // Verifica si la celda está en la columna de descripción o correo
-            if ((cell.OwningColumn.Name == "dgvcTelefonoP" || cell.OwningColumn.Name == "dgvcCorreoP") && cell.Value == null)
+            if ((celda.OwningColumn.Name == "dgvcTelefonoP" || celda.OwningColumn.Name == "dgvcCorreoP") && celda.Value == null)
             {
                 // Si el valor es nulo o está en blanco, establece el valor en "-"
-                if (cell.Value == null || string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                if (celda.Value == null || string.IsNullOrWhiteSpace(celda.Value.ToString()))
                 {
-                    cell.Value = "-";
+                    celda.Value = "-";
                     btnGuardarG.Enabled = true;
                 }
             }
             else
             {
                 // Verifica si el valor es un espacio en blanco o una cadena vacía
-                if (cell.Value == null || string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                if (celda.Value == null || string.IsNullOrWhiteSpace(celda.Value.ToString()))
                 {
-                    messageManager.ShowMessageCellEmpty();
+                    sGestorMensajes.Advertencia.MostrarMensajeCeldaVacia();
                     // Restaura el valor original de la celda
-                    cell.Value = originalValue;
+                    celda.Value = valorOriginal;
                 }
                 else
                 {
                     // 
-                    if (!modifiedRows.ContainsKey(row.Index))
+                    if (!filasModificadas.ContainsKey(fila.Index))
                     {
-                        modifiedRows.Add(row.Index, row);
+                        filasModificadas.Add(fila.Index, fila);
                     }
                     else
                     {
-                        modifiedRows[row.Index] = row;
+                        filasModificadas[fila.Index] = fila;
                     }
 
                     btnGuardarG.Enabled = true;
@@ -475,11 +478,11 @@ namespace Sistema.Views
 
         private void dgvSupplierList_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvSupplierList.Rows[e.RowIndex];
-            DataGridViewCell cell = row.Cells[e.ColumnIndex];
+            DataGridViewRow fila = dgvSupplierList.Rows[e.RowIndex];
+            DataGridViewCell celda = fila.Cells[e.ColumnIndex];
 
             // Obtener el valor original de la celda
-            originalValue = cell.Value != null ? cell.Value : null;
+            valorOriginal = celda.Value != null ? celda.Value : null;
         }
 
         private void dgvSupplierList_SortStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.SortEventArgs e)
@@ -494,14 +497,14 @@ namespace Sistema.Views
 
         }
 
-        private void updateTotalRowCount()
+        private void actualizarFilasTotales()
         {
             lblTotalRow.Text = "Total de proveedores: " + bindingSourceSupplier.List.Count;
         }
 
         private void bindingSourceSupplier_ListChanged(object sender, ListChangedEventArgs e)
         {
-            updateTotalRowCount();
+            actualizarFilasTotales();
         }
 
         private void btnAgregar_Click_1(object sender, EventArgs e)

@@ -10,14 +10,14 @@ namespace Sistema.Controles.Interfaz
     public class MessageBoxManager
     {
         // Singleton MessageBoxManager
-        private static MessageBoxManager _instance;
-        public static MessageBoxManager GetInstance
+        private static MessageBoxManager _instancia;
+        public static MessageBoxManager ObtenerInstancia
         {
             get
             {
-                if (_instance == null)
-                    _instance = new MessageBoxManager();
-                return _instance;
+                if (_instancia == null)
+                    _instancia = new MessageBoxManager();
+                return _instancia;
             }
         }
         private MessageBoxManager()
@@ -26,68 +26,105 @@ namespace Sistema.Controles.Interfaz
         }
 
         // Mensajes de Error en la base de datos
-        public void ShowDatabaseUpdateError()
+        // llamar a la clase Error
+        public Error Error
+        {
+            get
+            {
+                return new Error();
+            }
+        }
+
+        // Mensajes de Información
+        public Informacion Informacion
+        {
+            get
+            {
+                return new Informacion();
+            }
+        }
+
+        // Mensajes de Advertencia
+        public Advertencia Advertencia
+        {
+            get
+            {
+                return new Advertencia();
+            }
+        }
+             
+    }
+
+    // Tipos de Mensajes: Error, Advertencia, Información, Pregunta
+    // Clase de mensaje de errores
+    public class Error
+    {
+        // Mensajes de Error SQL
+        public void MostrarErrorActualizacionBaseDatos()
         {
             MessageBox.Show("Hubo un error al actualizar la base de datos. Por favor, contacte al administrador del sistema.", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ShowSqlError()
+        public void MostrarErrorSQL()
         {
             MessageBox.Show("Hubo un error en la consulta a la base de datos. Por favor, contacte al administrador del sistema.", "Error de SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ShowUnexpectedError()
+        public void MostrarErrorInesperado()
         {
             MessageBox.Show("Se produjo un error inesperado. Por favor, contacte al administrador del sistema.", "Error Inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
 
+    public class Informacion
+    {
         // Mensaje de modificación, poner el nombre del elemento en singular, el sistema se encarga de ponerlo en plural si es necesario
-        public void ShowModificationMessage(int modifiedCount, string elementName)
+        public void MostrarMensajeModificacion(int cantidadModificada, string nombreElemento)
         {
-            if (modifiedCount > 0)
+            if (cantidadModificada > 0)
             {
-                string message;
-                if (modifiedCount == 1)
+                string mensaje;
+                if (cantidadModificada == 1)
                 {
-                    message = $"Se modificó correctamente 1 {elementName}.";
+                    mensaje = $"Se modificó correctamente 1 {nombreElemento}.";
                 }
-                else if(elementName != "proveedor")
+                else if (nombreElemento != "proveedor")
                 {
-                    message = $"Se modificaron correctamente {modifiedCount} {elementName}s.";
+                    mensaje = $"Se modificaron correctamente {cantidadModificada} {nombreElemento}s.";
                 }
                 else
                 {
-                    message = $"Se modificaron correctamente {modifiedCount} {elementName}es.";
+                    mensaje = $"Se modificaron correctamente {cantidadModificada} {nombreElemento}es.";
                 }
-                MessageBox.Show(message, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        public void ShowDeletionMessage(int modifiedCount, string elementName)
+        public void MostrarMensajeEliminacion(int cantidadModificada, string nombreElemento)
         {
-            if (modifiedCount > 0)
+            if (cantidadModificada > 0)
             {
-                string message;
-                if (modifiedCount == 1)
+                string mensaje;
+                if (cantidadModificada == 1)
                 {
-                    message = $"Se eliminó correctamente 1 {elementName}.";
+                    mensaje = $"Se eliminó correctamente 1 {nombreElemento}.";
                 }
-               
-                else if(elementName != "proveedor")
-                { 
-                    message = $"Se eliminarón correctamente {modifiedCount} {elementName}s.";
+                else if (nombreElemento != "proveedor")
+                {
+                    mensaje = $"Se eliminaron correctamente {cantidadModificada} {nombreElemento}s.";
                 }
                 else
                 {
-                    message = $"Se eliminarón correctamente {modifiedCount} {elementName}es.";
+                    mensaje = $"Se eliminaron correctamente {cantidadModificada} {nombreElemento}es.";
                 }
-               
-                MessageBox.Show(message, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+    }
 
-        // Mensaje de de Advertencía
-        public void ShowMessageCellEmpty()
+    public class Advertencia
+    {
+        public void MostrarMensajeCeldaVacia()
         {
             MessageBox.Show("No se permite dejar este campo vacío.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }

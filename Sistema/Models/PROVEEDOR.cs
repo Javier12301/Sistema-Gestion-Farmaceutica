@@ -28,6 +28,8 @@ namespace Sistema.Models
         public string Direccion { get; set; }
         public string TelefonoProveedor { get; set; }
         public string Correo { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPRA> COMPRA { get; set; }

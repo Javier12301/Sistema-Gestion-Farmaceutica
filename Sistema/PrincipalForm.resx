@@ -30,7 +30,7 @@
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
     
-    Each data row contains a name, and value. The row also contains a 
+    Each data fila contains a name, and value. The fila also contains a 
     type or mimetype. Type corresponds to a .NET class that support 
     text/value conversion through the TypeConverter architecture. 
     Classes that don't support this are serialized and stored with the 
@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sidebarTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="timerBararLateral.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -314,7 +314,7 @@
   <data name="btnVentas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAARRJREFUSEvt1r1KA0EUhuEtbGKrEC1DLiGVlYVNJGAbEJIrsEmtFyDehGCVO0iv
+        DAAACwwBP0AiyAAAARRJREFUSEvt1r1KA0EUhuEtbGKrEC1DLiGVlYVNJGAbEJIrsEmtFyDehGCVO0iv
         hZ1deklSG0gh+JPo+y0GLM66Z2ZlLMwLT7HDzhnywybZv+0OH18e0UWSvh8sb2giaTfQ4Rf5VcJOoIPv
         86uEbeMZS9S1kLIR9Kr7+VXCzrD+ov2mW/xYA9bGqmYobQxrcxXXKO0K1uYqTlHaIazNsVbYQ2lbmMMa
         EuMB7oawhsS4hLserCExjuBuF++wBoXQk7CGoPTMtoaF0JMwuHNYw0IMENw+FrAGejxhB1EdQG/5K6zh
@@ -325,7 +325,7 @@
   <data name="btnVentas.OnHoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAM9JREFUOE+tkj0OAVEYRQeJUuIn0UloNDqFGq1CIWzACtTsQaOwAonEAkQUKtZg
+        DAAACwwBP0AiyAAAAM9JREFUOE+tkj0OAVEYRQeJUuIn0UloNDqFGq1CIWzACtTsQaOwAonEAkQUKtZg
         EQoV1Thv5iaTiXmTN+Ekp5j73Vu98X7G9/0RPvCKNcXuMMpjCw+4UpwdxhO86TM7jEv4wpOjG00jCM/o
         ykWzCMJFeHNiqVkEYTu8OdHTLA6He3hPxTx7QZM4HNZBJZ296t9w7OAzqCXzxr7qyVAoY9diXTU7lAZo
         /symIpNVcIczRXYobdEwV2SyYRj5R0V2KFVxikVFJsvhGBuK/oHnfQDPJaxeTXTwQAAAAABJRU5ErkJg
@@ -335,7 +335,7 @@
   <data name="btnCompras.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAABSVJREFUaEPVmWeoJEUURseccw6o6IqKGQNiFkXXCLu4hhVEEVQwCwZQ/5j9YQIx
+        DAAACwwBP0AiyAAABSVJREFUaEPVmWeoJEUURseccw6o6IqKGQNiFkXXCLu4hhVEEVQwCwZQ/5j9YQIx
         gxEWXQMqrKioYEQUc0ARjCBixJz1nJ69UBQ183reqx7WDw68qtdTdbvCrXurewVtCufDU/AJ/AzPwMLQ
         pVaEU+B1+AhWhklpXbgf/oZ/C0yHLrQz3A6/QNrfGTCy9oRvwQZs8FY4BDaCS8D6+6CWVoJT4W1IjU95
         F0bS9hCj8TCsBanWg7/gD1jDiiloV7gD8tEfhM+3VozK3bCIFQXNA585uymNJkf/NHgHUiPbcCe01gvw
@@ -363,7 +363,7 @@
   <data name="btnCompras.OnHoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAYVJREFUOE+N008oBGEYx/FJEgfcFDcOUjhwWIpIUhLJgT0pF2VzUkoiTuIgcqJt
+        DAAACwwBP0AiyAAAAYVJREFUOE+N008oBGEYx/FJEgfcFDcOUjhwWIpIUhLJgT0pF2VzUkoiTuIgcqJt
         4yIXRZSSg78nFy7uSMnB0cm/9f2tZxjNu7t+9Wln5nme2el9Z7xkMlmCOA6w6aUJtRx0YgeXdvk3XDxG
         xI53UZoqWDgvwzRuEUyjtXyHC0V2qONeTEL/3gXd+A2v2MY4/KzbWDgUc3GOVnVaTtCGJTzrguUFxTYa
         DsU5dOAeyrv9uhKzsXAoVmALM+pME91cm9NuY+5YU50NBPOIBTRhAndIbZQzFAcwhn3oZvrtQz/2cIgP
@@ -376,7 +376,7 @@
   <data name="btnReportes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAABhJJREFUeF7tnEeoPTUYxf927CiiuBAUsYMLRXDhTiwbewcRG6IuFHEjiIqCWBAE
+        DAAACwwBP0AiyAAABhJJREFUeF7tnEeoPTUYxf927CiiuBAUsYMLRXDhTiwbewcRG6IuFHEjiIqCWBAE
         d1ZEsCsqFty5sSD2BlYQRQV7W9j1/B7vwPdipr43ys3kwI87995MvuTcuTOZJJN1iTYW94jvxRl8UNVf
         mPeo+HuZv8T5oqqHUvOqiQPUZJ6pJnboXmGzPgvbX4g/l7d5PVZUZcQFw+btsbwND4izhE28WZSiXcQd
         gjqmXCbWF711lMCcXZferTQQHSNuETsvvStD1Mf1zHGwGC1nYgNLFAfNjyKaFjlBjJYzKdnAqD3FdyIa
@@ -408,7 +408,7 @@
   <data name="btnReportes.OnHoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAUBJREFUOE+l06FLA2EcxvGhoAYHomEyZUHLHBr8C8RiEYYMbMIwqCATwWIaLGiR
+        DAAACwwBP0AiyAAAAUBJREFUOE+l06FLA2EcxvGhoAYHomEyZUHLHBr8C8RiEYYMbMIwqCATwWIaLGiR
         dbGpoA5msq5p0ahJgzYF/4rz+5zPgcXtXv3Bh/e93/vjuRt3y0RRVMMdspn/FAEbOMOMWz2L2VFcY8+t
         uJlHw5epivkxtNF0KzyI2RG0MOHWd4UEMZeDnmQKC+Kj9EHMTOMKOV+/4i0+VHHRM4jzMk4wiWMU8Y4P
         j3QPoj+MJqq+XoaqjnRB9FZxCf2kLXSwAlUD3YPYL0IBaxh07wYqBap+D0IBF9jGkH3iCEFBfejHAOah

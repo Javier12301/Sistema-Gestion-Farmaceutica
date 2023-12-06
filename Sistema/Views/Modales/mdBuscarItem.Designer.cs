@@ -41,14 +41,6 @@
             this.btnCancelarMedicamento = new System.Windows.Forms.Button();
             this.btnSeleccionarMedicamento = new System.Windows.Forms.Button();
             this.dgvDataMedicamento = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoríaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vistaInventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.btnbuscarMedicamento = new FontAwesome.Sharp.IconButton();
             this.btnLimpiarMedicamento = new FontAwesome.Sharp.IconButton();
             this.txtBusquedaMedicamento = new System.Windows.Forms.TextBox();
@@ -59,29 +51,33 @@
             this.btnCancelarProducto = new System.Windows.Forms.Button();
             this.btnSeleccionarProducto = new System.Windows.Forms.Button();
             this.dgvDataProducto = new System.Windows.Forms.DataGridView();
+            this.productoIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estanteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoriaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnBuscarProducto = new FontAwesome.Sharp.IconButton();
             this.btnLimpiarProducto = new FontAwesome.Sharp.IconButton();
             this.txtBuscarProducto = new System.Windows.Forms.TextBox();
             this.cmbFiltroProducto = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.vistaInventarioTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter();
-            this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pRODUCTOTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.PRODUCTOTableAdapter();
-            this.productoIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estanteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vistaInventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoríaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlControl.SuspendLayout();
             this.tbControl.SuspendLayout();
             this.tpMedicamento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataMedicamento)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             this.tpProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlControl
@@ -230,58 +226,9 @@
             this.dgvDataMedicamento.TabIndex = 85;
             this.dgvDataMedicamento.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // codDataGridViewTextBoxColumn
-            // 
-            this.codDataGridViewTextBoxColumn.DataPropertyName = "Cod_";
-            this.codDataGridViewTextBoxColumn.HeaderText = "Código";
-            this.codDataGridViewTextBoxColumn.Name = "codDataGridViewTextBoxColumn";
-            this.codDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // loteDataGridViewTextBoxColumn
-            // 
-            this.loteDataGridViewTextBoxColumn.DataPropertyName = "Lote";
-            this.loteDataGridViewTextBoxColumn.HeaderText = "Lote";
-            this.loteDataGridViewTextBoxColumn.Name = "loteDataGridViewTextBoxColumn";
-            this.loteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // estanteDataGridViewTextBoxColumn
-            // 
-            this.estanteDataGridViewTextBoxColumn.DataPropertyName = "Estante";
-            this.estanteDataGridViewTextBoxColumn.HeaderText = "Estante";
-            this.estanteDataGridViewTextBoxColumn.Name = "estanteDataGridViewTextBoxColumn";
-            this.estanteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // categoríaDataGridViewTextBoxColumn
-            // 
-            this.categoríaDataGridViewTextBoxColumn.DataPropertyName = "Categoría";
-            this.categoríaDataGridViewTextBoxColumn.HeaderText = "Categoría";
-            this.categoríaDataGridViewTextBoxColumn.Name = "categoríaDataGridViewTextBoxColumn";
-            this.categoríaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vistaInventarioBindingSource
-            // 
-            this.vistaInventarioBindingSource.DataMember = "VistaInventario";
-            this.vistaInventarioBindingSource.DataSource = this.farmaciaDBDataSet;
-            // 
             // farmaciaDBDataSet
             // 
-            this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
-            this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+          
             // 
             // btnbuscarMedicamento
             // 
@@ -338,6 +285,7 @@
             this.cmbFiltroMedicamento.Name = "cmbFiltroMedicamento";
             this.cmbFiltroMedicamento.Size = new System.Drawing.Size(116, 23);
             this.cmbFiltroMedicamento.TabIndex = 81;
+            this.cmbFiltroMedicamento.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroMedicamento_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -455,6 +403,46 @@
             this.dgvDataProducto.TabIndex = 94;
             this.dgvDataProducto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             // 
+            // productoIDDataGridViewTextBoxColumn
+            // 
+            this.productoIDDataGridViewTextBoxColumn.DataPropertyName = "ProductoID";
+            this.productoIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.productoIDDataGridViewTextBoxColumn.Name = "productoIDDataGridViewTextBoxColumn";
+            this.productoIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productoIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn1
+            // 
+            this.nombreDataGridViewTextBoxColumn1.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn1.Name = "nombreDataGridViewTextBoxColumn1";
+            this.nombreDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // estanteIDDataGridViewTextBoxColumn
+            // 
+            this.estanteIDDataGridViewTextBoxColumn.DataPropertyName = "EstanteID";
+            this.estanteIDDataGridViewTextBoxColumn.HeaderText = "Estante";
+            this.estanteIDDataGridViewTextBoxColumn.Name = "estanteIDDataGridViewTextBoxColumn";
+            this.estanteIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoriaIDDataGridViewTextBoxColumn
+            // 
+            this.categoriaIDDataGridViewTextBoxColumn.DataPropertyName = "CategoriaID";
+            this.categoriaIDDataGridViewTextBoxColumn.HeaderText = "Categoría";
+            this.categoriaIDDataGridViewTextBoxColumn.Name = "categoriaIDDataGridViewTextBoxColumn";
+            this.categoriaIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pRODUCTOBindingSource
+            // 
+            this.pRODUCTOBindingSource.DataMember = "PRODUCTO";
+            // 
             // btnBuscarProducto
             // 
             this.btnBuscarProducto.BackColor = System.Drawing.Color.White;
@@ -534,54 +522,58 @@
             this.label2.TabIndex = 89;
             this.label2.Text = "Lista de Producto";
             // 
-            // vistaInventarioTableAdapter
-            // 
-            this.vistaInventarioTableAdapter.ClearBeforeFill = true;
-            // 
-            // pRODUCTOBindingSource
-            // 
-            this.pRODUCTOBindingSource.DataMember = "PRODUCTO";
-            this.pRODUCTOBindingSource.DataSource = this.farmaciaDBDataSet;
-            // 
             // pRODUCTOTableAdapter
             // 
-            this.pRODUCTOTableAdapter.ClearBeforeFill = true;
             // 
-            // productoIDDataGridViewTextBoxColumn
+            // vistaInventarioBindingSource
             // 
-            this.productoIDDataGridViewTextBoxColumn.DataPropertyName = "ProductoID";
-            this.productoIDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.productoIDDataGridViewTextBoxColumn.Name = "productoIDDataGridViewTextBoxColumn";
-            this.productoIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productoIDDataGridViewTextBoxColumn.Visible = false;
+
             // 
-            // codigoDataGridViewTextBoxColumn
+            // vistaInventarioTableAdapter
             // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // nombreDataGridViewTextBoxColumn1
+            // iDDataGridViewTextBoxColumn
             // 
-            this.nombreDataGridViewTextBoxColumn1.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn1.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn1.Name = "nombreDataGridViewTextBoxColumn1";
-            this.nombreDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
-            // estanteIDDataGridViewTextBoxColumn
+            // codDataGridViewTextBoxColumn
             // 
-            this.estanteIDDataGridViewTextBoxColumn.DataPropertyName = "EstanteID";
-            this.estanteIDDataGridViewTextBoxColumn.HeaderText = "Estante";
-            this.estanteIDDataGridViewTextBoxColumn.Name = "estanteIDDataGridViewTextBoxColumn";
-            this.estanteIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codDataGridViewTextBoxColumn.DataPropertyName = "Cod_";
+            this.codDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.codDataGridViewTextBoxColumn.Name = "codDataGridViewTextBoxColumn";
+            this.codDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // categoriaIDDataGridViewTextBoxColumn
+            // loteDataGridViewTextBoxColumn
             // 
-            this.categoriaIDDataGridViewTextBoxColumn.DataPropertyName = "CategoriaID";
-            this.categoriaIDDataGridViewTextBoxColumn.HeaderText = "Categoría";
-            this.categoriaIDDataGridViewTextBoxColumn.Name = "categoriaIDDataGridViewTextBoxColumn";
-            this.categoriaIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.loteDataGridViewTextBoxColumn.DataPropertyName = "Lote";
+            this.loteDataGridViewTextBoxColumn.HeaderText = "Lote";
+            this.loteDataGridViewTextBoxColumn.Name = "loteDataGridViewTextBoxColumn";
+            this.loteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // estanteDataGridViewTextBoxColumn
+            // 
+            this.estanteDataGridViewTextBoxColumn.DataPropertyName = "Estante";
+            this.estanteDataGridViewTextBoxColumn.HeaderText = "Estante";
+            this.estanteDataGridViewTextBoxColumn.Name = "estanteDataGridViewTextBoxColumn";
+            this.estanteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoríaDataGridViewTextBoxColumn
+            // 
+            this.categoríaDataGridViewTextBoxColumn.DataPropertyName = "Categoría";
+            this.categoríaDataGridViewTextBoxColumn.HeaderText = "Categoría";
+            this.categoríaDataGridViewTextBoxColumn.Name = "categoríaDataGridViewTextBoxColumn";
+            this.categoríaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mdBuscarItem
             // 
@@ -600,12 +592,12 @@
             this.tpMedicamento.ResumeLayout(false);
             this.tpMedicamento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataMedicamento)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
+
             this.tpProducto.ResumeLayout(false);
             this.tpProducto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -636,21 +628,18 @@
         private System.Windows.Forms.ComboBox cmbFiltroProducto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private FarmaciaDBDataSet farmaciaDBDataSet;
+        private System.Windows.Forms.BindingSource pRODUCTOBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productoIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estanteIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource vistaInventarioBindingSource;
-        private FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter vistaInventarioTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn loteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estanteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoríaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource pRODUCTOBindingSource;
-        private FarmaciaDBDataSetTableAdapters.PRODUCTOTableAdapter pRODUCTOTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productoIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estanteIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaIDDataGridViewTextBoxColumn;
     }
 }

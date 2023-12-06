@@ -29,23 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlControl = new System.Windows.Forms.Panel();
             this.gunaControlCerrar = new Guna.UI.WinForms.GunaControlBox();
             this.lblNombreForm = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.dgvdata = new System.Windows.Forms.DataGridView();
-            this.pROVEEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.btnbuscar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.pROVEEDORTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.PROVEEDORTableAdapter();
+            this.pROVEEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.proveedorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razonSocialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +53,6 @@
             this.pnlControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pROVEEDORBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlControl
@@ -139,15 +136,15 @@
             this.dgvdata.AutoGenerateColumns = false;
             this.dgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvdata.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvdata.ColumnHeadersHeight = 35;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.proveedorIDDataGridViewTextBoxColumn,
@@ -162,9 +159,9 @@
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
             this.dgvdata.RowHeadersWidth = 20;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvdata.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvdata.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowTemplate.Height = 28;
@@ -172,16 +169,6 @@
             this.dgvdata.Size = new System.Drawing.Size(483, 230);
             this.dgvdata.TabIndex = 84;
             this.dgvdata.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellDoubleClick);
-            // 
-            // pROVEEDORBindingSource
-            // 
-            this.pROVEEDORBindingSource.DataMember = "PROVEEDOR";
-            this.pROVEEDORBindingSource.DataSource = this.farmaciaDBDataSet;
-            // 
-            // farmaciaDBDataSet
-            // 
-            this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
-            this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnbuscar
             // 
@@ -238,6 +225,7 @@
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(116, 23);
             this.cmbFiltro.TabIndex = 78;
+            this.cmbFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbFiltro_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -262,9 +250,17 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Lista de Proveedores";
             // 
+            // farmaciaDBDataSet
+            // 
+
+            // 
+            // pROVEEDORBindingSource
+            // 
+            this.pROVEEDORBindingSource.DataMember = "PROVEEDOR";
+
+            // 
             // pROVEEDORTableAdapter
             // 
-            this.pROVEEDORTableAdapter.ClearBeforeFill = true;
             // 
             // proveedorIDDataGridViewTextBoxColumn
             // 
@@ -272,12 +268,11 @@
             this.proveedorIDDataGridViewTextBoxColumn.HeaderText = "ProveedorID";
             this.proveedorIDDataGridViewTextBoxColumn.Name = "proveedorIDDataGridViewTextBoxColumn";
             this.proveedorIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.proveedorIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // razonSocialDataGridViewTextBoxColumn
             // 
             this.razonSocialDataGridViewTextBoxColumn.DataPropertyName = "RazonSocial";
-            this.razonSocialDataGridViewTextBoxColumn.HeaderText = "Razon Social";
+            this.razonSocialDataGridViewTextBoxColumn.HeaderText = "RazonSocial";
             this.razonSocialDataGridViewTextBoxColumn.Name = "razonSocialDataGridViewTextBoxColumn";
             this.razonSocialDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -294,12 +289,11 @@
             this.direccionDataGridViewTextBoxColumn.HeaderText = "Direccion";
             this.direccionDataGridViewTextBoxColumn.Name = "direccionDataGridViewTextBoxColumn";
             this.direccionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.direccionDataGridViewTextBoxColumn.Visible = false;
             // 
             // telefonoProveedorDataGridViewTextBoxColumn
             // 
             this.telefonoProveedorDataGridViewTextBoxColumn.DataPropertyName = "TelefonoProveedor";
-            this.telefonoProveedorDataGridViewTextBoxColumn.HeaderText = "Teléfono";
+            this.telefonoProveedorDataGridViewTextBoxColumn.HeaderText = "TelefonoProveedor";
             this.telefonoProveedorDataGridViewTextBoxColumn.Name = "telefonoProveedorDataGridViewTextBoxColumn";
             this.telefonoProveedorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -333,7 +327,6 @@
             this.pnlControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pROVEEDORBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,9 +346,7 @@
         private System.Windows.Forms.ComboBox cmbFiltro;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private FarmaciaDBDataSet farmaciaDBDataSet;
         private System.Windows.Forms.BindingSource pROVEEDORBindingSource;
-        private FarmaciaDBDataSetTableAdapters.PROVEEDORTableAdapter pROVEEDORTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedorIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn razonSocialDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;

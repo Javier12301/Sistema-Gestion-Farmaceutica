@@ -23,8 +23,9 @@ namespace Sistema.Models
     
         public int EstanteID { get; set; }
         public string Nombre { get; set; }
-        public int Numero { get; set; }
         public string Sector { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEDICAMENTO> MEDICAMENTO { get; set; }

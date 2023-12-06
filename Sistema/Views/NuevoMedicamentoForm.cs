@@ -22,14 +22,14 @@ namespace Sistema.Vista
     {
         private Point mouseDownLocation;
         Shortcuts shortcuts = new Shortcuts();
-        Controladora controladora = Controladora.GetInstance;
+        Controladora controladora = Controladora.ObtenerInstancia;
 
         private bool medicineSave { get; set; }
-        private CategoriaLogica categoryLogic = new CategoriaLogica();
+        //private CategoriaLogica lCategoria = new CategoriaLogica();
         private EstanteLogica shelfLogic = new EstanteLogica();
         private ProveedorLogica supplierLogic = new ProveedorLogica();
-        private MedicamentoLogica medicineLogic = new MedicamentoLogica();
-        private MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        private MedicamentoLogica lMedicina = new MedicamentoLogica();
+        private MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
         // Listas para almacenar datos de la base de datos, ESTANTE, CATEGORIA, PROVEEDOR
         private List<ESTANTE> shelvesList { get; set; }
         private List<CATEGORIA> categoryList { get; set; }
@@ -65,7 +65,7 @@ namespace Sistema.Vista
             {
                 // Cargar ComboBox con datos de la base de datos
                 shelvesList = shelfLogic.GetShelves(true);
-                categoryList = categoryLogic.GetCategories(true);
+                //categoryList = lCategoria.ObtenerCategorias(true);
                 supplierList = supplierLogic.GetSuppliers(true);
 
                 // con Select solo buscamos obtener el nombre de cada estante, categoria y proveedor
@@ -81,6 +81,11 @@ namespace Sistema.Vista
                 shelvesNames[1] = "Estante por defecto";
                 categoryNames[1] = "Categoría por defecto";
                 supplierNames[1] = "Proveedor por defecto";
+                // Combobox de Estado solo tiene dos opciones, Activo y No Activo
+                cmbEstadoM.Items.Add("Seleccionar Estado...");
+                cmbEstadoM.Items.Add("Activo");
+                cmbEstadoM.Items.Add("No Activo");
+                cmbEstadoM.SelectedIndex = 0;
                 // Cargar combobox
                 cmbEstanteM.DataSource = shelvesNames;
                 cmbCategoriaM.DataSource = categoryNames;
@@ -90,20 +95,20 @@ namespace Sistema.Vista
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -129,10 +134,13 @@ namespace Sistema.Vista
             try
             {
                 MEDICAMENTO medicine = new MEDICAMENTO();
-                bool isCodValid = controladora.VerifyTextBoxT(txtCodBarrasM, errorProvider);
-                bool isMedicineNamedValid = controladora.VerifyTextBoxT(txtNombreM, errorProvider);
-                bool isLoteValid = controladora.VerifyTextBoxT(txtLoteM, errorProvider);
-                if (isCodValid && isMedicineNamedValid && isLoteValid)
+                bool isCodValid = controladora.VerificarTextBoxT(txtCodBarrasM, errorProvider);
+                bool isMedicineNamedValid = controladora.VerificarTextBoxT(txtNombreM, errorProvider);
+                bool isLoteValid = controladora.VerificarTextBoxT(txtLoteM, errorProvider);
+                // Obligatoriamente se debe seleccionar el estado del medicamento
+                bool isStateSelected = controladora.VerificarComboBox(cmbEstadoM, errorProvider, lblEstado);
+                // si isStateSelected es false, se prende el errorProvider
+                if (isCodValid && isMedicineNamedValid && isLoteValid && isStateSelected)
                 {
                     // Utilizamos la instancia de MEDICAMENTO para asignar los valores
                     medicine.Codigo = txtCodBarrasM.Text;
@@ -147,6 +155,7 @@ namespace Sistema.Vista
                     medicine.EstanteID = shelvesList.Where(shelf => shelf.Nombre == selectedShelf).Select(shelf => shelf.EstanteID).FirstOrDefault();
                     medicine.CategoriaID = categoryList.Where(category => category.Nombre == selectedCategory).Select(category => category.CategoriaID).FirstOrDefault();
                     medicine.ProveedorID = supplierList.Where(supplier => supplier.RazonSocial == selectedSupplier).Select(supplier => supplier.ProveedorID).FirstOrDefault();
+                    medicine.Estado = cmbEstadoM.SelectedItem.ToString() == "Activo" ? true : false;
                     // Ahora comprobamos los checkbox refrigerado y bajo receta, en la base de dato están establecidos como bit
                     medicine.Refrigerado = chkRefrigeado.Checked;
                     medicine.BajoReceta = chkBajoReceta.Checked;
@@ -156,7 +165,7 @@ namespace Sistema.Vista
                     // Establecemos la fecha de creación del medicamento 
                     medicine.FechaRegistro = DateTime.Now;
                     // Comprobar si los datos fueron cargados y las id de cada combobox seleccionada son validas, crear un string con todo los datos cargados y que tengan salto de linea                              
-                    bool result = medicineLogic.AddMedicine(medicine);
+                    bool result = lMedicina.AddMedicine(medicine);
                     if (result)
                     {
                         MessageBox.Show("Se agrego correctamente un medicamento.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -181,26 +190,26 @@ namespace Sistema.Vista
                 }
                 else
                 {
-                    MessageBox.Show("¡Por favor, complete los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("¡Por favor, complete los campos obligatorios!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);                  
                 }
             }
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -214,10 +223,11 @@ namespace Sistema.Vista
             try
             {
                 MEDICAMENTO medicine = new MEDICAMENTO();
-                bool isCodValid = controladora.VerifyTextBoxT(txtCodBarrasM, errorProvider);
-                bool isMedicineNamedValid = controladora.VerifyTextBoxT(txtNombreM, errorProvider);
-                bool isLoteValid = controladora.VerifyTextBoxT(txtLoteM, errorProvider);
-                if (isCodValid && isMedicineNamedValid && isLoteValid)
+                bool isCodValid = controladora.VerificarTextBoxT(txtCodBarrasM, errorProvider);
+                bool isMedicineNamedValid = controladora.VerificarTextBoxT(txtNombreM, errorProvider);
+                bool isLoteValid = controladora.VerificarTextBoxT(txtLoteM, errorProvider);
+                bool isStateSelected = controladora.VerificarComboBox(cmbEstadoM, errorProvider, lblEstado);
+                if (isCodValid && isMedicineNamedValid && isLoteValid && isStateSelected)
                 {
                     // Utilizamos la instancia de MEDICAMENTO para asignar los valores
                     medicine.MedicamentoID = medicineToEdit.MedicamentoID;
@@ -233,6 +243,7 @@ namespace Sistema.Vista
                     medicine.EstanteID = shelvesList.Where(shelf => shelf.Nombre == selectedShelf).Select(shelf => shelf.EstanteID).FirstOrDefault();
                     medicine.CategoriaID = categoryList.Where(category => category.Nombre == selectedCategory).Select(category => category.CategoriaID).FirstOrDefault();
                     medicine.ProveedorID = supplierList.Where(supplier => supplier.RazonSocial == selectedSupplier).Select(supplier => supplier.ProveedorID).FirstOrDefault();
+                    medicine.Estado = cmbEstadoM.SelectedItem.ToString() == "Activo" ? true : false;
                     // Ahora comprobamos los checkbox refrigerado y bajo receta, en la base de dato están establecidos como bit
                     medicine.Refrigerado = chkRefrigeado.Checked;
                     medicine.BajoReceta = chkBajoReceta.Checked;
@@ -240,7 +251,7 @@ namespace Sistema.Vista
                     medicine.PrecioCompra = txtCosto.Text == "" ? 0 : Convert.ToDecimal(txtCosto.Text);
                     medicine.PrecioVenta = txtPrecio.Text == "" ? 0 : Convert.ToDecimal(txtPrecio.Text);
                     // Comprobar si los datos fueron cargados y las id de cada combobox seleccionada son validas, crear un string con todo los datos cargados y que tengan salto de linea                              
-                    bool result = medicineLogic.ModifyMedicine(medicine);
+                    bool result = lMedicina.ModifyMedicine(medicine);
                     if (result)
                     {
                         MessageBox.Show("Se modifico correctamente el medicamento.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -268,20 +279,20 @@ namespace Sistema.Vista
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -324,20 +335,20 @@ namespace Sistema.Vista
             catch (DbUpdateException)
             {
                 // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                 // Loguear dbEx si es necesario para fines de depuración
             }
             catch (SqlException)
             {
                 // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
                 // Loguear sqlEx si es necesario para fines de depuración
             }
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
                 // Loguear ex si es necesario para fines de depuración
             }
         }
@@ -365,7 +376,7 @@ namespace Sistema.Vista
             catch (Exception)
             {
                 // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
         }
 
@@ -378,6 +389,8 @@ namespace Sistema.Vista
                 SetComboBoxItem(cmbEstanteM, Convert.ToInt32(medicineToEdit.EstanteID), shelvesList, shelf => shelf.EstanteID, shelf => shelf.Nombre);
                 SetComboBoxItem(cmbCategoriaM, Convert.ToInt32(medicineToEdit.CategoriaID), categoryList, category => category.CategoriaID, category => category.Nombre);
                 SetComboBoxItem(cmbProveedorM, Convert.ToInt32(medicineToEdit.ProveedorID), supplierList, supplier => supplier.ProveedorID, supplier => supplier.RazonSocial);
+                // Para el caso de los combobox estados, solo se revisa si está en true o false, seleccionará el item "Activo" o "No Activo"
+                cmbEstadoM.SelectedItem = medicineToEdit.Estado == true ? "Activo" : "No Activo";
             }
         }
 
@@ -420,13 +433,14 @@ namespace Sistema.Vista
         private void clearFields()
         {
             // Messagebox preguntando si está seguro de limpiar los campos
-            DialogResult userAnswer = MessageBox.Show("¿Desea limpiar los campos?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (userAnswer == DialogResult.Yes)
+            DialogResult respuestaUsuario = MessageBox.Show("¿Desea limpiar los campos?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuestaUsuario == DialogResult.Yes)
             {
-                controladora.ClearTextBoxT(txtCodBarrasM, txtNombreM, txtLoteM);
+                controladora.LimpiarTextBoxT(txtCodBarrasM, txtNombreM, txtLoteM);
                 cmbEstanteM.SelectedIndex = 0;
                 cmbCategoriaM.SelectedIndex = 0;
                 cmbProveedorM.SelectedIndex = 0;
+                cmbEstadoM.SelectedIndex = 0;
                 // Unchecked las propiedades
                 chkBajoReceta.Checked = false;
                 chkRefrigeado.Checked = false;
@@ -488,7 +502,7 @@ namespace Sistema.Vista
                 {
                     int medicineID = modal.medicine.MedicamentoID;
                     // Crear string con todo los valores de medicineToEdit para un messagebox
-                    MEDICAMENTO selectedMedicine = medicineLogic.GetMedicine(medicineID);
+                    MEDICAMENTO selectedMedicine = lMedicina.GetMedicine(medicineID);
                     medicineToEdit = selectedMedicine;
                     setMedicineToEdit();
                 }

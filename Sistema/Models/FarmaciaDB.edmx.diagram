@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93684f11c9b0427385d0d7a9947b548f" Name="Diagram1">
+        <EntityTypeShape EntityType="FarmaciaDBModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.CLIENTE" Width="1.5" PointX="11" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.COMPRA" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.DETALLE_COMPRA" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.DETALLE_VENTA" Width="1.5" PointX="11.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.ESTANTE" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.MEDICAMENTO" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.NEGOCIO" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.PERMISO" Width="1.5" PointX="3.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.PRODUCTO" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.ROL" Width="1.5" PointX="1.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.TipoCliente" Width="1.5" PointX="8.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.USUARIO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.VENTA" Width="1.5" PointX="9" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.InventarioMedicamento" Width="1.5" PointX="2.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmaciaDBModel.InventarioProducto" Width="1.5" PointX="5.75" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__MEDICAMEN__Categ__093F5D4E" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__PRODUCTO__Catego__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__CLIENTE__TipoCli__1F2E9E6D" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__COMPRA__Proveedo__361203C5" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__COMPRA__UsuarioI__351DDF8C" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_C__Compr__39E294A9" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_C__Medic__3BCADD1B" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_C__Produ__3AD6B8E2" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_V__Medic__436BFEE3" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_V__Produ__4277DAAA" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__DETALLE_V__Venta__4183B671" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__MEDICAMEN__Estan__084B3915" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__PRODUCTO__Estant__00AA174D" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__MEDICAMEN__Prove__0A338187" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__PERMISO__RolID__29AC2CE0" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__PRODUCTO__Provee__019E3B86" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__USUARIO__RolID__2D7CBDC4" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmaciaDBModel.FK__VENTA__UsuarioID__314D4EA8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

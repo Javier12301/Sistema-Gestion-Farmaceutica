@@ -17,8 +17,8 @@ namespace Sistema.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MEDICAMENTO()
         {
-            this.DETALLE_VENTA = new HashSet<DETALLE_VENTA>();
             this.DETALLE_COMPRA = new HashSet<DETALLE_COMPRA>();
+            this.DETALLE_VENTA = new HashSet<DETALLE_VENTA>();
         }
     
         public int MedicamentoID { get; set; }
@@ -34,14 +34,15 @@ namespace Sistema.Models
         public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<bool> Refrigerado { get; set; }
         public Nullable<bool> BajoReceta { get; set; }
+        public Nullable<bool> Estado { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_COMPRA> DETALLE_COMPRA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_VENTA> DETALLE_VENTA { get; set; }
         public virtual ESTANTE ESTANTE { get; set; }
         public virtual PROVEEDOR PROVEEDOR { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLE_COMPRA> DETALLE_COMPRA { get; set; }
     }
 }

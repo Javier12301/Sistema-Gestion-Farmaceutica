@@ -14,7 +14,7 @@ namespace Sistema.Vista
     public partial class NuevoClienteForm : Form
     {
         private Point mouseDownLocation;
-        Controladora controladora = Controladora.GetInstance;
+        Controladora controladora = Controladora.ObtenerInstancia;
         public NuevoClienteForm()
         {
             InitializeComponent();
@@ -77,16 +77,16 @@ namespace Sistema.Vista
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
             //  Comprobar caracteres vacios
-            bool txtBoolNombre = controladora.VerifyTextBoxT(txtNombreCliente, errorProvider);
-            bool txtBoolApellido = controladora.VerifyTextBoxT(txtApellidoCliente, errorProvider);
-            bool txtBoolDNI = controladora.VerifyTextBoxT(txtDNICliente, errorProvider);
+            bool txtBoolNombre = controladora.VerificarTextBoxT(txtNombreCliente, errorProvider);
+            bool txtBoolApellido = controladora.VerificarTextBoxT(txtApellidoCliente, errorProvider);
+            bool txtBoolDNI = controladora.VerificarTextBoxT(txtDNICliente, errorProvider);
             
             //opcional
             bool txtBoolMail = true;
             //En caso de que el farmaceutico desee agregar el correo electronico del cliente, se deberá verificar que sea un correo valido
             if (!string.IsNullOrWhiteSpace(txtMailCliente.Text))
             {
-                txtBoolMail = controladora.VerifyEmailT(txtMailCliente, errorProvider);
+                txtBoolMail = controladora.VerificarCorreoT(txtMailCliente, errorProvider);
                 
             }
             // // // // // // // //

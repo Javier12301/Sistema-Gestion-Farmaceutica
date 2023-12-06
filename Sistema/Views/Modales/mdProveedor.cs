@@ -16,9 +16,9 @@ namespace Sistema.Views.Modales
 {
     public partial class mdProveedor : Form
     {
-        MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
         private Point mouseDownLocation;
-        public PROVEEDOR supplier{ get; set; }
+        public PROVEEDOR supplier { get; set; }
 
         public mdProveedor()
         {
@@ -26,88 +26,78 @@ namespace Sistema.Views.Modales
         }
 
         private void mdProveedor_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla 'farmaciaDBDataSet.PROVEEDOR' Puede moverla o quitarla según sea necesario.
-            this.pROVEEDORTableAdapter.Fill(this.farmaciaDBDataSet.PROVEEDOR);
-
+        {           
+            loadDataSupplier();
+            loadCMBData();
         }
 
+
         // // /// /// INTERFAZ /// /// /// //
+        private void loadDataSupplier()
+        {
+            //this.pROVEEDORTableAdapter.Fill(this.farmaciaDBDataSet.PROVEEDOR);
+
+        }
         // Cargar Combobox de Filtros
         private void loadCMBData()
         {
             // Cargar ComboBox de Filtros con código, lote, nombre, estante y categoría
-            cmbFiltro.Items.Add("Razon Social");
+            cmbFiltro.Items.Add("Razón Social");
             cmbFiltro.Items.Add("Documento");
             cmbFiltro.Items.Add("Teléfono");
             cmbFiltro.Items.Add("Correo");
             cmbFiltro.SelectedIndex = 0;
         }
 
+
+        private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filterData();
+        }
+
+
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                filterData();
-            }
-            catch (DbUpdateException)
-            {
-                // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
-
-                // Loguear dbEx si es necesario para fines de depuración
-            }
-            catch (SqlException)
-            {
-                // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
-                // Loguear sqlEx si es necesario para fines de depuración
-            }
-            catch (Exception)
-            {
-                // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
-                // Loguear ex si es necesario para fines de depuración
-            }
+            filterData();
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                filterData();
-            }
-            catch (DbUpdateException)
-            {
-                // Excepción relacionada con problemas de actualización en la base de datos
-                messageManager.ShowDatabaseUpdateError();
-
-                // Loguear dbEx si es necesario para fines de depuración
-            }
-            catch (SqlException)
-            {
-                // Excepción relacionada con errores de SQL
-                messageManager.ShowSqlError();
-                // Loguear sqlEx si es necesario para fines de depuración
-            }
-            catch (Exception)
-            {
-                // Otras excepciones no manejadas
-                messageManager.ShowUnexpectedError();
-                // Loguear ex si es necesario para fines de depuración
-            }
+            filterData();
         }
 
         // Función para filtrar los datos de la tabla
         private void filterData()
         {
-            if (txtBusqueda.Text != string.Empty)
+            try
             {
-                this.pROVEEDORTableAdapter.Filter(farmaciaDBDataSet.PROVEEDOR, cmbFiltro.Text, txtBusqueda.Text);
+                if (txtBusqueda.Text != string.Empty)
+                {
+                    //pROVEEDORTableAdapter.Filter(farmaciaDBDataSet.PROVEEDOR, cmbFiltro.Text, txtBusqueda.Text);
+                }
+                else
+                {
+                    loadDataSupplier();
+                }
             }
-            else
+            catch (DbUpdateException)
             {
-                this.pROVEEDORTableAdapter.Fill(farmaciaDBDataSet.PROVEEDOR);
+                // Excepción relacionada con problemas de actualización en la base de datos
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
+
+                // Loguear dbEx si es necesario para fines de depuración
+            }
+            catch (SqlException)
+            {
+                // Excepción relacionada con errores de SQL
+                sGestorMensajes.Error.MostrarErrorSQL();
+                // Loguear sqlEx si es necesario para fines de depuración
+            }
+            catch (Exception)
+            {
+                // Otras excepciones no manejadas
+                sGestorMensajes.Error.MostrarErrorInesperado();
+                // Loguear ex si es necesario para fines de depuración
             }
         }
 

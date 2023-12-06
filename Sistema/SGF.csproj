@@ -104,76 +104,76 @@
     <Compile Include="Controles\Logica\ProductoLogica.cs" />
     <Compile Include="Controles\Logica\ProveedorLogica.cs" />
     <Compile Include="Controles\Logica\VentaLogica.cs" />
-    <Compile Include="FarmaciaDBDataSet.cs">
-      <DependentUpon>FarmaciaDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="FarmaciaDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FarmaciaDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Models\CATEGORIA.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CLIENTE.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\COMPRA.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DETALLE_COMPRA.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DETALLE_VENTA.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ESTANTE.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FarmaciaDBContext.Context.cs">
+    <Compile Include="Models\FarmaciaDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FarmaciaDBContext.Context.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FarmaciaDBContext.cs">
+    <Compile Include="Models\FarmaciaDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FarmaciaDBContext.Designer.cs">
+    <Compile Include="Models\FarmaciaDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FarmaciaDBContext.edmx</DependentUpon>
+      <DependentUpon>FarmaciaDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InventarioMedicamento.cs">
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InventarioProducto.cs">
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MEDICAMENTO.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NEGOCIO.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PERMISO.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PRODUCTO.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PROVEEDOR.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ROL.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoCliente.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VENTA.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VistaInventario.cs">
-      <DependentUpon>FarmaciaDBContext.tt</DependentUpon>
+      <DependentUpon>FarmaciaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\CategoriaForm.cs">
       <SubType>Form</SubType>
@@ -331,9 +331,9 @@
     <EmbeddedResource Include="Views\ProveedoresForm.resx">
       <DependentUpon>ProveedoresForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\FarmaciaDBContext.edmx">
+    <EntityDeploy Include="Models\FarmaciaDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FarmaciaDBContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>FarmaciaDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="FarmaciaDBDataSet.xsc">
       <DependentUpon>FarmaciaDBDataSet.xsd</DependentUpon>
@@ -346,8 +346,8 @@
     <None Include="FarmaciaDBDataSet.xss">
       <DependentUpon>FarmaciaDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Models\FarmaciaDBContext.edmx.diagram">
-      <DependentUpon>FarmaciaDBContext.edmx</DependentUpon>
+    <None Include="Models\FarmaciaDB.edmx.diagram">
+      <DependentUpon>FarmaciaDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -398,17 +398,21 @@
     <None Include="Resources\EditingIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\FarmaciaDBContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FarmaciaDBContext.edmx</DependentUpon>
-      <LastGenOutput>FarmaciaDBContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\FarmaciaDBContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FarmaciaDBContext.edmx</DependentUpon>
-      <LastGenOutput>FarmaciaDBContext.cs</LastGenOutput>
-    </Content>
+    <None Include="Resources\system-icon-default\gris-search-20.png" />
+    <None Include="Resources\black-icon\black-search-20.png" />
     <None Include="Resources\system-icon-default\DeleteRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\FarmaciaDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FarmaciaDB.edmx</DependentUpon>
+      <LastGenOutput>FarmaciaDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FarmaciaDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FarmaciaDB.edmx</DependentUpon>
+      <LastGenOutput>FarmaciaDB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

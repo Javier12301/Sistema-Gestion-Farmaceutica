@@ -31,37 +31,43 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoriaForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbEstadoCat = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.txtNombreCat = new Guna.UI.WinForms.GunaLineTextBox();
             this.lblTitlePnl = new System.Windows.Forms.Label();
+            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
             this.lblNombreE = new System.Windows.Forms.Label();
             this.lblDescE = new System.Windows.Forms.Label();
             this.txtDescripcionCat = new System.Windows.Forms.TextBox();
-            this.pnlButton = new System.Windows.Forms.Panel();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvCategoriesList = new Zuby.ADGV.AdvancedDataGridView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblFilasTotales = new System.Windows.Forms.Label();
+            this.btnModificarG = new Guna.UI.WinForms.GunaButton();
+            this.dgvCategoria = new Zuby.ADGV.AdvancedDataGridView();
             this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcNombreC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcDescripcionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceCategories = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvcNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcEstado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvcFechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cATEGORIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
-            this.lblTotalRow = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cATEGORIATableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.CATEGORIATableAdapter();
-            this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pctLineSeparator = new System.Windows.Forms.PictureBox();
+            this.cATEGORIATableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.CATEGORIATableAdapter();
+            this.pnlButton = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.pnlButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriesList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategories)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORIABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
+            this.pnlButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,19 +76,46 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pnlButton);
+            this.panel1.Controls.Add(this.cmbEstadoCat);
+            this.panel1.Controls.Add(this.lblEstado);
             this.panel1.Controls.Add(this.txtNombreCat);
             this.panel1.Controls.Add(this.lblTitlePnl);
             this.panel1.Controls.Add(this.pctLineSeparator);
             this.panel1.Controls.Add(this.lblNombreE);
             this.panel1.Controls.Add(this.lblDescE);
             this.panel1.Controls.Add(this.txtDescripcionCat);
-            this.panel1.Controls.Add(this.pnlButton);
             this.panel1.Location = new System.Drawing.Point(9, 42);
             this.panel1.MaximumSize = new System.Drawing.Size(278, 300);
             this.panel1.MinimumSize = new System.Drawing.Size(278, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(278, 286);
+            this.panel1.Size = new System.Drawing.Size(278, 270);
             this.panel1.TabIndex = 0;
+            // 
+            // cmbEstadoCat
+            // 
+            this.cmbEstadoCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbEstadoCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoCat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstadoCat.FormattingEnabled = true;
+            this.cmbEstadoCat.IntegralHeight = false;
+            this.cmbEstadoCat.ItemHeight = 21;
+            this.cmbEstadoCat.Location = new System.Drawing.Point(3, 170);
+            this.cmbEstadoCat.Name = "cmbEstadoCat";
+            this.cmbEstadoCat.Size = new System.Drawing.Size(269, 29);
+            this.cmbEstadoCat.TabIndex = 3;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblEstado.Location = new System.Drawing.Point(4, 152);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(42, 15);
+            this.lblEstado.TabIndex = 0;
+            this.lblEstado.Text = "Estado";
             // 
             // txtNombreCat
             // 
@@ -107,8 +140,19 @@
             this.lblTitlePnl.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
             this.lblTitlePnl.Name = "lblTitlePnl";
             this.lblTitlePnl.Size = new System.Drawing.Size(131, 21);
-            this.lblTitlePnl.TabIndex = 26;
+            this.lblTitlePnl.TabIndex = 0;
             this.lblTitlePnl.Text = "Nueva Categoría";
+            // 
+            // pctLineSeparator
+            // 
+            this.pctLineSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pctLineSeparator.Location = new System.Drawing.Point(1, 28);
+            this.pctLineSeparator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
+            this.pctLineSeparator.Name = "pctLineSeparator";
+            this.pctLineSeparator.Size = new System.Drawing.Size(276, 2);
+            this.pctLineSeparator.TabIndex = 25;
+            this.pctLineSeparator.TabStop = false;
+            this.pctLineSeparator.Tag = "txtUser";
             // 
             // lblNombreE
             // 
@@ -119,7 +163,7 @@
             this.lblNombreE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblNombreE.Name = "lblNombreE";
             this.lblNombreE.Size = new System.Drawing.Size(59, 15);
-            this.lblNombreE.TabIndex = 27;
+            this.lblNombreE.TabIndex = 0;
             this.lblNombreE.Text = "Nombre *";
             // 
             // lblDescE
@@ -131,59 +175,29 @@
             this.lblDescE.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
             this.lblDescE.Name = "lblDescE";
             this.lblDescE.Size = new System.Drawing.Size(70, 15);
-            this.lblDescE.TabIndex = 29;
+            this.lblDescE.TabIndex = 0;
             this.lblDescE.Text = "Descripción";
             // 
             // txtDescripcionCat
             // 
-            this.txtDescripcionCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtDescripcionCat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcionCat.Location = new System.Drawing.Point(3, 117);
             this.txtDescripcionCat.Margin = new System.Windows.Forms.Padding(10, 6, 3, 0);
-            this.txtDescripcionCat.Multiline = true;
             this.txtDescripcionCat.Name = "txtDescripcionCat";
-            this.txtDescripcionCat.Size = new System.Drawing.Size(269, 106);
+            this.txtDescripcionCat.Size = new System.Drawing.Size(269, 25);
             this.txtDescripcionCat.TabIndex = 2;
             // 
-            // pnlButton
+            // lblTitulo
             // 
-            this.pnlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pnlButton.Controls.Add(this.btnAgregar);
-            this.pnlButton.Location = new System.Drawing.Point(2, 226);
-            this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(272, 55);
-            this.pnlButton.TabIndex = 33;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregar.Location = new System.Drawing.Point(64, 7);
-            this.btnAgregar.MaximumSize = new System.Drawing.Size(151, 40);
-            this.btnAgregar.MinimumSize = new System.Drawing.Size(151, 32);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(151, 40);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
-            this.lblTitle.Location = new System.Drawing.Point(2, 2);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(113, 39);
-            this.lblTitle.TabIndex = 10;
-            this.lblTitle.Text = "Categorías";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(154)))));
+            this.lblTitulo.Location = new System.Drawing.Point(2, 2);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(113, 39);
+            this.lblTitulo.TabIndex = 10;
+            this.lblTitulo.Text = "Categorías";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -192,9 +206,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnModifyG);
-            this.panel2.Controls.Add(this.dgvCategoriesList);
-            this.panel2.Controls.Add(this.lblTotalRow);
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
+            this.panel2.Controls.Add(this.btnModificarG);
+            this.panel2.Controls.Add(this.dgvCategoria);
             this.panel2.Controls.Add(this.btnGuardarG);
             this.panel2.Controls.Add(this.btnEliminarG);
             this.panel2.Controls.Add(this.label1);
@@ -202,138 +216,151 @@
             this.panel2.Location = new System.Drawing.Point(298, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(286, 325);
-            this.panel2.TabIndex = 21;
+            this.panel2.TabIndex = 6;
             // 
-            // dgvCategoriesList
+            // flowLayoutPanel1
             // 
-            this.dgvCategoriesList.AllowUserToAddRows = false;
-            this.dgvCategoriesList.AllowUserToDeleteRows = false;
-            this.dgvCategoriesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.lblFilasTotales);
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(169, 294);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(108, 25);
+            this.flowLayoutPanel1.TabIndex = 11;
+            // 
+            // lblFilasTotales
+            // 
+            this.lblFilasTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFilasTotales.AutoSize = true;
+            this.lblFilasTotales.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilasTotales.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblFilasTotales.Location = new System.Drawing.Point(5, 6);
+            this.lblFilasTotales.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.lblFilasTotales.Name = "lblFilasTotales";
+            this.lblFilasTotales.Size = new System.Drawing.Size(100, 19);
+            this.lblFilasTotales.TabIndex = 12;
+            this.lblFilasTotales.Text = "Filas Totales: n";
+            // 
+            // btnModificarG
+            // 
+            this.btnModificarG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificarG.Animated = true;
+            this.btnModificarG.AnimationHoverSpeed = 0.07F;
+            this.btnModificarG.AnimationSpeed = 0.03F;
+            this.btnModificarG.BackColor = System.Drawing.Color.Transparent;
+            this.btnModificarG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
+            this.btnModificarG.BorderColor = System.Drawing.Color.Black;
+            this.btnModificarG.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnModificarG.FocusedColor = System.Drawing.Color.Empty;
+            this.btnModificarG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnModificarG.ForeColor = System.Drawing.Color.White;
+            this.btnModificarG.Image = global::Sistema.Properties.Resources.PencilIcon;
+            this.btnModificarG.ImageSize = new System.Drawing.Size(15, 15);
+            this.btnModificarG.Location = new System.Drawing.Point(206, 2);
+            this.btnModificarG.Name = "btnModificarG";
+            this.btnModificarG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
+            this.btnModificarG.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnModificarG.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnModificarG.OnHoverImage = null;
+            this.btnModificarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(176)))), ((int)(((byte)(81)))));
+            this.btnModificarG.Radius = 8;
+            this.btnModificarG.Size = new System.Drawing.Size(35, 25);
+            this.btnModificarG.TabIndex = 8;
+            this.btnModificarG.Click += new System.EventHandler(this.btnModifyG_Click);
+            // 
+            // dgvCategoria
+            // 
+            this.dgvCategoria.AllowUserToAddRows = false;
+            this.dgvCategoria.AllowUserToDeleteRows = false;
+            this.dgvCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvCategoriesList.AutoGenerateColumns = false;
-            this.dgvCategoriesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCategoriesList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvCategoriesList.ColumnHeadersHeight = 30;
-            this.dgvCategoriesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCategoria.AutoGenerateColumns = false;
+            this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCategoria.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvCategoria.ColumnHeadersHeight = 30;
+            this.dgvCategoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcID,
-            this.dgvcNombreC,
-            this.dgvcDescripcionC});
-            this.dgvCategoriesList.DataSource = this.bindingSourceCategories;
-            this.dgvCategoriesList.FilterAndSortEnabled = true;
-            this.dgvCategoriesList.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.dgvCategoriesList.Location = new System.Drawing.Point(5, 36);
-            this.dgvCategoriesList.Name = "dgvCategoriesList";
-            this.dgvCategoriesList.ReadOnly = true;
-            this.dgvCategoriesList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvCategoriesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategoriesList.Size = new System.Drawing.Size(272, 256);
-            this.dgvCategoriesList.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.dgvCategoriesList.TabIndex = 35;
-            this.dgvCategoriesList.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvCategoriesList_SortStringChanged);
-            this.dgvCategoriesList.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvCategoriesList_FilterStringChanged);
-            this.dgvCategoriesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellClick);
-            this.dgvCategoriesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellContentClick);
-            this.dgvCategoriesList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEndEdit);
-            this.dgvCategoriesList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEnter);
-            this.dgvCategoriesList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCategoriesList_DataError);
+            this.dgvcNombre,
+            this.dgvcDescripcion,
+            this.dgvcEstado,
+            this.dgvcFechaRegistro});
+            this.dgvCategoria.DataSource = this.cATEGORIABindingSource;
+            this.dgvCategoria.FilterAndSortEnabled = true;
+            this.dgvCategoria.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.dgvCategoria.Location = new System.Drawing.Point(5, 36);
+            this.dgvCategoria.Name = "dgvCategoria";
+            this.dgvCategoria.ReadOnly = true;
+            this.dgvCategoria.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvCategoria.Size = new System.Drawing.Size(272, 256);
+            this.dgvCategoria.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.dgvCategoria.TabIndex = 10;
+            this.dgvCategoria.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvCategoriesList_SortStringChanged);
+            this.dgvCategoria.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvCategoriesList_FilterStringChanged);
+            this.dgvCategoria.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellClick);
+            this.dgvCategoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellContentClick);
+            this.dgvCategoria.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEndEdit);
+            this.dgvCategoria.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellEnter);
+            this.dgvCategoria.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCategoriesList_DataError);
             // 
             // dgvcID
             // 
             this.dgvcID.DataPropertyName = "CategoriaID";
-            this.dgvcID.FillWeight = 31.9797F;
-            this.dgvcID.HeaderText = "ID";
+            this.dgvcID.HeaderText = "CategoriaID";
             this.dgvcID.MinimumWidth = 22;
             this.dgvcID.Name = "dgvcID";
             this.dgvcID.ReadOnly = true;
             this.dgvcID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dgvcID.Visible = false;
             // 
-            // dgvcNombreC
+            // dgvcNombre
             // 
-            this.dgvcNombreC.DataPropertyName = "Nombre";
-            this.dgvcNombreC.FillWeight = 134.0101F;
-            this.dgvcNombreC.HeaderText = "Nombre";
-            this.dgvcNombreC.MinimumWidth = 22;
-            this.dgvcNombreC.Name = "dgvcNombreC";
-            this.dgvcNombreC.ReadOnly = true;
-            this.dgvcNombreC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcNombre.DataPropertyName = "Nombre";
+            this.dgvcNombre.HeaderText = "Nombre";
+            this.dgvcNombre.MinimumWidth = 22;
+            this.dgvcNombre.Name = "dgvcNombre";
+            this.dgvcNombre.ReadOnly = true;
+            this.dgvcNombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // dgvcDescripcionC
+            // dgvcDescripcion
             // 
-            this.dgvcDescripcionC.DataPropertyName = "Descripcion";
-            this.dgvcDescripcionC.FillWeight = 134.0101F;
-            this.dgvcDescripcionC.HeaderText = "Descripcion";
-            this.dgvcDescripcionC.MinimumWidth = 22;
-            this.dgvcDescripcionC.Name = "dgvcDescripcionC";
-            this.dgvcDescripcionC.ReadOnly = true;
-            this.dgvcDescripcionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcDescripcion.DataPropertyName = "Descripcion";
+            this.dgvcDescripcion.HeaderText = "Descripcion";
+            this.dgvcDescripcion.MinimumWidth = 22;
+            this.dgvcDescripcion.Name = "dgvcDescripcion";
+            this.dgvcDescripcion.ReadOnly = true;
+            this.dgvcDescripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // bindingSourceCategories
+            // dgvcEstado
             // 
-            this.bindingSourceCategories.DataMember = "CATEGORIA";
-            this.bindingSourceCategories.DataSource = this.farmaciaDBDataSet;
+            this.dgvcEstado.DataPropertyName = "Estado";
+            this.dgvcEstado.HeaderText = "Estado";
+            this.dgvcEstado.MinimumWidth = 22;
+            this.dgvcEstado.Name = "dgvcEstado";
+            this.dgvcEstado.ReadOnly = true;
+            this.dgvcEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgvcFechaRegistro
+            // 
+            this.dgvcFechaRegistro.DataPropertyName = "FechaRegistro";
+            this.dgvcFechaRegistro.HeaderText = "FechaRegistro";
+            this.dgvcFechaRegistro.MinimumWidth = 22;
+            this.dgvcFechaRegistro.Name = "dgvcFechaRegistro";
+            this.dgvcFechaRegistro.ReadOnly = true;
+            this.dgvcFechaRegistro.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgvcFechaRegistro.Visible = false;
+            // 
+            // cATEGORIABindingSource
+            // 
+            this.cATEGORIABindingSource.DataMember = "CATEGORIA";
+            this.cATEGORIABindingSource.DataSource = this.farmaciaDBDataSet;
             // 
             // farmaciaDBDataSet
             // 
             this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
             this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lblTotalRow
-            // 
-            this.lblTotalRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalRow.AutoSize = true;
-            this.lblTotalRow.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTotalRow.Location = new System.Drawing.Point(129, 298);
-            this.lblTotalRow.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.lblTotalRow.Name = "lblTotalRow";
-            this.lblTotalRow.Size = new System.Drawing.Size(100, 19);
-            this.lblTotalRow.TabIndex = 34;
-            this.lblTotalRow.Text = "Filas Totales: n";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(-2, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 21);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Lista de Categorías";
-            // 
-            // cATEGORIATableAdapter
-            // 
-            this.cATEGORIATableAdapter.ClearBeforeFill = true;
-            // 
-            // btnModifyG
-            // 
-            this.btnModifyG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModifyG.Animated = true;
-            this.btnModifyG.AnimationHoverSpeed = 0.07F;
-            this.btnModifyG.AnimationSpeed = 0.03F;
-            this.btnModifyG.BackColor = System.Drawing.Color.Transparent;
-            this.btnModifyG.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
-            this.btnModifyG.BorderColor = System.Drawing.Color.Black;
-            this.btnModifyG.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnModifyG.FocusedColor = System.Drawing.Color.Empty;
-            this.btnModifyG.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnModifyG.ForeColor = System.Drawing.Color.White;
-            this.btnModifyG.Image = global::Sistema.Properties.Resources.PencilIcon;
-            this.btnModifyG.ImageSize = new System.Drawing.Size(15, 15);
-            this.btnModifyG.Location = new System.Drawing.Point(206, 2);
-            this.btnModifyG.Name = "btnModifyG";
-            this.btnModifyG.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(224)))), ((int)(((byte)(104)))));
-            this.btnModifyG.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnModifyG.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnModifyG.OnHoverImage = null;
-            this.btnModifyG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(176)))), ((int)(((byte)(81)))));
-            this.btnModifyG.Radius = 8;
-            this.btnModifyG.Size = new System.Drawing.Size(35, 25);
-            this.btnModifyG.TabIndex = 36;
-            this.btnModifyG.Click += new System.EventHandler(this.btnModifyG_Click);
             // 
             // btnGuardarG
             // 
@@ -359,7 +386,7 @@
             this.btnGuardarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(95)))), ((int)(((byte)(126)))));
             this.btnGuardarG.Radius = 8;
             this.btnGuardarG.Size = new System.Drawing.Size(35, 25);
-            this.btnGuardarG.TabIndex = 23;
+            this.btnGuardarG.TabIndex = 7;
             this.btnGuardarG.Click += new System.EventHandler(this.btnGuardarG_Click);
             // 
             // btnEliminarG
@@ -387,8 +414,20 @@
             this.btnEliminarG.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(31)))), ((int)(((byte)(63)))));
             this.btnEliminarG.Radius = 5;
             this.btnEliminarG.Size = new System.Drawing.Size(34, 25);
-            this.btnEliminarG.TabIndex = 22;
+            this.btnEliminarG.TabIndex = 9;
             this.btnEliminarG.Click += new System.EventHandler(this.btnEliminarG_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(-2, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 6, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Lista de Categorías";
             // 
             // pictureBox2
             // 
@@ -403,16 +442,36 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "txtUser";
             // 
-            // pctLineSeparator
+            // cATEGORIATableAdapter
             // 
-            this.pctLineSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pctLineSeparator.Location = new System.Drawing.Point(1, 28);
-            this.pctLineSeparator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
-            this.pctLineSeparator.Name = "pctLineSeparator";
-            this.pctLineSeparator.Size = new System.Drawing.Size(276, 2);
-            this.pctLineSeparator.TabIndex = 25;
-            this.pctLineSeparator.TabStop = false;
-            this.pctLineSeparator.Tag = "txtUser";
+            this.cATEGORIATableAdapter.ClearBeforeFill = true;
+            // 
+            // pnlButton
+            // 
+            this.pnlButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlButton.Controls.Add(this.btnAgregar);
+            this.pnlButton.Location = new System.Drawing.Point(2, 210);
+            this.pnlButton.Name = "pnlButton";
+            this.pnlButton.Size = new System.Drawing.Size(272, 55);
+            this.pnlButton.TabIndex = 26;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(125)))), ((int)(((byte)(166)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(64, 7);
+            this.btnAgregar.MaximumSize = new System.Drawing.Size(151, 40);
+            this.btnAgregar.MinimumSize = new System.Drawing.Size(151, 32);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(151, 40);
+            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
             // 
             // CategoriaForm
             // 
@@ -422,21 +481,23 @@
             this.ClientSize = new System.Drawing.Size(589, 338);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CategoriaForm";
             this.Text = "agregarCategorias";
             this.Load += new System.EventHandler(this.Categorias_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnlButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriesList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategories)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORIABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).EndInit();
+            this.pnlButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -449,23 +510,28 @@
         private System.Windows.Forms.Label lblNombreE;
         private System.Windows.Forms.Label lblDescE;
         private System.Windows.Forms.TextBox txtDescripcionCat;
-        private System.Windows.Forms.Panel pnlButton;
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblTitulo;
         private Guna.UI.WinForms.GunaLineTextBox txtNombreCat;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI.WinForms.GunaButton btnModifyG;
-        private Zuby.ADGV.AdvancedDataGridView dgvCategoriesList;
-        private System.Windows.Forms.Label lblTotalRow;
+        private Guna.UI.WinForms.GunaButton btnModificarG;
+        private Zuby.ADGV.AdvancedDataGridView dgvCategoria;
+        private System.Windows.Forms.Label lblFilasTotales;
         private Guna.UI.WinForms.GunaButton btnGuardarG;
         private Guna.UI.WinForms.GunaButton btnEliminarG;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox cmbEstadoCat;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private FarmaciaDBDataSet farmaciaDBDataSet;
-        private System.Windows.Forms.BindingSource bindingSourceCategories;
+        private System.Windows.Forms.BindingSource cATEGORIABindingSource;
         private FarmaciaDBDataSetTableAdapters.CATEGORIATableAdapter cATEGORIATableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombreC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcDescripcionC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcDescripcion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcFechaRegistro;
+        private System.Windows.Forms.Panel pnlButton;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }

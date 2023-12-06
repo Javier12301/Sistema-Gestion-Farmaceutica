@@ -12,20 +12,19 @@ namespace Sistema.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class VistaInventario
+    public partial class InventarioProducto
     {
+        public int ID { get; set; }
         public string Cod_ { get; set; }
-        public string Lote { get; set; }
         public string Nombre { get; set; }
         public int Cantidad { get; set; }
-        public Nullable<System.DateTime> VTO { get; set; }
-        public string Estante { get; set; }
-        public string Sector { get; set; }
-        public int Num__Estante { get; set; }
-        public string Categoría { get; set; }
-        public int ID { get; set; }
         public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<decimal> PrecioVenta { get; set; }
+        public string Estante { get; set; }
+        public string Sector { get; set; }
+        public string Categoría { get; set; }
         public string Proveedor { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
     }
 }

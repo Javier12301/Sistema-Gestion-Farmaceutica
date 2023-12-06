@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FarmaciaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FarmaciaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA">
           <Key>
             <PropertyRef Name="CategoriaID" />
@@ -12,6 +12,8 @@
           <Property Name="CategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -45,12 +47,12 @@
           <Property Name="DetalleCompraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompraID" Type="int" />
           <Property Name="ProductoID" Type="int" />
+          <Property Name="MedicamentoID" Type="int" />
           <Property Name="PrecioCompra" Type="decimal" Precision="10" Scale="2" />
           <Property Name="PrecioVenta" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Cantidad" Type="int" />
           <Property Name="MontoTotal" Type="decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="datetime" />
-          <Property Name="MedicamentoID" Type="int" />
         </EntityType>
         <EntityType Name="DETALLE_VENTA">
           <Key>
@@ -71,8 +73,9 @@
           </Key>
           <Property Name="EstanteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Numero" Type="int" Nullable="false" />
           <Property Name="Sector" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="MEDICAMENTO">
           <Key>
@@ -91,6 +94,7 @@
           <Property Name="PrecioCompra" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Refrigerado" Type="bit" />
           <Property Name="BajoReceta" Type="bit" />
+          <Property Name="Estado" Type="bit" />
           <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="NEGOCIO">
@@ -129,6 +133,7 @@
           <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="PrecioCompra" Type="decimal" Precision="10" Scale="2" />
           <Property Name="PrecioVenta" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Estado" Type="bit" />
           <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
@@ -141,6 +146,8 @@
           <Property Name="Direccion" Type="varchar" MaxLength="50" />
           <Property Name="TelefonoProveedor" Type="varchar" MaxLength="20" />
           <Property Name="Correo" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="ROL">
           <Key>
@@ -156,6 +163,8 @@
           </Key>
           <Property Name="TipoClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -186,14 +195,13 @@
           <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="VistaInventario">
+advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.InventarioMedicamento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="InventarioMedicamento">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Cantidad" />
             <PropertyRef Name="Estante" />
             <PropertyRef Name="Sector" />
-            <PropertyRef Name="Num. Estante" />
             <PropertyRef Name="Categoría" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
@@ -206,11 +214,34 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="VTO" Type="date" />
           <Property Name="Estante" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Sector" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Num. Estante" Type="int" Nullable="false" />
           <Property Name="Categoría" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Proveedor" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
-        <Association Name="FK__CLIENTE__TipoCli__1EA48E88">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.InventarioProducto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="InventarioProducto">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Estante" />
+            <PropertyRef Name="Sector" />
+            <PropertyRef Name="Categoría" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Cod." Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="PrecioCompra" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioVenta" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Estante" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Sector" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Categoría" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Proveedor" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaRegistro" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__CLIENTE__TipoCli__1F2E9E6D">
           <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +253,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMPRA__Proveedo__57DD0BE4">
+        <Association Name="FK__COMPRA__Proveedo__361203C5">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +265,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMPRA__UsuarioI__56E8E7AB">
+        <Association Name="FK__COMPRA__UsuarioI__351DDF8C">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +277,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_C__Compr__5BAD9CC8">
+        <Association Name="FK__DETALLE_C__Compr__39E294A9">
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="0..1" />
           <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +289,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_C__Medic__0697FACD">
+        <Association Name="FK__DETALLE_C__Medic__3BCADD1B">
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="0..1" />
           <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +301,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_C__Produ__5CA1C101">
+        <Association Name="FK__DETALLE_C__Produ__3AD6B8E2">
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
           <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +313,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_V__Medic__6442E2C9">
+        <Association Name="FK__DETALLE_V__Medic__436BFEE3">
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="0..1" />
           <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +325,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_V__Produ__634EBE90">
+        <Association Name="FK__DETALLE_V__Produ__4277DAAA">
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
           <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +337,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_V__Venta__625A9A57">
+        <Association Name="FK__DETALLE_V__Venta__4183B671">
           <End Role="VENTA" Type="Self.VENTA" Multiplicity="0..1" />
           <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +349,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MEDICAMEN__Categ__31B762FC">
+        <Association Name="FK__MEDICAMEN__Categ__093F5D4E">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +361,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MEDICAMEN__Estan__30C33EC3">
+        <Association Name="FK__MEDICAMEN__Estan__084B3915">
           <End Role="ESTANTE" Type="Self.ESTANTE" Multiplicity="0..1" />
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,7 +373,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MEDICAMEN__Prove__32AB8735">
+        <Association Name="FK__MEDICAMEN__Prove__0A338187">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +385,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PERMISO__RolID__4A8310C6">
+        <Association Name="FK__PERMISO__RolID__29AC2CE0">
           <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
           <End Role="PERMISO" Type="Self.PERMISO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +397,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__Catego__22751F6C">
+        <Association Name="FK__PRODUCTO__Catego__7FB5F314">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -378,7 +409,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__Estant__236943A5">
+        <Association Name="FK__PRODUCTO__Estant__00AA174D">
           <End Role="ESTANTE" Type="Self.ESTANTE" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -390,7 +421,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__Provee__245D67DE">
+        <Association Name="FK__PRODUCTO__Provee__019E3B86">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -402,7 +433,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIO__RolID__4E53A1AA">
+        <Association Name="FK__USUARIO__RolID__2D7CBDC4">
           <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -414,7 +445,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VENTA__UsuarioID__531856C7">
+        <Association Name="FK__VENTA__UsuarioID__314D4EA8">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
           <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -442,97 +473,114 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENTA" EntityType="Self.VENTA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VistaInventario" EntityType="Self.VistaInventario" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="InventarioMedicamento" EntityType="Self.InventarioMedicamento" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [VistaInventario].[ID] AS [ID], 
-    [VistaInventario].[Cod.] AS [Cod.], 
-    [VistaInventario].[Lote] AS [Lote], 
-    [VistaInventario].[Nombre] AS [Nombre], 
-    [VistaInventario].[Cantidad] AS [Cantidad], 
-    [VistaInventario].[PrecioCompra] AS [PrecioCompra], 
-    [VistaInventario].[PrecioVenta] AS [PrecioVenta], 
-    [VistaInventario].[VTO] AS [VTO], 
-    [VistaInventario].[Estante] AS [Estante], 
-    [VistaInventario].[Sector] AS [Sector], 
-    [VistaInventario].[Num. Estante] AS [Num. Estante], 
-    [VistaInventario].[Categoría] AS [Categoría], 
-    [VistaInventario].[Proveedor] AS [Proveedor]
-    FROM [dbo].[VistaInventario] AS [VistaInventario]</DefiningQuery>
+    [InventarioMedicamento].[ID] AS [ID], 
+    [InventarioMedicamento].[Cod.] AS [Cod.], 
+    [InventarioMedicamento].[Lote] AS [Lote], 
+    [InventarioMedicamento].[Nombre] AS [Nombre], 
+    [InventarioMedicamento].[Cantidad] AS [Cantidad], 
+    [InventarioMedicamento].[PrecioCompra] AS [PrecioCompra], 
+    [InventarioMedicamento].[PrecioVenta] AS [PrecioVenta], 
+    [InventarioMedicamento].[VTO] AS [VTO], 
+    [InventarioMedicamento].[Estante] AS [Estante], 
+    [InventarioMedicamento].[Sector] AS [Sector], 
+    [InventarioMedicamento].[Categoría] AS [Categoría], 
+    [InventarioMedicamento].[Proveedor] AS [Proveedor], 
+    [InventarioMedicamento].[Estado] AS [Estado]
+    FROM [dbo].[InventarioMedicamento] AS [InventarioMedicamento]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__CLIENTE__TipoCli__1EA48E88" Association="Self.FK__CLIENTE__TipoCli__1EA48E88">
+          <EntitySet Name="InventarioProducto" EntityType="Self.InventarioProducto" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InventarioProducto].[ID] AS [ID], 
+    [InventarioProducto].[Cod.] AS [Cod.], 
+    [InventarioProducto].[Nombre] AS [Nombre], 
+    [InventarioProducto].[Cantidad] AS [Cantidad], 
+    [InventarioProducto].[PrecioCompra] AS [PrecioCompra], 
+    [InventarioProducto].[PrecioVenta] AS [PrecioVenta], 
+    [InventarioProducto].[Estante] AS [Estante], 
+    [InventarioProducto].[Sector] AS [Sector], 
+    [InventarioProducto].[Categoría] AS [Categoría], 
+    [InventarioProducto].[Proveedor] AS [Proveedor], 
+    [InventarioProducto].[Estado] AS [Estado], 
+    [InventarioProducto].[FechaRegistro] AS [FechaRegistro]
+    FROM [dbo].[InventarioProducto] AS [InventarioProducto]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__CLIENTE__TipoCli__1F2E9E6D" Association="Self.FK__CLIENTE__TipoCli__1F2E9E6D">
             <End Role="TipoCliente" EntitySet="TipoCliente" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMPRA__Proveedo__57DD0BE4" Association="Self.FK__COMPRA__Proveedo__57DD0BE4">
+          <AssociationSet Name="FK__COMPRA__Proveedo__361203C5" Association="Self.FK__COMPRA__Proveedo__361203C5">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMPRA__UsuarioI__56E8E7AB" Association="Self.FK__COMPRA__UsuarioI__56E8E7AB">
+          <AssociationSet Name="FK__COMPRA__UsuarioI__351DDF8C" Association="Self.FK__COMPRA__UsuarioI__351DDF8C">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_C__Compr__5BAD9CC8" Association="Self.FK__DETALLE_C__Compr__5BAD9CC8">
+          <AssociationSet Name="FK__DETALLE_C__Compr__39E294A9" Association="Self.FK__DETALLE_C__Compr__39E294A9">
             <End Role="COMPRA" EntitySet="COMPRA" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_C__Medic__0697FACD" Association="Self.FK__DETALLE_C__Medic__0697FACD">
+          <AssociationSet Name="FK__DETALLE_C__Medic__3BCADD1B" Association="Self.FK__DETALLE_C__Medic__3BCADD1B">
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_C__Produ__5CA1C101" Association="Self.FK__DETALLE_C__Produ__5CA1C101">
+          <AssociationSet Name="FK__DETALLE_C__Produ__3AD6B8E2" Association="Self.FK__DETALLE_C__Produ__3AD6B8E2">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_V__Medic__6442E2C9" Association="Self.FK__DETALLE_V__Medic__6442E2C9">
+          <AssociationSet Name="FK__DETALLE_V__Medic__436BFEE3" Association="Self.FK__DETALLE_V__Medic__436BFEE3">
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
             <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_V__Produ__634EBE90" Association="Self.FK__DETALLE_V__Produ__634EBE90">
+          <AssociationSet Name="FK__DETALLE_V__Produ__4277DAAA" Association="Self.FK__DETALLE_V__Produ__4277DAAA">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_V__Venta__625A9A57" Association="Self.FK__DETALLE_V__Venta__625A9A57">
+          <AssociationSet Name="FK__DETALLE_V__Venta__4183B671" Association="Self.FK__DETALLE_V__Venta__4183B671">
             <End Role="VENTA" EntitySet="VENTA" />
             <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__MEDICAMEN__Categ__31B762FC" Association="Self.FK__MEDICAMEN__Categ__31B762FC">
+          <AssociationSet Name="FK__MEDICAMEN__Categ__093F5D4E" Association="Self.FK__MEDICAMEN__Categ__093F5D4E">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__MEDICAMEN__Estan__30C33EC3" Association="Self.FK__MEDICAMEN__Estan__30C33EC3">
+          <AssociationSet Name="FK__MEDICAMEN__Estan__084B3915" Association="Self.FK__MEDICAMEN__Estan__084B3915">
             <End Role="ESTANTE" EntitySet="ESTANTE" />
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__MEDICAMEN__Prove__32AB8735" Association="Self.FK__MEDICAMEN__Prove__32AB8735">
+          <AssociationSet Name="FK__MEDICAMEN__Prove__0A338187" Association="Self.FK__MEDICAMEN__Prove__0A338187">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PERMISO__RolID__4A8310C6" Association="Self.FK__PERMISO__RolID__4A8310C6">
+          <AssociationSet Name="FK__PERMISO__RolID__29AC2CE0" Association="Self.FK__PERMISO__RolID__29AC2CE0">
             <End Role="ROL" EntitySet="ROL" />
             <End Role="PERMISO" EntitySet="PERMISO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__Catego__22751F6C" Association="Self.FK__PRODUCTO__Catego__22751F6C">
+          <AssociationSet Name="FK__PRODUCTO__Catego__7FB5F314" Association="Self.FK__PRODUCTO__Catego__7FB5F314">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__Estant__236943A5" Association="Self.FK__PRODUCTO__Estant__236943A5">
+          <AssociationSet Name="FK__PRODUCTO__Estant__00AA174D" Association="Self.FK__PRODUCTO__Estant__00AA174D">
             <End Role="ESTANTE" EntitySet="ESTANTE" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__Provee__245D67DE" Association="Self.FK__PRODUCTO__Provee__245D67DE">
+          <AssociationSet Name="FK__PRODUCTO__Provee__019E3B86" Association="Self.FK__PRODUCTO__Provee__019E3B86">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__RolID__4E53A1AA" Association="Self.FK__USUARIO__RolID__4E53A1AA">
+          <AssociationSet Name="FK__USUARIO__RolID__2D7CBDC4" Association="Self.FK__USUARIO__RolID__2D7CBDC4">
             <End Role="ROL" EntitySet="ROL" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VENTA__UsuarioID__531856C7" Association="Self.FK__VENTA__UsuarioID__531856C7">
+          <AssociationSet Name="FK__VENTA__UsuarioID__314D4EA8" Association="Self.FK__VENTA__UsuarioID__314D4EA8">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="VENTA" EntitySet="VENTA" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FarmaciaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -543,8 +591,10 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="CategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__MEDICAMEN__Categ__31B762FC" FromRole="CATEGORIA" ToRole="MEDICAMENTO" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Catego__22751F6C" FromRole="CATEGORIA" ToRole="PRODUCTO" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__MEDICAMEN__Categ__093F5D4E" FromRole="CATEGORIA" ToRole="MEDICAMENTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Catego__7FB5F314" FromRole="CATEGORIA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -558,7 +608,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TipoCliente" Relationship="Self.FK__CLIENTE__TipoCli__1EA48E88" FromRole="CLIENTE" ToRole="TipoCliente" />
+          <NavigationProperty Name="TipoCliente" Relationship="Self.FK__CLIENTE__TipoCli__1F2E9E6D" FromRole="CLIENTE" ToRole="TipoCliente" />
         </EntityType>
         <EntityType Name="COMPRA">
           <Key>
@@ -571,9 +621,9 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MontoTotal" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__COMPRA__Proveedo__57DD0BE4" FromRole="COMPRA" ToRole="PROVEEDOR" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.FK__COMPRA__UsuarioI__56E8E7AB" FromRole="COMPRA" ToRole="USUARIO" />
-          <NavigationProperty Name="DETALLE_COMPRA" Relationship="Self.FK__DETALLE_C__Compr__5BAD9CC8" FromRole="COMPRA" ToRole="DETALLE_COMPRA" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__COMPRA__Proveedo__361203C5" FromRole="COMPRA" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__COMPRA__UsuarioI__351DDF8C" FromRole="COMPRA" ToRole="USUARIO" />
+          <NavigationProperty Name="DETALLE_COMPRA" Relationship="Self.FK__DETALLE_C__Compr__39E294A9" FromRole="COMPRA" ToRole="DETALLE_COMPRA" />
         </EntityType>
         <EntityType Name="DETALLE_COMPRA">
           <Key>
@@ -582,15 +632,15 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="DetalleCompraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompraID" Type="Int32" />
           <Property Name="ProductoID" Type="Int32" />
+          <Property Name="MedicamentoID" Type="Int32" />
           <Property Name="PrecioCompra" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="PrecioVenta" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="MontoTotal" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="COMPRA" Relationship="Self.FK__DETALLE_C__Compr__5BAD9CC8" FromRole="DETALLE_COMPRA" ToRole="COMPRA" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__DETALLE_C__Produ__5CA1C101" FromRole="DETALLE_COMPRA" ToRole="PRODUCTO" />
-          <Property Name="MedicamentoID" Type="Int32" />
-          <NavigationProperty Name="MEDICAMENTO" Relationship="FarmaciaDBModel.FK__DETALLE_C__Medic__0697FACD" FromRole="DETALLE_COMPRA" ToRole="MEDICAMENTO" />
+          <NavigationProperty Name="COMPRA" Relationship="Self.FK__DETALLE_C__Compr__39E294A9" FromRole="DETALLE_COMPRA" ToRole="COMPRA" />
+          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__DETALLE_C__Medic__3BCADD1B" FromRole="DETALLE_COMPRA" ToRole="MEDICAMENTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__DETALLE_C__Produ__3AD6B8E2" FromRole="DETALLE_COMPRA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="DETALLE_VENTA">
           <Key>
@@ -604,9 +654,9 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__DETALLE_V__Medic__6442E2C9" FromRole="DETALLE_VENTA" ToRole="MEDICAMENTO" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__DETALLE_V__Produ__634EBE90" FromRole="DETALLE_VENTA" ToRole="PRODUCTO" />
-          <NavigationProperty Name="VENTA" Relationship="Self.FK__DETALLE_V__Venta__625A9A57" FromRole="DETALLE_VENTA" ToRole="VENTA" />
+          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__DETALLE_V__Medic__436BFEE3" FromRole="DETALLE_VENTA" ToRole="MEDICAMENTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__DETALLE_V__Produ__4277DAAA" FromRole="DETALLE_VENTA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="VENTA" Relationship="Self.FK__DETALLE_V__Venta__4183B671" FromRole="DETALLE_VENTA" ToRole="VENTA" />
         </EntityType>
         <EntityType Name="ESTANTE">
           <Key>
@@ -614,10 +664,11 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           </Key>
           <Property Name="EstanteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Numero" Type="Int32" Nullable="false" />
           <Property Name="Sector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__MEDICAMEN__Estan__30C33EC3" FromRole="ESTANTE" ToRole="MEDICAMENTO" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Estant__236943A5" FromRole="ESTANTE" ToRole="PRODUCTO" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__MEDICAMEN__Estan__084B3915" FromRole="ESTANTE" ToRole="MEDICAMENTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Estant__00AA174D" FromRole="ESTANTE" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="MEDICAMENTO">
           <Key>
@@ -636,12 +687,13 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="PrecioCompra" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Refrigerado" Type="Boolean" />
           <Property Name="BajoReceta" Type="Boolean" />
+          <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__MEDICAMEN__Categ__31B762FC" FromRole="MEDICAMENTO" ToRole="CATEGORIA" />
-          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__Medic__6442E2C9" FromRole="MEDICAMENTO" ToRole="DETALLE_VENTA" />
-          <NavigationProperty Name="ESTANTE" Relationship="Self.FK__MEDICAMEN__Estan__30C33EC3" FromRole="MEDICAMENTO" ToRole="ESTANTE" />
-          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__MEDICAMEN__Prove__32AB8735" FromRole="MEDICAMENTO" ToRole="PROVEEDOR" />
-          <NavigationProperty Name="DETALLE_COMPRA" Relationship="FarmaciaDBModel.FK__DETALLE_C__Medic__0697FACD" FromRole="MEDICAMENTO" ToRole="DETALLE_COMPRA" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__MEDICAMEN__Categ__093F5D4E" FromRole="MEDICAMENTO" ToRole="CATEGORIA" />
+          <NavigationProperty Name="DETALLE_COMPRA" Relationship="Self.FK__DETALLE_C__Medic__3BCADD1B" FromRole="MEDICAMENTO" ToRole="DETALLE_COMPRA" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__Medic__436BFEE3" FromRole="MEDICAMENTO" ToRole="DETALLE_VENTA" />
+          <NavigationProperty Name="ESTANTE" Relationship="Self.FK__MEDICAMEN__Estan__084B3915" FromRole="MEDICAMENTO" ToRole="ESTANTE" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__MEDICAMEN__Prove__0A338187" FromRole="MEDICAMENTO" ToRole="PROVEEDOR" />
         </EntityType>
         <EntityType Name="NEGOCIO">
           <Key>
@@ -665,7 +717,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="RolID" Type="Int32" />
           <Property Name="NombreMenu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ROL" Relationship="Self.FK__PERMISO__RolID__4A8310C6" FromRole="PERMISO" ToRole="ROL" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK__PERMISO__RolID__29AC2CE0" FromRole="PERMISO" ToRole="ROL" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -682,11 +734,11 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="PrecioVenta" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__PRODUCTO__Catego__22751F6C" FromRole="PRODUCTO" ToRole="CATEGORIA" />
-          <NavigationProperty Name="DETALLE_COMPRA" Relationship="Self.FK__DETALLE_C__Produ__5CA1C101" FromRole="PRODUCTO" ToRole="DETALLE_COMPRA" />
-          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__Produ__634EBE90" FromRole="PRODUCTO" ToRole="DETALLE_VENTA" />
-          <NavigationProperty Name="ESTANTE" Relationship="Self.FK__PRODUCTO__Estant__236943A5" FromRole="PRODUCTO" ToRole="ESTANTE" />
-          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__PRODUCTO__Provee__245D67DE" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__PRODUCTO__Catego__7FB5F314" FromRole="PRODUCTO" ToRole="CATEGORIA" />
+          <NavigationProperty Name="DETALLE_COMPRA" Relationship="Self.FK__DETALLE_C__Produ__3AD6B8E2" FromRole="PRODUCTO" ToRole="DETALLE_COMPRA" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__Produ__4277DAAA" FromRole="PRODUCTO" ToRole="DETALLE_VENTA" />
+          <NavigationProperty Name="ESTANTE" Relationship="Self.FK__PRODUCTO__Estant__00AA174D" FromRole="PRODUCTO" ToRole="ESTANTE" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__PRODUCTO__Provee__019E3B86" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -698,9 +750,11 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TelefonoProveedor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="COMPRA" Relationship="Self.FK__COMPRA__Proveedo__57DD0BE4" FromRole="PROVEEDOR" ToRole="COMPRA" />
-          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__MEDICAMEN__Prove__32AB8735" FromRole="PROVEEDOR" ToRole="MEDICAMENTO" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Provee__245D67DE" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="COMPRA" Relationship="Self.FK__COMPRA__Proveedo__361203C5" FromRole="PROVEEDOR" ToRole="COMPRA" />
+          <NavigationProperty Name="MEDICAMENTO" Relationship="Self.FK__MEDICAMEN__Prove__0A338187" FromRole="PROVEEDOR" ToRole="MEDICAMENTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__Provee__019E3B86" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="ROL">
           <Key>
@@ -709,8 +763,8 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="PERMISO" Relationship="Self.FK__PERMISO__RolID__4A8310C6" FromRole="ROL" ToRole="PERMISO" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.FK__USUARIO__RolID__4E53A1AA" FromRole="ROL" ToRole="USUARIO" />
+          <NavigationProperty Name="PERMISO" Relationship="Self.FK__PERMISO__RolID__29AC2CE0" FromRole="ROL" ToRole="PERMISO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__USUARIO__RolID__2D7CBDC4" FromRole="ROL" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="TipoCliente">
           <Key>
@@ -718,7 +772,9 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           </Key>
           <Property Name="TipoClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CLIENTE" Relationship="Self.FK__CLIENTE__TipoCli__1EA48E88" FromRole="TipoCliente" ToRole="CLIENTE" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK__CLIENTE__TipoCli__1F2E9E6D" FromRole="TipoCliente" ToRole="CLIENTE" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -732,9 +788,9 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="RolID" Type="Int32" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="COMPRA" Relationship="Self.FK__COMPRA__UsuarioI__56E8E7AB" FromRole="USUARIO" ToRole="COMPRA" />
-          <NavigationProperty Name="ROL" Relationship="Self.FK__USUARIO__RolID__4E53A1AA" FromRole="USUARIO" ToRole="ROL" />
-          <NavigationProperty Name="VENTA" Relationship="Self.FK__VENTA__UsuarioID__531856C7" FromRole="USUARIO" ToRole="VENTA" />
+          <NavigationProperty Name="COMPRA" Relationship="Self.FK__COMPRA__UsuarioI__351DDF8C" FromRole="USUARIO" ToRole="COMPRA" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK__USUARIO__RolID__2D7CBDC4" FromRole="USUARIO" ToRole="ROL" />
+          <NavigationProperty Name="VENTA" Relationship="Self.FK__VENTA__UsuarioID__314D4EA8" FromRole="USUARIO" ToRole="VENTA" />
         </EntityType>
         <EntityType Name="VENTA">
           <Key>
@@ -750,33 +806,53 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <Property Name="MontoCambio" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="MontoTotal" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__Venta__625A9A57" FromRole="VENTA" ToRole="DETALLE_VENTA" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.FK__VENTA__UsuarioID__531856C7" FromRole="VENTA" ToRole="USUARIO" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__Venta__4183B671" FromRole="VENTA" ToRole="DETALLE_VENTA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__VENTA__UsuarioID__314D4EA8" FromRole="VENTA" ToRole="USUARIO" />
         </EntityType>
-        <EntityType Name="VistaInventario">
+        <EntityType Name="InventarioMedicamento">
           <Key>
+            <PropertyRef Name="ID" />
             <PropertyRef Name="Cantidad" />
             <PropertyRef Name="Estante" />
             <PropertyRef Name="Sector" />
-            <PropertyRef Name="Num__Estante" />
             <PropertyRef Name="Categoría" />
-            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Cod_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Lote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="PrecioCompra" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="VTO" Type="DateTime" Precision="0" />
           <Property Name="Estante" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Sector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Num__Estante" Type="Int32" Nullable="false" />
           <Property Name="Categoría" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InventarioProducto">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Estante" />
+            <PropertyRef Name="Sector" />
+            <PropertyRef Name="Categoría" />
+          </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Cod_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="PrecioCompra" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="PrecioVenta" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Estante" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Categoría" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
         </EntityType>
-        <Association Name="FK__MEDICAMEN__Categ__31B762FC">
+        <Association Name="FK__MEDICAMEN__Categ__093F5D4E">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -788,7 +864,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__Catego__22751F6C">
+        <Association Name="FK__PRODUCTO__Catego__7FB5F314">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -800,7 +876,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CLIENTE__TipoCli__1EA48E88">
+        <Association Name="FK__CLIENTE__TipoCli__1F2E9E6D">
           <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -812,7 +888,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMPRA__Proveedo__57DD0BE4">
+        <Association Name="FK__COMPRA__Proveedo__361203C5">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -824,7 +900,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMPRA__UsuarioI__56E8E7AB">
+        <Association Name="FK__COMPRA__UsuarioI__351DDF8C">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -836,7 +912,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_C__Compr__5BAD9CC8">
+        <Association Name="FK__DETALLE_C__Compr__39E294A9">
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="0..1" />
           <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -848,7 +924,19 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_C__Produ__5CA1C101">
+        <Association Name="FK__DETALLE_C__Medic__3BCADD1B">
+          <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="0..1" />
+          <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDICAMENTO">
+              <PropertyRef Name="MedicamentoID" />
+            </Principal>
+            <Dependent Role="DETALLE_COMPRA">
+              <PropertyRef Name="MedicamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETALLE_C__Produ__3AD6B8E2">
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
           <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -860,7 +948,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_V__Medic__6442E2C9">
+        <Association Name="FK__DETALLE_V__Medic__436BFEE3">
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="0..1" />
           <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -872,7 +960,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_V__Produ__634EBE90">
+        <Association Name="FK__DETALLE_V__Produ__4277DAAA">
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
           <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -884,7 +972,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_V__Venta__625A9A57">
+        <Association Name="FK__DETALLE_V__Venta__4183B671">
           <End Role="VENTA" Type="Self.VENTA" Multiplicity="0..1" />
           <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -896,7 +984,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MEDICAMEN__Estan__30C33EC3">
+        <Association Name="FK__MEDICAMEN__Estan__084B3915">
           <End Role="ESTANTE" Type="Self.ESTANTE" Multiplicity="0..1" />
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -908,7 +996,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__Estant__236943A5">
+        <Association Name="FK__PRODUCTO__Estant__00AA174D">
           <End Role="ESTANTE" Type="Self.ESTANTE" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -920,7 +1008,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MEDICAMEN__Prove__32AB8735">
+        <Association Name="FK__MEDICAMEN__Prove__0A338187">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
           <End Role="MEDICAMENTO" Type="Self.MEDICAMENTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -932,7 +1020,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PERMISO__RolID__4A8310C6">
+        <Association Name="FK__PERMISO__RolID__29AC2CE0">
           <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
           <End Role="PERMISO" Type="Self.PERMISO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -944,7 +1032,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__Provee__245D67DE">
+        <Association Name="FK__PRODUCTO__Provee__019E3B86">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -956,7 +1044,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIO__RolID__4E53A1AA">
+        <Association Name="FK__USUARIO__RolID__2D7CBDC4">
           <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -968,7 +1056,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VENTA__UsuarioID__531856C7">
+        <Association Name="FK__VENTA__UsuarioID__314D4EA8">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
           <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -996,92 +1084,81 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <EntitySet Name="VENTA" EntityType="Self.VENTA" />
-          <EntitySet Name="VistaInventario" EntityType="Self.VistaInventario" />
-          <AssociationSet Name="FK__MEDICAMEN__Categ__31B762FC" Association="Self.FK__MEDICAMEN__Categ__31B762FC">
+          <EntitySet Name="InventarioMedicamento" EntityType="Self.InventarioMedicamento" />
+          <EntitySet Name="InventarioProducto" EntityType="Self.InventarioProducto" />
+          <AssociationSet Name="FK__MEDICAMEN__Categ__093F5D4E" Association="Self.FK__MEDICAMEN__Categ__093F5D4E">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__Catego__22751F6C" Association="Self.FK__PRODUCTO__Catego__22751F6C">
+          <AssociationSet Name="FK__PRODUCTO__Catego__7FB5F314" Association="Self.FK__PRODUCTO__Catego__7FB5F314">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__CLIENTE__TipoCli__1EA48E88" Association="Self.FK__CLIENTE__TipoCli__1EA48E88">
+          <AssociationSet Name="FK__CLIENTE__TipoCli__1F2E9E6D" Association="Self.FK__CLIENTE__TipoCli__1F2E9E6D">
             <End Role="TipoCliente" EntitySet="TipoCliente" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMPRA__Proveedo__57DD0BE4" Association="Self.FK__COMPRA__Proveedo__57DD0BE4">
+          <AssociationSet Name="FK__COMPRA__Proveedo__361203C5" Association="Self.FK__COMPRA__Proveedo__361203C5">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMPRA__UsuarioI__56E8E7AB" Association="Self.FK__COMPRA__UsuarioI__56E8E7AB">
+          <AssociationSet Name="FK__COMPRA__UsuarioI__351DDF8C" Association="Self.FK__COMPRA__UsuarioI__351DDF8C">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_C__Compr__5BAD9CC8" Association="Self.FK__DETALLE_C__Compr__5BAD9CC8">
+          <AssociationSet Name="FK__DETALLE_C__Compr__39E294A9" Association="Self.FK__DETALLE_C__Compr__39E294A9">
             <End Role="COMPRA" EntitySet="COMPRA" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_C__Produ__5CA1C101" Association="Self.FK__DETALLE_C__Produ__5CA1C101">
+          <AssociationSet Name="FK__DETALLE_C__Medic__3BCADD1B" Association="Self.FK__DETALLE_C__Medic__3BCADD1B">
+            <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
+            <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_C__Produ__3AD6B8E2" Association="Self.FK__DETALLE_C__Produ__3AD6B8E2">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_V__Medic__6442E2C9" Association="Self.FK__DETALLE_V__Medic__6442E2C9">
+          <AssociationSet Name="FK__DETALLE_V__Medic__436BFEE3" Association="Self.FK__DETALLE_V__Medic__436BFEE3">
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
             <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_V__Produ__634EBE90" Association="Self.FK__DETALLE_V__Produ__634EBE90">
+          <AssociationSet Name="FK__DETALLE_V__Produ__4277DAAA" Association="Self.FK__DETALLE_V__Produ__4277DAAA">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_V__Venta__625A9A57" Association="Self.FK__DETALLE_V__Venta__625A9A57">
+          <AssociationSet Name="FK__DETALLE_V__Venta__4183B671" Association="Self.FK__DETALLE_V__Venta__4183B671">
             <End Role="VENTA" EntitySet="VENTA" />
             <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__MEDICAMEN__Estan__30C33EC3" Association="Self.FK__MEDICAMEN__Estan__30C33EC3">
+          <AssociationSet Name="FK__MEDICAMEN__Estan__084B3915" Association="Self.FK__MEDICAMEN__Estan__084B3915">
             <End Role="ESTANTE" EntitySet="ESTANTE" />
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__Estant__236943A5" Association="Self.FK__PRODUCTO__Estant__236943A5">
+          <AssociationSet Name="FK__PRODUCTO__Estant__00AA174D" Association="Self.FK__PRODUCTO__Estant__00AA174D">
             <End Role="ESTANTE" EntitySet="ESTANTE" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__MEDICAMEN__Prove__32AB8735" Association="Self.FK__MEDICAMEN__Prove__32AB8735">
+          <AssociationSet Name="FK__MEDICAMEN__Prove__0A338187" Association="Self.FK__MEDICAMEN__Prove__0A338187">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PERMISO__RolID__4A8310C6" Association="Self.FK__PERMISO__RolID__4A8310C6">
+          <AssociationSet Name="FK__PERMISO__RolID__29AC2CE0" Association="Self.FK__PERMISO__RolID__29AC2CE0">
             <End Role="ROL" EntitySet="ROL" />
             <End Role="PERMISO" EntitySet="PERMISO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__Provee__245D67DE" Association="Self.FK__PRODUCTO__Provee__245D67DE">
+          <AssociationSet Name="FK__PRODUCTO__Provee__019E3B86" Association="Self.FK__PRODUCTO__Provee__019E3B86">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__RolID__4E53A1AA" Association="Self.FK__USUARIO__RolID__4E53A1AA">
+          <AssociationSet Name="FK__USUARIO__RolID__2D7CBDC4" Association="Self.FK__USUARIO__RolID__2D7CBDC4">
             <End Role="ROL" EntitySet="ROL" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VENTA__UsuarioID__531856C7" Association="Self.FK__VENTA__UsuarioID__531856C7">
+          <AssociationSet Name="FK__VENTA__UsuarioID__314D4EA8" Association="Self.FK__VENTA__UsuarioID__314D4EA8">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="VENTA" EntitySet="VENTA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_C__Medic__0697FACD" Association="FarmaciaDBModel.FK__DETALLE_C__Medic__0697FACD">
-            <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
-            <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__DETALLE_C__Medic__0697FACD">
-          <End Type="FarmaciaDBModel.MEDICAMENTO" Role="MEDICAMENTO" Multiplicity="0..1" />
-          <End Type="FarmaciaDBModel.DETALLE_COMPRA" Role="DETALLE_COMPRA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MEDICAMENTO">
-              <PropertyRef Name="MedicamentoID" />
-            </Principal>
-            <Dependent Role="DETALLE_COMPRA">
-              <PropertyRef Name="MedicamentoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1094,6 +1171,8 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
                 <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1127,10 +1206,10 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
           <EntitySetMapping Name="DETALLE_COMPRA">
             <EntityTypeMapping TypeName="FarmaciaDBModel.DETALLE_COMPRA">
               <MappingFragment StoreEntitySet="DETALLE_COMPRA">
-                <ScalarProperty Name="MedicamentoID" ColumnName="MedicamentoID" />
                 <ScalarProperty Name="DetalleCompraID" ColumnName="DetalleCompraID" />
                 <ScalarProperty Name="CompraID" ColumnName="CompraID" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="MedicamentoID" ColumnName="MedicamentoID" />
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
@@ -1158,8 +1237,9 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
               <MappingFragment StoreEntitySet="ESTANTE">
                 <ScalarProperty Name="EstanteID" ColumnName="EstanteID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
                 <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1179,6 +1259,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="Refrigerado" ColumnName="Refrigerado" />
                 <ScalarProperty Name="BajoReceta" ColumnName="BajoReceta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1220,6 +1301,7 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1233,6 +1315,8 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="TelefonoProveedor" ColumnName="TelefonoProveedor" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1250,6 +1334,8 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
               <MappingFragment StoreEntitySet="TipoCliente">
                 <ScalarProperty Name="TipoClienteID" ColumnName="TipoClienteID" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1283,22 +1369,40 @@ advertencia 6002: La tabla o vista 'FarmaciaDB.dbo.VistaInventario' no tiene def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VistaInventario">
-            <EntityTypeMapping TypeName="FarmaciaDBModel.VistaInventario">
-              <MappingFragment StoreEntitySet="VistaInventario">
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
-                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+          <EntitySetMapping Name="InventarioMedicamento">
+            <EntityTypeMapping TypeName="FarmaciaDBModel.InventarioMedicamento">
+              <MappingFragment StoreEntitySet="InventarioMedicamento">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Cod_" ColumnName="Cod." />
                 <ScalarProperty Name="Lote" ColumnName="Lote" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
                 <ScalarProperty Name="VTO" ColumnName="VTO" />
                 <ScalarProperty Name="Estante" ColumnName="Estante" />
                 <ScalarProperty Name="Sector" ColumnName="Sector" />
-                <ScalarProperty Name="Num__Estante" ColumnName="Num. Estante" />
                 <ScalarProperty Name="Categoría" ColumnName="Categoría" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventarioProducto">
+            <EntityTypeMapping TypeName="FarmaciaDBModel.InventarioProducto">
+              <MappingFragment StoreEntitySet="InventarioProducto">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cod_" ColumnName="Cod." />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Estante" ColumnName="Estante" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Categoría" ColumnName="Categoría" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

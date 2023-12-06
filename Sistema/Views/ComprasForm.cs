@@ -21,12 +21,12 @@ namespace Sistema.Views
 {
     public partial class ComprasForm : Form
     {
-        MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
         ProveedorLogica supplierLogic = new ProveedorLogica();
-        MedicamentoLogica medicineLogic = new MedicamentoLogica();
+        MedicamentoLogica lMedicina = new MedicamentoLogica();
         CompraLogica purchaseLogic = new CompraLogica();
         ProductoLogica productLogic = new ProductoLogica();
-        Controladora controladora = Controladora.GetInstance;
+        Controladora controladora = Controladora.ObtenerInstancia;
 
         object itemSelected { get; set; }
         PROVEEDOR selectedSupplier { get; set; } = null;
@@ -78,7 +78,7 @@ namespace Sistema.Views
                         {
                             int medicineID = modal.itemID;
                             //Crear instancia
-                            MEDICAMENTO selectedMedicine = medicineLogic.GetMedicine(medicineID);
+                            MEDICAMENTO selectedMedicine = lMedicina.GetMedicine(medicineID);
                             setItem(selectedMedicine);
                         }
                         else if (modal.SelectedItemType == mdBuscarItem.ItemType.Producto)
@@ -92,20 +92,20 @@ namespace Sistema.Views
                 catch (DbUpdateException)
                 {
                     // Excepción relacionada con problemas de actualización en la base de datos
-                    messageManager.ShowDatabaseUpdateError();
+                    sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
 
                     // Loguear dbEx si es necesario para fines de depuración
                 }
                 catch (SqlException)
                 {
                     // Excepción relacionada con errores de SQL
-                    messageManager.ShowSqlError();
+                    sGestorMensajes.Error.MostrarErrorSQL();
                     // Loguear sqlEx si es necesario para fines de depuración
                 }
                 catch (Exception)
                 {
                     // Otras excepciones no manejadas
-                    messageManager.ShowUnexpectedError();
+                    sGestorMensajes.Error.MostrarErrorInesperado();
                     // Loguear ex si es necesario para fines de depuración
                 }
 
@@ -133,7 +133,7 @@ namespace Sistema.Views
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
         }
 
@@ -170,46 +170,55 @@ namespace Sistema.Views
         {
             if (e.KeyData == Keys.Enter)
             {
-
-                // Buscar código de barras en la base de datos
-                string barcode = txtcodproducto.Text;
-                // Crear instancias
-                PRODUCTO product = productLogic.GetProductByCode(barcode);
-                MEDICAMENTO medicine = medicineLogic.GetMedicineByCode(barcode);
-                // Comprobar si se encontró un producto o un medicamento
-                if (product != null)
-                {
-                    // Establecer datos del producto
-                    setItem(product);
-                }
-                else if (medicine != null)
-                {
-                    // Establecer datos del medicamento
-                    setItem(medicine);
-                }
-                else
-                {
-                    setItem(null);
-                }
+                checkBarcode();
             }
         }
-      
+
+        private void txtcodproducto_Leave(object sender, EventArgs e)
+        {
+            checkBarcode();
+        }
+
+        private void checkBarcode()
+        {
+            // Buscar código de barras en la base de datos
+            string barcode = txtcodproducto.Text;
+            // Crear instancias
+            PRODUCTO product = productLogic.GetProductByCode(barcode);
+            MEDICAMENTO medicine = lMedicina.GetMedicineByCode(barcode);
+            // Comprobar si se encontró un producto o un medicamento
+            if (product != null)
+            {
+                // Establecer datos del producto
+                setItem(product);
+            }
+            else if (medicine != null)
+            {
+                // Establecer datos del medicamento
+                setItem(medicine);
+            }
+            else
+            {
+                setItem(null);
+            }
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             // Comprobar si hay proveedores y preguntar si desea agregar el item sin proveedor
-            if (selectedSupplier == null)
-            {
-                DialogResult result = MessageBox.Show("No se ha seleccionado un proveedor. ¿Desea agregar el item sin proveedor?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
-                {
-                    return;
-                }
-            }
 
             if (itemSelected != null)
             {
-                bool isDecimalPrecioCompra = controladora.CheckDecimalFormatPrice(txtPrecioCompra, errorProvider);
-                bool isDecimalPrecioVenta = controladora.CheckDecimalFormatPrice(txtPrecioVenta, errorProvider);
+                if (selectedSupplier == null)
+                {
+                    DialogResult result = MessageBox.Show("No se ha seleccionado un proveedor. ¿Desea agregar el item sin proveedor?", "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                bool isDecimalPrecioCompra = controladora.VerificarFormatoDecimalPrecio(txtPrecioCompra, errorProvider);
+                bool isDecimalPrecioVenta = controladora.VerificarFormatoDecimalPrecio(txtPrecioVenta, errorProvider);
                 if (isDecimalPrecioCompra && isDecimalPrecioVenta)
                 {
                     bool itemExists = false;
@@ -218,9 +227,9 @@ namespace Sistema.Views
                     if (itemSelected is MEDICAMENTO medicine)
                     {
                         itemID = medicine.MedicamentoID;
-                        foreach (DataGridViewRow row in dgvData.Rows)
+                        foreach (DataGridViewRow fila in dgvData.Rows)
                         {
-                            if (row.Cells["dgvcMedicamentoID"].Value.ToString() == itemID.ToString())
+                            if (fila.Cells["dgvcMedicamentoID"].Value.ToString() == itemID.ToString())
                             {
                                 itemExists = true;
                                 break;
@@ -246,9 +255,9 @@ namespace Sistema.Views
                     else if (itemSelected is PRODUCTO product)
                     {
                         itemID = product.ProductoID;
-                        foreach (DataGridViewRow row in dgvData.Rows)
+                        foreach (DataGridViewRow fila in dgvData.Rows)
                         {
-                            if (row.Cells["dgvcProductoID"].Value.ToString() == itemID.ToString())
+                            if (fila.Cells["dgvcProductoID"].Value.ToString() == itemID.ToString())
                             {
                                 itemExists = true;
                                 break;
@@ -292,7 +301,7 @@ namespace Sistema.Views
                 // Verificar si el proveedor es nulo o no usamos un condicional ternario
                 int supplierID = selectedSupplier == null ? 0 : selectedSupplier.ProveedorID;
                 string supplierName = selectedSupplier == null ? "N/A" : selectedSupplier.RazonSocial;
-                
+
                 if (item != null)
                 {
                     if (item is MEDICAMENTO medicine)
@@ -343,7 +352,7 @@ namespace Sistema.Views
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
 
         }
@@ -373,11 +382,11 @@ namespace Sistema.Views
                     }
 
                     // Buscar la fila que contiene el ID del item
-                    foreach (DataGridViewRow row in dgvData.Rows)
+                    foreach (DataGridViewRow fila in dgvData.Rows)
                     {
-                        if (row.Cells[columnIndexID].Value.ToString() == itemID.ToString())
+                        if (fila.Cells[columnIndexID].Value.ToString() == itemID.ToString())
                         {
-                            rowToUpdate = row;
+                            rowToUpdate = fila;
                             break;
                         }
                     }
@@ -406,7 +415,7 @@ namespace Sistema.Views
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
         }
 
@@ -416,9 +425,9 @@ namespace Sistema.Views
             decimal total = 0;
             if (dgvData.Rows.Count > 0)
             {
-                foreach (DataGridViewRow row in dgvData.Rows)
+                foreach (DataGridViewRow fila in dgvData.Rows)
                 {
-                    total += Convert.ToDecimal(row.Cells["dgvcSubTotal"].Value.ToString());
+                    total += Convert.ToDecimal(fila.Cells["dgvcSubTotal"].Value.ToString());
                 }
             }
             txtTotalPagar.Text = total.ToString();
@@ -426,7 +435,7 @@ namespace Sistema.Views
 
         private void cleanFields()
         {
-            controladora.ClearTextBoxT(txtcodproducto, txtproducto, txtPrecioCompra, txtPrecioVenta);
+            controladora.LimpiarTextBoxT(txtcodproducto, txtproducto, txtPrecioCompra, txtPrecioVenta);
             txtcodproducto.BackColor = Color.White;
             txtCantidad.Value = 1;
             txtfecha.Text = DateTime.Now.ToLongDateString();
@@ -439,7 +448,7 @@ namespace Sistema.Views
                 return;
 
             // Se creará un botón en la última columna del datagridview para eliminar el item seleccionado
-            if (e.ColumnIndex == 8)
+            if (e.ColumnIndex == 10)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -472,19 +481,19 @@ namespace Sistema.Views
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
 
         }
 
         private void txtPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
         {
-            controladora.OnlyNumberAndDecimalPoint(txtPrecioCompra, e);
+            controladora.SoloNumeroYPuntoDecimal(txtPrecioCompra, e);
         }
 
         private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            controladora.OnlyNumberAndDecimalPoint(txtPrecioVenta, e);
+            controladora.SoloNumeroYPuntoDecimal(txtPrecioVenta, e);
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -504,19 +513,19 @@ namespace Sistema.Views
                 // Esta es una columna checkbox
                 dt.Columns.Add("esMedicamento");
 
-                foreach (DataGridViewRow row in dgvData.Rows)
+                foreach (DataGridViewRow fila in dgvData.Rows)
                 {
                     dt.Rows.Add(
                         new object[]
                         {
-                            row.Cells["dgvcMedicamentoID"].Value.ToString(),
-                            row.Cells["dgvcProductoID"].Value.ToString(),
-                            row.Cells["dgvcNombre"].Value.ToString(),
-                            row.Cells["dgvcPrecioCompra"].Value.ToString(),
-                            row.Cells["dgvcPrecioVenta"].Value.ToString(),
-                            row.Cells["dgvcCantidad"].Value.ToString(),
-                            row.Cells["dgvcSubTotal"].Value.ToString(),
-                            row.Cells["dgvcEsMedicamento"].Value.ToString()
+                            fila.Cells["dgvcMedicamentoID"].Value.ToString(),
+                            fila.Cells["dgvcProductoID"].Value.ToString(),
+                            fila.Cells["dgvcNombre"].Value.ToString(),
+                            fila.Cells["dgvcPrecioCompra"].Value.ToString(),
+                            fila.Cells["dgvcPrecioVenta"].Value.ToString(),
+                            fila.Cells["dgvcCantidad"].Value.ToString(),
+                            fila.Cells["dgvcSubTotal"].Value.ToString(),
+                            fila.Cells["dgvcEsMedicamento"].Value.ToString()
                         });
                 }
                 // Creamos el numero de registro con un formato 00000{numero}
@@ -534,8 +543,8 @@ namespace Sistema.Views
                 //COMPRA purchase_detail = new COMPRA()
                 //{
                 //    // Arreglar cuando se termine el modulo de seguridad
-                   
-                    
+
+
                 //}
 
             }
@@ -545,7 +554,9 @@ namespace Sistema.Views
             }
         }
 
-        
+
+
+
 
         // // /// /// FIN ESTABLECER DATOS DESPUES DE REALIZAR BUSQUEDA A TRAVÉS DE MODAL /// /// /// //
 

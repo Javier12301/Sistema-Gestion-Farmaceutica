@@ -46,8 +46,7 @@
             this.estanteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoríaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vistaInventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
-            this.vistaInventarioTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter();
+         
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnbuscar = new FontAwesome.Sharp.IconButton();
@@ -55,7 +54,6 @@
             this.pnlControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlControl
@@ -226,17 +224,14 @@
             // 
             // vistaInventarioBindingSource
             // 
-            this.vistaInventarioBindingSource.DataMember = "VistaInventario";
-            this.vistaInventarioBindingSource.DataSource = this.farmaciaDBDataSet;
+
             // 
             // farmaciaDBDataSet
             // 
-            this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
-            this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // vistaInventarioTableAdapter
             // 
-            this.vistaInventarioTableAdapter.ClearBeforeFill = true;
             // 
             // btnCancelar
             // 
@@ -332,7 +327,6 @@
             this.pnlControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vistaInventarioBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,9 +344,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvdata;
-        private FarmaciaDBDataSet farmaciaDBDataSet;
+
         private System.Windows.Forms.BindingSource vistaInventarioBindingSource;
-        private FarmaciaDBDataSetTableAdapters.VistaInventarioTableAdapter vistaInventarioTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn loteDataGridViewTextBoxColumn;

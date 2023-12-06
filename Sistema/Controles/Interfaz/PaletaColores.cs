@@ -8,75 +8,74 @@ using System.Threading.Tasks;
 namespace Sistema.Controles
 {
     public class PaletaColores
-    {     
+    {
         // Establecer un Singleton
-        private static PaletaColores instance = null;
+        private static PaletaColores instancia = null;
         private PaletaColores() { }
-        public static PaletaColores GetInstance
+        public static PaletaColores ObtenerInstancia
         {
             get
             {
-                if (instance == null)
+                if (instancia == null)
                 {
-                    instance = new PaletaColores();
+                    instancia = new PaletaColores();
                 }
-                return instance;
+                return instancia;
             }
         }
 
+        // Paletas de colores que se usarán en su mayoría en el sistema
+        Color colorActivo = ColorTranslator.FromHtml("#5AA8E1");
+        Color colorError = ColorTranslator.FromHtml("#FF4136");
+        Color colorDeshabilitado = ColorTranslator.FromHtml("#CCCCCC");
 
-        //Paletas de colore que se usaran en su mayoría en el sistema
-            Color colorActive = ColorTranslator.FromHtml("#5AA8E1");
-            Color colorError = ColorTranslator.FromHtml("#FF4136");
-            Color colorDisabled = ColorTranslator.FromHtml("#CCCCCC");
-     
-        public Color ColorActive
+        public Color ColorActivo
         {
-            get { return colorActive; }
+            get { return colorActivo; }
         }
-        
+
         public Color ColorError
         {
             get { return colorError; }
         }
 
-        public Color ColorDisabled
+        public Color ColorDeshabilitado
         {
-            get { return colorDisabled; }
+            get { return colorDeshabilitado; }
         }
 
         // Paleta de colores para botones
-        Color buttonActive = ColorTranslator.FromHtml("#267da6");
-        Color buttonDisabled = ColorTranslator.FromHtml("#fcfcfc");
-        Color buttonHoover = ColorTranslator.FromHtml("#3789b4");
+        Color colorBotonActivo = ColorTranslator.FromHtml("#267da6");
+        Color colorBotonDeshabilitado = ColorTranslator.FromHtml("#fcfcfc");
+        Color colorBotonHover = ColorTranslator.FromHtml("#3789b4");
 
-        public Color ButtonActive
+        public Color ColorBotonActivo
         {
-            get { return buttonActive; }
+            get { return colorBotonActivo; }
         }
 
-        public Color ButtonDisabled
+        public Color ColorBotonDeshabilitado
         {
-            get { return buttonDisabled; }
+            get { return colorBotonDeshabilitado; }
         }
 
-        public Color ButtonHoover
+        public Color ColorBotonHover
         {
-            get { return buttonHoover; }
+            get { return colorBotonHover; }
         }
 
         // Paleta de color para botón modificar
-        Color buttonModifyActive = ColorTranslator.FromHtml("#a6d95b");
-        Color buttonModifyDisabled = ColorTranslator.FromHtml("#b0e068");
+        Color colorBotonModificarActivo = ColorTranslator.FromHtml("#a6d95b");
+        Color colorBotonModificarDeshabilitado = ColorTranslator.FromHtml("#b0e068");
 
-        public Color ButtonModifyActive
+        public Color ColorBotonModificarActivo
         {
-            get { return buttonModifyActive; }
+            get { return colorBotonModificarActivo; }
         }
 
-        public Color ButtonModifyDisabled
+        public Color ColorBotonModificarDeshabilitado
         {
-            get { return buttonModifyDisabled; }
+            get { return colorBotonModificarDeshabilitado; }
         }
     }
 }

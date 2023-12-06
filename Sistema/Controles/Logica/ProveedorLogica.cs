@@ -11,7 +11,7 @@ namespace Sistema.Controles.Logica
 {
     public class ProveedorLogica
     {
-        MedicamentoLogica medicineLogic = new MedicamentoLogica();
+        MedicamentoLogica lMedicina = new MedicamentoLogica();
         // Obtener lista de Proveedores
 
 
@@ -96,7 +96,7 @@ namespace Sistema.Controles.Logica
 
                     if (supplier != null)
                     {
-                        bool hasAssociatedMedicine = medicineLogic.HasMedicineSupplierAssociated(db, supplierID);
+                        bool hasAssociatedMedicine = lMedicina.HasMedicineSupplierAssociated(db, supplierID);
 
                         if (hasAssociatedMedicine)
                         {
@@ -106,7 +106,7 @@ namespace Sistema.Controles.Logica
 
                             if (userConfirmation == DialogResult.Yes)
                             {
-                                medicineLogic.ReassignDefaultSupplierMedicine(db, supplierID);
+                                lMedicina.ReassignDefaultSupplierMedicine(db, supplierID);
                             }
                             else
                             {

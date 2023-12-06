@@ -40,6 +40,7 @@ namespace Sistema.Models
         public virtual DbSet<TipoCliente> TipoCliente { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<VENTA> VENTA { get; set; }
-        public virtual DbSet<VistaInventario> VistaInventario { get; set; }
+        public virtual DbSet<InventarioMedicamento> InventarioMedicamento { get; set; }
+        public virtual DbSet<InventarioProducto> InventarioProducto { get; set; }
     }
 }

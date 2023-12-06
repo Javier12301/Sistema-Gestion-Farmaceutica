@@ -23,11 +23,11 @@ namespace Sistema.Vista
         // Instancias de las clases de Control
         Shortcuts shortcuts = new Shortcuts();
         EstanteLogica shelfLogic = new EstanteLogica();
-        CategoriaLogica categoryLogic = new CategoriaLogica();
+       // CategoriaLogica lCategoria = new CategoriaLogica();
         ProductoLogica productLogic = new ProductoLogica();
-        MedicamentoLogica medicineLogic = new MedicamentoLogica();
+        MedicamentoLogica lMedicina = new MedicamentoLogica();
 
-        MessageBoxManager messageManager = MessageBoxManager.GetInstance;
+        MessageBoxManager sGestorMensajes = MessageBoxManager.ObtenerInstancia;
         public PrincipalForm()
         {
             InitializeComponent();
@@ -39,21 +39,21 @@ namespace Sistema.Vista
             {
                 // Obtener cantidad total de estantes, categorias y medicamentos excepto los que tienen ID 0
                 lblNumEstantes.Text = shelfLogic.GetTotalShelvesCount().ToString();
-                lblNumCategorias.Text = categoryLogic.GetTotalCategoriesCount().ToString();
-                lblNumMedicamentos.Text = medicineLogic.GetTotalMedicinesCount().ToString();
+               // lblNumCategorias.Text = lCategoria.CategoriaTotal().ToString();
+                lblNumMedicamentos.Text = lMedicina.GetTotalMedicinesCount().ToString();
                 lblNumeroProductos.Text = productLogic.GetTotalProductCount().ToString();
             }
             catch (DbUpdateException)
             {
-                messageManager.ShowDatabaseUpdateError();
+                sGestorMensajes.Error.MostrarErrorActualizacionBaseDatos();
             }
             catch (SqlException)
             {
-                messageManager.ShowSqlError();
+                sGestorMensajes.Error.MostrarErrorSQL();
             }
             catch (Exception)
             {
-                messageManager.ShowUnexpectedError();
+                sGestorMensajes.Error.MostrarErrorInesperado();
             }
 
 

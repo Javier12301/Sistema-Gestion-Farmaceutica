@@ -16,31 +16,31 @@ namespace Sistema
     public class Controladora
     {
         // Singleton Controladora
-        private static Controladora instance = null;
+        private static Controladora _instancia = null;
         private Controladora()
         {
         }
-        public static Controladora GetInstance
+        public static Controladora ObtenerInstancia
         {
             get
             {
-                if (instance == null)
+                if (_instancia == null)
                 {
-                    instance = new Controladora();
+                    _instancia = new Controladora();
                 }
-                return instance;
+                return _instancia;
             }
         }
 
-        PaletaColores palette = PaletaColores.GetInstance;
+        PaletaColores paleta = PaletaColores.ObtenerInstancia;
 
-        public void OpenMailLink()
+        public void AbrirEnlaceCorreo()
         {
             System.Diagnostics.Process.Start("mailto:javierramirez1230123@gmail.com");
         }
 
-        // Solo número e ignora espacios y permite borrado en textbox
-        public void OnlyNumbers(KeyPressEventArgs e)
+        // Solo números e ignora espacios y permite borrado en textbox
+        public void SoloNumeros(KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
             {
@@ -60,26 +60,27 @@ namespace Sistema
             }
         }
 
-        //Se contralará toda las funciones del ojo de contraseña
-        public void ShowPassword(GunaLineTextBox txtPassword)
+        // Se controlarán todas las funciones del ojo de contraseña
+        public void MostrarContraseña(GunaLineTextBox txtContraseña)
         {
-            txtPassword.PasswordChar = (char)0;
+            txtContraseña.PasswordChar = (char)0;
         }
 
-        public void HidePassword(GunaLineTextBox txtPassword)
+        public void OcultarContraseña(GunaLineTextBox txtContraseña)
         {
-            txtPassword.PasswordChar = '*';
+            txtContraseña.PasswordChar = '*';
         }
 
-        public bool VerifyCredentials(GunaLineTextBox txtUser, GunaLineTextBox txtPassword)
+        public bool VerificarCredenciales(GunaLineTextBox txtUsuario, GunaLineTextBox txtContraseña)
         {
-            //Será utilizado para registrar nuevos usuarios, con esto podremos especificar los caracteres que se podrán utilizar
-            bool isEmailValid = VerifyEmailG(txtUser);
-            bool isPasswordValid = VerifyPassword(txtPassword);
-            //Verificar credenciales
-            if (isEmailValid && isPasswordValid)
+            // Se utilizará para registrar nuevos usuarios, con esto podremos especificar los caracteres que se podrán utilizar
+            bool esCorreoValido = VerificarCorreoG(txtUsuario);
+            bool esContraseñaValida = VerificarContraseña(txtContraseña);
+
+            // Verificar credenciales
+            if (esCorreoValido && esContraseñaValida)
             {
-                if (txtUser.Text == "Admin12301@gmail.com" && txtPassword.Text == "Admin12301")
+                if (txtUsuario.Text == "Admin12301@gmail.com" && txtContraseña.Text == "Admin12301")
                 {
                     return true;
                 }
@@ -87,102 +88,110 @@ namespace Sistema
                 {
                     return false;
                 }
-
             }
-            {
-
-                return false;
-            }
-
+            return false;
         }
 
         // Función en caso de utilizar un TextBox Guna
-        public bool VerifyEmailG(GunaLineTextBox txtUser)
+        public bool VerificarCorreoG(GunaLineTextBox txtUsuario)
         {
-            bool isEmailValid = false;
-            if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
+            bool esCorreoValido = txtUsuario.Text.Contains("@") && txtUsuario.Text.Contains(".");
+
+            if (!esCorreoValido)
             {
-                isEmailValid = true;
+                txtUsuario.LineColor = paleta.ColorError;
             }
-            else
-            {
-                txtUser.LineColor = palette.ColorError;
-            }
-            return isEmailValid;
+
+            return esCorreoValido;
         }
+
         // Función en caso de utilizar un TextBox normal
-        public bool VerifyEmailT(TextBoxBase txtUser, ErrorProvider errorActivator)
+        public bool VerificarCorreoT(TextBoxBase txtUsuario, ErrorProvider proveedorError)
         {
-            bool isEmailValid = false;
-            if (txtUser.Text.Contains("@") && txtUser.Text.Contains("."))
+            bool esCorreoValido = txtUsuario.Text.Contains("@") && txtUsuario.Text.Contains(".");
+
+            if (!esCorreoValido)
             {
-                errorActivator.SetError(txtUser, "");
-                isEmailValid = true;
+                proveedorError.SetError(txtUsuario, "Correo inválido, por favor no olvides los @, ., com, org, etc.");
             }
             else
             {
-                errorActivator.SetError(txtUser, "Correo invalido, por favor no se olvide de los @,.,com,org,etc.");
+                proveedorError.SetError(txtUsuario, "");
             }
-            return isEmailValid;
+
+            return esCorreoValido;
         }
 
-        private bool VerifyPassword(GunaLineTextBox txtPassword)
+        private bool VerificarContraseña(GunaLineTextBox txtContraseña)
         {
-            bool isPasswordValid = false;
-            //Las contraseñas de cada empelado tendrán como obligación tener más de 8 caracteres.
-            if (txtPassword.Text.Length >= 8)
+            bool esContraseñaValida = txtContraseña.Text.Length >= 8;
+
+            if (!esContraseñaValida)
             {
-                isPasswordValid = true;
+                txtContraseña.LineColor = paleta.ColorError;
             }
-            else
-            {
-                txtPassword.LineColor = palette.ColorError;
-            }
-            return isPasswordValid;
+
+            return esContraseñaValida;
         }
 
-        //comprobara cualquier campo de texto vacio
-        public bool VerifyTextBoxG(GunaLineTextBox txtbox)
+        // Comprobará cualquier campo de texto vacío
+        public bool VerificarTextBoxG(GunaLineTextBox txtbox)
         {
             if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
-
-                //No está vacio
-                txtbox.LineColor = palette.ColorActive;
+                // No está vacío
+                txtbox.LineColor = paleta.ColorActivo;
                 return true;
             }
             else
             {
-                //Está vacio
-                txtbox.LineColor = palette.ColorError;
+                // Está vacío
+                txtbox.LineColor = paleta.ColorError;
                 return false;
             }
         }
-        //Comprobara cualquier campo de texto vacio TextBox normales no guna
-        public bool VerifyTextBoxT(TextBoxBase txtbox, ErrorProvider errorActivator)
+
+        // Comprobará cualquier campo de texto vacío TextBox normales no Guna
+        public bool VerificarTextBoxT(TextBoxBase txtbox, ErrorProvider proveedorError)
         {
-            errorActivator.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            proveedorError.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+
             if (!string.IsNullOrWhiteSpace(txtbox.Text))
             {
-                //No está vacio
-
-                errorActivator.SetError(txtbox, "");
+                // No está vacío
+                proveedorError.SetError(txtbox, "");
                 return true;
             }
             else
             {
-                //Está vacio
-                errorActivator.SetError(txtbox, "Campo obligatorio");
+                // Está vacío
+                proveedorError.SetError(txtbox, "Campo obligatorio");
                 return false;
             }
         }
 
-        // controladora de DataGridView
-        public void CheckEmptyDataGridView(DataGridView _dtagridview, string IDColumn)
+        public bool VerificarComboBox(ComboBox combobox, ErrorProvider proveedorError, Label lbl)
+        {
+            if (combobox.SelectedIndex > 0)
+            {
+                // No está vacío
+                proveedorError.SetError(lbl, "");
+                return true;
+            }
+            else
+            {
+                // Está vacío
+                proveedorError.SetError(lbl, "Campo obligatorio");
+                return false;
+            }
+        }
+
+        // Controladora de DataGridView
+        public void VerificarDataGridViewVacio(DataGridView _dtagridview, string columnaID)
         {
             if (_dtagridview.Rows.Count <= 1)
             {
-                if (_dtagridview.Rows.Count == 0 || string.IsNullOrEmpty(_dtagridview.Rows[0].Cells[IDColumn].Value?.ToString()))
+                if (_dtagridview.Rows.Count == 0 || string.IsNullOrEmpty(_dtagridview.Rows[0].Cells[columnaID].Value?.ToString()))
                 {
                     _dtagridview.Enabled = false;
                 }
@@ -198,17 +207,16 @@ namespace Sistema
         }
 
         // Controladora para limpiar los campos de texto GunaLine
-        public void ClearTextBoxG(params GunaLineTextBox[] textBoxes)
+        public void LimpiarTextBoxG(params GunaLineTextBox[] textBoxes)
         {
             foreach (GunaLineTextBox txtbox in textBoxes)
             {
                 txtbox.Text = "";
             }
-
         }
 
         // Controladora para limpiar los campos de texto TextBox normales
-        public void ClearTextBoxT(params TextBoxBase[] textBoxes)
+        public void LimpiarTextBoxT(params TextBoxBase[] textBoxes)
         {
             foreach (TextBoxBase txtbox in textBoxes)
             {
@@ -216,30 +224,30 @@ namespace Sistema
             }
         }
 
-        public bool CheckDecimalFormatPrice(TextBox textbox, ErrorProvider errorActivator)
+        public bool VerificarFormatoDecimalPrecio(TextBox textbox, ErrorProvider errorActivador)
         {
             // Intentamos convertir el texto a decimal
             if (!decimal.TryParse(textbox.Text, out decimal result))
             {
                 // Si la conversión falla, establecemos el error
-                errorActivator.SetError(textbox, "Formato de moneda incorrecto");
+                errorActivador.SetError(textbox, "Formato de moneda incorrecto");
                 textbox.Focus();
                 return false;
             }
             else
             {
-                if(textbox.Text == string.Empty)
+                if (textbox.Text == string.Empty)
                 {
                     textbox.Text = "0";
                 }
-                errorActivator.SetError(textbox, "");
+                errorActivador.SetError(textbox, "");
                 return true;
             }
         }
 
-        public void OnlyNumberAndDecimalPoint(TextBox textbox, KeyPressEventArgs e)
+        public void SoloNumeroYPuntoDecimal(TextBox textbox, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -251,7 +259,7 @@ namespace Sistema
                 }
                 else
                 {
-                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
+                    if (char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
                     {
                         e.Handled = false;
                     }
@@ -297,7 +305,6 @@ namespace Sistema
                 observer.Update(isDatagridViewModified);
             }
         }
-
         // // // // // // // // // // // //
 
     }

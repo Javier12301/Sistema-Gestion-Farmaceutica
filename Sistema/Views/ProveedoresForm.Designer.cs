@@ -35,7 +35,6 @@
             this.btnModifyG = new Guna.UI.WinForms.GunaButton();
             this.dgvSupplierList = new Zuby.ADGV.AdvancedDataGridView();
             this.bindingSourceSupplier = new System.Windows.Forms.BindingSource(this.components);
-            this.farmaciaDBDataSet = new Sistema.FarmaciaDBDataSet();
             this.btnGuardarG = new Guna.UI.WinForms.GunaButton();
             this.btnEliminarG = new Guna.UI.WinForms.GunaButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.lblTelefonoP = new System.Windows.Forms.Label();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.pROVEEDORTableAdapter = new Sistema.FarmaciaDBDataSetTableAdapters.PROVEEDORTableAdapter();
             this.dgvcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcRazonSocialP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcDocumentoP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +64,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSupplier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLineSeparator)).BeginInit();
@@ -170,13 +167,11 @@
             // 
             // bindingSourceSupplier
             // 
-            this.bindingSourceSupplier.DataMember = "PROVEEDOR";
-            this.bindingSourceSupplier.DataSource = this.farmaciaDBDataSet;
+        
             // 
             // farmaciaDBDataSet
             // 
-            this.farmaciaDBDataSet.DataSetName = "FarmaciaDBDataSet";
-            this.farmaciaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            
             // 
             // btnGuardarG
             // 
@@ -474,7 +469,6 @@
             // 
             // pROVEEDORTableAdapter
             // 
-            this.pROVEEDORTableAdapter.ClearBeforeFill = true;
             // 
             // dgvcID
             // 
@@ -553,7 +547,6 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSupplier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.farmaciaDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -589,9 +582,7 @@
         private System.Windows.Forms.Label lblTelefonoP;
         private System.Windows.Forms.Panel pnlButton;
         private System.Windows.Forms.Button btnAgregar;
-        private FarmaciaDBDataSet farmaciaDBDataSet;
         private System.Windows.Forms.BindingSource bindingSourceSupplier;
-        private FarmaciaDBDataSetTableAdapters.PROVEEDORTableAdapter pROVEEDORTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcRazonSocialP;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcDocumentoP;
